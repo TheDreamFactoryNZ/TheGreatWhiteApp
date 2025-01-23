@@ -82,10 +82,10 @@ const App = (props) => {
 
     window.GlobalMap = new mapboxgl.Map({
       container: 'map-container', // container ID
-      style: 'mapbox://styles/vjoelm/cktdex96919t117p3rkq7c7yu/draft',
-      center: !config.map || !config.map.center ? [-109.3666652, -27.1166662] : config.map.center, // starting position [lng, lat]
-      zoom: !config.map || !config.map.zoom ? 11 : config.map.zoom, // starting zoom,
-      pitch: !config.map || !config.map.pitch ? 75 : config.map.pitch
+      style: 'mapbox://styles/izaakwicks/cm695163r00h001spfqn33x5h',
+      center: !config.map || !config.map.center ? [173.497498, -40.043578] : config.map.center, // starting position [lng, lat]
+      zoom: !config.map || !config.map.zoom ? 5 : config.map.zoom, // starting zoom,
+      pitch: !config.map || !config.map.pitch ? 1 : config.map.pitch
     });
 
     var nav = new mapboxgl.NavigationControl({ visualizePitch: true });
