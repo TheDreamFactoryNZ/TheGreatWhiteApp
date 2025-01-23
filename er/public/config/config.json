@@ -1,79 +1,171 @@
 {
     "server": "ermap-server.pamdas.org",
-    "public_name": "easterisland",
-    "map_title": "Giraffe Tracker",
-    "color_scheme": ["#00374", "#005B70", "#219DB8", "#511913", "#711E17", "#961F1A"],
+    "public_name": "nzsharkman",
+    "map_title": "The Great White App",
+    "color_scheme": "aquatic",
     "map": {
-        "center": [-109.3666652, -27.1166662],
-        "zoom": 11,
-        "pitch": 75,
-        "simplify_map_data": true,
-        "show_subject_names": false,
+        "center": [173.497498, -40.043578],
+        "zoom": 5,
+        "pitch": 1,
+        "simplify_map_data": false,
+        "show_subject_names": true,
         "map_icon_size": 90
     },
     "subjects":
     {
-        "d98cad8d-f6cb-4e62-a3fe-5fe38e69a347":
-        {    
-            "name": "Najin",
-            "age": "5 years",
-            "icon": "public/images/animal_icons/southern_giraffe.png", 
+        "8b2f2d3d-831a-4a43-8aa7-9ce1b4d7d8d7":
+        {
+            "name": "Benny",
+            "age": "12 years",
+            "icon": "public/images/animal_icons/shark_icon.png",
             "pictures":
             [
                 {
-                    "path": "https://www.eurekalert.org/multimedia/pub/web/221627_web.jpg"
+                    "path": "public/images/animal_photos/great_white.jpg"
                 }
             ],
-            "fun_fact": "Najin fun fact",
-            "detail_description": "<p>Detailed description of <b>Najin</b> in simple HTML<br><br>Lorem ipsum dolor, <i>sit amet consectetur adipisicing elit. Totam nisi in </i>porro quia quae. Aspernatur labore <b>nobis veniam. Quisquam optio ipsam laudantium alias, dolorum</b> amet qui. Adipisci obcaecati veniam libero? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae libero molestias vero reprehenderit, harum quaerat placeat dignissimos sunt inventore voluptatibus esse repellat adipisci dolore. Tenetur quis consequatur et corporis nam? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Totam nisi in porro quia quae. Aspernatur labore nobis veniam. Quisquam optio ipsam laudantium alias, dolorum amet qui. Adipisci obcaecati veniam libero? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae libero molestias vero reprehenderit, harum quaerat placeat dignissimos sunt inventore voluptatibus esse repellat adipisci dolore. Tenetur quis consequatur et corporis nam? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Totam nisi in porro quia quae. Aspernatur labore nobis veniam. Quisquam optio ipsam laudantium alias, dolorum amet qui. Adipisci obcaecati veniam libero? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae libero molestias vero reprehenderit, harum quaerat placeat dignissimos sunt inventore voluptatibus esse repellat adipisci dolore. Tenetur quis consequatur et corporis nam?</p>"
+            "fun_fact": "Females give birth to between two and 10 pups per litter, and perhaps as many as 14!",
+            "detail_description": "<p><b>The Great White Shark is a species of large mackerel shark which can be found in the coastal surface waters of all the major oceans.</b> It is notable for its size, with larger female individuals growing to 6.1 m (20 ft) in length and 1,905–2,268 kg in weight at maturity.</p>"
         },
-        "f6b20ca9-9f72-44ed-adf7-41e84f3d2407":
-        {   
-            "age": "6 months",
-            "icon": "public/images/animal_icons/masai_giraffe.png", 
+        "18a9e2b7-7629-46bf-9e03-0824122f45eb":
+        {
+            "name": "Takami",
+            "age": "3 years (2.2 metres)",
+            "icon": "public/images/animal_icons/shark_icon_inactive.png",
             "pictures":
             [
                 {
-                    "path": "https://assets.nrdc.org/sites/default/files/styles/full_content--retina/public/media-uploads/wlds43_654640_2400.jpg"
+                    "path": "public/images/animal_photos/Takami.png"
                 }
             ],
-            "fun_fact": "Horton fun fact",
-            "detail_description": "<p>Detailed description of <b>Horton</b> in simple HTML<br><br>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Totam nisi in porro quia quae. Aspernatur labore nobis veniam. Quisquam optio ipsam laudantium alias, dolorum amet qui. Adipisci obcaecati veniam libero? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae libero molestias vero reprehenderit, harum quaerat placeat dignissimos sunt inventore voluptatibus esse repellat adipisci dolore. Tenetur quis consequatur et corporis nam? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Totam nisi in porro quia quae. Aspernatur labore nobis veniam. Quisquam optio ipsam laudantium alias, dolorum amet qui. Adipisci obcaecati veniam libero? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae libero molestias vero reprehenderit, harum quaerat placeat dignissimos sunt inventore voluptatibus esse repellat adipisci dolore. Tenetur quis consequatur et corporis nam? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Totam nisi in porro quia quae. Aspernatur labore nobis veniam. Quisquam optio ipsam laudantium alias, dolorum amet qui. Adipisci obcaecati veniam libero? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae libero molestias vero reprehenderit, harum quaerat placeat dignissimos sunt inventore voluptatibus esse repellat adipisci dolore. Tenetur quis consequatur et corporis nam?</p>"
+            "detail_description": "<p><b>Takami is the second Great White Shark ever to be tagged in the northeast region of New Zealand.</b></p><p>Being 3 years old, her diet will consist of eating fish, stingrays, octopus and crustaceans, which are classic prey of juvenile Great White sharks. These prey types are abundant in harbours and shallow coastal ecosystems which is what makes this tagging location an ideal nursery ground for a shark like Takami.</p>",
+            "fun_fact": "Tagged 5th December 2022 inside Bowentown Harbour. Tag sponsored by Mazda New Zealand"
         },
-        "b12007c0-955f-4b15-9a9f-d335b9413aa4":
-        {   
-            "name": "Fatu V2",
-            "icon": "public/images/animal_icons/reticulated_giraffe.png",  
+        "24b4c45f-bb3f-491e-b6c1-e1fe72cda06a":
+        {
+            "name": "Mananui (Great Prestige)",
+            "age": "6 years (3.2 metres)",
+            "icon": "public/images/animal_icons/shark_icon_inactive.png",
             "pictures":
             [
                 {
-                    "path": "https://c402277.ssl.cf1.rackcdn.com/photos/18360/images/carousel_small/African_White_Rhino_WW2131989.jpg"
-                },
-                {
-                    "path": "https://www.eurekalert.org/multimedia/pub/web/221627_web.jpg"
+                    "path": "public/images/animal_photos/Mananui.png"
                 }
             ],
-
-            "detail_description": "<p>Detailed description of <b>Fatu</b> in simple HTML<br><br>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Totam nisi in porro quia quae. Aspernatur labore nobis veniam. Quisquam optio ipsam laudantium alias, dolorum amet qui. Adipisci obcaecati veniam libero? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae libero molestias vero reprehenderit, harum quaerat placeat dignissimos sunt inventore voluptatibus esse repellat adipisci dolore. Tenetur quis consequatur et corporis nam? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Totam nisi in porro quia quae. Aspernatur labore nobis veniam. Quisquam optio ipsam laudantium alias, dolorum amet qui. Adipisci obcaecati veniam libero? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae libero molestias vero reprehenderit, harum quaerat placeat dignissimos sunt inventore voluptatibus esse repellat adipisci dolore. Tenetur quis consequatur et corporis nam? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Totam nisi in porro quia quae. Aspernatur labore nobis veniam. Quisquam optio ipsam laudantium alias, dolorum amet qui. Adipisci obcaecati veniam libero? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae libero molestias vero reprehenderit, harum quaerat placeat dignissimos sunt inventore voluptatibus esse repellat adipisci dolore. Tenetur quis consequatur et corporis nam?</p>",
-            "more_info_path": "http://georgia-fan-club.org"
+            "fun_fact": "Tagged 16th January 2023 inside Bowentown Harbour. Tag named by Te Whānau a Tauwhao, the Hapu of this area",
+            "detail_description": "<p><b>Mananui is named by Te Whānau a Tauwhao, the Hapū of the area where she was tagged.</b> She is a female Great White shark, 3.2m in length, making her the largest Great White tagged so far.</p><p>Her presence was awe inspiring, both in size and demeanour. She wears battle scars and scratches, but was cautious and calculated. This prestige led to her naming; Mananui is the inshore headland of Bowentown, looking over the area she was tagged.</p><p>Mananui was a stronghold Pā site protecting Te Whānau a Tauwhao people. This Great White was identified through fishermen photos by Dr Elliott, as having resided in this area for the last three summers and thus, like Mananui the Pā, she represents a stronghold presence of prestige and great mana.</p><p>At this size she is classified as a sub-adult, which means she is no longer a juvenile, but is not reproductively mature. Generally at this size/age, Great Whites' metabolism speeds up, requiring them to feed on seals. Their teeth widen for hunting this prey, compared to more needle-like teeth of juveniles which eat fish.</p>"
         },
-        "2632c23e-c6cb-4b61-9c7c-835092192b98": {
-            "icon": "public/images/animal_icons/northern_giraffe.png"
+		"79687522-b3d9-46a8-8592-07c893ea9372":
+        {
+            "name": "Daisy",
+            "age": "4 years (2.75 metres)",
+            "icon": "public/images/animal_icons/shark_icon_inactive.png",
+            "pictures":
+            [
+                {
+                    "path": "public/images/animal_photos/Daisy.png"
+                }
+            ],
+            "fun_fact": "Tagged 3rd December 2022 inside Bowentown Harbour. Tag sponsored by Jane Mowbray",
+            "detail_description": "<p><b>Daisy is the first ever Great White shark to be tagged in northeast New Zealand.</b> She was sighted on the 3rd of December along with two other juvenile Great White sharks. Daisy however was the only one with the confidence to come close enough to the boat to be tagged.</p><p>At this age - size, Daisy is moving from juvenile to sub-adult age. This means her metabolism speeds up, her teeth get more triangulated and her diet should change from fish to seals. This should encourage her, amazingly through pure instinct, to migrate south towards seal colonies. Where will she go next? The tag will tell the tale.</p>"
         },
-        "669379ec-8503-4ecc-af0d-f7e5460cf832": {
-            "icon": "public/images/animal_icons/masai_giraffe.png"
+		"c4291553-773c-4945-a44e-e9fe88371dba":
+        {
+            "name": "SWAJ (Reversing JAWS)",
+            "age": "<1 years (1.4 metres)",
+            "icon": "public/images/animal_icons/shark_icon_inactive.png",
+            "pictures":
+            [
+                {
+                    "path": "public/images/animal_photos/SWAJ.png"
+                }
+            ],
+            "fun_fact": "Tagged 8th February outside Matakana Island. Tag sponsored by Hughes-Hallett & Vipond Endeavours",
+            "detail_description": "<p>SWAJ is so appropriately named, as this tiny baby Great White couldn't be further from the monster depicted in JAWS - The sponsors of this tag wanted to help reverse the JAWS mentality - hence the name!</p><p>SWAJ is the second baby GW seen in this region, but the first to be tagged. At this size SWAJ is literally a newborn, and one of only a handful to ever be witnessed alive and to be tagged. Mother GWs have to be bigger than 4.5m (35yrs +) to have babies, and they give birth to 1-5 pups which are born alive at this 1.4m length. Mum then leaves them to fend and learn for themselves, so stay tuned to see where SWAJ goes. This tracking data is super useful in determining the critical habitat use and vulnerability of this important life stage of the NZ Great White shark.</p>"
         },
-        "aba0376d-19b0-4ce9-8357-43e67fb8bf2c": {
-            "icon": "public/images/animal_icons/reticulated_giraffe.png"
+		"58d74fb1-c3c6-4938-b882-9b7e83bbbbe3":
+        {
+            "name": "Shindo",
+            "age": "12 years",
+            "icon": "public/images/animal_icons/shark_icon.png",
+            "pictures":
+            [
+                {
+                    "path": "public/images/animal_photos/great_white.jpg"
+                }
+            ],
+            "fun_fact": "Females give birth to between two and 10 pups per litter, and perhaps as many as 14!",
+            "detail_description": "<p><b>The Great White Shark is a species of large mackerel shark which can be found in the coastal surface waters of all the major oceans.</b> It is notable for its size, with larger female individuals growing to 6.1 m (20 ft) in length and 1,905–2,268 kg in weight at maturity.</p>"
         },
-        "4997e132-9fa2-4775-80b6-6456d8cc2420": {
-            "icon": "public/images/animal_icons/southern_giraffe.png"
+		"9670a7ae-a268-41eb-b82f-d4566bc8acd4":
+        {
+            "name": "Astros",
+            "age": "12 years",
+            "icon": "public/images/animal_icons/shark_icon.png",
+            "pictures":
+            [
+                {
+                    "path": "public/images/animal_photos/great_white.jpg"
+                }
+            ],
+            "fun_fact": "Females give birth to between two and 10 pups per litter, and perhaps as many as 14!",
+            "detail_description": "<p><b>The Great White Shark is a species of large mackerel shark which can be found in the coastal surface waters of all the major oceans.</b> It is notable for its size, with larger female individuals growing to 6.1 m (20 ft) in length and 1,905–2,268 kg in weight at maturity.</p>"
         },
-        "2a05a9be-f8de-4ba4-a828-105c57ff0221": {
-            "icon": "public/images/animal_icons/southern_giraffe.png"
+		"e4354ef0-f6a8-4ee3-9d12-6aa5b4089987":
+        {
+            "name": "Lennon",
+            "age": "12 years",
+            "icon": "public/images/animal_icons/shark_icon.png",
+            "pictures":
+            [
+                {
+                    "path": "public/images/animal_photos/great_white.jpg"
+                }
+            ],
+            "fun_fact": "Females give birth to between two and 10 pups per litter, and perhaps as many as 14!",
+            "detail_description": "<p><b>The Great White Shark is a species of large mackerel shark which can be found in the coastal surface waters of all the major oceans.</b> It is notable for its size, with larger female individuals growing to 6.1 m (20 ft) in length and 1,905–2,268 kg in weight at maturity.</p>"
         },
-        "aca64374-a102-4ef5-9b58-60fd0bf64a61": {
-            "icon": "public/images/animal_icons/great_white_shark.png"
-        } 
+		"618e39e1-64d4-4184-9a57-2590f6216e11":
+        {
+            "name": "Layne",
+            "age": "12 years",
+            "icon": "public/images/animal_icons/shark_icon.png",
+            "pictures":
+            [
+                {
+                    "path": "public/images/animal_photos/great_white.jpg"
+                }
+            ],
+            "fun_fact": "Females give birth to between two and 10 pups per litter, and perhaps as many as 14!",
+            "detail_description": "<p><b>The Great White Shark is a species of large mackerel shark which can be found in the coastal surface waters of all the major oceans.</b> It is notable for its size, with larger female individuals growing to 6.1 m (20 ft) in length and 1,905–2,268 kg in weight at maturity.</p>"
+        },
+		"106b2de6-64b4-46a2-b34a-0701fe6317a5":
+        {
+            "name": "Hendrix",
+            "age": "12 years",
+            "icon": "public/images/animal_icons/shark_icon.png",
+            "pictures":
+            [
+                {
+                    "path": "public/images/animal_photos/great_white.jpg"
+                }
+            ],
+            "fun_fact": "Females give birth to between two and 10 pups per litter, and perhaps as many as 14!",
+            "detail_description": "<p><b>The Great White Shark is a species of large mackerel shark which can be found in the coastal surface waters of all the major oceans.</b> It is notable for its size, with larger female individuals growing to 6.1 m (20 ft) in length and 1,905–2,268 kg in weight at maturity.</p>"
+        },
+		"94383181-8da2-4632-9fe0-ccae62241550":
+        {
+            "name": "Debbie",
+            "age": "12 years",
+            "icon": "public/images/animal_icons/shark_icon.png",
+            "pictures":
+            [
+                {
+                    "path": "public/images/animal_photos/great_white.jpg"
+                }
+            ],
+            "fun_fact": "Females give birth to between two and 10 pups per litter, and perhaps as many as 14!",
+            "detail_description": "<p><b>The Great White Shark is a species of large mackerel shark which can be found in the coastal surface waters of all the major oceans.</b> It is notable for its size, with larger female individuals growing to 6.1 m (20 ft) in length and 1,905–2,268 kg in weight at maturity.</p>"
+        }
     }
 }
