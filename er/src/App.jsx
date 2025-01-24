@@ -20,7 +20,6 @@ const aquatic = ['#003744', '#005B70', '#219DB8', '#05C1EA', '#60E1FF',
   '#2E8E96', '#47C6B1', '#91E8DA'];
 const earthtones = ['#511913', '#711E17', '#961F1A', '#DB2222', '#E5632E',
   '#E67931', '#E69E39', '#D2B541', '#BFBD48'];
-// let custom;
 
 const MAP_ICON_SIZE = 30;
 const MAP_ICON_SCALE = 2;
