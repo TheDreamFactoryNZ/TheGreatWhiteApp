@@ -3,7 +3,12 @@
     "public_name": "nzsharkman",
     "map_title": "The Great White App",
     "color_scheme": "custom",
-    "custom_colors": ["#000000", "#000000", "#000000", "#000000"],
+    "custom_colors": [
+        "#FF5733", "#FFC300", "#DAF7A6", "#33FF57", "#33FFBD", "#FF33F6",
+        "#FF33A8", "#8D33FF", "#5733FF", "#337BFF", "#FF3380", "#FF8C33",
+        "#FFE733", "#33FFE7", "#85FF33", "#33FF85", "#B833FF", "#33C3FF",
+        "#FF66B2", "#FFB233"
+      ],
     "map": {
         "style": "mapbox://styles/izaakwicks/cm695163r00h001spfqn33x5h",
         "center": [173.497498, -40.043578],
@@ -20,6 +25,7 @@
             "name": "Benny",
             "age": "12 years",
             "icon": "public/images/animal_icons/shark_icon.png",
+            "is_active": 0,
             "pictures":
             [
                 {
@@ -34,6 +40,7 @@
             "name": "Takami",
             "age": "3 years (2.2 metres)",
             "icon": "public/images/animal_icons/shark_icon_inactive.png",
+            "is_active": 0,
             "pictures":
             [
                 {
@@ -48,6 +55,7 @@
             "name": "Mananui (Great Prestige)",
             "age": "6 years (3.2 metres)",
             "icon": "public/images/animal_icons/shark_icon_inactive.png",
+            "is_active": 0,
             "pictures":
             [
                 {
@@ -62,6 +70,7 @@
             "name": "Daisy",
             "age": "4 years (2.75 metres)",
             "icon": "public/images/animal_icons/shark_icon_inactive.png",
+            "is_active": 0,
             "pictures":
             [
                 {
@@ -76,6 +85,7 @@
             "name": "SWAJ (Reversing JAWS)",
             "age": "<1 years (1.4 metres)",
             "icon": "public/images/animal_icons/shark_icon_inactive.png",
+            "is_active": 0,
             "pictures":
             [
                 {
@@ -90,6 +100,7 @@
             "name": "Shindo",
             "age": "12 years",
             "icon": "public/images/animal_icons/shark_icon.png",
+            "is_active": 0,
             "pictures":
             [
                 {
@@ -104,6 +115,7 @@
             "name": "Astros",
             "age": "12 years",
             "icon": "public/images/animal_icons/shark_icon.png",
+            "is_active": 0,
             "pictures":
             [
                 {
@@ -118,6 +130,7 @@
             "name": "Lennon",
             "age": "12 years",
             "icon": "public/images/animal_icons/shark_icon.png",
+            "is_active": 0,
             "pictures":
             [
                 {
@@ -132,6 +145,7 @@
             "name": "Layne",
             "age": "12 years",
             "icon": "public/images/animal_icons/shark_icon.png",
+            "is_active": 0,
             "pictures":
             [
                 {
@@ -146,6 +160,7 @@
             "name": "Hendrix",
             "age": "12 years",
             "icon": "public/images/animal_icons/shark_icon.png",
+            "is_active": 0,
             "pictures":
             [
                 {
@@ -160,6 +175,7 @@
             "name": "Debbie",
             "age": "12 years",
             "icon": "public/images/animal_icons/shark_icon.png",
+            "is_active": 0,
             "pictures":
             [
                 {
