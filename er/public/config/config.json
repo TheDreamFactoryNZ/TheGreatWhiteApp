@@ -2,7 +2,8 @@
     "server": "ermap-server.pamdas.org",
     "public_name": "nzsharkman",
     "map_title": "The Great White App",
-    "color_scheme": "aquatic",
+    "color_scheme": "custom",
+    "custom_colors": ["#000000", "#000000", "#000000", "#000000"],
     "map": {
         "style": "mapbox://styles/izaakwicks/cm695163r00h001spfqn33x5h",
         "center": [173.497498, -40.043578],
