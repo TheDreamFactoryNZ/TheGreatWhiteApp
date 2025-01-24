@@ -82,7 +82,7 @@ const App = (props) => {
 
     window.GlobalMap = new mapboxgl.Map({
       container: 'map-container', // container ID
-      style: 'mapbox://styles/izaakwicks/cm695163r00h001spfqn33x5h',
+      style: !config.map || !config.map.style ? 'mapbox://styles/vjoelm/cktdex96919t117p3rkq7c7yu' : config.map.style, // Specify a mapbox style
       center: !config.map || !config.map.center ? [173.497498, -40.043578] : config.map.center, // starting position [lng, lat]
       zoom: !config.map || !config.map.zoom ? 5 : config.map.zoom, // starting zoom,
       pitch: !config.map || !config.map.pitch ? 1 : config.map.pitch
@@ -136,7 +136,7 @@ const App = (props) => {
             setSubjectColor(oldSubjectColorState);
           }); // looping through array of subjects
 
-          // Sets a display_story to be true iff subject has images or description
+          // Sets a display_story to be true if subject has images or description
           //   associated with it (more info to show in legend story)
           for (let i = 0; i < resp.data.data.length; i++) {
             const id = resp.data.data[i].id;

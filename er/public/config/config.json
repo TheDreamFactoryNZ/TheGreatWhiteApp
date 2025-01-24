@@ -4,6 +4,7 @@
     "map_title": "The Great White App",
     "color_scheme": "aquatic",
     "map": {
+        "style": "mapbox://styles/izaakwicks/cm695163r00h001spfqn33x5h",
         "center": [173.497498, -40.043578],
         "zoom": 5,
         "pitch": 1,
