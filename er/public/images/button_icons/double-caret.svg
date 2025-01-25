@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 62 62">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #333;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 6px;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g id="double-caret">
+      <polyline id="double-caret_caret2" class="cls-1" points="35 3 3 31 35 59"/>
+      <polyline id="double-caret_caret1" class="cls-1" points="59 3 27 31 59 59"/>
+    </g>
+  </g>
+</svg>

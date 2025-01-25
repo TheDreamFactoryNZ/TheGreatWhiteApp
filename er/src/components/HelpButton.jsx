@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import './Legend.css';
 
-import tipsOn from '../../public/images/button_icons/tips-gray.png';
-import tipsOff from '../../public/images/button_icons/tips-green.png';
-import close from '../../public/images/button_icons/close-icon.png';
-import zoom from '../../public/images/button_icons/tip-zoom.png';
-import reset from '../../public/images/button_icons/tip-reset.png';
-import control from '../../public/images/button_icons/tip-control_key.png';
-import pin from '../../public/images/button_icons/map_pin-gray.png';
-import tracks from '../../public/images/button_icons/pin_tracks-gray.png';
-import story from '../../public/images/button_icons/story-f.png';
+import tipsOn from '../../public/images/button_icons/help.svg';
+import tipsOff from '../../public/images/button_icons/tips-green.png'; // Use CSS to change help button state
+import close from '../../public/images/button_icons/close.svg';
+import zoom from '../../public/images/button_icons/help-zoom.svg';
+import reset from '../../public/images/button_icons/help-pitch-reset.svg';
+import control from '../../public/images/button_icons/control-key.svg';
+import pin from '../../public/images/button_icons/map-pin.svg';
+import tracks from '../../public/images/button_icons/subject-tracks.svg';
+import story from '../../public/images/button_icons/story-f.png'; // Unused at this stage?
+import refresh from '../../public/images/button_icons/refresh.svg';
 
 /* eslint-disable react/prop-types */
 const HelpButton = () => {
@@ -24,25 +25,23 @@ const HelpButton = () => {
   const viewStyle = { marginBottom: '2px', marginTop: '0px' };
   const zoomPStyle = { marginTop: '10px' };
   const orientStyle = { marginTop: '8px' };
+  const refreshStyle = { marginTop: '8px' };
 
   return (
     <div id='tips-container'>
       <div
         id='tips-button-container' className='hover' onClick={() => {
           const tips = document.getElementById('tips');
+          const helpIcon = document.getElementById('help-button');
           tips.classList.toggle('hidden');
-          if (iconSrc === imgOffSrc) {
-            setIconSrc(imgOnSrc);
-          } else {
-            setIconSrc(imgOffSrc);
-          }
+          helpIcon.classList.toggle('help-button_active');
         }}
       >
         <img id='help-button' src={iconSrc} />
       </div>
       <div id='tips' className='hidden'>
         <div>
-          <h2>Helpful Tips</h2>
+          <h2>Interacting With the Map:</h2>
           <img
             id='close-icon' src={closeIconSrc} onClick={() => {
               if (iconSrc === imgOffSrc) {
@@ -59,11 +58,11 @@ const HelpButton = () => {
         <div id='actual-tips'>
           <div>
             <img width='20' height='40' style={zoomStyle} src={zoom} />
-            <p style={zoomPStyle}>Zoom map in/out</p>
+            <p style={zoomPStyle}>Zoom in and out with the + and - buttons.</p>
           </div>
           <div>
             <img width='24' style={orientStyle} height='24' src={reset} />
-            <p style={viewStyle}>Return map orientation to original view</p>
+            <p style={viewStyle}>Press to reset map orientation, hold and drag to adjust pitch.</p>
           </div>
           <div>
             <img width='24' height='24' style={ctrlStyle} src={control} />
@@ -76,6 +75,10 @@ const HelpButton = () => {
           <div>
             <img width='24' height='24' src={tracks} />
             <p>Display a subject's track</p>
+          </div>
+          <div>
+            <img width='24' height='24' style={refreshStyle} src={refresh} />
+            <p>Refresh and update locations (internet connection required)</p>
           </div>
           <div>
             <img width='7' height='10' style={storyStyle} src={story} />

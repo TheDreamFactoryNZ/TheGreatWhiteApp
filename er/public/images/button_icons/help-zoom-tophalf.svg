@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 56.97">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-2 {
+        fill: #ddd;
+      }
+
+      .cls-3 {
+        fill: #333;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g id="help-zoom-tophalf">
+      <path id="help-zoom-tophalf_background-zoomin" class="cls-1" d="M4,0h48c2.21,0,4,1.79,4,4v52H0V4C0,1.79,1.79,0,4,0Z"/>
+      <g id="help-zoom-tophalf_background-divider">
+        <rect class="cls-2" y="56" width="56" height=".97"/>
+      </g>
+      <path id="help-zoom-tophalf_icon-zoomin" class="cls-3" d="M28,16.41c-1.45,0-2.9,1.45-2.9,2.9v5.79h-5.79c-1.45,0-2.9,1.45-2.9,2.9s1.45,2.9,2.9,2.9h5.79v5.79c0,1.45,1.45,2.9,2.9,2.9s2.9-1.45,2.9-2.9v-5.79h5.79c1.45,0,2.9-1.45,2.9-2.9s-1.45-2.9-2.9-2.9h-5.79v-5.79c0-1.45-1.45-2.9-2.9-2.9Z"/>
+    </g>
+  </g>
+</svg>
