@@ -1,12 +1,17 @@
-.App {
-  padding: 20px;
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#app-container {
+  display: flex;
+  flex-flow: column nowrap;
+  height: 100vh;
 }
 
 #map-container {
   position: relative;
-  height: 100vh;
-  padding: 0px;
-  margin: -8px;
+  flex: 1;
 }
 
 #earth-ranger-logo {
@@ -47,4 +52,8 @@
 .namePopup {
   background-color: white;
   border-radius: 4px;
+}
+
+.mapboxgl-ctrl-bottom-left, .mapboxgl-ctrl-bottom-right {
+  margin-bottom: 6px;
 }

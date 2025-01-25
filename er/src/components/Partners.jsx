@@ -1,21 +1,21 @@
 import React, { StrictMode } from 'react';
 import './Partners.css';
 
-import extreme from '../../public/images/partners/extreme-boats.jpg';
-import gfab from '../../public/images/partners/gfab-trailers.jpg';
-import mazda from '../../public/images/partners/mazda.jpg';
-import yamaha from '../../public/images/partners/powered-by-yamaha.jpg';
-import raymarine from '../../public/images/partners/raymarine.jpg';
-import seadek from '../../public/images/partners/seadek.jpg';
-import theDreamFactory from '../../public/images/partners/the-dream-factory.jpg';
+import extreme from '../../public/images/partners/extreme-boats.webp';
+import gfab from '../../public/images/partners/gfab-trailers.webp';
+import mazda from '../../public/images/partners/mazda.webp';
+import yamaha from '../../public/images/partners/powered-by-yamaha.webp';
+import raymarine from '../../public/images/partners/raymarine.webp';
+import seadek from '../../public/images/partners/seadek.webp';
+import theDreamFactory from '../../public/images/partners/the-dream-factory.webp';
 
 const Partners = () => {
   return (
       <div id='powered-by-container'>
+        <div id='powered-by-heading'>
+          <h3>POWERED BY:</h3>
+        </div>
           <div id='powered-by-container--inner'>
-              <div id='powered-by-heading'>
-                  <h3>POWERED BY:</h3>
-              </div>
               <div id='powered-by-partners'>
                   <div class='powered-by-logo-container'>
                       <a class='powered-by-logo partner-1' href='https://www.yamaha-motor.co.nz/' target='_blank'>

@@ -368,6 +368,7 @@ const App = (props) => {
   return (
     <>
       <TrackContext.Provider value={{ displayTracks, setTracks, tracks }}>
+      <div id='app-container'>
         <div id='map-container' onKeyDown={logKey} onKeyUp={logKey}>
           <HelpButton />
 
@@ -383,8 +384,9 @@ const App = (props) => {
             onStoryClick={(subject) => setLegSub(subject)}
             tracks={tracks}
           />
-          <Partners/>
         </div>
+        <Partners />
+      </div>
         {subjectPopups.map(({ properties, geometry }) =>
           <Popup
             key={`${properties.id}-popup`}
