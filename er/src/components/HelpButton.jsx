@@ -44,12 +44,8 @@ const HelpButton = () => {
           <h2>Interacting With the Map:</h2>
           <img
             id='close-icon' src={closeIconSrc} onClick={() => {
-              if (iconSrc === imgOffSrc) {
-                setIconSrc(imgOnSrc);
-              } else {
-                setIconSrc(imgOffSrc);
-              }
-
+              const helpIcon = document.getElementById('help-button');
+              helpIcon.classList.remove('help-button_active');
               const tips = document.getElementById('tips');
               tips.classList.add('hidden');
             }}
@@ -66,7 +62,7 @@ const HelpButton = () => {
           </div>
           <div>
             <img width='24' height='24' style={ctrlStyle} src={control} />
-            <p style={viewStyle}>Hold Ctrl / control key and drag with mouse to rotate view</p>
+            <p style={viewStyle}>Hold Ctrl / control key and drag left to right with mouse to rotate view, up and down to adjust pitch.</p>
           </div>
           <div>
             <img width='24' height='24' src={pin} />

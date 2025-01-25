@@ -5,6 +5,7 @@ import SubjectPopupContent from './components/SubjectPopupContent';
 import Popup from './components/Popup';
 import Legend from './components/Legend';
 import HelpButton from './components/HelpButton';
+import Partners from './components/Partners';
 
 import './App.css';
 import 'mapbox-gl/dist/mapbox-gl.css';
@@ -382,6 +383,7 @@ const App = (props) => {
             onStoryClick={(subject) => setLegSub(subject)}
             tracks={tracks}
           />
+          <Partners/>
         </div>
         {subjectPopups.map(({ properties, geometry }) =>
           <Popup

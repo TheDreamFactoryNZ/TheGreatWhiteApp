@@ -1,0 +1,95 @@
+/* POWERED BY */
+#powered-by-container {
+    position: absolute;
+    bottom: 0;
+    display: block;
+    z-index: 6;
+  }
+  #powered-by-container--inner {
+    z-index: 6;
+    flex-direction: column;
+    justify-content: space-around;
+    border-radius: 1.5rem 1.5rem 0 0;
+    display: flex;
+    align-items: center;
+  }
+  #powered-by-container h3 {
+    margin: 0;
+    font-family: zeitung-pro-variable, Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    color: #ffffff;
+    text-align: center;
+  }
+  #powered-by-partners {
+    display: grid;
+    grid-template-columns: repeat(4, 0.5fr);
+    grid-template-rows: repeat(2, 0.5fr);
+    grid-row-gap: 0.125rem;
+    justify-items: center;
+    align-items: center;
+    background: #ffffff;
+    padding-top: 0;
+    border-top: 4px solid #023e8a;
+  }
+  #powered-by-heading {
+    background: #023e8a;
+    border-radius: 0.5rem 0.5rem 0 0;
+    padding: 0 2rem;
+  }
+  .powered-by-logo-container {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+  .powered-by-logo-container.powered-by-logo-container--public {
+    display: flex;
+    align-items: flex-end;
+    margin: 0.5rem 0 0 0;
+    padding-bottom: 0.5rem;
+  }
+  .powered-by-logo {
+    display: flex;
+    max-width: 50%;
+    height: 100%;
+  }
+  a.powered-by-logo img {
+    max-width: 100%;
+  }
+  p.partner-logo.public {
+    margin: 0;
+  }
+  .powered-by-logo-container.public-text p {
+    font-family: zeitung-pro-variable, Arial, Helvetica, sans-serif;
+    font-size: 8px;
+    color: #111317;
+  }
+  @media screen and (max-width: 900px) {
+    #powered-by-partners {
+      padding-top: 0.5rem;
+    }
+    .powered-by-logo-container.powered-by-logo-container--public {
+      grid-column-start: 1;
+      grid-column-end: 5;
+    }
+    p.partner-logo.public {
+      margin: 0;
+      font-size: 0.75em;
+      text-align: center;
+      line-height: 1em;
+    }
+    #powered-by-container h3 {
+      font-size: 0.75em;
+      line-height: 2em;
+    }
+  }
+  @media screen and (min-width: 900px) {
+    #powered-by-partners {
+      grid-template-columns: repeat(7, 0.5fr);
+      grid-row-gap: 0;
+    }
+    .powered-by-logo-container.powered-by-logo-container--public {
+      grid-column-start: 1;
+      grid-column-end: 8;
+    }
+  }
