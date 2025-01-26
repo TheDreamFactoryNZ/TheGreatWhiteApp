@@ -4,6 +4,7 @@
     box-shadow: 0px -6px 0px 0px rgb(188, 16, 56);
     -webkit-box-shadow: 0px -6px 0px 0px rgb(188, 16, 56);
     -moz-box-shadow: 0px -6px 0px 0px rgba(188, 16, 56, 1);
+    padding: 1rem 0;
 }
 
 #powered-by-heading {
@@ -25,12 +26,12 @@
 }
 
 #powered-by-container--inner {
-    z-index: 6;
     flex-direction: column;
     justify-content: space-around;
     border-radius: 1.5rem 1.5rem 0 0;
     display: flex;
     align-items: center;
+    margin: 0 2vw;
 }
 
 #powered-by-partners {
@@ -60,8 +61,8 @@
 
 .powered-by-logo {
     display: flex;
-    max-width: 50%;
     height: 100%;
+    flex: 1;
 }
 
 a.powered-by-logo img {
@@ -103,8 +104,15 @@ p.partner-logo.public {
 
 @media screen and (min-width: 900px) {
     #powered-by-partners {
-        grid-template-columns: repeat(7, 0.5fr);
-        grid-row-gap: 0;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .powered-by-partners--container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 7.1vw;
     }
 
     .powered-by-logo-container.powered-by-logo-container--public {

@@ -7,7 +7,7 @@ import mazda from '../../public/images/partners/mazda.webp';
 import yamaha from '../../public/images/partners/powered-by-yamaha.webp';
 import raymarine from '../../public/images/partners/raymarine.webp';
 import seadek from '../../public/images/partners/seadek.webp';
-import theDreamFactory from '../../public/images/partners/the-dream-factory.webp';
+import theDreamFactory from '../../public/images/partners/the-dream-factory.svg';
 
 const Partners = () => {
   return (
@@ -17,6 +17,7 @@ const Partners = () => {
       </div>
       <div id='powered-by-container--inner'>
         <div id='powered-by-partners'>
+          <div class="powered-by-partners--container">
           <div className='powered-by-logo-container'>
             <a className='powered-by-logo partner-1' href='https://www.yamaha-motor.co.nz/' target='_blank' rel='noreferrer'>
               <img src={yamaha} alt='Powered by Yamaha Logo' />
@@ -51,6 +52,7 @@ const Partners = () => {
             <a className='powered-by-logo partner-6' href='https://www.thedreamfactory.nz/' target='_blank' rel='noreferrer'>
               <img className='partner-logo' src={theDreamFactory} alt='The Dream Factory NZ logo' />
             </a>
+          </div>
           </div>
           <div className='powered-by-logo-container powered-by-logo-container--public'>
             <p className='partner-logo public'>...and members of the general public who have sponsored sharks</p>

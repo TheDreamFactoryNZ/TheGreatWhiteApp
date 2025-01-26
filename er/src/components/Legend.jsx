@@ -3,7 +3,8 @@ import './Legend.css';
 import Animal from './Animal.jsx';
 
 import doubleCaret from '../../public/images/button_icons/double-caret.svg';
-import logo from '../../public/images/LogoEarthRanger.png';
+import tdfLogo from '../../public/images/the-dream-factory-n-slogan-white.svg';
+import erLogo from '../../public/images/LogoEarthRanger.png';
 import caretLeft from '../../public/images/button_icons/view-animals-caret-left.png';
 
 /* eslint-disable react/prop-types */
@@ -13,22 +14,34 @@ const Legend = ({
 }) => {
   const doubleCaretIcon = doubleCaret;
 
-  function toggleLegend () {
+  function toggleLegend() {
     onLegendStateToggle();
   }
 
-  function display () {
+  function display() {
     if (legSub === undefined) {
       return (
         <div id='legend-content'>
           <div className='title'>
-            <div id='earthranger-logo'>
-              <a href='https://earthranger.com/' rel='noreferrer' target='_blank' className='earthranger-logo'>
-                <img src={logo} />
-              </a>
-            </div>
             <div id='tracker'>
               <p>{title !== null ? title : 'Animal Tracker'}</p>
+            </div>
+            <div id='developer-logo'>
+              <span className='developer-text'>Developed by</span>
+              <div className='developer-container'>
+                <div className='developer-item'>
+                  <a href='https://thedreamfactory.nz/' rel='noreferrer' target='_blank' className='developer-logo'>
+                    <img src={tdfLogo} />
+                  </a>
+                </div>
+                <div className='developer-item dividerbox'>
+                </div>
+                <div className='developer-item'>
+                  <a href='https://earthranger.com/' rel='noreferrer' target='_blank' className='developer-logo'>
+                    <img src={erLogo} />
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
           <div id='subs'>
@@ -52,10 +65,22 @@ const Legend = ({
         <>
           <div id='legend-content'>
             <div className='title'>
-              <div id='earthranger-logo'>
-                <a href='https://earthranger.com/' className='earthranger-logo'>
-                  <img src={logo} />
-                </a>
+              <div id='developer-logo'>
+                <span className='developer-text'>Developed by</span>
+                <div className='developer-container'>
+                  <div className='developer-item'>
+                    <a href='https://thedreamfactory.nz/' rel='noreferrer' target='_blank' className='developer-logo'>
+                      <img src={tdfLogo} />
+                    </a>
+                  </div>
+                  <div className='developer-item dividerbox'>
+                  </div>
+                  <div className='developer-item'>
+                    <a href='https://earthranger.com/' rel='noreferrer' target='_blank' className='developer-logo'>
+                      <img src={erLogo} />
+                    </a>
+                  </div>
+                </div>
               </div>
               <div id='tracker'>
                 <p>{title !== null ? title : 'Animal Tracker'}</p>
