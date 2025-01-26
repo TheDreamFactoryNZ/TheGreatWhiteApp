@@ -368,25 +368,25 @@ const App = (props) => {
   return (
     <>
       <TrackContext.Provider value={{ displayTracks, setTracks, tracks }}>
-      <div id='app-container'>
-        <div id='map-container' onKeyDown={logKey} onKeyUp={logKey}>
-          <HelpButton />
+        <div id='app-container'>
+          <div id='map-container' onKeyDown={logKey} onKeyUp={logKey}>
+            <HelpButton />
 
-          <Legend
-            title={config !== undefined ? config.map_title : null}
-            subs={subjects}
-            subjectData={config}
-            onLocClick={(coords) => goToLoc(coords)}
-            legendOpen={legendOpen}
-            onLegendStateToggle={toggleLegendState}
-            legSub={legSub}
-            onReturnClick={(subject) => setLegSub(subject)}
-            onStoryClick={(subject) => setLegSub(subject)}
-            tracks={tracks}
-          />
+            <Legend
+              title={config !== undefined ? config.map_title : null}
+              subs={subjects}
+              subjectData={config}
+              onLocClick={(coords) => goToLoc(coords)}
+              legendOpen={legendOpen}
+              onLegendStateToggle={toggleLegendState}
+              legSub={legSub}
+              onReturnClick={(subject) => setLegSub(subject)}
+              onStoryClick={(subject) => setLegSub(subject)}
+              tracks={tracks}
+            />
+          </div>
+          <Partners />
         </div>
-        <Partners />
-      </div>
         {subjectPopups.map(({ properties, geometry }) =>
           <Popup
             key={`${properties.id}-popup`}

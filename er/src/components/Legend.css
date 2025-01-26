@@ -3,28 +3,54 @@
 /* LEGEND CSS  */
 
 /* LEGEND BUTTON */
+
 #legend {
-    height: calc(100vh - 20px);
+    z-index: 1;
+    right: 0;
+    position: absolute;
+    height: 75vh;
+    transition: transform 0.5s;
+    overflow: hidden;
+    align-self: center;
     display: grid;
-    grid-template-columns: 32.5px 292.5px;
-    transition: width 1s;
+    grid-template-columns: minmax(0, 2rem) minmax(0, 12vw);
+}
+
+#legend::after {
+    content: "";
+    height: 70px;
+    position: absolute;
+    width: 3px;
+    background: #fff;
+    display: block;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    left: 2rem;
 }
 
 .legend-open {
-    width: 325px;
+    transform: translateX(0);
+    -webkit-transform: translateX(0);
 }
 
 .legend-close {
-    width: 32.5px;
+    transform: translateX(calc(100% - 2rem));
+    -webkit-transform: translateX(calc(100% - 2rem));
 }
 
 #legend-open-button img {
-    width: 35%;
+    width: 50%;
+    transition: transform 0.5s;
+}
+
+.legend-open #legend-open-button img {
+    transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
 }
 
 #legend-open-button {
-    opacity: 0.9;
-    border-radius: 10px 0 0 10px;
+    border-radius: 1rem 0 0 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -34,27 +60,48 @@
     cursor: pointer;
     height: 70px;
     background-color: white;
+    align-self: center;
+    width: 2rem;
+    border-top: 3px solid #00C49A;
+    border-left: 3px solid #00C49A;
+    border-bottom: 3px solid #00C49A;
 }
 
-#legend-content{
+#legend-content {
     background-color: white;
-    opacity: .95;
     height: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    border-radius: 2rem 0 0 2rem;
+    border-top: 3px solid #00C49A;
+    border-left: 3px solid #00C49A;
+    border-bottom: 3px solid #00C49A;
+}
+
+.name {
+    height: 0px;
+    margin: 0px;
+}
+
+.namePopup {
+    background-color: white;
+    border-radius: 4px;
 }
 
 #subs {
-    overflow-y: auto;
-    height: calc(100vh - 90px);
+    height: 100%;
+    overflow-y: scroll;
+    box-sizing: border-box;
 }
 
 #animal-story {
     overflow-y: auto;
-    height: calc(100vh - 135px);
 }
 
 .title {
-    background-color: #5D4B3F;
-    opacity: 0.95;
+    background-color: #030511;
     display: grid;
     height: 70px;
     grid-template-rows: 30px 40px;
@@ -104,6 +151,7 @@
     width: 100%;
     height: 55px;
     display: flex;
+    justify-content: flex-start;
 }
 
 #animal-img {
@@ -144,7 +192,6 @@
 }
 
 .animal-name-bullet {
-    padding-left: 3px;
     display: grid;
     grid-template-columns: 20% 80%;
 }
@@ -199,7 +246,7 @@
 }
 
 #subject-div {
-    border-bottom: solid 1pt rgba(0,0,0,.15);
+    border-bottom: solid 1pt rgba(0, 0, 0, .15);
 }
 
 #view-story-button {
@@ -229,7 +276,7 @@
     cursor: default;
 }
 
-#pop-up > p {
+#pop-up>p {
     margin: 1pt;
 }
 
@@ -249,11 +296,12 @@
     padding: 10px;
     height: 20px;
     background-color: whitesmoke;
-    border-bottom: solid 1pt rgba(0,0,0,.15);
+    border-bottom: solid 1pt rgba(0, 0, 0, .15);
 }
 
 #return p {
-    font-size: 14px;;
+    font-size: 14px;
+    ;
     padding-left: 10px;
 }
 
@@ -262,7 +310,7 @@
 }
 
 #sub-content {
-    display:block;
+    display: block;
     align-items: center;
     justify-content: center;
     padding: 15px;
@@ -348,12 +396,4 @@
 
 .bold {
     font-weight: bold;
-}
-
-.mapboxgl-ctrl.mapboxgl-ctrl-attrib {
-    background-color: rgba(0,0,0,.5) !important;
-}
-
-.mapboxgl-ctrl-attrib a {
-    color: rgba(255,255,255,.8) !important;
 }

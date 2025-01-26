@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Legend.css';
 
 import tipsOn from '../../public/images/button_icons/help.svg';
-import tipsOff from '../../public/images/button_icons/tips-green.png'; // Use CSS to change help button state
 import close from '../../public/images/button_icons/close.svg';
 import zoom from '../../public/images/button_icons/help-zoom.svg';
 import reset from '../../public/images/button_icons/help-pitch-reset.svg';
@@ -14,11 +13,6 @@ import refresh from '../../public/images/button_icons/refresh.svg';
 
 /* eslint-disable react/prop-types */
 const HelpButton = () => {
-  const imgOffSrc = tipsOn;
-  const imgOnSrc = tipsOff;
-  const closeIconSrc = close;
-  const [iconSrc, setIconSrc] = useState(imgOffSrc);
-
   const storyStyle = { paddingLeft: '9px', paddingRight: '8px', marginTop: '5px' };
   const ctrlStyle = { marginTop: '6px' };
   const zoomStyle = { paddingLeft: '2px' };
@@ -30,22 +24,26 @@ const HelpButton = () => {
   return (
     <div id='tips-container'>
       <div
-        id='tips-button-container' className='hover' onClick={() => {
+        id='tips-button-container'
+        className='hover'
+        onClick={() => {
           const tips = document.getElementById('tips');
-          const helpIcon = document.getElementById('help-button');
+          const helpButtonContainer = document.getElementById('tips-button-container');
           tips.classList.toggle('hidden');
-          helpIcon.classList.toggle('help-button_active');
+          helpButtonContainer.classList.toggle('tips-active');
         }}
       >
-        <img id='help-button' src={iconSrc} />
+        <img id='help-button' src={tipsOn} />
       </div>
       <div id='tips' className='hidden'>
         <div>
           <h2>Interacting With the Map:</h2>
           <img
-            id='close-icon' src={closeIconSrc} onClick={() => {
-              const helpIcon = document.getElementById('help-button');
-              helpIcon.classList.remove('help-button_active');
+            id='close-icon'
+            src={close}
+            onClick={() => {
+              const helpButtonContainer = document.getElementById('tips-button-container');
+              helpButtonContainer.classList.remove('tips-active');
               const tips = document.getElementById('tips');
               tips.classList.add('hidden');
             }}
@@ -62,7 +60,10 @@ const HelpButton = () => {
           </div>
           <div>
             <img width='24' height='24' style={ctrlStyle} src={control} />
-            <p style={viewStyle}>Hold Ctrl / control key and drag left to right with mouse to rotate view, up and down to adjust pitch.</p>
+            <p style={viewStyle}>
+              Hold Ctrl / control key and drag left to right with mouse to rotate view, up and down
+              to adjust pitch.
+            </p>
           </div>
           <div>
             <img width='24' height='24' src={pin} />

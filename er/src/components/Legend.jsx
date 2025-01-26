@@ -2,8 +2,7 @@ import React from 'react';
 import './Legend.css';
 import Animal from './Animal.jsx';
 
-import doubleCaretRight from '../../public/images/button_icons/double_caret-right.png';
-import doubleCaretLeft from '../../public/images/button_icons/double_caret-left.png';
+import doubleCaret from '../../public/images/button_icons/double-caret.svg';
 import logo from '../../public/images/LogoEarthRanger.png';
 import caretLeft from '../../public/images/button_icons/view-animals-caret-left.png';
 
@@ -12,7 +11,7 @@ const Legend = ({
   subs, subjectData, onLocClick, legSub, onReturnClick, onStoryClick,
   legendOpen, onLegendStateToggle, tracks, title
 }) => {
-  const legImage = legendOpen ? doubleCaretRight : doubleCaretLeft;
+  const doubleCaretIcon = doubleCaret;
 
   function toggleLegend () {
     onLegendStateToggle();
@@ -85,7 +84,7 @@ const Legend = ({
     <>
       <div id='legend' className={legendOpen ? 'legend-open' : 'legend-close'}>
         <div id='legend-open-button' onClick={() => toggleLegend()}>
-          <img src={legImage} />
+          <img src={doubleCaretIcon} />
         </div>
         {display()}
       </div>

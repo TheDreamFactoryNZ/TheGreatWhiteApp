@@ -12,6 +12,7 @@ body {
 #map-container {
   position: relative;
   flex: 1;
+  display: flex;
 }
 
 #earth-ranger-logo {
@@ -37,21 +38,12 @@ body {
 
 #reset:hover { cursor: pointer; }
 
-/* LEGEND CSS */
-#legend {
-  z-index: 1;
-  right: 0;
-  position: absolute;
+.mapboxgl-ctrl.mapboxgl-ctrl-attrib {
+  background-color: rgba(0, 0, 0, .5) !important;
 }
 
-.name {
-  height: 0px;
-  margin: 0px;
-}
-
-.namePopup {
-  background-color: white;
-  border-radius: 4px;
+.mapboxgl-ctrl-attrib a {
+  color: rgba(255, 255, 255, .8) !important;
 }
 
 .mapboxgl-ctrl-bottom-left, .mapboxgl-ctrl-bottom-right {
