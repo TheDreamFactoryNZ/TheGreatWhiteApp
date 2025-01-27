@@ -1,15 +1,19 @@
 {
-  "name": "testER",
+  "name": "thegreatwhiteapp",
   "version": "1.0.0",
+  "description": "Discover and track Great White Sharks throughout New Zealand and beyond!",
   "main": "index.js",
   "proxy": "http://localhost:5000",
   "license": "MIT",
   "scripts": {
     "start": "set NODE_OPTIONS=--openssl-legacy-provider && webpack-dev-server --mode development --open --host localhost",
-    "build": "webpack --mode production",
+    "build": "set NODE_OPTIONS=--openssl-legacy-provider && webpack --mode production",
     "lint": "eslint --cache --format codeframe --ext mjs,jsx,js src"
   },
   "dependencies": {
+    "@capacitor/android": "^7.0.1",
+    "@capacitor/core": "^7.0.1",
+    "@capacitor/ios": "^7.0.1",
     "mapbox-gl": "2.1.1",
     "prop-types": "^15",
     "react": "^16",
@@ -18,13 +22,14 @@
     "react-hot-loader": "^4"
   },
   "devDependencies": {
+    "@capacitor/cli": "^7.0.1",
     "@neutrinojs/dev-server": "^9.5.0",
     "@neutrinojs/react": "^9.5.0",
     "@neutrinojs/standardjs": "^9.5.0",
     "eslint": "^7",
     "neutrino": "^9.5.0",
-    "webpack": "^4",
-    "webpack-cli": "^3",
+    "webpack": "4",
+    "webpack-cli": "3",
     "webpack-dev-server": "^3"
   }
 }

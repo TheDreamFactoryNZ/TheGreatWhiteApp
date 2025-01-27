@@ -14,11 +14,11 @@ const Legend = ({
 }) => {
   const doubleCaretIcon = doubleCaret;
 
-  function toggleLegend() {
+  function toggleLegend () {
     onLegendStateToggle();
   }
 
-  function display() {
+  function display () {
     if (legSub === undefined) {
       return (
         <div id='legend-content'>
@@ -34,8 +34,7 @@ const Legend = ({
                     <img src={tdfLogo} />
                   </a>
                 </div>
-                <div className='developer-item dividerbox'>
-                </div>
+                <div className='developer-item dividerbox' />
                 <div className='developer-item'>
                   <a href='https://earthranger.com/' rel='noreferrer' target='_blank' className='developer-logo'>
                     <img src={erLogo} />
@@ -73,8 +72,7 @@ const Legend = ({
                       <img src={tdfLogo} />
                     </a>
                   </div>
-                  <div className='developer-item dividerbox'>
-                  </div>
+                  <div className='developer-item dividerbox' />
                   <div className='developer-item'>
                     <a href='https://earthranger.com/' rel='noreferrer' target='_blank' className='developer-logo'>
                       <img src={erLogo} />
