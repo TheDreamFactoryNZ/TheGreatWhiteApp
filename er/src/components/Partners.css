@@ -42,8 +42,8 @@
     display: grid;
     grid-template-columns: repeat(4, auto);
     grid-template-rows: repeat(2, 0.5fr);
-    grid-row-gap: 1rem;
-    grid-column-gap: 3rem;
+    grid-row-gap: 1.75vw;
+    grid-column-gap: 3.5vw;
     justify-items: center;
     align-items: center;
 }
@@ -87,6 +87,10 @@ p.partner-logo.public {
         text-align: center;
         line-height: 1em;
     }
+    .powered-by-partners--container {
+        grid-row-gap: 1.75vw;
+        grid-column-gap: 3.5vw;
+    }
 }
 
 @media screen and (min-width: 900px) {
@@ -99,7 +103,7 @@ p.partner-logo.public {
         display: flex;
         flex-direction: row;
         align-items: center;
-        gap: 7.1vw;
+        gap: 3.5vw;
     }
 
     .powered-by-logo-container.powered-by-logo-container--public {
