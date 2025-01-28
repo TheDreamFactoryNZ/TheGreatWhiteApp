@@ -1,7 +1,7 @@
 import React from 'react';
 import './Legend.css';
 
-import pin from '../../public/images/button_icons/map_pin-gray.png';
+import pin from '../assets/images/button_icons/map_pin-gray.png';
 
 /* eslint-disable react/prop-types */
 const LocButton = ({ subject, handleOnLocButtonClicked }) => {
