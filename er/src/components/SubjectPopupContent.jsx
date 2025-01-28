@@ -2,7 +2,7 @@ import React from 'react';
 import './Legend.css';
 import TrackButton from './TrackButton.jsx';
 
-import story from '../../public/images/button_icons/caret-right-orange.png';
+import story from '../assets/images/button_icons/caret-right-orange.png';
 
 /* eslint-disable react/prop-types */
 const SubjectPopup = (props) => {
