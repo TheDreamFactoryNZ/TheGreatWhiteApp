@@ -63,27 +63,27 @@ const Legend = ({
       return (
         <>
           <div id='legend-content'>
-            <div className='title'>
-              <div id='developer-logo'>
-                <span className='developer-text'>Developed by</span>
-                <div className='developer-container'>
-                  <div className='developer-item'>
-                    <a href='https://thedreamfactory.nz/' rel='noreferrer' target='_blank' className='developer-logo'>
-                      <img src={tdfLogo} />
-                    </a>
-                  </div>
-                  <div className='developer-item dividerbox' />
-                  <div className='developer-item'>
-                    <a href='https://earthranger.com/' rel='noreferrer' target='_blank' className='developer-logo'>
-                      <img src={erLogo} />
-                    </a>
-                  </div>
+          <div className='title'>
+            <div id='tracker'>
+              <p>{title !== null ? title : 'Animal Tracker'}</p>
+            </div>
+            <div id='developer-logo'>
+              <span className='developer-text'>Developed by</span>
+              <div className='developer-container'>
+                <div className='developer-item'>
+                  <a href='https://thedreamfactory.nz/' rel='noreferrer' target='_blank' className='developer-logo'>
+                    <img src={tdfLogo} />
+                  </a>
+                </div>
+                <div className='developer-item dividerbox' />
+                <div className='developer-item'>
+                  <a href='https://earthranger.com/' rel='noreferrer' target='_blank' className='developer-logo'>
+                    <img src={erLogo} />
+                  </a>
                 </div>
               </div>
-              <div id='tracker'>
-                <p>{title !== null ? title : 'Animal Tracker'}</p>
-              </div>
             </div>
+          </div>
             <div onClick={() => onReturnClick(undefined)} id='return' className='hover'>
               <img width='7px' height='10px' src={caretLeft} />
               <p>Back</p>
