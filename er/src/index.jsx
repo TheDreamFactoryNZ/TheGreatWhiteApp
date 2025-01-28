@@ -5,7 +5,7 @@ import App from './App';
 
 render(
   <StrictMode>
-    <App configFile='./public/config/config.json' />
+    <App configFile='./config/config.json' />
   </StrictMode>,
   document.getElementById('root')
 );

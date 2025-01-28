@@ -10,7 +10,7 @@ import Partners from './components/Partners';
 import './App.css';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
-import med from '../public/images/med.png';
+import med from './assets/images/med.png';
 
 // instantiate the Map
 mapboxgl.accessToken = 'pk.eyJ1IjoidmpvZWxtIiwiYSI6ImNra2hiZXNpMzA1bTcybnA3OXlycnN2ZjcifQ.gH6Nls61WTMVutUH57jMJQ'; // development token
