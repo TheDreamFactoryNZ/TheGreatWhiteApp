@@ -2,10 +2,10 @@ import React from 'react';
 import './Legend.css';
 import Animal from './Animal.jsx';
 
-import doubleCaret from '../../public/images/button_icons/double-caret.svg';
-import tdfLogo from '../../public/images/the-dream-factory-n-slogan-white.svg';
-import erLogo from '../../public/images/LogoEarthRanger.png';
-import caretLeft from '../../public/images/button_icons/view-animals-caret-left.png';
+import doubleCaret from '../assets/images/button_icons/double-caret.svg';
+import tdfLogo from '../assets/images/the-dream-factory-n-slogan-white.svg';
+import erLogo from '../assets/images/LogoEarthRanger.png';
+import caretLeft from '../assets/images/button_icons/view-animals-caret-left.png';
 
 /* eslint-disable react/prop-types */
 const Legend = ({
