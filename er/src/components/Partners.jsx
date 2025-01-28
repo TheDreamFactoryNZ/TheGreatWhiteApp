@@ -1,13 +1,13 @@
 import React from 'react';
 import './Partners.css';
 
-import extreme from '../../public/images/partners/extreme-boats.webp';
-import gfab from '../../public/images/partners/gfab-trailers.webp';
-import mazda from '../../public/images/partners/mazda.webp';
-import yamaha from '../../public/images/partners/powered-by-yamaha.webp';
-import raymarine from '../../public/images/partners/raymarine.webp';
-import seadek from '../../public/images/partners/seadek.webp';
-import theDreamFactory from '../../public/images/partners/the-dream-factory.svg';
+import extreme from '../assets/images/partners/extreme-boats.webp';
+import gfab from '../assets/images/partners/gfab-trailers.webp';
+import mazda from '../assets/images/partners/mazda.webp';
+import yamaha from '../assets/images/partners/powered-by-yamaha.webp';
+import raymarine from '../assets/images/partners/raymarine.webp';
+import seadek from '../assets/images/partners/seadek.webp';
+import theDreamFactory from '../assets/images/partners/the-dream-factory.svg';
 
 const Partners = () => {
   return (
