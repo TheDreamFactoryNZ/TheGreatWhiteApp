@@ -3,7 +3,7 @@ import TrackButton from './TrackButton.jsx';
 import LocButton from './LocButton.jsx';
 import './Legend.css';
 
-import storyIcon from '../../public/images/button_icons/story-f.png';
+import storyIcon from '../assets/images/button_icons/story-f.png';
 
 /* eslint-disable react/prop-types */
 const Animal = ({ animal, configData, animalOnLocClicked, onNameClick, displayStory, tracks }) => {
