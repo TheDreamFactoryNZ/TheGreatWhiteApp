@@ -35,14 +35,18 @@
 }
 
 #powered-by-partners {
-    display: grid;
-    grid-template-columns: repeat(4, 0.5fr);
-    grid-template-rows: repeat(2, 0.5fr);
-    grid-row-gap: 0.125rem;
-    justify-items: center;
-    align-items: center;
     background: #ffffff;
     padding-top: 0;
+}
+
+.powered-by-partners--container {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    grid-template-rows: repeat(2, 0.5fr);
+    grid-row-gap: 1rem;
+    grid-column-gap: 3rem;
+    justify-items: center;
+    align-items: center;
 }
 
 .powered-by-logo-container {
@@ -94,11 +98,6 @@ p.partner-logo.public {
         font-size: 0.75em;
         text-align: center;
         line-height: 1em;
-    }
-
-    #powered-by-container h3 {
-        font-size: 0.75em;
-        line-height: 2em;
     }
 }
 
