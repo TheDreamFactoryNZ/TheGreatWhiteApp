@@ -1,15 +1,15 @@
 import React from 'react';
 import './Legend.css';
 
-import tipsOn from '../../public/images/button_icons/help.svg';
-import close from '../../public/images/button_icons/close.svg';
-import zoom from '../../public/images/button_icons/help-zoom.svg';
-import reset from '../../public/images/button_icons/help-pitch-reset.svg';
-import control from '../../public/images/button_icons/control-key.svg';
-import pin from '../../public/images/button_icons/map-pin.svg';
-import tracks from '../../public/images/button_icons/subject-tracks.svg';
-import story from '../../public/images/button_icons/story-f.png'; // Unused at this stage?
-import refresh from '../../public/images/button_icons/refresh.svg';
+import tipsOn from '../assets/images/button_icons/help.svg';
+import close from '../assets/images/button_icons/close.svg';
+import zoom from '../assets/images/button_icons/help-zoom.svg';
+import reset from '../assets/images/button_icons/help-pitch-reset.svg';
+import control from '../assets/images/button_icons/control-key.svg';
+import pin from '../assets/images/button_icons/map-pin.svg';
+import tracks from '../assets/images/button_icons/subject-tracks.svg';
+import story from '../assets/images/button_icons/story-f.png'; // Unused at this stage?
+import refresh from '../assets/images/button_icons/refresh.svg';
 
 /* eslint-disable react/prop-types */
 const HelpButton = () => {
