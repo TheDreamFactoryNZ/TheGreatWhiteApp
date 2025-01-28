@@ -19,7 +19,7 @@
     content: "";
     height: 70px;
     position: absolute;
-    width: 3px;
+    width: 2px;
     background: #EEEFFC;
     display: block;
     top: 0;
@@ -69,6 +69,7 @@
 #legend-content {
     background-color: white;
     height: 100%;
+    max-width: 304px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
