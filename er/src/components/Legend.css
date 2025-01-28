@@ -13,7 +13,7 @@
     overflow: hidden;
     align-self: center;
     display: grid;
-    grid-template-columns: minmax(0, 2rem) minmax(0, 12vw);
+    grid-template-columns: minmax(0, 2rem) minmax(0, auto);
 }
 
 #legend::after {
