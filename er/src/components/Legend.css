@@ -378,6 +378,7 @@
     width: 265px;
     background-color: white;
     margin-top: 15px;
+    user-select: none;
 }
 
 #tips h2 {
@@ -421,6 +422,10 @@
     margin: 1px;
     margin-bottom: 7px;
     padding-left: 15px;
+}
+
+.tip-icon {
+    pointer-events: none;
 }
 
 .mapboxgl-popup-close-button {

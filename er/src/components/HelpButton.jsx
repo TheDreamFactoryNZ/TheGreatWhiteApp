@@ -40,6 +40,7 @@ const HelpButton = () => {
           <h2>Interacting With the Map:</h2>
           <img
             id='close-icon'
+            draggable='false'
             src={close}
             onClick={() => {
               const helpButtonContainer = document.getElementById('tips-button-container');
@@ -51,34 +52,34 @@ const HelpButton = () => {
         </div>
         <div id='actual-tips'>
           <div>
-            <img width='20' height='40' style={zoomStyle} src={zoom} />
+            <img className='tip-icon' width='20' height='40' style={zoomStyle} src={zoom} />
             <p style={zoomPStyle}>Zoom in and out with the + and - buttons.</p>
           </div>
           <div>
-            <img width='24' style={orientStyle} height='24' src={reset} />
+            <img className='tip-icon' width='24' style={orientStyle} height='24' src={reset} />
             <p style={viewStyle}>Press to reset map orientation, hold and drag to adjust pitch.</p>
           </div>
           <div>
-            <img width='24' height='24' style={ctrlStyle} src={control} />
+            <img className='tip-icon' width='24' height='24' style={ctrlStyle} src={control} />
             <p style={viewStyle}>
               Hold Ctrl / control key and drag left to right with mouse to rotate view, up and down
               to adjust pitch.
             </p>
           </div>
           <div>
-            <img width='24' height='24' src={pin} />
+            <img className='tip-icon' width='24' height='24' src={pin} />
             <p>Jump to a subject's location</p>
           </div>
           <div>
-            <img width='24' height='24' src={tracks} />
+            <img className='tip-icon' width='24' height='24' src={tracks} />
             <p>Display a subject's track</p>
           </div>
           <div>
-            <img width='24' height='24' style={refreshStyle} src={refresh} />
+            <img className='tip-icon' width='24' height='24' style={refreshStyle} src={refresh} />
             <p>Refresh and update locations (internet connection required)</p>
           </div>
           <div>
-            <img width='7' height='10' style={storyStyle} src={story} />
+            <img className='tip-icon' width='7' height='10' style={storyStyle} src={story} />
             <p>Display a subject's story</p>
           </div>
         </div>
