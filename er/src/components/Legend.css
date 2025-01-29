@@ -54,7 +54,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    writing-mode: vertical-rl;
+    -webkit-writing-mode: vertical-rl;
+        -ms-writing-mode: tb-rl;
+            writing-mode: vertical-rl;
     font-size: 13px;
     font-family: 'Baloo 2', cursive;
     cursor: pointer;
@@ -230,6 +232,8 @@
 }
 
 .fit-content {
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
     width: fit-content;
 }
 
@@ -287,6 +291,8 @@
     flex-direction: row;
     justify-content: left;
     align-items: center;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
     width: fit-content;
 }
 
@@ -370,6 +376,8 @@
     padding-right: 8.5px;
     background-color: white;
     border-radius: 3px;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
     width: fit-content;
 }
 
@@ -378,7 +386,10 @@
     width: 265px;
     background-color: white;
     margin-top: 15px;
-    user-select: none;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
 }
 
 #tips h2 {
