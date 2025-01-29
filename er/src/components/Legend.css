@@ -14,6 +14,7 @@
     align-self: center;
     display: grid;
     grid-template-columns: minmax(0, 2rem) minmax(0, auto);
+    user-select: none;
 }
 
 #legend::after {
@@ -70,7 +71,8 @@
 }
 
 #legend-content {
-    background-color: white;
+    background: linear-gradient(-135deg, #FFFFFF 0%, #EEEFFC 50%, #EEEFFC 75%, #E3E5FA 90%, #D9DBF7 100%);
+    background-color: #eeeffc;
     height: 100%;
     max-width: 304px;
     box-sizing: border-box;
@@ -187,6 +189,11 @@
     height: 55px;
     display: flex;
     justify-content: flex-start;
+    background: #eeeffc;
+}
+
+#animal-story #subject-div .animal-legend-content {
+    background: #ffffff;
 }
 
 #animal-img {
