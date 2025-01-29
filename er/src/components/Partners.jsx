@@ -7,7 +7,7 @@ import mazda from '../assets/images/partners/mazda.webp';
 import yamaha from '../assets/images/partners/powered-by-yamaha.webp';
 import raymarine from '../assets/images/partners/raymarine.webp';
 import seadek from '../assets/images/partners/seadek.webp';
-import theDreamFactory from '../assets/images/partners/the-dream-factory.svg';
+import theDreamFactory from '../assets/images/partners/the-dream-factory-logo-standard.svg';
 
 const Partners = () => {
   return (
