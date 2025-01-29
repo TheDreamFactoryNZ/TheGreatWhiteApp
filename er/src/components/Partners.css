@@ -55,10 +55,6 @@
     justify-content: center;
 }
 
-.powered-by-logo-container.powered-by-logo-container--public {
-    padding: 1rem 0 0.5rem 0;
-}
-
 .powered-by-logo {
     display: flex;
     height: 100%;
@@ -70,7 +66,7 @@ a.powered-by-logo img {
 }
 
 p.partner-logo.public {
-    margin: 0;
+    font-style: italic;
 }
 
 .powered-by-logo-container.public-text p {
@@ -104,10 +100,5 @@ p.partner-logo.public {
         flex-direction: row;
         align-items: center;
         gap: 3.5vw;
-    }
-
-    .powered-by-logo-container.powered-by-logo-container--public {
-        grid-column-start: 1;
-        grid-column-end: 8;
     }
 }
