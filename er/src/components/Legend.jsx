@@ -14,11 +14,11 @@ const Legend = ({
 }) => {
   const doubleCaretIcon = doubleCaret;
 
-  function toggleLegend () {
+  function toggleLegend() {
     onLegendStateToggle();
   }
 
-  function display () {
+  function display() {
     if (legSub === undefined) {
       return (
         <div id='legend-content'>
@@ -31,13 +31,13 @@ const Legend = ({
               <div className='developer-container'>
                 <div className='developer-item'>
                   <a href='https://thedreamfactory.nz/' rel='noreferrer' target='_blank' className='developer-logo'>
-                    <img src={tdfLogo} />
+                    <img draggable="false" src={tdfLogo} />
                   </a>
                 </div>
                 <div className='developer-item dividerbox' />
                 <div className='developer-item'>
                   <a href='https://earthranger.com/' rel='noreferrer' target='_blank' className='developer-logo'>
-                    <img src={erLogo} />
+                    <img draggable="false" src={erLogo} />
                   </a>
                 </div>
               </div>
@@ -72,20 +72,20 @@ const Legend = ({
                 <div className='developer-container'>
                   <div className='developer-item'>
                     <a href='https://thedreamfactory.nz/' rel='noreferrer' target='_blank' className='developer-logo'>
-                      <img src={tdfLogo} />
+                      <img draggable="false" src={tdfLogo} />
                     </a>
                   </div>
                   <div className='developer-item dividerbox' />
                   <div className='developer-item'>
                     <a href='https://earthranger.com/' rel='noreferrer' target='_blank' className='developer-logo'>
-                      <img src={erLogo} />
+                      <img draggable="false" src={erLogo} />
                     </a>
                   </div>
                 </div>
               </div>
             </div>
             <div onClick={() => onReturnClick(undefined)} id='return' className='hover'>
-              <img width='7px' height='10px' src={caretLeft} />
+              <img draggable="false" width='7px' height='10px' src={caretLeft} />
               <p>Back</p>
             </div>
             <div id='animal-story'>
@@ -93,7 +93,7 @@ const Legend = ({
                 <Animal animal={legSub[0]} key={legSub[0].id} animalOnLocClicked={onLocClick} tracks={tracks[legSub[0].id]} />
               </div>
               {legSub[1].pictures.map((pic) => {
-                return <img className='sub-image' key={pic} src={pic.path} height={200} width={200} alt='picture' />;
+                return <img draggable="false" className='sub-image' key={pic} src={pic.path} height={200} width={200} alt='picture' />;
               })}
               <div id='sub-content' className='default' dangerouslySetInnerHTML={{ __html: legSub[1].detail_description }} />
             </div>
@@ -107,7 +107,7 @@ const Legend = ({
     <>
       <div id='legend' className={legendOpen ? 'legend-open' : 'legend-close'}>
         <div id='legend-open-button' onClick={() => toggleLegend()}>
-          <img src={doubleCaretIcon} />
+          <img draggable="false" src={doubleCaretIcon} />
         </div>
         {display()}
       </div>
