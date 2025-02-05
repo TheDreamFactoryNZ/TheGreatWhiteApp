@@ -1,6 +1,7 @@
 const standard = require('@neutrinojs/standardjs');
 const react = require('@neutrinojs/react');
 const devServer = require('@neutrinojs/dev-server');
+const copy = require('@neutrinojs/copy');
 
 module.exports = {
   options: {
@@ -34,5 +35,10 @@ module.exports = {
         warnings: true,
       },
     }),
+    copy({
+      patterns: [
+        { from: 'public', to: 'public' }  // Explicitly copy the public folder
+      ]
+    })
   ],
 };
