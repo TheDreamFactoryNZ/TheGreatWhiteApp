@@ -953,6 +953,11 @@
   resolved "https://registry.yarnpkg.com/@capacitor/android/-/android-7.0.1.tgz#16c45a305edeb8bcf0b083ea52abcc62ca4e5e70"
   integrity sha512-jukJJHfkcyEBOkFBJRD3EwXMIIQo7lSv0ExPWgsIliPdGXLAj6ElvK2JaYEzec3vKyLc4RTNFVv0PMEU0vnImg==
 
+"@capacitor/app@^7.0.0":
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/@capacitor/app/-/app-7.0.0.tgz#f216c6fdef2ed227b04786fb3c381ecc319d5135"
+  integrity sha512-/UFwfPFsw/Jen6vjrV0lfTBOQWSaDDdmrYXKpYg4Xn8hwj0xrrRPXxC43j7VmPoj9AFMVPA+hx94ygqjChPASQ==
+
 "@capacitor/cli@^7.0.1":
   version "7.0.1"
   resolved "https://registry.yarnpkg.com/@capacitor/cli/-/cli-7.0.1.tgz#0537dde870b6a308b6f5e45098de48eb1f953b32"
@@ -983,10 +988,25 @@
   dependencies:
     tslib "^2.1.0"
 
+"@capacitor/haptics@^7.0.0":
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/@capacitor/haptics/-/haptics-7.0.0.tgz#b16b8968850ded0c3f0a233fea54321e94f3e199"
+  integrity sha512-8uI8rWyAbq8EzkjS+sHZSncyzujHzVbuLKgj8J5H0yUL6+r26F16gVA2iuQuIBvzbSMy7Y0/pUuWlwZr/H8AKg==
+
 "@capacitor/ios@^7.0.1":
   version "7.0.1"
   resolved "https://registry.yarnpkg.com/@capacitor/ios/-/ios-7.0.1.tgz#f175f74543edc5faa13de927ababfffff450776f"
   integrity sha512-RN6S1C1k7ue57DFmJM4EizzsYBrahTTiMhcnlHspFLaojgHbFWZbYq1VriuRKysPU1ka/P+klsdtRFsB5K9jyw==
+
+"@capacitor/keyboard@^7.0.0":
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/@capacitor/keyboard/-/keyboard-7.0.0.tgz#c31dcda3faa4158dc63da07e17e8c1ec31382e6d"
+  integrity sha512-Tqwy8wG+sx4UqiFCX4Q+bFw6uKgG7BiHKAPpeefoIgoEB8H8Jf3xZNZoVPnJIMuPsCdSvuyHXZbJXH9IEEirGA==
+
+"@capacitor/status-bar@^7.0.0":
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/@capacitor/status-bar/-/status-bar-7.0.0.tgz#11a66ac1a34f49d792931f8eca7f2ce3f65ef1b5"
+  integrity sha512-wsvPkWkoSOXMIgVHu4c6P1sOuDSZ1ClUo5OpLRwj7u8DYzlV4jlmNzztQn2Lvsiqx1z4kfukSaqe40k1Lo4c9g==
 
 "@eslint/eslintrc@^0.4.3":
   version "0.4.3"
