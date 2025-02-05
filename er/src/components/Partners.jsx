@@ -13,7 +13,7 @@ const Partners = () => {
   return (
     <div id='powered-by-container'>
       <div id='powered-by-heading'>
-        <h3>POWERED BY:</h3>
+        <h3>TEST SYNC:</h3>
       </div>
       <div id='powered-by-container--inner'>
         <div id='powered-by-partners'>

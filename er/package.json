@@ -27,6 +27,7 @@
     "react-hot-loader": "^4"
   },
   "devDependencies": {
+    "@capacitor/assets": "^3.0.5",
     "@capacitor/cli": "^7.0.1",
     "@neutrinojs/dev-server": "^9.5.0",
     "@neutrinojs/react": "^9.5.0",
