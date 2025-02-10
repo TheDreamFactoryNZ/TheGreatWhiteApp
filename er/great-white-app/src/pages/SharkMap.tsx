@@ -1,10 +1,9 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
-import ExploreContainer from '../components/ExploreContainer';
-import './Tab2.css';
+import './SharkMap.css';
 import React, { StrictMode } from 'react';
 import MainApp from '../../../src/App';
 
-const Tab2: React.FC = () => {
+const SharkMap: React.FC = () => {
   return (
     <IonPage>
       <IonContent fullscreen>
@@ -16,4 +15,4 @@ const Tab2: React.FC = () => {
   );
 };
 
-export default Tab2;
+export default SharkMap;
