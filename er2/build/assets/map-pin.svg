@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 62 62">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #333;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 6px;
+      }
+
+      .cls-2 {
+        fill: #333;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g id="map-pin">
+      <rect id="map-pin_box" class="cls-1" x="3" y="3" width="56" height="56" rx="8" ry="8"/>
+      <path id="map-pin_marker" class="cls-2" d="M31,9c-8.28,0-15,6.57-15,14.67s15,29.33,15,29.33c0,0,15-21.23,15-29.33s-6.72-14.67-15-14.67ZM31,32.83c-5.18,0-9.38-4.1-9.38-9.17s4.2-9.17,9.38-9.17,9.38,4.1,9.38,9.17-4.2,9.17-9.38,9.17Z"/>
+    </g>
+  </g>
+</svg>
