@@ -1,6 +1,7 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import ExploreContainer from '../components/ExploreContainer';
 import './Tab2.css';
+import React, { StrictMode } from 'react';
 import MainApp from '../../../src/App';
 
 const Tab2: React.FC = () => {
@@ -17,8 +18,9 @@ const Tab2: React.FC = () => {
             <IonTitle size="large">Map</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <ExploreContainer name="View Map" />
-        <MainApp />
+        <StrictMode>
+          <MainApp configFile='../../config.json' />
+        </StrictMode>
       </IonContent>
     </IonPage>
   );
