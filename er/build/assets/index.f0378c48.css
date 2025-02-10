@@ -606,6 +606,10 @@ body {
 
 #reset:hover { cursor: pointer; }
 
+.mapboxgl-canvas {
+  width: 100%;
+}
+
 .mapboxgl-ctrl.mapboxgl-ctrl-attrib {
   background-color: rgba(0, 0, 0, .5) !important;
 }
