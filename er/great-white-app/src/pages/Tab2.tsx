@@ -19,7 +19,7 @@ const Tab2: React.FC = () => {
           </IonToolbar>
         </IonHeader>
         <StrictMode>
-          <MainApp configFile='../../config.json' />
+          <MainApp configFile='../../config/config.json' />
         </StrictMode>
       </IonContent>
     </IonPage>

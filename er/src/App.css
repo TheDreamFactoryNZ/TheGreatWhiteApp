@@ -6,7 +6,7 @@ body {
 #app-container {
   display: flex;
   flex-flow: column nowrap;
-  height: 100vh;
+  height: 100%;
 }
 
 #map-container {
@@ -37,6 +37,10 @@ body {
 }
 
 #reset:hover { cursor: pointer; }
+
+.mapboxgl-canvas {
+  width: 100%;
+}
 
 .mapboxgl-ctrl.mapboxgl-ctrl-attrib {
   background-color: rgba(0, 0, 0, .5) !important;

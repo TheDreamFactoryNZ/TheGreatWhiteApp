@@ -93,7 +93,7 @@ const App = (props) => {
     window.GlobalMap.addControl(nav, 'top-left');
 
     window.GlobalMap.on('load', function () {
-      console.log(process.env.PUBLIC_URL);
+      // console.log(process.env.PUBLIC_URL); - This will not function in Ionic/Capacitor
       window.GlobalMap.loadImage(med, (_error, img) => {
         window.GlobalMap.addImage('subject-popup-box', img, { sdf: true });
       });

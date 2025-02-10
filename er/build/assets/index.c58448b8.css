@@ -466,6 +466,7 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    background: #ffffff;
 }
 
 #powered-by-heading {
@@ -573,7 +574,7 @@ body {
 #app-container {
   display: flex;
   flex-flow: column nowrap;
-  height: 100vh;
+  height: 100%;
 }
 
 #map-container {
