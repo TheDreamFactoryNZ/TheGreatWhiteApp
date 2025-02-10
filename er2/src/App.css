@@ -1,0 +1,51 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#app-container {
+  display: flex;
+  flex-flow: column nowrap;
+  height: 100vh;
+}
+
+#map-container {
+  position: relative;
+  flex: 1;
+  display: flex;
+}
+
+#earth-ranger-logo {
+  /* Should this be fixed or not */
+  /* height: 45px; */
+  position: absolute;
+  padding: 10px 15px 10px 15px;
+  top: 0;
+  z-index: 1;
+}
+
+#earth-ranger-logo:hover {
+  cursor: pointer;
+}
+
+#reset {
+  z-index: 1;
+  top: 90px;
+  left: 10px;
+  position: absolute;
+  color: white;
+}
+
+#reset:hover { cursor: pointer; }
+
+.mapboxgl-ctrl.mapboxgl-ctrl-attrib {
+  background-color: rgba(0, 0, 0, .5) !important;
+}
+
+.mapboxgl-ctrl-attrib a {
+  color: rgba(255, 255, 255, .8) !important;
+}
+
+.mapboxgl-ctrl-bottom-left, .mapboxgl-ctrl-bottom-right {
+  margin-bottom: 6px;
+}
