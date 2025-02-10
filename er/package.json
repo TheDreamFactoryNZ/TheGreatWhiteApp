@@ -19,7 +19,7 @@
     "@capacitor/keyboard": "^7.0.0",
     "@capacitor/status-bar": "^7.0.0",
     "@neutrinojs/copy": "^9.5.0",
-    "mapbox-gl": "2.13.0",
+    "mapbox-gl": "2.15.0",
     "prop-types": "^15",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
