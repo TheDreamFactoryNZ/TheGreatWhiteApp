@@ -1,5 +1,4 @@
 import React, { createContext, useEffect, useState } from 'react';
-import ReactGA from 'react-ga';
 import mapboxgl from 'mapbox-gl';
 import SubjectPopupContent from './components/SubjectPopupContent';
 import Popup from './components/Popup';
@@ -76,11 +75,6 @@ const App = (props) => {
   };
 
   function initMap () {
-    // set up google analytics
-    const trackingId = 'UA-128569083-10'; // Google Analytics tracking ID
-    ReactGA.initialize(trackingId);
-    ReactGA.pageview(window.location.pathname + window.location.search);
-
     window.GlobalMap = new mapboxgl.Map({
       container: 'map-container', // container ID
       style: !config.map || !config.map.style ? 'mapbox://styles/vjoelm/cktdex96919t117p3rkq7c7yu' : config.map.style, // Specify a mapbox style
