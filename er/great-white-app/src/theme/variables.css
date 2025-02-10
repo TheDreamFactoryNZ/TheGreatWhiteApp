@@ -65,3 +65,10 @@ http://ionicframework.com/docs/theming/ */
 	--ion-color-dark-tint: #282c30;
 
 }
+
+@media (prefers-color-scheme: dark) {
+	:root.ios,
+	:root.md {
+	  --ion-item-background: #1c1c1d;
+	}
+  }
