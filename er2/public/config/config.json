@@ -10,7 +10,7 @@
         "#FF66B2", "#FFB233"
       ],
     "map": {
-        "style": "mapbox://styles/mapbox/standard",
+        "style": "mapbox://styles/izaakwicks/cm695163r00h001spfqn33x5h",
         "center": [173.497498, -40.043578],
         "zoom": 5,
         "pitch": 1,
