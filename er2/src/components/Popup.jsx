@@ -5,17 +5,17 @@ import PropTypes from 'prop-types';
 
 const Popup = ({ children, coordinates, onClose }) => {
   const popup = useRef(new mapboxgl.Popup({ closeButton: false }));
-  const [container] = useState(() => document.createElement('div')); // Create a container once
+  const [container] = useState(() => document.createElement('div'));
 
   useEffect(() => {
     const currentPopup = popup.current;
     currentPopup.addTo(window.GlobalMap);
-    return () => currentPopup.remove();
   }, []);
+  
 
   useEffect(() => {
     popup.current.setLngLat(coordinates);
-  }, [coordinates]);
+  }, [coordinates]);  
 
   useEffect(() => {
     popup.current.on('close', onClose);
@@ -23,7 +23,7 @@ const Popup = ({ children, coordinates, onClose }) => {
   }, [onClose]);
 
   useEffect(() => {
-    popup.current.setDOMContent(container); // Attach the container
+    popup.current.setDOMContent(container);
   }, [container]);
 
   return createPortal(children, container);

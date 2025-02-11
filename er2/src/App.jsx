@@ -75,6 +75,7 @@ const App = (props) => {
   };
 
   function initMap () {
+
     window.GlobalMap = new mapboxgl.Map({
       container: 'map-container', // container ID
       style: !config.map || !config.map.style ? 'mapbox://styles/vjoelm/cktdex96919t117p3rkq7c7yu' : config.map.style, // Specify a mapbox style
