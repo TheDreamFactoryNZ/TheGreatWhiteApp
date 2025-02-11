@@ -1,7 +1,0 @@
-{
-  "name": "greatWhiteApp",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "react-vite"
-}
