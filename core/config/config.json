@@ -24,12 +24,12 @@
         {
             "name": "Benny",
             "age": "12 years",
-            "icon": "public/images/animal_icons/shark_icon.png",
+            "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon.png",
             "is_active": 0,
             "pictures":
             [
                 {
-                    "path": "public/images/animal_photos/great_white.jpg"
+                    "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/great_white.jpg"
                 }
             ],
             "fun_fact": "Females give birth to between two and 10 pups per litter, and perhaps as many as 14!",
@@ -39,12 +39,12 @@
         {
             "name": "Takami",
             "age": "3 years (2.2 metres)",
-            "icon": "public/images/animal_icons/shark_icon_inactive.png",
+            "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon_inactive.png",
             "is_active": 0,
             "pictures":
             [
                 {
-                    "path": "public/images/animal_photos/Takami.png"
+                    "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/Takami.png"
                 }
             ],
             "detail_description": "<p><b>Takami is the second Great White Shark ever to be tagged in the northeast region of New Zealand.</b></p><p>Being 3 years old, her diet will consist of eating fish, stingrays, octopus and crustaceans, which are classic prey of juvenile Great White sharks. These prey types are abundant in harbours and shallow coastal ecosystems which is what makes this tagging location an ideal nursery ground for a shark like Takami.</p>",
@@ -54,12 +54,12 @@
         {
             "name": "Mananui (Great Prestige)",
             "age": "6 years (3.2 metres)",
-            "icon": "public/images/animal_icons/shark_icon_inactive.png",
+            "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon_inactive.png",
             "is_active": 0,
             "pictures":
             [
                 {
-                    "path": "public/images/animal_photos/Mananui.png"
+                    "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/Mananui.png"
                 }
             ],
             "fun_fact": "Tagged 16th January 2023 inside Bowentown Harbour. Tag named by Te Whānau a Tauwhao, the Hapu of this area",
@@ -69,12 +69,12 @@
         {
             "name": "Daisy",
             "age": "4 years (2.75 metres)",
-            "icon": "public/images/animal_icons/shark_icon_inactive.png",
+            "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon_inactive.png",
             "is_active": 0,
             "pictures":
             [
                 {
-                    "path": "public/images/animal_photos/Daisy.png"
+                    "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/Daisy.png"
                 }
             ],
             "fun_fact": "Tagged 3rd December 2022 inside Bowentown Harbour. Tag sponsored by Jane Mowbray",
@@ -84,12 +84,12 @@
         {
             "name": "SWAJ (Reversing JAWS)",
             "age": "<1 years (1.4 metres)",
-            "icon": "public/images/animal_icons/shark_icon_inactive.png",
+            "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon_inactive.png",
             "is_active": 0,
             "pictures":
             [
                 {
-                    "path": "public/images/animal_photos/SWAJ.png"
+                    "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/SWAJ.png"
                 }
             ],
             "fun_fact": "Tagged 8th February outside Matakana Island. Tag sponsored by Hughes-Hallett & Vipond Endeavours",
@@ -99,12 +99,12 @@
         {
             "name": "Shindo",
             "age": "12 years",
-            "icon": "public/images/animal_icons/shark_icon.png",
+            "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon.png",
             "is_active": 0,
             "pictures":
             [
                 {
-                    "path": "public/images/animal_photos/great_white.jpg"
+                    "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/great_white.jpg"
                 }
             ],
             "fun_fact": "Females give birth to between two and 10 pups per litter, and perhaps as many as 14!",
@@ -114,12 +114,12 @@
         {
             "name": "Astros",
             "age": "12 years",
-            "icon": "public/images/animal_icons/shark_icon.png",
+            "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon.png",
             "is_active": 0,
             "pictures":
             [
                 {
-                    "path": "public/images/animal_photos/great_white.jpg"
+                    "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/great_white.jpg"
                 }
             ],
             "fun_fact": "Females give birth to between two and 10 pups per litter, and perhaps as many as 14!",
@@ -129,12 +129,12 @@
         {
             "name": "Lennon",
             "age": "12 years",
-            "icon": "public/images/animal_icons/shark_icon.png",
+            "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon.png",
             "is_active": 0,
             "pictures":
             [
                 {
-                    "path": "public/images/animal_photos/great_white.jpg"
+                    "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/great_white.jpg"
                 }
             ],
             "fun_fact": "Females give birth to between two and 10 pups per litter, and perhaps as many as 14!",
@@ -144,12 +144,12 @@
         {
             "name": "Layne",
             "age": "12 years",
-            "icon": "public/images/animal_icons/shark_icon.png",
+            "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon.png",
             "is_active": 0,
             "pictures":
             [
                 {
-                    "path": "public/images/animal_photos/great_white.jpg"
+                    "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/great_white.jpg"
                 }
             ],
             "fun_fact": "Females give birth to between two and 10 pups per litter, and perhaps as many as 14!",
@@ -159,12 +159,12 @@
         {
             "name": "Hendrix",
             "age": "12 years",
-            "icon": "public/images/animal_icons/shark_icon.png",
+            "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon.png",
             "is_active": 0,
             "pictures":
             [
                 {
-                    "path": "public/images/animal_photos/great_white.jpg"
+                    "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/great_white.jpg"
                 }
             ],
             "fun_fact": "Females give birth to between two and 10 pups per litter, and perhaps as many as 14!",
@@ -174,12 +174,12 @@
         {
             "name": "Debbie",
             "age": "12 years",
-            "icon": "public/images/animal_icons/shark_icon.png",
+            "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon.png",
             "is_active": 0,
             "pictures":
             [
                 {
-                    "path": "public/images/animal_photos/great_white.jpg"
+                    "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/great_white.jpg"
                 }
             ],
             "fun_fact": "Females give birth to between two and 10 pups per litter, and perhaps as many as 14!",
