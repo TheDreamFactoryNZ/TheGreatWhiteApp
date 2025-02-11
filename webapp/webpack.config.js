@@ -6,7 +6,7 @@ module.exports = (env, argv) => {
   const isDev = argv.mode === "development";
 
   return {
-    entry: "./src/index.jsx",
+    entry: "../core/index.jsx",
     output: {
       path: path.resolve(__dirname, "build"),
       filename: "bundle.js",
@@ -45,6 +45,7 @@ module.exports = (env, argv) => {
     },
     resolve: {
       extensions: [".js", ".jsx"],
+      modules: [path.resolve(__dirname, 'node_modules'), 'node_modules'], // Compile modules from this directory instead of core
     },
     plugins: [
       new HtmlWebpackPlugin({
