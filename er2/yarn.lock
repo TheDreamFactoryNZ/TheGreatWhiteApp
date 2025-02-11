@@ -2575,10 +2575,10 @@ lru-cache@^5.1.1:
   dependencies:
     yallist "^3.0.2"
 
-mapbox-gl@3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/mapbox-gl/-/mapbox-gl-3.0.0.tgz#7b2ee76b3a1788d4e5cf3f502b651433c8afde0c"
-  integrity sha512-4DRPdBcmI0crPgsieaXd2GFyGNy1HZQwcGbItdeRtEwGoJEcFi/y4bhPWbF+oxP6cHeYtmoBmgDoenm9N/+6qg==
+mapbox-gl@3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/mapbox-gl/-/mapbox-gl-3.1.0.tgz#1c82e8854a3d7ddb7802a6a1a33b67e8c64dd985"
+  integrity sha512-X6gaQ7WCNwMK6MnQn+rlq6ugzRItdE775TSzmyGPy0wN6hs/8PONi/G+hioeGV5ZyQ0a0BmvmF+gCUH0FBvavw==
   dependencies:
     "@mapbox/geojson-rewind" "^0.5.2"
     "@mapbox/jsonlint-lines-primitives" "^2.0.2"
