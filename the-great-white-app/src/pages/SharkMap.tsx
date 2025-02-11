@@ -8,7 +8,7 @@ const SharkMap: React.FC = () => {
     <IonPage>
       <IonContent fullscreen>
         <StrictMode>
-          <MainApp configFile='../../config/config.json' />
+          <MainApp configFile='https://map.sustainableoceansociety.co.nz/public/config/config.json' />
         </StrictMode>
       </IonContent>
     </IonPage>
