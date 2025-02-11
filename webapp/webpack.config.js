@@ -1,12 +1,11 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 module.exports = (env, argv) => {
   const isDev = argv.mode === "development";
 
   return {
-    entry: "../core/index.jsx",
+    entry: path.resolve(__dirname, "../core/index.jsx"),
     output: {
       path: path.resolve(__dirname, "build"),
       filename: "bundle.js",
@@ -50,17 +49,6 @@ module.exports = (env, argv) => {
     plugins: [
       new HtmlWebpackPlugin({
         template: path.resolve(__dirname, "public", "index.html"),
-      }),
-      new CopyWebpackPlugin({
-        patterns: [
-          {
-            from: path.resolve(__dirname, "public"),
-            to: path.resolve(__dirname, "build", "public"),
-            globOptions: {
-              ignore: ["**/index.html"], // Prevents overwriting HtmlWebpackPlugin
-            },
-          },
-        ],
       }),
     ],
   };
