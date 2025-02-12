@@ -14,7 +14,8 @@
   "scripts": {
     "start:webapp": "webpack serve --config webapp/webpack.config.js --mode development",
     "build:webapp": "webpack --config webapp/webpack.config.js --mode production",
-    "start:mobileapp": "ionic serve",
-    "build:mobileapp": "ionic build"
+    "start:mobileapp": "yarn --cwd the-great-white-app ionic serve",
+    "build:mobileapp": "yarn --cwd the-great-white-app ionic serve",
+    "start": "concurrently \"yarn start:webapp\" \"yarn start:mobileapp\""
   }
 }
