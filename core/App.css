@@ -16,8 +16,6 @@ body {
 }
 
 #earth-ranger-logo {
-  /* Should this be fixed or not */
-  /* height: 45px; */
   position: absolute;
   padding: 10px 15px 10px 15px;
   top: 0;
@@ -36,16 +34,20 @@ body {
   color: white;
 }
 
-#reset:hover { cursor: pointer; }
-
-.mapboxgl-ctrl.mapboxgl-ctrl-attrib {
-  background-color: rgba(0, 0, 0, .5) !important;
+#reset:hover {
+  cursor: pointer;
 }
 
-.mapboxgl-ctrl-attrib a {
-  color: rgba(255, 255, 255, .8) !important;
+@media screen {
+  .mapboxgl-ctrl-attrib.mapboxgl-compact-show .mapboxgl-ctrl-attrib-button {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
 }
 
 .mapboxgl-ctrl-bottom-left, .mapboxgl-ctrl-bottom-right {
   margin-bottom: 6px;
+}
+
+a.mapboxgl-ctrl-logo.mapboxgl-compact {
+  width: 4.58vw !important;
 }
