@@ -74,7 +74,7 @@ const App = (props) => {
     setLegendOpen(!legendOpen);
   };
 
-  function initMap () {
+  function initMap() {
 
     window.GlobalMap = new mapboxgl.Map({
       container: 'map-container', // container ID
@@ -165,12 +165,12 @@ const App = (props) => {
         }
       });
     // Cancel the subscription to useEffect().
-    return function cleanup () {
+    return function cleanup() {
       isSubscribed = false;
     };
   }, []); /* eslint-disable-line react-hooks/exhaustive-deps */
 
-  function displayTracks (updatedTrack) {
+  function displayTracks(updatedTrack) {
     const id = updatedTrack[0];
     const displayed = updatedTrack[1];
 
@@ -188,7 +188,7 @@ const App = (props) => {
   }
 
   // Draw tracks and add button component to display tracks
-  function fetchTrack (subjectId) {
+  function fetchTrack(subjectId) {
     const url = `https://${config.server}/${config.public_name}/api/v1.0/subject/` + subjectId + '/tracks';
     fetch(url)
       .then(resp => {
@@ -204,7 +204,7 @@ const App = (props) => {
       .catch(console.error);
   }
 
-  function drawTrack (json, subjectId) {
+  function drawTrack(json, subjectId) {
     window.GlobalMap.addSource(json.features[0].geometry.type + ' ' + json.features[0].properties.id, {
       type: 'geojson',
       data: json
@@ -225,7 +225,7 @@ const App = (props) => {
     });
   }
 
-  async function fileExists (file) {
+  async function fileExists(file) {
     try {
       var img = await fetch(file);
       if (img.status === 404) {
@@ -237,7 +237,7 @@ const App = (props) => {
     }
   }
 
-  async function drawIcon (json) {
+  async function drawIcon(json) {
     let imgURL = null;
     if (config.subjects && config.subjects[json.id] && config.subjects[json.id].icon) {
       imgURL = config.subjects[json.id].icon;
@@ -249,7 +249,7 @@ const App = (props) => {
     addImage(json, imgURL);
   }
 
-  function addImage (json, imgURL) {
+  function addImage(json, imgURL) {
     const width = !config.map || !config.map.map_icon_size ? MAP_ICON_SIZE : config.map.map_icon_size; const height = undefined;
     imgElFromSrc(
       imgURL,
@@ -331,7 +331,7 @@ const App = (props) => {
       });
   }
 
-  function goToLoc (coords) {
+  function goToLoc(coords) {
     window.GlobalMap.flyTo({
       center: coords,
       zoom: 15,
@@ -363,24 +363,26 @@ const App = (props) => {
   return (
     <>
       <TrackContext.Provider value={{ displayTracks, setTracks, tracks }}>
-        <div id='app-container'>
-          <div id='map-container' onKeyDown={logKey} onKeyUp={logKey}>
-            <HelpButton />
+        <div id='app-page'>
+          <div id='app-container'>
+            <div id='map-container' onKeyDown={logKey} onKeyUp={logKey}>
+              <HelpButton />
 
-            <Legend
-              title={config !== undefined ? config.map_title : null}
-              subs={subjects}
-              subjectData={config}
-              onLocClick={(coords) => goToLoc(coords)}
-              legendOpen={legendOpen}
-              onLegendStateToggle={toggleLegendState}
-              legSub={legSub}
-              onReturnClick={(subject) => setLegSub(subject)}
-              onStoryClick={(subject) => setLegSub(subject)}
-              tracks={tracks}
-            />
+              <Legend
+                title={config !== undefined ? config.map_title : null}
+                subs={subjects}
+                subjectData={config}
+                onLocClick={(coords) => goToLoc(coords)}
+                legendOpen={legendOpen}
+                onLegendStateToggle={toggleLegendState}
+                legSub={legSub}
+                onReturnClick={(subject) => setLegSub(subject)}
+                onStoryClick={(subject) => setLegSub(subject)}
+                tracks={tracks}
+              />
+            </div>
+            <Partners />
           </div>
-          <Partners />
         </div>
         {subjectPopups.map(({ properties, geometry }) =>
           <Popup
