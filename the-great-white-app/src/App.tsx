@@ -11,9 +11,9 @@ import {
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { newspaper, helpBuoyOutline } from 'ionicons/icons';
-import TheLatest from './pages/TheLatest';
-import SharkMap from './pages/SharkMap';
-import Help from './pages/Help';
+import TheLatest from './pages/primary/TheLatest';
+import SharkMap from './pages/primary/SharkMap';
+import Help from './pages/primary/Help';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';

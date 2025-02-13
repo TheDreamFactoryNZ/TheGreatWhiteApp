@@ -10,17 +10,17 @@ const Help: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        <IonGrid>
+        <IonGrid fixed={true}>
           <IonRow>
-            <IonCol>
+            <IonCol size="12" size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
               <IonCard>
                 <IonCardHeader>
                   <IonCardTitle>About the Great White Project</IonCardTitle>
-                  <IonCardSubtitle>Learn about our mission to better understand Great Whites around New Zealand</IonCardSubtitle>
+                  <IonCardSubtitle>About our mission to understand Great Whites around NZ.</IonCardSubtitle>
                 </IonCardHeader>
               </IonCard>
             </IonCol>
-            <IonCol>
+            <IonCol size="12" size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
               <IonCard>
                 <IonCardHeader>
                   <IonCardTitle>Using the Great White App</IonCardTitle>
@@ -28,17 +28,15 @@ const Help: React.FC = () => {
                 </IonCardHeader>
               </IonCard>
             </IonCol>
-          </IonRow>
-          <IonRow>
-            <IonCol>
+            <IonCol size="12" size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
               <IonCard>
                 <IonCardHeader>
-                  <IonCardTitle>Frequently Asked Questions</IonCardTitle>
-                  <IonCardSubtitle>Common questions about the project, app and sharks.</IonCardSubtitle>
+                  <IonCardTitle>Common Questions</IonCardTitle>
+                  <IonCardSubtitle>FAQ about the project, app and sharks.</IonCardSubtitle>
                 </IonCardHeader>
               </IonCard>
             </IonCol>
-            <IonCol>
+            <IonCol size="12" size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
               <IonCard>
                 <IonCardHeader>
                   <IonCardTitle>Report an Issue</IonCardTitle>
@@ -46,9 +44,7 @@ const Help: React.FC = () => {
                 </IonCardHeader>
               </IonCard>
             </IonCol>
-          </IonRow>
-          <IonRow>
-            <IonCol>
+            <IonCol size="12" size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
               <a href="https://www.sustainableoceansociety.co.nz/" target="_blank">
                 <IonCard>
                   <IonCardHeader>
