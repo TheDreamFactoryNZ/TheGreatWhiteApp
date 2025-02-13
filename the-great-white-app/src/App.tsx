@@ -10,8 +10,7 @@ import {
   setupIonicReact
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { ellipse, newspaper, helpBuoyOutline } from 'ionicons/icons';
-import { addIcons } from 'ionicons';
+import { newspaper, helpBuoyOutline } from 'ionicons/icons';
 import TheLatest from './pages/TheLatest';
 import SharkMap from './pages/SharkMap';
 import Help from './pages/Help';
@@ -72,7 +71,7 @@ const App: React.FC = () => (
             <IonLabel>The Latest</IonLabel>
           </IonTabButton>
           <IonTabButton tab="sharkmap" href="/sharkmap">
-            <IonIcon aria-label="See Great Whites" icon={ellipse} />
+            <IonIcon aria-label="See Great Whites" src="./assets/icons/greatwhites.svg" />
             <IonLabel>Great Whites</IonLabel>
           </IonTabButton>
           <IonTabButton tab="help" href="/help">
