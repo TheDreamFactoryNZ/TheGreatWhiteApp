@@ -10,32 +10,22 @@ const Help: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        <IonItem>
-          <IonLabel>
-            <h1>About the Great White Project and App</h1>
-            <p>Some example text can go here.</p>
-          </IonLabel>
-        </IonItem>
         <IonGrid>
           <IonRow>
             <IonCol>
               <IonCard>
                 <IonCardHeader>
-                  <IonCardTitle>Card Title</IonCardTitle>
-                  <IonCardSubtitle>Card Subtitle</IonCardSubtitle>
+                  <IonCardTitle>About the Great White Project</IonCardTitle>
+                  <IonCardSubtitle>Learn about our mission to better understand Great Whites around New Zealand</IonCardSubtitle>
                 </IonCardHeader>
-
-                <IonCardContent>Here's a small text description for the card content. Nothing more, nothing less.</IonCardContent>
               </IonCard>
             </IonCol>
             <IonCol>
               <IonCard>
                 <IonCardHeader>
-                  <IonCardTitle>Card Title</IonCardTitle>
-                  <IonCardSubtitle>Card Subtitle</IonCardSubtitle>
+                  <IonCardTitle>Using the Great White App</IonCardTitle>
+                  <IonCardSubtitle>Information on interacting with the map and sharks.</IonCardSubtitle>
                 </IonCardHeader>
-
-                <IonCardContent>Here's a small text description for the card content. Nothing more, nothing less.</IonCardContent>
               </IonCard>
             </IonCol>
           </IonRow>
@@ -43,66 +33,32 @@ const Help: React.FC = () => {
             <IonCol>
               <IonCard>
                 <IonCardHeader>
-                  <IonCardTitle>Card Title</IonCardTitle>
-                  <IonCardSubtitle>Card Subtitle</IonCardSubtitle>
+                  <IonCardTitle>Frequently Asked Questions</IonCardTitle>
+                  <IonCardSubtitle>Common questions about the project, app and sharks.</IonCardSubtitle>
                 </IonCardHeader>
-
-                <IonCardContent>Here's a small text description for the card content. Nothing more, nothing less.</IonCardContent>
               </IonCard>
             </IonCol>
             <IonCol>
               <IonCard>
                 <IonCardHeader>
-                  <IonCardTitle>Card Title</IonCardTitle>
-                  <IonCardSubtitle>Card Subtitle</IonCardSubtitle>
+                  <IonCardTitle>Report an Issue</IonCardTitle>
+                  <IonCardSubtitle>Something not working? Let us know.</IonCardSubtitle>
                 </IonCardHeader>
-
-                <IonCardContent>Here's a small text description for the card content. Nothing more, nothing less.</IonCardContent>
               </IonCard>
             </IonCol>
           </IonRow>
           <IonRow>
             <IonCol>
-              <IonCard>
-                <IonCardHeader>
-                  <IonCardTitle>Card Title</IonCardTitle>
-                  <IonCardSubtitle>Card Subtitle</IonCardSubtitle>
-                </IonCardHeader>
-
-                <IonCardContent>Here's a small text description for the card content. Nothing more, nothing less.</IonCardContent>
-              </IonCard>
+              <a href="https://www.sustainableoceansociety.co.nz/" target="_blank">
+                <IonCard>
+                  <IonCardHeader>
+                    <IonCardTitle>About Sustainable Oceans Society</IonCardTitle>
+                    <IonCardSubtitle>Visit our website and learn more about us.</IonCardSubtitle>
+                  </IonCardHeader>
+                </IonCard>
+              </a>
             </IonCol>
             <IonCol>
-              <IonCard>
-                <IonCardHeader>
-                  <IonCardTitle>Card Title</IonCardTitle>
-                  <IonCardSubtitle>Card Subtitle</IonCardSubtitle>
-                </IonCardHeader>
-
-                <IonCardContent>Here's a small text description for the card content. Nothing more, nothing less.</IonCardContent>
-              </IonCard>
-            </IonCol>
-          </IonRow>
-          <IonRow>
-            <IonCol>
-              <IonCard>
-                <IonCardHeader>
-                  <IonCardTitle>Card Title</IonCardTitle>
-                  <IonCardSubtitle>Card Subtitle</IonCardSubtitle>
-                </IonCardHeader>
-
-                <IonCardContent>Here's a small text description for the card content. Nothing more, nothing less.</IonCardContent>
-              </IonCard>
-            </IonCol>
-            <IonCol>
-              <IonCard>
-                <IonCardHeader>
-                  <IonCardTitle>Card Title</IonCardTitle>
-                  <IonCardSubtitle>Card Subtitle</IonCardSubtitle>
-                </IonCardHeader>
-
-                <IonCardContent>Here's a small text description for the card content. Nothing more, nothing less.</IonCardContent>
-              </IonCard>
             </IonCol>
           </IonRow>
         </IonGrid>
