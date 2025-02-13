@@ -10,10 +10,11 @@ import {
   setupIonicReact
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { ellipse, helpBuoy, helpBuoyOutline, newspaper, square, triangle } from 'ionicons/icons';
-import Tab1 from './pages/TheLatest';
+import { ellipse, newspaper, helpBuoyOutline } from 'ionicons/icons';
+import { addIcons } from 'ionicons';
+import TheLatest from './pages/TheLatest';
 import SharkMap from './pages/SharkMap';
-import Tab3 from './pages/Help';
+import Help from './pages/Help';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -53,13 +54,13 @@ const App: React.FC = () => (
       <IonTabs>
         <IonRouterOutlet>
           <Route exact path="/thelatest">
-            <Tab1 />
+            <TheLatest />
           </Route>
           <Route exact path="/sharkmap">
             <SharkMap />
           </Route>
           <Route path="/help">
-            <Tab3 />
+            <Help />
           </Route>
           <Route exact path="/">
             <Redirect to="/sharkmap" />
@@ -67,15 +68,15 @@ const App: React.FC = () => (
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
           <IonTabButton tab="thelatest" href="/thelatest">
-            <IonIcon aria-hidden="true" icon={newspaper} />
+            <IonIcon aria-label="The Latest" icon={newspaper} />
             <IonLabel>The Latest</IonLabel>
           </IonTabButton>
           <IonTabButton tab="sharkmap" href="/sharkmap">
-            <IonIcon aria-hidden="true" icon={ellipse} />
+            <IonIcon aria-label="See Great Whites" icon={ellipse} />
             <IonLabel>Great Whites</IonLabel>
           </IonTabButton>
           <IonTabButton tab="help" href="/help">
-            <IonIcon aria-hidden="true" icon={helpBuoyOutline} />
+            <IonIcon aria-label="Help" icon={helpBuoyOutline} />
             <IonLabel>Help</IonLabel>
           </IonTabButton>
         </IonTabBar>
