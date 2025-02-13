@@ -1,10 +1,49 @@
-import { IonContent, IonHeader, IonPage, IonGrid, IonCol, IonRow, IonTitle, IonToolbar, IonCard, IonIcon, IonCardHeader, IonCardTitle, IonCardSubtitle } from '@ionic/react';
-import { informationCircleOutline, happyOutline, helpCircleOutline, bugOutline, fishOutline, arrowForwardCircleOutline } from 'ionicons/icons'
+import { Redirect, Route, RouteComponentProps } from 'react-router-dom';
+
+import {
+  IonPage,
+  IonRouterOutlet,
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+  IonContent,
+  IonGrid,
+  IonCol,
+  IonRow,
+  IonCard,
+  IonIcon,
+  IonCardHeader,
+  IonCardTitle,
+  IonCardSubtitle
+} from '@ionic/react';
+
+import AboutGwp from '../help/AboutGwp';
+import UsingGwa from '../help/UsingGwa';
+import Faq from '../help/Faq';
+import BugReport from '../help/BugReport';
+
+import {
+  informationCircleOutline,
+  happyOutline,
+  helpCircleOutline,
+  bugOutline,
+  fishOutline,
+  arrowForwardCircleOutline
+} from 'ionicons/icons'
+
 import './Help.css';
 
-const Help: React.FC = () => {
+const Help: React.FC<RouteComponentProps> = () => {
   return (
     <IonPage>
+      <IonRouterOutlet>
+        <Route exact path="/help/aboutgwp">
+        <AboutGwp />
+        </Route>
+        <Route path="/help/usinggwa" component={UsingGwa} />
+        <Route path="/help/faq" component={Faq} />
+        <Route path="/help/bugreport" component={BugReport} />
+      </IonRouterOutlet>
       <IonHeader>
         <IonToolbar>
           <IonTitle>Help &amp; FAQ</IonTitle>
@@ -14,17 +53,17 @@ const Help: React.FC = () => {
         <IonGrid fixed={true}>
           <IonRow>
             <IonCol size="12" size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
-                <IonCard routerLink="aboutgwp" className='help-card'>
-                  <IonIcon aria-hidden="true" className='help-icon' icon={informationCircleOutline} color="primary"></IonIcon>
-                  <IonCardHeader className='help-card-content'>
-                    <IonCardTitle>About the Great White Project</IonCardTitle>
-                    <IonCardSubtitle>About our mission to understand Great Whites around NZ.</IonCardSubtitle>
-                    <IonIcon size="large" className='help-card-arrow' aria-label="Open information" icon={arrowForwardCircleOutline}></IonIcon>
-                  </IonCardHeader>
-                </IonCard>
+              <IonCard routerLink="/help/aboutgwp" className='help-card'>
+                <IonIcon aria-hidden="true" className='help-icon' icon={informationCircleOutline} color="primary"></IonIcon>
+                <IonCardHeader className='help-card-content'>
+                  <IonCardTitle>About the Great White Project</IonCardTitle>
+                  <IonCardSubtitle>About our mission to understand Great Whites around NZ.</IonCardSubtitle>
+                  <IonIcon size="large" className='help-card-arrow' aria-label="Open information" icon={arrowForwardCircleOutline}></IonIcon>
+                </IonCardHeader>
+              </IonCard>
             </IonCol>
             <IonCol size="12" size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
-              <IonCard className='help-card'>
+              <IonCard routerLink="/help/usinggwa" className='help-card'>
                 <IonIcon aria-hidden="true" className='help-icon' icon={happyOutline} color="primary"></IonIcon>
                 <IonCardHeader className='help-card-content'>
                   <IonCardTitle>Using the Great White App</IonCardTitle>
@@ -34,7 +73,7 @@ const Help: React.FC = () => {
               </IonCard>
             </IonCol>
             <IonCol size="12" size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
-              <IonCard className='help-card'>
+              <IonCard routerLink="/help/faq" className='help-card'>
                 <IonIcon aria-hidden="true" className='help-icon' icon={helpCircleOutline} color="primary"></IonIcon>
                 <IonCardHeader className='help-card-content'>
                   <IonCardTitle>Common Questions</IonCardTitle>
@@ -44,7 +83,7 @@ const Help: React.FC = () => {
               </IonCard>
             </IonCol>
             <IonCol size="12" size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
-              <IonCard className='help-card'>
+              <IonCard routerLink="/help/BugReport" className='help-card'>
                 <IonIcon aria-hidden="true" className='help-icon' icon={bugOutline} color="primary"></IonIcon>
                 <IonCardHeader className='help-card-content'>
                   <IonCardTitle>Report an Issue</IonCardTitle>

@@ -1,6 +1,6 @@
 import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent} from '@ionic/react';
 
-const AboutGwp: React.FC = () => {
+const UsingGwp: React.FC = () => {
     return (
         <IonPage>
             <IonHeader>
@@ -14,4 +14,4 @@ const AboutGwp: React.FC = () => {
     );
 };
 
-export default AboutGwp;
+export default UsingGwp;

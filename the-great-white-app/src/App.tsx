@@ -11,10 +11,15 @@ import {
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { newspaper, helpBuoyOutline } from 'ionicons/icons';
+
 import TheLatest from './pages/primary/TheLatest';
 import SharkMap from './pages/primary/SharkMap';
 import Help from './pages/primary/Help';
+
 import AboutGwp from './pages/help/AboutGwp';
+import UsingGwa from './pages/help/UsingGwa';
+import Faq from './pages/help/UsingGwa';
+import BugReport from './pages/help/BugReport';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -65,11 +70,20 @@ const App: React.FC = () => (
           <Route exact path="/sharkmap">
             <SharkMap />
           </Route>
-          <Route path="/help">
+          <Route exact path="/help">
             <Help />
           </Route>
-          <Route path="/aboutgwp">
-          <AboutGwp />
+          <Route exact path="/help/aboutgwp">
+            <AboutGwp />
+          </Route>
+          <Route exact path="/help/usinggwa">
+            <UsingGwa />
+          </Route>
+          <Route exact path="/help/faq">
+            <Faq />
+          </Route>
+          <Route exact path="/help/bugreport">
+            <BugReport />
           </Route>
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
