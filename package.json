@@ -1,12 +1,12 @@
 {
-    "name": "the-great-white-app",
-    "private": true,
-    "workspaces": [
-      "the-great-white-app",
-      "webapp"
-    ],
-    "dependencies": {
-    "mapbox-gl": "3.9.4",
+  "name": "the-great-white-app",
+  "private": true,
+  "workspaces": [
+    "the-great-white-app",
+    "webapp"
+  ],
+  "dependencies": {
+    "mapbox-gl": "2.15.0",
     "prop-types": "^15.8.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
