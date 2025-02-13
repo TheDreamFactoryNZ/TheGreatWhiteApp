@@ -1,11 +1,21 @@
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent} from '@ionic/react';
+import {
+    IonBackButton,
+    IonButtons,
+    IonPage,
+    IonHeader,
+    IonToolbar,
+    IonTitle,
+    IonContent
+} from '@ionic/react';
 
 const AboutGwp: React.FC = () => {
     return (
         <IonPage>
             <IonHeader>
-                <IonToolbar>
-                    <IonTitle>Help &amp; FAQ</IonTitle>
+                <IonToolbar><IonButtons slot="start">
+                    <IonBackButton></IonBackButton>
+                </IonButtons>
+                    <IonTitle>About the Great White Project</IonTitle>
                 </IonToolbar>
             </IonHeader>
             <IonContent fullscreen>

@@ -1,11 +1,21 @@
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent} from '@ionic/react';
+import {
+    IonBackButton,
+    IonButtons,
+    IonPage,
+    IonHeader,
+    IonToolbar,
+    IonTitle,
+    IonContent
+} from '@ionic/react';
 
-const BugReport: React.FC = () => {
+const AboutGwp: React.FC = () => {
     return (
         <IonPage>
             <IonHeader>
-                <IonToolbar>
-                    <IonTitle>Help &amp; FAQ</IonTitle>
+                <IonToolbar><IonButtons slot="start">
+                    <IonBackButton></IonBackButton>
+                </IonButtons>
+                    <IonTitle>Having Issues?</IonTitle>
                 </IonToolbar>
             </IonHeader>
             <IonContent fullscreen>
@@ -14,4 +24,4 @@ const BugReport: React.FC = () => {
     );
 };
 
-export default BugReport;
+export default AboutGwp;
