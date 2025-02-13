@@ -9,13 +9,3 @@ ion-tab-button {
 IonTabBar IonIcon {
     color: var(--ion-color-primary);
 }
-
-ion-tab-button {
-    transform: scale(1);
-    transition: transform 0.2s ease-in-out;
-}
-
-ion-tab-button.tab-selected {
-    transform: scale(1.125);
-    transition: transform 0.2s ease-in-out;
-}
