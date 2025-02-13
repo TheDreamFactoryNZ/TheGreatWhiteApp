@@ -53,9 +53,9 @@ const Partners = () => {
                 <img className='partner-logo' src={theDreamFactory} alt='The Dream Factory NZ logo' />
               </a>
             </div>
-          </div>
-          <div className='powered-by-logo-container--public'>
-            <p className='partner-logo public'>...and members of the general public who have sponsored sharks</p>
+            <div className='powered-by-logo-container powered-by-logo-container--public'>
+              <p className='partner-logo public'>...and the public for sponsoring sharks or purchasing this app</p>
+            </div>
           </div>
         </div>
       </div>
