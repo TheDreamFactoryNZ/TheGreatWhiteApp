@@ -1,4 +1,26 @@
+:root {
+    --ion-grid-column-padding: 1.25rem;
+}
+
+.help-card {
+    height: 100%;
+}
+
+.help-card-content {
+    padding-right: 4.25rem;
+}
+
 .help-icon {
     font-size: 2.5rem;
     padding: 1.25rem 0 0 1.25rem;
+}
+
+.help-card-link {
+    text-decoration: none;
+}
+
+.help-card-arrow {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
 }
