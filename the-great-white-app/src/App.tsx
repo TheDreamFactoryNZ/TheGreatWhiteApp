@@ -31,6 +31,9 @@ import '@ionic/react/css/text-transformation.css';
 import '@ionic/react/css/flex-utils.css';
 import '@ionic/react/css/display.css';
 
+/* Custom Stylesheet */
+import './theme/main.css';
+
 /**
  * Ionic Dark Mode
  * -----------------------------------------------------
@@ -67,15 +70,15 @@ const App: React.FC = () => (
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
           <IonTabButton tab="thelatest" href="/thelatest">
-            <IonIcon aria-label="The Latest" icon={newspaper} />
+            <IonIcon size="medium" aria-label="The Latest" icon={newspaper} />
             <IonLabel>The Latest</IonLabel>
           </IonTabButton>
           <IonTabButton tab="sharkmap" href="/sharkmap">
-            <IonIcon aria-label="See Great Whites" src="./assets/icons/greatwhites.svg" />
+            <IonIcon size="medium" id='great-whites-icon' aria-label="See Great Whites" src="./assets/icons/greatwhites.svg" />
             <IonLabel>Great Whites</IonLabel>
           </IonTabButton>
           <IonTabButton tab="help" href="/help">
-            <IonIcon aria-label="Help" icon={helpBuoyOutline} />
+            <IonIcon size="medium" aria-label="Help" icon={helpBuoyOutline} />
             <IonLabel>Help</IonLabel>
           </IonTabButton>
         </IonTabBar>

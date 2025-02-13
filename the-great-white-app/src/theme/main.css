@@ -1,0 +1,16 @@
+/* Global Styles */
+
+/* Tab Bar */
+ion-tab-bar,
+ion-tab-button {
+    background: var(--ion-background-color-step-50);
+}
+
+IonTabBar IonIcon {
+    color: var(--ion-color-primary);
+}
+
+ion-tab-button .tab-selected {
+    transition: scale 2s ease-in-out;
+    transform: scale(1.25);
+}
