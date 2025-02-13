@@ -14,6 +14,7 @@ import { newspaper, helpBuoyOutline } from 'ionicons/icons';
 import TheLatest from './pages/primary/TheLatest';
 import SharkMap from './pages/primary/SharkMap';
 import Help from './pages/primary/Help';
+import AboutGwp from './pages/help/AboutGwp';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -55,6 +56,9 @@ const App: React.FC = () => (
     <IonReactRouter>
       <IonTabs>
         <IonRouterOutlet>
+          <Route exact path="/">
+            <Redirect to="/sharkmap" />
+          </Route>
           <Route exact path="/thelatest">
             <TheLatest />
           </Route>
@@ -64,8 +68,8 @@ const App: React.FC = () => (
           <Route path="/help">
             <Help />
           </Route>
-          <Route exact path="/">
-            <Redirect to="/sharkmap" />
+          <Route path="/aboutgwp">
+          <AboutGwp />
           </Route>
         </IonRouterOutlet>
         <IonTabBar slot="bottom">

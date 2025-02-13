@@ -1,4 +1,4 @@
-import { IonContent, IonHeader, IonPage, IonGrid, IonCol, IonRow, IonTitle, IonToolbar, IonCard, IonIcon, IonCardHeader, IonCardTitle, IonCardSubtitle, IonImg } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonGrid, IonCol, IonRow, IonTitle, IonToolbar, IonCard, IonIcon, IonCardHeader, IonCardTitle, IonCardSubtitle } from '@ionic/react';
 import { informationCircleOutline, happyOutline, helpCircleOutline, bugOutline, fishOutline, arrowForwardCircleOutline } from 'ionicons/icons'
 import './Help.css';
 
@@ -14,14 +14,14 @@ const Help: React.FC = () => {
         <IonGrid fixed={true}>
           <IonRow>
             <IonCol size="12" size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
-              <IonCard className='help-card'>
-                <IonIcon aria-hidden="true" className='help-icon' icon={informationCircleOutline} color="primary"></IonIcon>
-                <IonCardHeader className='help-card-content'>
-                  <IonCardTitle>About the Great White Project</IonCardTitle>
-                  <IonCardSubtitle>About our mission to understand Great Whites around NZ.</IonCardSubtitle>
+                <IonCard routerLink="aboutgwp" className='help-card'>
+                  <IonIcon aria-hidden="true" className='help-icon' icon={informationCircleOutline} color="primary"></IonIcon>
+                  <IonCardHeader className='help-card-content'>
+                    <IonCardTitle>About the Great White Project</IonCardTitle>
+                    <IonCardSubtitle>About our mission to understand Great Whites around NZ.</IonCardSubtitle>
                     <IonIcon size="large" className='help-card-arrow' aria-label="Open information" icon={arrowForwardCircleOutline}></IonIcon>
-                </IonCardHeader>
-              </IonCard>
+                  </IonCardHeader>
+                </IonCard>
             </IonCol>
             <IonCol size="12" size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
               <IonCard className='help-card'>
@@ -29,7 +29,7 @@ const Help: React.FC = () => {
                 <IonCardHeader className='help-card-content'>
                   <IonCardTitle>Using the Great White App</IonCardTitle>
                   <IonCardSubtitle>Information on interacting with the map and sharks.</IonCardSubtitle>
-                    <IonIcon size="large" className='help-card-arrow' aria-label="Open information" icon={arrowForwardCircleOutline}></IonIcon>
+                  <IonIcon size="large" className='help-card-arrow' aria-label="Open information" icon={arrowForwardCircleOutline}></IonIcon>
                 </IonCardHeader>
               </IonCard>
             </IonCol>
@@ -39,7 +39,7 @@ const Help: React.FC = () => {
                 <IonCardHeader className='help-card-content'>
                   <IonCardTitle>Common Questions</IonCardTitle>
                   <IonCardSubtitle>FAQ about the project, app and sharks.</IonCardSubtitle>
-                    <IonIcon size="large" className='help-card-arrow' aria-label="Open information" icon={arrowForwardCircleOutline}></IonIcon>
+                  <IonIcon size="large" className='help-card-arrow' aria-label="Open information" icon={arrowForwardCircleOutline}></IonIcon>
                 </IonCardHeader>
               </IonCard>
             </IonCol>
@@ -49,7 +49,7 @@ const Help: React.FC = () => {
                 <IonCardHeader className='help-card-content'>
                   <IonCardTitle>Report an Issue</IonCardTitle>
                   <IonCardSubtitle>Found a bug? Something not working? Let us know.</IonCardSubtitle>
-                    <IonIcon size="large" className='help-card-arrow' aria-label="Open information" icon={arrowForwardCircleOutline}></IonIcon>
+                  <IonIcon size="large" className='help-card-arrow' aria-label="Open information" icon={arrowForwardCircleOutline}></IonIcon>
                 </IonCardHeader>
               </IonCard>
             </IonCol>
