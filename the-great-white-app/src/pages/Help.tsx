@@ -1,5 +1,4 @@
-import { IonContent, IonHeader, IonItem, IonLabel, IonPage, IonText, IonGrid, IonCol, IonRow, IonTitle, IonToolbar } from '@ionic/react';
-import ExploreContainer from '../components/ExploreContainer';
+import { IonContent, IonHeader, IonItem, IonLabel, IonPage, IonText, IonGrid, IonCol, IonRow, IonTitle, IonToolbar, IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonCardSubtitle } from '@ionic/react';
 import './Help.css';
 
 const Help: React.FC = () => {
@@ -20,7 +19,90 @@ const Help: React.FC = () => {
         <IonGrid>
           <IonRow>
             <IonCol>
-              1
+              <IonCard>
+                <IonCardHeader>
+                  <IonCardTitle>Card Title</IonCardTitle>
+                  <IonCardSubtitle>Card Subtitle</IonCardSubtitle>
+                </IonCardHeader>
+
+                <IonCardContent>Here's a small text description for the card content. Nothing more, nothing less.</IonCardContent>
+              </IonCard>
+            </IonCol>
+            <IonCol>
+              <IonCard>
+                <IonCardHeader>
+                  <IonCardTitle>Card Title</IonCardTitle>
+                  <IonCardSubtitle>Card Subtitle</IonCardSubtitle>
+                </IonCardHeader>
+
+                <IonCardContent>Here's a small text description for the card content. Nothing more, nothing less.</IonCardContent>
+              </IonCard>
+            </IonCol>
+          </IonRow>
+          <IonRow>
+            <IonCol>
+              <IonCard>
+                <IonCardHeader>
+                  <IonCardTitle>Card Title</IonCardTitle>
+                  <IonCardSubtitle>Card Subtitle</IonCardSubtitle>
+                </IonCardHeader>
+
+                <IonCardContent>Here's a small text description for the card content. Nothing more, nothing less.</IonCardContent>
+              </IonCard>
+            </IonCol>
+            <IonCol>
+              <IonCard>
+                <IonCardHeader>
+                  <IonCardTitle>Card Title</IonCardTitle>
+                  <IonCardSubtitle>Card Subtitle</IonCardSubtitle>
+                </IonCardHeader>
+
+                <IonCardContent>Here's a small text description for the card content. Nothing more, nothing less.</IonCardContent>
+              </IonCard>
+            </IonCol>
+          </IonRow>
+          <IonRow>
+            <IonCol>
+              <IonCard>
+                <IonCardHeader>
+                  <IonCardTitle>Card Title</IonCardTitle>
+                  <IonCardSubtitle>Card Subtitle</IonCardSubtitle>
+                </IonCardHeader>
+
+                <IonCardContent>Here's a small text description for the card content. Nothing more, nothing less.</IonCardContent>
+              </IonCard>
+            </IonCol>
+            <IonCol>
+              <IonCard>
+                <IonCardHeader>
+                  <IonCardTitle>Card Title</IonCardTitle>
+                  <IonCardSubtitle>Card Subtitle</IonCardSubtitle>
+                </IonCardHeader>
+
+                <IonCardContent>Here's a small text description for the card content. Nothing more, nothing less.</IonCardContent>
+              </IonCard>
+            </IonCol>
+          </IonRow>
+          <IonRow>
+            <IonCol>
+              <IonCard>
+                <IonCardHeader>
+                  <IonCardTitle>Card Title</IonCardTitle>
+                  <IonCardSubtitle>Card Subtitle</IonCardSubtitle>
+                </IonCardHeader>
+
+                <IonCardContent>Here's a small text description for the card content. Nothing more, nothing less.</IonCardContent>
+              </IonCard>
+            </IonCol>
+            <IonCol>
+              <IonCard>
+                <IonCardHeader>
+                  <IonCardTitle>Card Title</IonCardTitle>
+                  <IonCardSubtitle>Card Subtitle</IonCardSubtitle>
+                </IonCardHeader>
+
+                <IonCardContent>Here's a small text description for the card content. Nothing more, nothing less.</IonCardContent>
+              </IonCard>
             </IonCol>
           </IonRow>
         </IonGrid>
