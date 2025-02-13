@@ -11,9 +11,9 @@ import {
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { ellipse, helpBuoy, helpBuoyOutline, newspaper, square, triangle } from 'ionicons/icons';
-import Tab1 from './pages/Tab1';
+import Tab1 from './pages/TheLatest';
 import SharkMap from './pages/SharkMap';
-import Tab3 from './pages/Tab3';
+import Tab3 from './pages/Help';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -52,13 +52,13 @@ const App: React.FC = () => (
     <IonReactRouter>
       <IonTabs>
         <IonRouterOutlet>
-          <Route exact path="/tab1">
+          <Route exact path="/thelatest">
             <Tab1 />
           </Route>
           <Route exact path="/sharkmap">
             <SharkMap />
           </Route>
-          <Route path="/tab3">
+          <Route path="/help">
             <Tab3 />
           </Route>
           <Route exact path="/">
@@ -66,7 +66,7 @@ const App: React.FC = () => (
           </Route>
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
-          <IonTabButton tab="tab1" href="/tab1">
+          <IonTabButton tab="thelatest" href="/thelatest">
             <IonIcon aria-hidden="true" icon={newspaper} />
             <IonLabel>The Latest</IonLabel>
           </IonTabButton>
@@ -74,7 +74,7 @@ const App: React.FC = () => (
             <IonIcon aria-hidden="true" icon={ellipse} />
             <IonLabel>Great Whites</IonLabel>
           </IonTabButton>
-          <IonTabButton tab="tab3" href="/tab3">
+          <IonTabButton tab="help" href="/help">
             <IonIcon aria-hidden="true" icon={helpBuoyOutline} />
             <IonLabel>Help</IonLabel>
           </IonTabButton>
