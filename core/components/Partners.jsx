@@ -54,7 +54,7 @@ const Partners = () => {
               </a>
             </div>
             <div className='powered-by-logo-container powered-by-logo-container--public'>
-              <p className='partner-logo public'>...and the public for sponsoring sharks or purchasing this app</p>
+              <p className='partner-logo public'>...and the public for sponsoring sharks or purchasing the mobile app</p>
             </div>
           </div>
         </div>

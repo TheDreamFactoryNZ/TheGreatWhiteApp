@@ -10,11 +10,12 @@ import {
   setupIonicReact
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { newspaper, helpBuoyOutline } from 'ionicons/icons';
+import { newspaper, helpBuoyOutline, trophyOutline } from 'ionicons/icons';
 
 import TheLatest from './pages/primary/TheLatest';
 import SharkMap from './pages/primary/SharkMap';
 import Help from './pages/primary/Help';
+import Thanks from './pages/primary/Thanks';
 
 import AboutGwp from './pages/help/AboutGwp';
 import UsingGwa from './pages/help/UsingGwa';
@@ -85,6 +86,9 @@ const App: React.FC = () => (
           <Route exact path="/help/bugreport">
             <BugReport />
           </Route>
+          <Route exact path="/thanks">
+            <Thanks />
+          </Route>
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
           <IonTabButton tab="thelatest" href="/thelatest">
@@ -98,6 +102,10 @@ const App: React.FC = () => (
           <IonTabButton tab="help" href="/help">
             <IonIcon size="medium" aria-label="Help" icon={helpBuoyOutline} />
             <IonLabel>Help</IonLabel>
+          </IonTabButton>
+          <IonTabButton tab="thanks" href="/thanks">
+            <IonIcon size="medium" aria-label="Thanks" icon={trophyOutline} />
+            <IonLabel>Special Thanks</IonLabel>
           </IonTabButton>
         </IonTabBar>
       </IonTabs>
