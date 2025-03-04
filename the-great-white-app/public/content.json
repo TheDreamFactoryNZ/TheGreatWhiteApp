@@ -4,12 +4,18 @@
         "heading": "Tracking Great Whites in New Zealand",
         "sections": [
             { "type": "text", "content": "The Great White Project is dedicated to tracking and studying Great White Sharks in New Zealand." },
-            { "type": "image", "src": "/assets/shark1.jpg", "alt": "Great White Shark" },
+            { "type": "image", "src": "/assets/images/aboutGwpHeader.jpg", "alt": "Great White Shark" },
             { "type": "ordered-list", "items": [
                 "They can grow up to 6 meters (20 feet) in length.",
                 "They have an exceptional sense of smell.",
                 "They can detect electromagnetic fields in the water."
             ]},
+            {
+                "type": "button",
+                "buttonText": "Learn More",
+                "buttonUrl": "#top",
+                "buttonUrlTarget": ""
+            },
             { "type": "image", "src": "/assets/shark2.jpg", "alt": "Shark Swimming in Ocean" }
         ]
     },

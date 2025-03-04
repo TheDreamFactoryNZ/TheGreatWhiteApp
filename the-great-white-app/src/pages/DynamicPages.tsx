@@ -11,16 +11,41 @@ import {
     IonRow,
     IonCol,
     IonSpinner,
-    IonText
+    IonButton,
+    IonAccordionGroup,
+    IonAccordion,
+    IonText,
+    IonItem,
+    IonLabel,
+    IonRippleEffect
 } from '@ionic/react';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
-const PAGE_CONTENT = "/content.json";
+const PAGE_CONTENT = "/content.json"; // Path or URL to page content
+
+interface Section {
+    type: "text" | "image" | "ordered-list" | "unordered-list" | "button" | "accordion-group" | "h1-heading" | "h2-heading" | "h3-heading";
+    content?: string;
+    src?: string;
+    alt?: string;
+    items?: string[];
+    buttonText?: string;
+    buttonUrl?: string;
+    buttonUrlTarget?: string;
+    accordions?: { header: string; content: string }[];
+}
+
+
+interface Page {
+    title: string;
+    heading: string;
+    sections: Section[];
+}
 
 const DynamicPage: React.FC = () => {
     const { pageKey } = useParams<{ pageKey: string }>();
-    const [page, setPage] = useState<any>(null);
+    const [page, setPage] = useState<Page | null>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
@@ -63,8 +88,29 @@ const DynamicPage: React.FC = () => {
                     <h2>{page.heading}</h2>
                 </IonText>
 
-                {page.sections.map((section, index) => {
+                {page.sections.map((section: Section, index: number) => {
                     switch (section.type) {
+                        case "h1-heading":
+                            return (
+                                <IonText color="primary" key={index}>
+                                    <h1>{section.content}</h1>
+                                </IonText>
+                            );
+
+                        case "h2-heading":
+                            return (
+                                <IonText color="secondary" key={index}>
+                                    <h2>{section.content}</h2>
+                                </IonText>
+                            );
+
+                        case "h3-heading":
+                            return (
+                                <IonText color="secondary" key={index}>
+                                    <h3>{section.content}</h3>
+                                </IonText>
+                            );
+
                         case "text":
                             return (
                                 <IonText key={index}>
@@ -81,23 +127,47 @@ const DynamicPage: React.FC = () => {
                             return (
                                 <IonText key={index}>
                                     <ol>
-                                        {section.items.map((item, itemIndex) => (
+                                        {section.items?.map((item: string, itemIndex: number) => (
                                             <li key={itemIndex}>{item}</li>
                                         ))}
                                     </ol>
                                 </IonText>
                             );
 
-                            case "unordered-list":
-                                return (
-                                    <IonText key={index}>
-                                        <ul>
-                                            {section.items.map((item, itemIndex) => (
-                                                <li key={itemIndex}>{item}</li>
-                                            ))}
-                                        </ul>
-                                    </IonText>
-                                );
+                        case "unordered-list":
+                            return (
+                                <IonText key={index}>
+                                    <ul>
+                                        {section.items?.map((item: string, itemIndex: number) => (
+                                            <li key={itemIndex}>{item}</li>
+                                        ))}
+                                    </ul>
+                                </IonText>
+                            );
+
+                        case "button":
+                            return (
+                                <IonButton key={index} expand="block" href={section.buttonUrl} target={section.buttonUrlTarget}>
+                                    {section.buttonText}
+                                    <IonRippleEffect></IonRippleEffect>
+                                </IonButton>
+                            );
+
+                        case "accordion-group":
+                            return (
+                                <IonAccordionGroup key={index}>
+                                    {section.accordions?.map((accordion, accIndex) => (
+                                        <IonAccordion value={`acc-${index}-${accIndex}`} key={accIndex}>
+                                            <IonItem slot="header">
+                                                <IonLabel>{accordion.header}</IonLabel>
+                                            </IonItem>
+                                            <div className="ion-padding" slot="content">
+                                                {accordion.content}
+                                            </div>
+                                        </IonAccordion>
+                                    ))}
+                                </IonAccordionGroup>
+                            );
 
                         default:
                             return null;
