@@ -72,45 +72,33 @@
             }
         ]
     },
-    "conservation": {
-        "title": "Conservation Efforts",
-        "heading": "How We Protect Great Whites",
+    "usingGwa": {
+        "title": "Using the Great White App",
+        "heading": "Interacting with The Great White App",
         "sections": [
             {
                 "type": "text",
-                "content": "Conservation is crucial to protect Great White Sharks from extinction."
-            },
-            {
-                "type": "unordered-list",
-                "items": [
-                    "Banning shark finning and illegal fishing.",
-                    "Creating marine protected areas.",
-                    "Educating the public about their importance."
-                ]
-            },
-            {
-                "type": "image",
-                "src": "/assets/conservation.jpg",
-                "alt": "Conservation Team"
+                "content": "This section is coming soon! The content needs to be written first..."
             }
         ]
     },
-    "research": {
-        "title": "Shark Research & Technology",
-        "heading": "Using Technology to Understand Sharks",
+    "commonQuestions": {
+        "title": "Frequently Asked Questions",
+        "heading": "Answers to your questions",
         "sections": [
             {
                 "type": "text",
-                "content": "Our team uses satellite tracking to study migration patterns."
-            },
-            {
-                "type": "image",
-                "src": "/assets/research.jpg",
-                "alt": "Researchers tagging a shark"
-            },
+                "content": "FAQ to be added."
+            }
+        ]
+    },
+    "bugReport": {
+        "title": "Report an Issue",
+        "heading": "Something wrong? Let us know.",
+        "sections": [
             {
                 "type": "text",
-                "content": "This data helps us predict shark movements and prevent conflicts with humans."
+                "content": "FAQ to be added."
             }
         ]
     }

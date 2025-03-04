@@ -50,7 +50,7 @@ const Help: React.FC<RouteComponentProps> = () => {
               </IonCard>
             </IonCol>
             <IonCol size="12" size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
-              <IonCard routerLink="/help/usinggwa" className='help-card'>
+              <IonCard routerLink="/help/usingGwa" className='help-card'>
                 <IonIcon aria-hidden="true" className='help-icon' icon={happyOutline} color="primary"></IonIcon>
                 <IonCardHeader className='help-card-content'>
                   <IonCardTitle>Using the Great White App</IonCardTitle>
@@ -60,7 +60,7 @@ const Help: React.FC<RouteComponentProps> = () => {
               </IonCard>
             </IonCol>
             <IonCol size="12" size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
-              <IonCard routerLink="/help/faq" className='help-card'>
+              <IonCard routerLink="/help/commonQuestions" className='help-card'>
                 <IonIcon aria-hidden="true" className='help-icon' icon={helpCircleOutline} color="primary"></IonIcon>
                 <IonCardHeader className='help-card-content'>
                   <IonCardTitle>Common Questions</IonCardTitle>
@@ -70,7 +70,7 @@ const Help: React.FC<RouteComponentProps> = () => {
               </IonCard>
             </IonCol>
             <IonCol size="12" size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
-              <IonCard routerLink="/help/BugReport" className='help-card'>
+              <IonCard routerLink="/help/bugReport" className='help-card'>
                 <IonIcon aria-hidden="true" className='help-icon' icon={bugOutline} color="primary"></IonIcon>
                 <IonCardHeader className='help-card-content'>
                   <IonCardTitle>Report an Issue</IonCardTitle>
