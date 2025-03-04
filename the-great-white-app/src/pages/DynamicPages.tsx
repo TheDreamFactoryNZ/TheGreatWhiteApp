@@ -61,9 +61,9 @@ const DynamicPage: React.FC = () => {
     };
 
     const getPageFile = (pageKey: string) => {
-        if (["aboutGwp", "usingGwa", "commonQuestions", "bugReport"].includes(pageKey)) return "/content/help-pages.json";
-        if (["TheLatest", "Thanks"].includes(pageKey)) return "/content/main-pages.json";
-        return "/content/main-pages.json"; // Default fallback
+        if (["aboutGwp", "usingGwa", "commonQuestions", "bugReport"].includes(pageKey)) return "https://map.sustainableoceansociety.co.nz/public/content/help-pages.json";
+        if (["TheLatest", "Thanks"].includes(pageKey)) return "https://map.sustainableoceansociety.co.nz/public/content/main-pages.json";
+        return "https://map.sustainableoceansociety.co.nz/public/content/main-pages.json"; // Default fallback
     };
     
     useEffect(() => {
@@ -74,6 +74,11 @@ const DynamicPage: React.FC = () => {
                 const response = await fetch(file);
                 const data = await response.json();
                 setPage(data[pageKey]); // Get the correct page content
+                
+                // Scroll to top when page changes
+                if (contentRef.current) {
+                    contentRef.current.scrollToTop(0);
+                }
             } catch (err) {
                 setError("Failed to load content.");
             } finally {

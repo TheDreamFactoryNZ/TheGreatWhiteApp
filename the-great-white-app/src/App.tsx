@@ -56,24 +56,20 @@ const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
       <IonTabs>
-        <IonRouterOutlet>
-          <Route exact path="/">
-            <Redirect to="/sharkmap" />
-          </Route>
+      <IonRouterOutlet>
+        <Route exact path="/">
+          <Redirect to="/sharkmap" />
+        </Route>
 
-          <Route exact path="/sharkmap">
-            <SharkMap />
-          </Route>
-          
-          <Route exact path="/help">
-            <Help />
-          </Route>
+        <Route exact path="/sharkmap" component={SharkMap} />
 
-          <Route exact path="/help/:pageKey" component={DynamicPages} />
+        {/* ✅ Help Page and Subpages are in the SAME Router Outlet */}
+        <Route exact path="/help" component={Help} />
+        <Route exact path="/help/:pageKey" component={DynamicPages} />
 
-          <Route exact path="/page/:pageKey" component={DynamicPages} />
-
-        </IonRouterOutlet>
+        {/* ✅ Other Dynamic Pages */}
+        <Route exact path="/page/:pageKey" component={DynamicPages} />
+      </IonRouterOutlet>
         <IonTabBar slot="bottom">
           <IonTabButton tab="thelatest" href="/page/TheLatest">
             <IonIcon size="medium" aria-label="The Latest" icon={newspaper} />
