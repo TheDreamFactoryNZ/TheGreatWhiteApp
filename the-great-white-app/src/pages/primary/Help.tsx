@@ -17,11 +17,6 @@ import {
   IonCardSubtitle
 } from '@ionic/react';
 
-import AboutGwp from '../help/AboutGwp';
-import UsingGwa from '../help/UsingGwa';
-import Faq from '../help/Faq';
-import BugReport from '../help/BugReport';
-
 import {
   informationCircleOutline,
   happyOutline,
@@ -45,7 +40,7 @@ const Help: React.FC<RouteComponentProps> = () => {
         <IonGrid fixed={true}>
           <IonRow>
             <IonCol size="12" size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
-              <IonCard routerLink="/help/aboutgwp" className='help-card'>
+              <IonCard routerLink="/help/aboutGwp" className='help-card'>
                 <IonIcon aria-hidden="true" className='help-icon' icon={informationCircleOutline} color="primary"></IonIcon>
                 <IonCardHeader className='help-card-content'>
                   <IonCardTitle>About the Great White Project</IonCardTitle>

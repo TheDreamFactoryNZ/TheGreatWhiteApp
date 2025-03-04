@@ -10,17 +10,41 @@ import {
     IonGrid,
     IonRow,
     IonCol,
+    IonSpinner,
     IonText
 } from '@ionic/react';
 import { useParams } from 'react-router-dom';
-import { pages } from './content'; // Import the shared content
+import { useEffect, useState } from 'react';
+
+const PAGE_CONTENT = "/content.json";
 
 const DynamicPage: React.FC = () => {
-    const { pageKey } = useParams<{ pageKey: string }>(); // Get page name from URL
-    const page = pages[pageKey]; // Fetch the correct page content
+    const { pageKey } = useParams<{ pageKey: string }>();
+    const [page, setPage] = useState<any>(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
 
-    if (!page) {
-        return <IonText><p>Page not found.</p></IonText>;
+    useEffect(() => {
+        const fetchContent = async () => {
+            try {
+                const response = await fetch(PAGE_CONTENT);
+                const data = await response.json();
+                setPage(data[pageKey]); // Get the correct page content
+            } catch (err) {
+                setError("Failed to load content.");
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchContent();
+    }, [pageKey]);
+
+    if (loading) {
+        return <IonContent className="ion-padding"><IonSpinner /></IonContent>;
+    }
+
+    if (error || !page) {
+        return <IonContent className="ion-padding"><p>{error || "Page not found."}</p></IonContent>;
     }
 
     return (
