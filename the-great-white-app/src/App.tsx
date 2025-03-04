@@ -17,10 +17,7 @@ import SharkMap from './pages/primary/SharkMap';
 import Help from './pages/primary/Help';
 import Thanks from './pages/primary/Thanks';
 
-import AboutGwp from './pages/help/AboutGwp';
-import UsingGwa from './pages/help/UsingGwa';
-import Faq from './pages/help/UsingGwa';
-import BugReport from './pages/help/BugReport';
+import DynamicPages from './pages/DynamicPages';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -65,6 +62,7 @@ const App: React.FC = () => (
           <Route exact path="/">
             <Redirect to="/sharkmap" />
           </Route>
+
           <Route exact path="/thelatest">
             <TheLatest />
           </Route>
@@ -74,18 +72,9 @@ const App: React.FC = () => (
           <Route exact path="/help">
             <Help />
           </Route>
-          <Route exact path="/help/aboutgwp">
-            <AboutGwp />
-          </Route>
-          <Route exact path="/help/usinggwa">
-            <UsingGwa />
-          </Route>
-          <Route exact path="/help/faq">
-            <Faq />
-          </Route>
-          <Route exact path="/help/bugreport">
-            <BugReport />
-          </Route>
+
+          <Route exact path="/help/:pageKey" component={DynamicPages} />
+
           <Route exact path="/thanks">
             <Thanks />
           </Route>
