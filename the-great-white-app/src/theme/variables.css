@@ -1,5 +1,69 @@
 /* For information on how to create your own theme, please see:
 http://ionicframework.com/docs/theming/ */
+
+@font-face {
+    font-family: 'Rajdhani';
+    src: url('../assets/fonts/Rajdhani-Light.ttf') format('truetype');
+    font-weight: 300; /* Light */
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Rajdhani';
+    src: url('../assets/fonts/Rajdhani-Semibold.ttf') format('truetype');
+    font-weight: 600; /* SemiBold */
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Rajdhani';
+    src: url('../assets/fonts/Rajdhani-Bold.ttf') format('truetype');
+    font-weight: 700; /* Bold */
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'SourceSans3';
+    src: url('../assets/fonts/SourceSans3-VariableFont_wght.ttf') format('truetype');
+    font-weight: 100 900; /* Supports weight range */
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'SourceSans3';
+    src: url('../assets/fonts/SourceSans3-Italic-VariableFont_wght.ttf') format('truetype');
+    font-weight: 100 900; /* Supports weight range */
+    font-style: italic;
+}
+
+/* ✅ Set Default Global Font */
+:root {
+    --ion-font-family: 'SourceSans3', sans-serif; /* Change if needed */
+}
+
+h1 {
+	font-family: 'Rajdhani', sans-serif;
+	font-weight: 700;
+	letter-spacing: 0.05em;
+}
+
+h2 {
+	font-family: 'Rajdhani', sans-serif;
+	font-weight: 600;
+	letter-spacing: 0.05em;
+}
+
+h3 {
+	font-family: 'Rajdhani', sans-serif;
+	font-weight: 300;
+	letter-spacing: 0.05em;
+}
+
+p, ul {
+	font-family: 'SourceSans3', sans-serif;
+	font-weight: 400;
+}
+
 :root {
 
 	/* Colours */

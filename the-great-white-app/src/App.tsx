@@ -63,11 +63,9 @@ const App: React.FC = () => (
 
         <Route exact path="/sharkmap" component={SharkMap} />
 
-        {/* ✅ Help Page and Subpages are in the SAME Router Outlet */}
         <Route exact path="/help" component={Help} />
         <Route exact path="/help/:pageKey" component={DynamicPages} />
 
-        {/* ✅ Other Dynamic Pages */}
         <Route exact path="/page/:pageKey" component={DynamicPages} />
       </IonRouterOutlet>
         <IonTabBar slot="bottom">

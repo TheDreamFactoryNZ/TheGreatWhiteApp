@@ -1,19 +1,7 @@
-body {
+/*body {
   margin: 0;
   padding: 0;
 }
-/*
-#app-page:not(ion-app #app-page) {
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  display: flex;
-  position: absolute;
-  flex-direction: column;
-  justify-content: space-between;
-  contain: layout size style;
-}*/
 
 #app-container {
   display: flex;
@@ -62,4 +50,4 @@ body {
 
 a.mapboxgl-ctrl-logo.mapboxgl-compact {
   width: 4.58vw !important;
-}
+}*/

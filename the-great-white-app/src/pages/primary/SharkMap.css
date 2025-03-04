@@ -6,3 +6,7 @@
 #map-page #app-container {
     height: 100%;
 }
+
+#map-page {
+  color: #000 !important;
+}
