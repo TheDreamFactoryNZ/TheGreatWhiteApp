@@ -3,42 +3,76 @@
         "title": "About the Great White Project",
         "heading": "Tracking Great Whites in New Zealand",
         "sections": [
-            { "type": "text", "content": "The Great White Project is dedicated to tracking and studying Great White Sharks in New Zealand." },
-            { "type": "image", "src": "/assets/images/aboutGwpHeader.jpg", "alt": "Great White Shark" },
-            { "type": "ordered-list", "items": [
-                "They can grow up to 6 meters (20 feet) in length.",
-                "They have an exceptional sense of smell.",
-                "They can detect electromagnetic fields in the water."
-            ]},
+            {
+                "type": "text",
+                "content": "The Great White Project is dedicated to tracking and studying Great White Sharks in New Zealand."
+            },
+            {
+                "type": "image",
+                "src": "/assets/images/aboutGwpHeader.jpg",
+                "alt": "Great White Shark"
+            },
+            {
+                "type": "ordered-list",
+                "items": [
+                    "They can grow up to 6 meters (20 feet) in length.",
+                    "They have an exceptional sense of smell.",
+                    "They can detect electromagnetic fields in the water."
+                ]
+            },
             {
                 "type": "button",
                 "buttonText": "Learn More",
                 "buttonUrl": "#top",
                 "buttonUrlTarget": ""
             },
-            { "type": "image", "src": "/assets/shark2.jpg", "alt": "Shark Swimming in Ocean" }
+            {
+                "type": "image",
+                "src": "/assets/shark2.jpg",
+                "alt": "Shark Swimming in Ocean"
+            }
         ]
     },
     "conservation": {
         "title": "Conservation Efforts",
         "heading": "How We Protect Great Whites",
         "sections": [
-            { "type": "text", "content": "Conservation is crucial to protect Great White Sharks from extinction." },
-            { "type": "unordered-list", "items": [
-                "Banning shark finning and illegal fishing.",
-                "Creating marine protected areas.",
-                "Educating the public about their importance."
-            ]},
-            { "type": "image", "src": "/assets/conservation.jpg", "alt": "Conservation Team" }
+            {
+                "type": "text",
+                "content": "Conservation is crucial to protect Great White Sharks from extinction."
+            },
+            {
+                "type": "unordered-list",
+                "items": [
+                    "Banning shark finning and illegal fishing.",
+                    "Creating marine protected areas.",
+                    "Educating the public about their importance."
+                ]
+            },
+            {
+                "type": "image",
+                "src": "/assets/conservation.jpg",
+                "alt": "Conservation Team"
+            }
         ]
     },
     "research": {
         "title": "Shark Research & Technology",
         "heading": "Using Technology to Understand Sharks",
         "sections": [
-            { "type": "text", "content": "Our team uses satellite tracking to study migration patterns." },
-            { "type": "image", "src": "/assets/research.jpg", "alt": "Researchers tagging a shark" },
-            { "type": "text", "content": "This data helps us predict shark movements and prevent conflicts with humans." }
+            {
+                "type": "text",
+                "content": "Our team uses satellite tracking to study migration patterns."
+            },
+            {
+                "type": "image",
+                "src": "/assets/research.jpg",
+                "alt": "Researchers tagging a shark"
+            },
+            {
+                "type": "text",
+                "content": "This data helps us predict shark movements and prevent conflicts with humans."
+            }
         ]
     }
 }

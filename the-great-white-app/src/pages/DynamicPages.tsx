@@ -20,7 +20,7 @@ import {
     IonRippleEffect
 } from '@ionic/react';
 import { useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, createRef } from 'react';
 
 const PAGE_CONTENT = "/content.json"; // Path or URL to page content
 
@@ -48,6 +48,12 @@ const DynamicPage: React.FC = () => {
     const [page, setPage] = useState<Page | null>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
+
+    const contentRef = createRef<HTMLIonContentElement>();
+
+    function scrollToTop() {
+        contentRef.current?.scrollToTop(500);
+      }
 
     useEffect(() => {
         const fetchContent = async () => {
@@ -83,7 +89,7 @@ const DynamicPage: React.FC = () => {
                 </IonToolbar>
             </IonHeader>
 
-            <IonContent fullscreen className="ion-padding">
+            <IonContent className="ion-padding">
                 <IonText>
                     <h2>{page.heading}</h2>
                 </IonText>
