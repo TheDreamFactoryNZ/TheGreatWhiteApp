@@ -22,9 +22,8 @@
             },
             {
                 "type": "button",
-                "buttonText": "Learn More",
-                "buttonUrl": "#top",
-                "buttonUrlTarget": ""
+                "buttonText": "Scroll to Top",
+                "onClick": "scrollToTop"
             },
             {
                 "type": "image",

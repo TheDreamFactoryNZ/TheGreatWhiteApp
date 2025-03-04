@@ -20,7 +20,7 @@ import {
     IonRippleEffect
 } from '@ionic/react';
 import { useParams } from 'react-router-dom';
-import { useEffect, useState, createRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 const PAGE_CONTENT = "/content.json"; // Path or URL to page content
 
@@ -34,6 +34,7 @@ interface Section {
     buttonUrl?: string;
     buttonUrlTarget?: string;
     accordions?: { header: string; content: string }[];
+    onClick?: string;
 }
 
 
@@ -49,11 +50,17 @@ const DynamicPage: React.FC = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
-    const contentRef = createRef<HTMLIonContentElement>();
+    const contentRef = useRef<HTMLIonContentElement | null>(null);
 
-    function scrollToTop() {
-        contentRef.current?.scrollToTop(500);
-      }
+    const scrollToTop = () => {
+        if (contentRef.current) {
+            contentRef.current.scrollToTop(500);
+        }
+    };
+
+    const buttonActions: Record<string, () => void> = {
+        scrollToTop
+    };
 
     useEffect(() => {
         const fetchContent = async () => {
@@ -89,7 +96,7 @@ const DynamicPage: React.FC = () => {
                 </IonToolbar>
             </IonHeader>
 
-            <IonContent className="ion-padding">
+            <IonContent ref={contentRef} className="ion-padding">
                 <IonText>
                     <h2>{page.heading}</h2>
                 </IonText>
@@ -153,7 +160,7 @@ const DynamicPage: React.FC = () => {
 
                         case "button":
                             return (
-                                <IonButton key={index} expand="block" href={section.buttonUrl} target={section.buttonUrlTarget}>
+                                <IonButton key={index} expand="block" href={section.buttonUrl} target={section.buttonUrlTarget} onClick={section.onClick ? buttonActions[section.onClick] : undefined}>
                                     {section.buttonText}
                                     <IonRippleEffect></IonRippleEffect>
                                 </IonButton>
