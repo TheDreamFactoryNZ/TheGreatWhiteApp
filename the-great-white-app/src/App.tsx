@@ -12,10 +12,8 @@ import {
 import { IonReactRouter } from '@ionic/react-router';
 import { newspaper, helpBuoyOutline, trophyOutline } from 'ionicons/icons';
 
-import TheLatest from './pages/primary/TheLatest';
 import SharkMap from './pages/primary/SharkMap';
 import Help from './pages/primary/Help';
-import Thanks from './pages/primary/Thanks';
 
 import DynamicPages from './pages/DynamicPages';
 
@@ -63,24 +61,21 @@ const App: React.FC = () => (
             <Redirect to="/sharkmap" />
           </Route>
 
-          <Route exact path="/thelatest">
-            <TheLatest />
-          </Route>
           <Route exact path="/sharkmap">
             <SharkMap />
           </Route>
+          
           <Route exact path="/help">
             <Help />
           </Route>
 
           <Route exact path="/help/:pageKey" component={DynamicPages} />
 
-          <Route exact path="/thanks">
-            <Thanks />
-          </Route>
+          <Route exact path="/page/:pageKey" component={DynamicPages} />
+
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
-          <IonTabButton tab="thelatest" href="/thelatest">
+          <IonTabButton tab="thelatest" href="/page/TheLatest">
             <IonIcon size="medium" aria-label="The Latest" icon={newspaper} />
             <IonLabel>The Latest</IonLabel>
           </IonTabButton>
@@ -92,7 +87,7 @@ const App: React.FC = () => (
             <IonIcon size="medium" aria-label="Help" icon={helpBuoyOutline} />
             <IonLabel>Help</IonLabel>
           </IonTabButton>
-          <IonTabButton tab="thanks" href="/thanks">
+          <IonTabButton tab="thanks" href="/page/Thanks">
             <IonIcon size="medium" aria-label="Thanks" icon={trophyOutline} />
             <IonLabel>Special Thanks</IonLabel>
           </IonTabButton>

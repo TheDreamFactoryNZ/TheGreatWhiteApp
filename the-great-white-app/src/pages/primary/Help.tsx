@@ -2,7 +2,6 @@ import { Redirect, Route, RouteComponentProps } from 'react-router-dom';
 
 import {
   IonPage,
-  IonRouterOutlet,
   IonHeader,
   IonToolbar,
   IonTitle,

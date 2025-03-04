@@ -22,8 +22,6 @@ import {
 import { useParams } from 'react-router-dom';
 import { useEffect, useState, useRef } from 'react';
 
-const PAGE_CONTENT = "/content.json"; // Path or URL to page content
-
 interface Section {
     type: "text" | "image" | "ordered-list" | "unordered-list" | "button" | "accordion-group" | "h1-heading" | "h2-heading" | "h3-heading";
     content?: string;
@@ -62,10 +60,18 @@ const DynamicPage: React.FC = () => {
         scrollToTop
     };
 
+    const getPageFile = (pageKey: string) => {
+        if (["aboutGwp", "usingGwa", "commonQuestions", "bugReport"].includes(pageKey)) return "/content/help-pages.json";
+        if (["TheLatest", "Thanks"].includes(pageKey)) return "/content/main-pages.json";
+        return "/content/main-pages.json"; // Default fallback
+    };
+    
     useEffect(() => {
         const fetchContent = async () => {
+            setLoading(true);
             try {
-                const response = await fetch(PAGE_CONTENT);
+                const file = getPageFile(pageKey);
+                const response = await fetch(file);
                 const data = await response.json();
                 setPage(data[pageKey]); // Get the correct page content
             } catch (err) {
