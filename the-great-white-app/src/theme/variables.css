@@ -199,4 +199,7 @@ p, ul {
 	  --ion-color-secondary-shade: #cbced4;
 	  --ion-color-secondary-tint: #e9ecf2;
 	}
+	#great-whites-icon {
+		color: #101855;
+	}
   }
