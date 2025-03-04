@@ -36,14 +36,6 @@ import './Help.css';
 const Help: React.FC<RouteComponentProps> = () => {
   return (
     <IonPage>
-      <IonRouterOutlet>
-        <Route exact path="/help/aboutgwp">
-        <AboutGwp />
-        </Route>
-        <Route path="/help/usinggwa" component={UsingGwa} />
-        <Route path="/help/faq" component={Faq} />
-        <Route path="/help/bugreport" component={BugReport} />
-      </IonRouterOutlet>
       <IonHeader>
         <IonToolbar>
           <IonTitle>Help &amp; FAQ</IonTitle>
