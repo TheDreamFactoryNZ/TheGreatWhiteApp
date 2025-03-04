@@ -1,7 +1,7 @@
 {
     "TheLatest": {
-        "title": "Check out DaLatest!",
-        "heading": "Tracking Great Whites in New Zealand",
+        "title": "The Latest",
+        "heading": "The Great White App 2.0 has Launched!",
         "sections": [
             {
                 "type": "image",
@@ -10,60 +10,43 @@
             },
             {
                 "type": "h1-heading",
-                "content": "The Great White Project is dedicated to tracking and studying Great White Sharks in New Zealand."
+                "content": "The new and improved Great White App has arrived on shores"
             },
             {
                 "type": "text",
-                "content": "In February 2020, a juvenile Great White shark bit the surfboard of a surfer in Pauanui Beach. Dr Riley Elliott, specialised in shark behaviour and migration, confirmed the species and later saw evidence of another Great White shark around a fishing boat at the Bowentown end of Tauranga harbour. "
+                "content": "Welcome to V2 of the app! A general introduction, blah blah blah etc."
+            },
+            {
+                "type": "h2-heading",
+                "content": "An update on tagging"
             },
             {
                 "type": "text",
-                "content": "These encounters at the time were rare for the NE region of the North Island of NZ. Historically the consensus was that Great Whites aggregate around Stewart Island, to hunt seals, and likely to socialise and mate. These often mature sharks, then migrate with the onset of winter, to the tropics of Polynesia. Research showed that when these mature animals return south, to Stewart Island once again at the start of summer, they likely give birth to pups on the way, in the warm, shallow and protected harbours like the Kaipara, on the W coast of the North Island."
+                "content": "A general blurb to be written about what's happened, happening and will happen with tagging efforts"
+            },
+            {
+                "type": "h2-heading",
+                "content": "What's new in the app"
             },
             {
                 "type": "text",
-                "content": "While some Great White activity has been seen historically in the NE region of the North Island, it has been rare. Dr Elliott however hypothesised that there may be a growing population of juvenile Great Whites inhabiting this region due to three factors:"
+                "content": "Izaak to write a brief rundown of what is new with the app, the latest etc!"
             },
             {
                 "type": "ordered-list",
                 "items": [
-                    "Conservation success of protecting the Great White for several decades, which logically should result in an increasing population, albeit slowly (Great Whites have only 5 pups every 2 years and take 35 years to become sexually mature to reproduce).",
-                    "Climate change and increasing persistence of La Nina weather systems, moves warmer ocean waters, further south, spreading the juvenile Great White shark habitat range, especially from SE Australia (which is the largest juvenile nursery ground for the SW Pacific GW population) to NZ waters.",
-                    "Changes to fishing methods (like banning gill nets inshore) and reduction of land based runoff and pollution, may have improved the water quality and habitat for many coastal marine species in certain areas, like the Tauranga Harbour. Reports of booming fish life in such areas, may produce ideal nursery grounds for Great Whites and thus we have seen pupping in such regions increase."
+                    "Change #1",
+                    "Change #2",
+                    "etc etc"
                 ]
             },
             {
-                "type": "text",
-                "content": "With this in mind, and living in this region as a surfer, diver and shark biologist, Dr Elliott recognised that a probable increase in Great White presence, overlapping with one of NZ’s largest summer holiday hotspots, requires investigation, and so he submitted for a Department of Conservation permit in Dec 2020 (this species is protected under the Wildlife Act and it is illegal to interact, disturb or harm a Great White in any way without a permit)."
+                "type": "h2-heading",
+                "content": "Summary"
             },
             {
                 "type": "text",
-                "content": "A permit was issued 18 months later, in June 2022, however during this processing time a significant increase and persistence of Great Whites has occurred in the region. "
-            },
-            {
-                "type": "text",
-                "content": "During the Summer of 2020/21, Dr Elliott photo identified 15 individual Great White sharks solely from ones caught accidentally or filmed by fishermen in the Bowentown Harbour. Further individuals were observed throughout the rest of the Tauranga Harbour and the greater BOP coastline, and tragically a young woman was fatally bitten by a shark in January 2021, which Dr Elliott identified formally as a 2.8m sub-adult Great White shark."
-            },
-            {
-                "type": "image",
-                "src": "/assets/shark2.jpg",
-                "alt": "Shark Swimming in Ocean"
-            },
-            {
-                "type": "text",
-                "content": "Over the Autumn, Winter and Spring period of 2021, sightings were largely absent, likely related to a combination of Great Whites migrating with cooling water temperatures and food sources, and less people being on the water."
-            },
-            {
-                "type": "text",
-                "content": "During the Summer of 2021/22, Great Whites were again being regularly encountered by fishermen in the Bowentown area, and along the coastline of the BOP region. Surfers and water users were seeing them often, being bumped and one teenage surfer was even launched at by a Great White while riding a wave. Concern mounted in the community of this region, due to a lack of information about the movement and behaviour and reason for Great Whites being in what is one of New Zealand’s largest summer holiday hotspots."
-            },
-            {
-                "type": "text",
-                "content": "The Tauranga harbour community requested Dr Elliott provide some information, however with no research permit at this point, the best Dr Elliott was able to do was hold a community meeting at the Bowentown Boating and Fishing Club, where 400 people attended. He provided context and rationale about why the sharks were likely here, and how to best operate over the summer period in order to avoid possible adverse interactions; not swimming where people are fishing being the main recommendation, given most interactions with the sharks were occurring at fishing boats with berley bags in the water."
-            },
-            {
-                "type": "text",
-                "content": "It was also cautioned that set-nets or gill-nets, were being launched on Bowentown beaches, in front of the campground and in Anzac Bay, both popular swimming beaches. The use of set-nets catching fish species which are prey for sharks, would potentially draw sharks into areas used by bathers, and thus overlapping foraging predators with us. It also put the endangered Great White at threat of being caught itself in these nets, resulting in death.  Although the public raised this concern themselves with local authorities, the nets remained and on the 26th December 2021 two juvenile Great Whites were found dead in the nets off the main Bowentown beach."
+                "content": "Closing remarks, etc etc"
             },
             {
                 "type": "button",
@@ -73,8 +56,8 @@
         ]
     },
     "Thanks": {
-        "title": "Danke Schun!",
-        "heading": "Interacting with The Great White App",
+        "title": "Special Thanks",
+        "heading": "Thank you to those who have made the Great White Project possible",
         "sections": [
             {
                 "type": "text",
