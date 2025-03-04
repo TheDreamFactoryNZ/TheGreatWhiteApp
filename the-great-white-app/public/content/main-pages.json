@@ -57,11 +57,99 @@
     },
     "Thanks": {
         "title": "Special Thanks",
-        "heading": "Thank you to those who have made the Great White Project possible",
+        "heading": "Thank you to everybody who has helped make the Great White Project possible!",
         "sections": [
             {
                 "type": "text",
-                "content": "This section is coming soon! The content needs to be written first..."
+                "content": "From sponsoring a shark or equipment through to purchasing and supporting development of this app, you and thousands of people across NZ and beyond are making a difference.",
+                "class": "ion-text-center"
+            },
+            {
+                "type": "h2-heading",
+                "content": "A special thanks to..."
+            },
+            {
+                "type": "h3-heading",
+                "content": "App Sponsors"
+            },
+            {
+                "type": "text",
+                "content": "These organisations have provided the means for SOS to deploy tags and provide this app to the general public",
+                "class": "ion-text-center"
+            },
+            {
+                "type": "unordered-list",
+                "items": [
+                    "Yamaha - Marine Engine",
+                    "Extreme Boats - Boat",
+                    "GFAB Trailers - Boat Trailer",
+                    "Mazda - Vehicle",
+                    "Raymarine - Marine Electronics",
+                    "SeaDek - Marine Flooring",
+                    "The Dream Factory - Technology & App Development"
+                ]
+            },
+            {
+                "type": "h3-heading",
+                "content": "Tag Sponsors"
+            },
+            {
+                "type": "text",
+                "content": "These are individuals and organisations who have contributed towards the tags themselves - the device necessary to successfully track the location of sharks",
+                "class": "ion-text-center"
+            },
+            {
+                "type": "unordered-list",
+                "items": [
+                    "Yamaha - Marine Engine",
+                    "Extreme Boats - Boat",
+                    "GFAB Trailers - Boat Trailer",
+                    "Mazda - Vehicle",
+                    "Raymarine - Marine Electronics",
+                    "SeaDek - Marine Flooring",
+                    "The Dream Factory - Technology & App Development"
+                ]
+            },
+            {
+                "type": "h3-heading",
+                "content": "Development Support"
+            },
+            {
+                "type": "text",
+                "content": "What started as building a website turned into developing an app to track sharks - no easy feat. These people assisted with development every step of the way: whether in support, resources, testing or their constructive criticism, they are apprciated.",
+                "class": "ion-text-center"
+            },
+            {
+                "type": "unordered-list",
+                "items": [
+                    "Andrew Wheelhouse",
+                    "Ben Gaze",
+                    "Courtney Moody",
+                    "Daniel Lansdaal",
+                    "The Earthranger team",
+                    "Joseph Nicholls",
+                    "Kandy Mulcahy",
+                    "Kieran Ashburner",
+                    "Lauren Batcheldor",
+                    "Marena Smith",
+                    "Phil & Cyndi Wicks",
+                    "Rebekah Knight",
+                    "Riki-lee Krutz"
+                ]
+            },
+            {
+                "type": "h3-heading",
+                "content": "YOU"
+            },
+            {
+                "type": "text",
+                "content": "For the purchasing of this app, a means of supporting the Great White Project.",
+                "class": "ion-text-center"
+            },
+            {
+                "type": "button",
+                "buttonText": "Scroll to Top",
+                "onClick": "scrollToTop"
             }
         ]
     }

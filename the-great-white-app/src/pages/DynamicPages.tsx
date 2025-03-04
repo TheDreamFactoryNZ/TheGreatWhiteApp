@@ -111,7 +111,7 @@ const DynamicPage: React.FC = () => {
 
             <IonContent ref={contentRef} className="ion-padding">
                 <IonText>
-                    <h1>{page.heading}</h1>
+                    <h1 className='ion-text-center'>{page.heading}</h1>
                 </IonText>
 
                 {page.sections.map((section: Section, index: number) => {
