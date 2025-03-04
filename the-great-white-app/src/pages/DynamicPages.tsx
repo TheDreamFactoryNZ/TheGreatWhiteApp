@@ -24,6 +24,8 @@ import { useEffect, useState, useRef } from 'react';
 
 interface Section {
     type: "text" | "image" | "ordered-list" | "unordered-list" | "button" | "accordion-group" | "h1-heading" | "h2-heading" | "h3-heading";
+    id?: string;
+    class?: string;
     content?: string;
     src?: string;
     alt?: string;
@@ -109,7 +111,7 @@ const DynamicPage: React.FC = () => {
 
             <IonContent ref={contentRef} className="ion-padding">
                 <IonText>
-                    <h2>{page.heading}</h2>
+                    <h1>{page.heading}</h1>
                 </IonText>
 
                 {page.sections.map((section: Section, index: number) => {
@@ -117,42 +119,42 @@ const DynamicPage: React.FC = () => {
                         case "h1-heading":
                             return (
                                 <IonText color="primary" key={index}>
-                                    <h1>{section.content}</h1>
+                                    <h1 id={section.id} className={section.class}>{section.content}</h1>
                                 </IonText>
                             );
 
                         case "h2-heading":
                             return (
                                 <IonText color="secondary" key={index}>
-                                    <h2>{section.content}</h2>
+                                    <h2 id={section.id} className={section.class}>{section.content}</h2>
                                 </IonText>
                             );
 
                         case "h3-heading":
                             return (
                                 <IonText color="secondary" key={index}>
-                                    <h3>{section.content}</h3>
+                                    <h3 id={section.id} className={section.class}>{section.content}</h3>
                                 </IonText>
                             );
 
                         case "text":
                             return (
                                 <IonText key={index}>
-                                    <p>{section.content}</p>
+                                    <p id={section.id} className={section.class}>{section.content}</p>
                                 </IonText>
                             );
 
                         case "image":
                             return (
-                                <IonImg key={index} src={section.src} alt={section.alt} />
+                                <IonImg id={section.id} className={section.class} key={index} src={section.src} alt={section.alt} />
                             );
 
                         case "ordered-list":
                             return (
                                 <IonText key={index}>
-                                    <ol>
+                                    <ol id={section.id} className={section.class}>
                                         {section.items?.map((item: string, itemIndex: number) => (
-                                            <li key={itemIndex}>{item}</li>
+                                            <li id={section.id} className={section.class} key={itemIndex}>{item}</li>
                                         ))}
                                     </ol>
                                 </IonText>
@@ -161,9 +163,9 @@ const DynamicPage: React.FC = () => {
                         case "unordered-list":
                             return (
                                 <IonText key={index}>
-                                    <ul>
+                                    <ul id={section.id} className={section.class}>
                                         {section.items?.map((item: string, itemIndex: number) => (
-                                            <li key={itemIndex}>{item}</li>
+                                            <li id={section.id} className={section.class} key={itemIndex}>{item}</li>
                                         ))}
                                     </ul>
                                 </IonText>
@@ -171,7 +173,7 @@ const DynamicPage: React.FC = () => {
 
                         case "button":
                             return (
-                                <IonButton key={index} expand="block" href={section.buttonUrl} target={section.buttonUrlTarget} onClick={section.onClick ? buttonActions[section.onClick] : undefined}>
+                                <IonButton id={section.id} className={section.class} key={index} expand="block" href={section.buttonUrl} target={section.buttonUrlTarget} onClick={section.onClick ? buttonActions[section.onClick] : undefined}>
                                     {section.buttonText}
                                     <IonRippleEffect></IonRippleEffect>
                                 </IonButton>
@@ -179,13 +181,13 @@ const DynamicPage: React.FC = () => {
 
                         case "accordion-group":
                             return (
-                                <IonAccordionGroup key={index}>
+                                <IonAccordionGroup id={section.id} className={section.class} key={index}>
                                     {section.accordions?.map((accordion, accIndex) => (
-                                        <IonAccordion value={`acc-${index}-${accIndex}`} key={accIndex}>
-                                            <IonItem slot="header">
-                                                <IonLabel>{accordion.header}</IonLabel>
+                                        <IonAccordion id={section.id} className={section.class} value={`acc-${index}-${accIndex}`} key={accIndex}>
+                                            <IonItem id={section.id} className={section.class} slot="header">
+                                                <IonLabel id={section.id} className={section.class}>{accordion.header}</IonLabel>
                                             </IonItem>
-                                            <div className="ion-padding" slot="content">
+                                            <div id={section.id} className={`ion-padding ${section.class || ""}`} slot="content">
                                                 {accordion.content}
                                             </div>
                                         </IonAccordion>
