@@ -144,19 +144,23 @@ const DynamicPage: React.FC = () => {
         "section-group": (section, index) => (
             <div key={index} className={`section-group ${section.class || ""}`} id={section.id}>
                 {section.sections?.map((subSection, subIndex) => (
-                    <div key={subIndex} className={`section-group--item ${section.class || ""}`}>
-                        {componentMap[subSection.type]?.(subSection, subIndex) ?? null}
-                    </div>
+                    componentMap[subSection.type]?.(subSection, subIndex) ?? null
                 ))}
+
             </div>
         ),
     };
 
     const getPageFile = (pageKey: string) => {
-        if (["aboutGwp", "usingGwa", "commonQuestions", "bugReport"].includes(pageKey)) return "https://map.sustainableoceansociety.co.nz/public/content/help-pages.json";
-        if (["TheLatest", "Thanks"].includes(pageKey)) return "https://map.sustainableoceansociety.co.nz/public/content/main-pages.json";
-        return "https://map.sustainableoceansociety.co.nz/public/content/main-pages.json"; // Default fallback
+        if (pageKey.startsWith("help")) {
+            return "https://map.sustainableoceansociety.co.nz/public/content/help-pages.json";
+        }
+        if (pageKey.startsWith("main")) {
+            return "https://map.sustainableoceansociety.co.nz/public/content/main-pages.json";
+        }
+        return "https://map.sustainableoceansociety.co.nz/public/content/misc-pages.json"; // Default fallback
     };
+    
 
     useEffect(() => {
         const fetchContent = async () => {

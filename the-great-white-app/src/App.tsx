@@ -69,7 +69,7 @@ const App: React.FC = () => (
         <Route exact path="/page/:pageKey" component={DynamicPages} />
       </IonRouterOutlet>
         <IonTabBar slot="bottom">
-          <IonTabButton tab="thelatest" href="/page/TheLatest">
+          <IonTabButton tab="thelatest" href="/main/TheLatest">
             <IonIcon size="medium" aria-label="The Latest" icon={newspaper} />
             <IonLabel>The Latest</IonLabel>
           </IonTabButton>
@@ -81,7 +81,7 @@ const App: React.FC = () => (
             <IonIcon size="medium" aria-label="Help" icon={helpBuoyOutline} />
             <IonLabel>Help</IonLabel>
           </IonTabButton>
-          <IonTabButton tab="thanks" href="/page/Thanks">
+          <IonTabButton tab="thanks" href="/main/Thanks">
             <IonIcon size="medium" aria-label="Thanks" icon={trophyOutline} />
             <IonLabel>Special Thanks</IonLabel>
           </IonTabButton>
