@@ -21,6 +21,7 @@ import {
 } from '@ionic/react';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState, useRef } from 'react';
+import NotFound from './primary/NotFound';
 
 const DynamicPage: React.FC = () => {
 
@@ -200,8 +201,9 @@ const DynamicPage: React.FC = () => {
     }
 
     if (error || !page) {
-        return <IonContent className="ion-padding"><p>{error || "Page not found."}</p></IonContent>;
+        return <NotFound/>;
     }
+    
 
     return (
         <IonPage>

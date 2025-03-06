@@ -1,4 +1,4 @@
-import { Redirect, Route, RouteComponentProps } from 'react-router-dom';
+import { RouteComponentProps } from 'react-router-dom';
 
 import {
   IonPage,

@@ -14,6 +14,7 @@ import { newspaper, helpBuoyOutline, trophyOutline } from 'ionicons/icons';
 
 import SharkMap from './pages/primary/SharkMap';
 import Help from './pages/primary/Help';
+import NotFound from './pages/primary/NotFound';
 
 import DynamicPages from './pages/DynamicPages';
 
@@ -67,6 +68,9 @@ const App: React.FC = () => (
         <Route exact path="/help/:pageKey" component={DynamicPages} />
 
         <Route exact path="/main/:pageKey" component={DynamicPages} />
+
+        <Route component={NotFound}/>
+
       </IonRouterOutlet>
         <IonTabBar slot="bottom">
           <IonTabButton tab="thelatest" href="/main/TheLatest">
