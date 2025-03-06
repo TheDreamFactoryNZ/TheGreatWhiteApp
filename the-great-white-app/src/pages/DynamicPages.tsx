@@ -7,7 +7,6 @@ import {
     IonTitle,
     IonContent,
     IonImg,
-    IonSpinner,
     IonButton,
     IonAccordionGroup,
     IonAccordion,
@@ -18,6 +17,8 @@ import {
 } from '@ionic/react';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState, useRef } from 'react';
+
+import PageLoading from './primary/PageLoading';
 import NotFound from './primary/NotFound';
 
 const DynamicPage: React.FC = () => {
@@ -195,7 +196,7 @@ const DynamicPage: React.FC = () => {
     }, [pageKey]);
 
     if (loading) {
-        return <IonContent className="ion-padding"><IonSpinner /></IonContent>;
+        return <PageLoading />;
     }
 
     if (error || !page) {
