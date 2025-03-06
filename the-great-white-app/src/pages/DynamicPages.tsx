@@ -5,6 +5,7 @@ import {
     IonHeader,
     IonToolbar,
     IonTitle,
+    IonLoading,
     IonContent,
     IonImg,
     IonButton,
@@ -18,7 +19,6 @@ import {
 import { useParams } from 'react-router-dom';
 import { useEffect, useState, useRef } from 'react';
 
-import PageLoading from './primary/PageLoading';
 import NotFound from './primary/NotFound';
 
 const DynamicPage: React.FC = () => {
@@ -48,9 +48,12 @@ const DynamicPage: React.FC = () => {
     const { pageKey } = useParams<{ pageKey: string }>();
     const [page, setPage] = useState<Page | null>(null);
     const [loading, setLoading] = useState(true);
+    const [hasLoaded, setHasLoaded] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
     const contentRef = useRef<HTMLIonContentElement | null>(null);
+
+//    const [present, dismiss] = useIonLoading();
 
     const scrollToTop = () => {
         if (contentRef.current) {
@@ -161,11 +164,11 @@ const DynamicPage: React.FC = () => {
         return null;
     };
 
-
     useEffect(() => {
         const fetchContent = async () => {
-            setLoading(true);
             try {
+                setLoading(true);
+
                 const file = getPageFile();
 
                 if (!file) {
@@ -189,14 +192,22 @@ const DynamicPage: React.FC = () => {
             } catch (err) {
                 setError("Failed to load content.");
             } finally {
-                setLoading(false);
+                setHasLoaded(true);
             }
         };
+
         fetchContent();
     }, [pageKey]);
 
+    useEffect(() => {
+        if (hasLoaded) {
+            const timer = setTimeout(() => setLoading(false), 2000);
+            return () => clearTimeout(timer);
+        }
+    }, [hasLoaded]);
+    
     if (loading) {
-        return <PageLoading />;
+        return <IonLoading isOpen={loading} message="Loading..." />;
     }
 
     if (error || !page) {

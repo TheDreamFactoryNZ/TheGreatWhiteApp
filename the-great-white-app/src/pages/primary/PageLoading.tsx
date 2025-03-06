@@ -14,7 +14,7 @@ import './PageLoading.css';
 const PageLoading: React.FC = () => {
 
     return (
-        <IonPage>
+        <IonPage id="loader-page">
             <IonHeader>
                 <IonToolbar>
                     <IonButtons slot="start">
