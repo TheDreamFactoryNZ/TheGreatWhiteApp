@@ -96,7 +96,7 @@ const DynamicPage: React.FC = () => {
             return (
                 <IonButton
                     id={section.id}
-                    className={section.class}
+                    className={`custombutt ${section.class || ""}`}
                     key={index}
                     expand="block"
                     href={section.buttonUrl}
@@ -144,7 +144,7 @@ const DynamicPage: React.FC = () => {
         "section-group": (section, index) => (
             <div key={index} className={`section-group ${section.class || ""}`} id={section.id}>
                 {section.sections?.map((subSection, subIndex) => (
-                    <div key={subIndex} className="grouped-item">
+                    <div key={subIndex} className={`section-group--item ${section.class || ""}`}>
                         {componentMap[subSection.type]?.(subSection, subIndex) ?? null}
                     </div>
                 ))}
