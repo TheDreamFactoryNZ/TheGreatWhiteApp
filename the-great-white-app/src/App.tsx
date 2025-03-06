@@ -66,7 +66,7 @@ const App: React.FC = () => (
         <Route exact path="/help" component={Help} />
         <Route exact path="/help/:pageKey" component={DynamicPages} />
 
-        <Route exact path="/page/:pageKey" component={DynamicPages} />
+        <Route exact path="/main/:pageKey" component={DynamicPages} />
       </IonRouterOutlet>
         <IonTabBar slot="bottom">
           <IonTabButton tab="thelatest" href="/main/TheLatest">

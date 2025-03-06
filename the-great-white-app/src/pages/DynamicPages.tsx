@@ -151,27 +151,38 @@ const DynamicPage: React.FC = () => {
         ),
     };
 
-    const getPageFile = (pageKey: string) => {
-        if (pageKey.startsWith("help")) {
+    const getPageFile = () => {
+        if (window.location.pathname.startsWith("/help")) {
             return "https://map.sustainableoceansociety.co.nz/public/content/help-pages.json";
         }
-        if (pageKey.startsWith("main")) {
+        if (window.location.pathname.startsWith("/main")) {
             return "https://map.sustainableoceansociety.co.nz/public/content/main-pages.json";
         }
-        return "https://map.sustainableoceansociety.co.nz/public/content/misc-pages.json"; // Default fallback
+        return null;
     };
-    
+
 
     useEffect(() => {
         const fetchContent = async () => {
             setLoading(true);
             try {
-                const file = getPageFile(pageKey);
+                const file = getPageFile();
+
+                if (!file) {
+                    setError("Page Not Found");
+                    setLoading(false);
+                    return;
+                }
+
                 const response = await fetch(file);
                 const data = await response.json();
-                setPage(data[pageKey]); // Get the correct page content
 
-                // Scroll to top when page changes
+                if (!data[pageKey]) {
+                    setError("Page Not Found");
+                } else {
+                    setPage(data[pageKey]);
+                }
+
                 if (contentRef.current) {
                     contentRef.current.scrollToTop(0);
                 }
