@@ -16,6 +16,7 @@ import {
     IonLabel,
     IonRippleEffect
 } from '@ionic/react';
+
 import { useParams } from 'react-router-dom';
 import { useEffect, useState, useRef } from 'react';
 
@@ -201,13 +202,13 @@ const DynamicPage: React.FC = () => {
 
     useEffect(() => {
         if (hasLoaded) {
-            const timer = setTimeout(() => setLoading(false), 2000);
+            const timer = setTimeout(() => setLoading(false), 1500);
             return () => clearTimeout(timer);
         }
     }, [hasLoaded]);
     
     if (loading) {
-        return <IonLoading isOpen={loading} message="Loading..." />;
+        return <IonLoading spinner={'bubbles'} cssClass={'page-loader'} isOpen={loading} message="Loading..." />;
     }
 
     if (error || !page) {
