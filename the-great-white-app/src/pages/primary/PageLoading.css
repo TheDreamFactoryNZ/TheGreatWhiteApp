@@ -1,0 +1,7 @@
+IonContent {
+    background: var(--ion-background-color);
+}
+ion-spinner {
+    width: 5vw;
+    height: 5vw;
+}

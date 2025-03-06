@@ -90,6 +90,16 @@ const Help: React.FC<RouteComponentProps> = () => {
                 </IonCard>
               </a>
             </IonCol>
+            <a className='help-card-link' href="/loadingtest">
+                <IonCard className='help-card'>
+                  <IonIcon aria-hidden="true" className='help-icon' icon={fishOutline} color="primary"></IonIcon>
+                  <IonCardHeader className='help-card-content'>
+                    <IonCardTitle>About Sustainable Oceans Society</IonCardTitle>
+                    <IonCardSubtitle>Learn more about us and visit our website</IonCardSubtitle>
+                    <IonIcon size="large" className='help-card-arrow' aria-label="Open link to website" icon={arrowForwardCircleOutline}></IonIcon>
+                  </IonCardHeader>
+                </IonCard>
+              </a>
             <IonCol>
             </IonCol>
           </IonRow>
