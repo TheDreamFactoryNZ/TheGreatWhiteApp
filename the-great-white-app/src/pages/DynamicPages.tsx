@@ -55,9 +55,10 @@ const DynamicPage: React.FC = () => {
         if (contentRef.current) {
             contentRef.current.scrollToTop(500);
         } else {
-            console.warn("IonContent ref not found!");
+            window.scrollTo({ top: 0, behavior: "smooth" });
         }
     };
+
 
     const buttonActions: Record<string, () => void> = {
         scrollToTop
@@ -198,9 +199,9 @@ const DynamicPage: React.FC = () => {
     }
 
     if (error || !page) {
-        return <NotFound/>;
+        return <NotFound />;
     }
-    
+
 
     return (
         <IonPage>
@@ -218,10 +219,9 @@ const DynamicPage: React.FC = () => {
                     <h1 className='ion-text-center'>{page.heading}</h1>
                 </IonText>
 
-                {page.sections.map((section: Section, index: number) => {
-                    const Component = componentMap[section.type];
-                    return Component ? Component(section, index) : null;
-                })}
+                {page.sections
+                    .map((section: Section, index: number) => componentMap[section.type]?.(section, index))
+                    .filter(Boolean)}
 
             </IonContent>
         </IonPage>
