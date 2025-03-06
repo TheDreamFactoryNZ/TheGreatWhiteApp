@@ -57,21 +57,21 @@ const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
       <IonTabs>
-      <IonRouterOutlet>
-        <Route exact path="/">
-          <Redirect to="/sharkmap" />
-        </Route>
+        <IonRouterOutlet>
+          <Route exact path="/">
+            <Redirect to="/sharkmap" />
+          </Route>
 
-        <Route exact path="/sharkmap" component={SharkMap} />
+          <Route exact path="/sharkmap" component={SharkMap} />
 
-        <Route exact path="/help" component={Help} />
-        <Route exact path="/help/:pageKey" component={DynamicPages} />
+          <Route exact path="/help" component={Help} />
+          <Route exact path="/help/:pageKey" component={DynamicPages} />
 
-        <Route exact path="/main/:pageKey" component={DynamicPages} />
+          <Route exact path="/main/:pageKey" component={DynamicPages} />
 
-        <Route component={NotFound}/>
+          <Route component={NotFound} />
 
-      </IonRouterOutlet>
+        </IonRouterOutlet>
         <IonTabBar slot="bottom">
           <IonTabButton tab="thelatest" href="/main/TheLatest">
             <IonIcon size="medium" aria-label="The Latest" icon={newspaper} />
