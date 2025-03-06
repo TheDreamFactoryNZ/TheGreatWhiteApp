@@ -50,7 +50,6 @@ import '@ionic/react/css/palettes/dark.system.css';
 
 /* Theme variables */
 import './theme/variables.css';
-import PageLoading from './pages/primary/PageLoading';
 
 setupIonicReact();
 
@@ -65,11 +64,10 @@ const App: React.FC = () => (
 
           <Route exact path="/sharkmap" component={SharkMap} />
 
-          <Route exact path="/help" component={Help} />
-          <Route exact path="/help/:pageKey" component={DynamicPages} animated="false"/>
+          <Route exact path="/:tab(help)" component={Help} />
+          <Route exact path="/:tab(help)/:pageKey" component={DynamicPages}/>
 
           <Route exact path="/main/:pageKey" component={DynamicPages} animated="false"/>
-          <Route exact path="/loadingtest" component={PageLoading} />
 
           <Route component={NotFound} />
 

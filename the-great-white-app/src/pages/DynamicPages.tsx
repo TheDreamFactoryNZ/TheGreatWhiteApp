@@ -202,13 +202,13 @@ const DynamicPage: React.FC = () => {
 
     useEffect(() => {
         if (hasLoaded) {
-            const timer = setTimeout(() => setLoading(false), 1500);
+            const timer = setTimeout(() => setLoading(false), 0);
             return () => clearTimeout(timer);
         }
     }, [hasLoaded]);
     
     if (loading) {
-        return <IonLoading spinner={'bubbles'} cssClass={'page-loader'} isOpen={loading} message="Loading..." />;
+        return <IonLoading spinner={'bubbles'} cssClass={`page-loader ${loading ? '' : 'page-loader--hidden'}`}  isOpen={loading} message="Loading..." />;
     }
 
     if (error || !page) {
@@ -221,7 +221,7 @@ const DynamicPage: React.FC = () => {
             <IonHeader>
                 <IonToolbar>
                     <IonButtons slot="start">
-                        <IonBackButton />
+                        <IonBackButton defaultHref='/help' />
                     </IonButtons>
                     <IonTitle>{page.title}</IonTitle>
                 </IonToolbar>

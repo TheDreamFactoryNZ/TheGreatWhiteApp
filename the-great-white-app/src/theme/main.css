@@ -12,7 +12,6 @@ IonTabBar IonIcon {
 
 /* Loader */
 .page-loader {
-    transition: opacity ease-in-out 8s;
     --backdrop-opacity: 1;
     --background: #000;
     --min-height: 100%;
