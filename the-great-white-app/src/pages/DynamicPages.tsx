@@ -22,29 +22,30 @@ import {
 import { useParams } from 'react-router-dom';
 import { useEffect, useState, useRef } from 'react';
 
-interface Section {
-    type: "text" | "image" | "ordered-list" | "unordered-list" | "button" | "accordion-group" | "h1-heading" | "h2-heading" | "h3-heading";
-    id?: string;
-    class?: string;
-    content?: string;
-    src?: string;
-    alt?: string;
-    items?: string[];
-    buttonText?: string;
-    buttonUrl?: string;
-    buttonUrlTarget?: string;
-    accordions?: { header: string; content: string }[];
-    onClick?: string;
-}
-
-
-interface Page {
-    title: string;
-    heading: string;
-    sections: Section[];
-}
-
 const DynamicPage: React.FC = () => {
+
+    interface Section {
+        type: "section-group" | "text" | "image" | "ordered-list" | "unordered-list" | "button" | "accordion-group" | "h1-heading" | "h2-heading" | "h3-heading";
+        id?: string;
+        class?: string;
+        sections?: Section[];
+        content?: string;
+        src?: string;
+        alt?: string;
+        items?: string[];
+        buttonText?: string;
+        buttonUrl?: string;
+        buttonUrlTarget?: string;
+        accordions?: { header: string; content: string }[];
+        onClick?: keyof typeof buttonActions;
+    }
+
+    interface Page {
+        title: string;
+        heading: string;
+        sections: Section[];
+    }
+
     const { pageKey } = useParams<{ pageKey: string }>();
     const [page, setPage] = useState<Page | null>(null);
     const [loading, setLoading] = useState(true);
@@ -55,6 +56,8 @@ const DynamicPage: React.FC = () => {
     const scrollToTop = () => {
         if (contentRef.current) {
             contentRef.current.scrollToTop(500);
+        } else {
+            console.warn("IonContent ref not found!");
         }
     };
 
@@ -62,12 +65,99 @@ const DynamicPage: React.FC = () => {
         scrollToTop
     };
 
+    const componentMap: Record<string, (section: Section, index: number) => JSX.Element | null> = {
+        "text": (section, index) => (
+            <IonText className={`para-text ${section.class || ""}`} key={index}>
+                <p id={section.id}>{section.content}</p>
+            </IonText>
+        ),
+        "image": (section, index) => (
+            <IonImg id={section.id} className={`block-image ${section.class || ""}`} key={index} src={section.src} alt={section.alt} />
+        ),
+        "ordered-list": (section, index) => (
+            <IonText key={index}>
+                <ol id={section.id} className={`para-list olist ${section.class || ""}`}>
+                    {section.items?.map((item, itemIndex) => (
+                        <li className={`list-item ${section.class || ""}`} key={itemIndex}>{item}</li>
+                    ))}
+                </ol>
+            </IonText>
+        ),
+        "unordered-list": (section, index) => (
+            <IonText key={index}>
+                <ul id={section.id} className={`para-list ulist ${section.class || ""}`}>
+                    {section.items?.map((item, itemIndex) => (
+                        <li className={`list-item ${section.class || ""}`} key={itemIndex}>{item}</li>
+                    ))}
+                </ul>
+            </IonText>
+        ),
+        "button": (section, index) => {
+            return (
+                <IonButton
+                    id={section.id}
+                    className={section.class}
+                    key={index}
+                    expand="block"
+                    href={section.buttonUrl}
+                    target={section.buttonUrlTarget}
+                    onClick={() => {
+                        if (section.onClick && buttonActions[section.onClick]) {
+                            buttonActions[section.onClick]();
+                        }
+                    }}
+                >
+                    {section.buttonText}
+                    <IonRippleEffect />
+                </IonButton>
+            );
+        },
+        "accordion-group": (section, index) => (
+            <IonAccordionGroup id={section.id} className={section.class} key={index}>
+                {section.accordions?.map((accordion, accIndex) => (
+                    <IonAccordion id={section.id} className={section.class} value={`acc-${index}-${accIndex}`} key={accIndex}>
+                        <IonItem id={section.id} className={section.class} slot="header">
+                            <IonLabel>{accordion.header}</IonLabel>
+                        </IonItem>
+                        <div id={section.id} className={`ion-padding ${section.class || ""}`} slot="content">
+                            {accordion.content}
+                        </div>
+                    </IonAccordion>
+                ))}
+            </IonAccordionGroup>
+        ),
+        "h1-heading": (section, index) => (
+            <IonText color="primary" key={index}>
+                <h1 id={section.id} className={section.class}>{section.content}</h1>
+            </IonText>
+        ),
+        "h2-heading": (section, index) => (
+            <IonText color="secondary" key={index}>
+                <h2 id={section.id} className={section.class}>{section.content}</h2>
+            </IonText>
+        ),
+        "h3-heading": (section, index) => (
+            <IonText color="secondary" key={index}>
+                <h3 id={section.id} className={section.class}>{section.content}</h3>
+            </IonText>
+        ),
+        "section-group": (section, index) => (
+            <div key={index} className={`section-group ${section.class || ""}`} id={section.id}>
+                {section.sections?.map((subSection, subIndex) => (
+                    <div key={subIndex} className="grouped-item">
+                        {componentMap[subSection.type]?.(subSection, subIndex) ?? null}
+                    </div>
+                ))}
+            </div>
+        ),
+    };
+
     const getPageFile = (pageKey: string) => {
         if (["aboutGwp", "usingGwa", "commonQuestions", "bugReport"].includes(pageKey)) return "https://map.sustainableoceansociety.co.nz/public/content/help-pages.json";
         if (["TheLatest", "Thanks"].includes(pageKey)) return "https://map.sustainableoceansociety.co.nz/public/content/main-pages.json";
         return "https://map.sustainableoceansociety.co.nz/public/content/main-pages.json"; // Default fallback
     };
-    
+
     useEffect(() => {
         const fetchContent = async () => {
             setLoading(true);
@@ -76,7 +166,7 @@ const DynamicPage: React.FC = () => {
                 const response = await fetch(file);
                 const data = await response.json();
                 setPage(data[pageKey]); // Get the correct page content
-                
+
                 // Scroll to top when page changes
                 if (contentRef.current) {
                     contentRef.current.scrollToTop(0);
@@ -115,90 +205,10 @@ const DynamicPage: React.FC = () => {
                 </IonText>
 
                 {page.sections.map((section: Section, index: number) => {
-                    switch (section.type) {
-                        case "h1-heading":
-                            return (
-                                <IonText color="primary" key={index}>
-                                    <h1 id={section.id} className={section.class}>{section.content}</h1>
-                                </IonText>
-                            );
-
-                        case "h2-heading":
-                            return (
-                                <IonText color="secondary" key={index}>
-                                    <h2 id={section.id} className={section.class}>{section.content}</h2>
-                                </IonText>
-                            );
-
-                        case "h3-heading":
-                            return (
-                                <IonText color="secondary" key={index}>
-                                    <h3 id={section.id} className={section.class}>{section.content}</h3>
-                                </IonText>
-                            );
-
-                        case "text":
-                            return (
-                                <IonText key={index}>
-                                    <p id={section.id} className={section.class}>{section.content}</p>
-                                </IonText>
-                            );
-
-                        case "image":
-                            return (
-                                <IonImg id={section.id} className={section.class} key={index} src={section.src} alt={section.alt} />
-                            );
-
-                        case "ordered-list":
-                            return (
-                                <IonText key={index}>
-                                    <ol id={section.id} className={section.class}>
-                                        {section.items?.map((item: string, itemIndex: number) => (
-                                            <li id={section.id} className={section.class} key={itemIndex}>{item}</li>
-                                        ))}
-                                    </ol>
-                                </IonText>
-                            );
-
-                        case "unordered-list":
-                            return (
-                                <IonText key={index}>
-                                    <ul id={section.id} className={section.class}>
-                                        {section.items?.map((item: string, itemIndex: number) => (
-                                            <li id={section.id} className={section.class} key={itemIndex}>{item}</li>
-                                        ))}
-                                    </ul>
-                                </IonText>
-                            );
-
-                        case "button":
-                            return (
-                                <IonButton id={section.id} className={section.class} key={index} expand="block" href={section.buttonUrl} target={section.buttonUrlTarget} onClick={section.onClick ? buttonActions[section.onClick] : undefined}>
-                                    {section.buttonText}
-                                    <IonRippleEffect></IonRippleEffect>
-                                </IonButton>
-                            );
-
-                        case "accordion-group":
-                            return (
-                                <IonAccordionGroup id={section.id} className={section.class} key={index}>
-                                    {section.accordions?.map((accordion, accIndex) => (
-                                        <IonAccordion id={section.id} className={section.class} value={`acc-${index}-${accIndex}`} key={accIndex}>
-                                            <IonItem id={section.id} className={section.class} slot="header">
-                                                <IonLabel id={section.id} className={section.class}>{accordion.header}</IonLabel>
-                                            </IonItem>
-                                            <div id={section.id} className={`ion-padding ${section.class || ""}`} slot="content">
-                                                {accordion.content}
-                                            </div>
-                                        </IonAccordion>
-                                    ))}
-                                </IonAccordionGroup>
-                            );
-
-                        default:
-                            return null;
-                    }
+                    const Component = componentMap[section.type];
+                    return Component ? Component(section, index) : null;
                 })}
+
             </IonContent>
         </IonPage>
     );
