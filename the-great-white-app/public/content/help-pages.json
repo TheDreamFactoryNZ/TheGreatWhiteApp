@@ -4,21 +4,35 @@
         "heading": "Tracking Great Whites in New Zealand",
         "sections": [
             {
-                "type": "image",
-                "src": "/assets/images/aboutGwpHeader.jpg",
-                "alt": "Photo of Riley diving with great white shark"
+                "type": "section-group",
+                "id": "hero-section",
+                "class": "intro-section",
+                "sections": [
+                    {
+                        "type": "image",
+                        "src": "/assets/images/aboutGwpHeader.jpg",
+                        "alt": "Photo of Riley diving with great white shark"
+                    },
+                    {
+                        "type": "text",
+                        "content": "The Great White Project led by Dr Riley Elliott focuses on the presence of Great White sharks in New Zealand - their habitat use, their behaviour, overlap with fisheries and the recreation of people in the ocean. It started with a novel and emerging population of baby and juvenile Great Whites in northeast NZ, but has now grown to tag sub-adult and mature Great Whites in a world-famous aggregation site in southern NZ - Stewart Island."
+                    }
+                ]
             },
             {
-                "type": "text",
-                "content": "The Great White Project led by Dr Riley Elliott focuses on the presence of Great White sharks in New Zealand - their habitat use, their behaviour, overlap with fisheries and the recreation of people in the ocean. It started with a novel and emerging population of baby and juvenile Great Whites in northeast NZ, but has now grown to tag sub-adult and mature Great Whites in a world famous aggregation site in southern NZ - Stewart Island."
-            },
-            {
-                "type": "text",
-                "content": "No tagging and monitoring of Great Whites has occurred in Stewart Island since 2015. In May 2025 The Great White App and tags sponsored by the NZ public, began to fill a decade-old black hole of understanding."
-            },
-            {
-                "type": "text",
-                "content": "16 satellite tags are deployed on a range of sexes and ages, to track anywhere in the world these animals may roam. The project aim is not just to entertain you with live tracks, but also to generate scientific data that allows insight to migration routes, predator prey relationships, genetic links to Australia, population estimates in collaboration with Australia, and overall monitoring of habitat use by this protected species."
+                "type": "section-group",
+                "id": "research-group",
+                "class": "research-section",
+                "sections": [
+                    {
+                        "type": "text",
+                        "content": "No tagging and monitoring of Great Whites has occurred in Stewart Island since 2015. In May 2025, The Great White App and tags sponsored by the NZ public began to fill a decade-old black hole of understanding."
+                    },
+                    {
+                        "type": "text",
+                        "content": "16 satellite tags are deployed on a range of sexes and ages, to track anywhere in the world these animals may roam. The project aims not just to entertain you with live tracks, but also to generate scientific data that allows insight into migration routes, predator-prey relationships, genetic links to Australia, population estimates in collaboration with Australia, and overall monitoring of habitat use by this protected species."
+                    }
+                ]
             },
             {
                 "type": "button",
@@ -32,8 +46,15 @@
         "heading": "Interacting with The Great White App",
         "sections": [
             {
-                "type": "text",
-                "content": "This section is coming soon! The content needs to be written first..."
+                "type": "section-group",
+                "id": "coming-soon-group",
+                "class": "coming-soon",
+                "sections": [
+                    {
+                        "type": "text",
+                        "content": "This section is coming soon! The content needs to be written first..."
+                    }
+                ]
             }
         ]
     },
@@ -42,8 +63,15 @@
         "heading": "Answers to your questions",
         "sections": [
             {
-                "type": "text",
-                "content": "FAQ to be added."
+                "type": "section-group",
+                "id": "faq-group",
+                "class": "faq-section",
+                "sections": [
+                    {
+                        "type": "text",
+                        "content": "FAQ to be added."
+                    }
+                ]
             }
         ]
     },
@@ -52,8 +80,15 @@
         "heading": "Something wrong? Let us know.",
         "sections": [
             {
-                "type": "text",
-                "content": "FAQ to be added."
+                "type": "section-group",
+                "id": "bug-report-group",
+                "class": "bug-report-section",
+                "sections": [
+                    {
+                        "type": "text",
+                        "content": "FAQ to be added."
+                    }
+                ]
             }
         ]
     }
