@@ -147,11 +147,11 @@ const DynamicPage: React.FC = () => {
             </IonText>
         ),
         "section-item": (section, index) => (
-            <div key={index} className={`section-item ${section.class || ""}`} id={section.id}>
+            <section key={index} className={`section-item ${section.class || ""}`} id={section.id}>
                 {section["section-content"]?.map((subSection, subIndex) => (
                     componentMap[subSection.type]?.(subSection, subIndex) ?? null
                 ))}
-            </div>
+            </section>
         ),
     };
 
