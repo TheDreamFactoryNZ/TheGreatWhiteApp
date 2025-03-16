@@ -221,7 +221,7 @@ const DynamicPage: React.FC = () => {
             <IonHeader>
                 <IonToolbar>
                     <IonButtons slot="start">
-                        <IonBackButton defaultHref='/help' />
+                        <IonBackButton defaultHref='/' />
                     </IonButtons>
                     <IonTitle>{page.title}</IonTitle>
                 </IonToolbar>
