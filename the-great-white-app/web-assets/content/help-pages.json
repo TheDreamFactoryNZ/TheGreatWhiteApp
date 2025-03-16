@@ -189,8 +189,18 @@
                 "class": "bug-report-section",
                 "section-content": [
                     {
+                        "type": "h2-heading",
+                        "content": "Report a technical issue"
+                    },
+                    {
                         "type": "text",
-                        "content": "For reporting any TECHNICAL issues with the app, please e-mail development@thedreamfactory.nz ."
+                        "content": "For reporting any TECHNICAL issues with the app you can e-mail innovate@thedreamfactory.nz . If applicable, please include a screen recording or video of the issue so we can investigate. You may not hear a reply straight away, but it does not mean your issue is not being investigated."
+                    },
+                    {
+                        "type": "button",
+                        "buttonText": "Report an Issue",
+                        "buttonUrl": "mailto:innovate@thedreamfactory.nz",
+                        "buttonUrlTarget": "_blank"
                     }
                 ]
             }
