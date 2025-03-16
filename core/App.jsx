@@ -6,7 +6,6 @@ import Legend from './components/Legend';
 import HelpButton from './components/HelpButton';
 import Partners from './components/Partners';
 
-import './App.css';
 import './assets/mapstyle.css';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
