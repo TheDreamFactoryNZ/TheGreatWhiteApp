@@ -41,6 +41,7 @@ const DynamicPage: React.FC = () => {
     }
 
     interface Page {
+        backButtonHref?: string;
         title: string;
         heading: string;
         sections: Section[];
@@ -54,7 +55,7 @@ const DynamicPage: React.FC = () => {
 
     const contentRef = useRef<HTMLIonContentElement | null>(null);
 
-//    const [present, dismiss] = useIonLoading();
+    //    const [present, dismiss] = useIonLoading();
 
     const scrollToTop = () => {
         if (contentRef.current) {
@@ -206,9 +207,9 @@ const DynamicPage: React.FC = () => {
             return () => clearTimeout(timer);
         }
     }, [hasLoaded]);
-    
+
     if (loading) {
-        return <IonLoading spinner={'bubbles'} cssClass={`page-loader ${loading ? '' : 'page-loader--hidden'}`}  isOpen={loading} message="Loading..." />;
+        return <IonLoading spinner={'bubbles'} cssClass={`page-loader ${loading ? '' : 'page-loader--hidden'}`} isOpen={loading} message="Loading..." />;
     }
 
     if (error || !page) {
@@ -221,7 +222,11 @@ const DynamicPage: React.FC = () => {
             <IonHeader>
                 <IonToolbar>
                     <IonButtons slot="start">
-                        <IonBackButton defaultHref='/' />
+                        {page?.backButtonHref ? (
+                            <IonBackButton defaultHref={page.backButtonHref} />
+                        ) : (
+                            <IonBackButton />
+                        )}
                     </IonButtons>
                     <IonTitle>{page.title}</IonTitle>
                 </IonToolbar>

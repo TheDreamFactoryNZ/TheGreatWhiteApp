@@ -2,6 +2,7 @@
     "aboutGwp": {
         "title": "About the Great White Project",
         "heading": "Tracking Great Whites in New Zealand",
+        "backButtonHref": "/help",
         "sections": [
             {
                 "type": "section-group",
@@ -44,6 +45,7 @@
     "usingGwa": {
         "title": "Using the Great White App",
         "heading": "Interacting with The Great White App",
+        "backButtonHref": "/help",
         "sections": [
             {
                 "type": "section-group",
@@ -61,6 +63,7 @@
     "commonQuestions": {
         "title": "Frequently Asked Questions",
         "heading": "Answers to your questions",
+        "backButtonHref": "/help",
         "sections": [
             {
                 "type": "section-group",
@@ -78,6 +81,7 @@
     "bugReport": {
         "title": "Report an Issue",
         "heading": "Something wrong? Let us know.",
+        "backButtonHref": "/help",
         "sections": [
             {
                 "type": "section-group",
