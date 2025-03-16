@@ -78,7 +78,7 @@ const App: React.FC = () => (
             <IonLabel>The Latest</IonLabel>
           </IonTabButton>
           <IonTabButton tab="sharkmap" href="/sharkmap">
-            <IonIcon size="medium" id='great-whites-icon' aria-label="See Great Whites" src="./src/assets/icons/greatwhites.svg" />
+            <IonIcon size="medium" id='great-whites-icon' aria-label="See Great Whites" src="/assets/icons/greatwhites.svg" />
             <IonLabel>Great Whites</IonLabel>
           </IonTabButton>
           <IonTabButton tab="help" href="/help">
