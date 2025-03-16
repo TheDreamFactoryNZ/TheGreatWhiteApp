@@ -5,10 +5,10 @@
         "backButtonHref": "/help",
         "sections": [
             {
-                "type": "section-group",
+                "type": "section-item",
                 "id": "hero-section",
-                "class": "intro-section",
-                "sections": [
+                "class": "",
+                "section-content": [
                     {
                         "type": "image",
                         "src": "/assets/images/aboutGwpHeader.jpg",
@@ -21,10 +21,10 @@
                 ]
             },
             {
-                "type": "section-group",
+                "type": "section-item",
                 "id": "research-group",
-                "class": "research-section",
-                "sections": [
+                "class": "",
+                "section-content": [
                     {
                         "type": "text",
                         "content": "No tagging and monitoring of Great Whites has occurred in Stewart Island since 2015. In May 2025, The Great White App and tags sponsored by the NZ public began to fill a decade-old black hole of understanding."
@@ -42,21 +42,45 @@
             }
         ]
     },
-    "usingGwa": {
-        "title": "Using the Great White App",
-        "heading": "Interacting with The Great White App",
+    "getInvolved": {
+        "title": "Get Involved",
+        "heading": "How You Can Help",
         "backButtonHref": "/help",
         "sections": [
             {
-                "type": "section-group",
-                "id": "coming-soon-group",
-                "class": "coming-soon",
-                "sections": [
+                "type": "section-item",
+                "id": "hero-section",
+                "class": "",
+                "section-content": [
+                    {
+                        "type": "h2-heading",
+                        "content": "Keen to help support our mission?"
+                    },
                     {
                         "type": "text",
-                        "content": "This section is coming soon! The content needs to be written first..."
+                        "content": "Purchasing the app is the first step towards supporting the Great White Project, but there are other things you can do to help support The Great White Project"
                     }
                 ]
+            },
+            {
+                "type": "section-item",
+                "id": "research-group",
+                "class": "",
+                "section-content": [
+                    {
+                        "type": "text",
+                        "content": "No tagging and monitoring of Great Whites has occurred in Stewart Island since 2015. In May 2025, The Great White App and tags sponsored by the NZ public began to fill a decade-old black hole of understanding."
+                    },
+                    {
+                        "type": "text",
+                        "content": "16 satellite tags are deployed on a range of sexes and ages, to track anywhere in the world these animals may roam. The project aims not just to entertain you with live tracks, but also to generate scientific data that allows insight into migration routes, predator-prey relationships, genetic links to Australia, population estimates in collaboration with Australia, and overall monitoring of habitat use by this protected species."
+                    }
+                ]
+            },
+            {
+                "type": "button",
+                "buttonText": "Scroll to Top",
+                "onClick": "scrollToTop"
             }
         ]
     },
@@ -66,7 +90,7 @@
         "backButtonHref": "/help",
         "sections": [
             {
-                "type": "section-group",
+                "type": "section-item",
                 "id": "faq-group",
                 "class": "faq-section",
                 "sections": [
@@ -84,7 +108,7 @@
         "backButtonHref": "/help",
         "sections": [
             {
-                "type": "section-group",
+                "type": "section-item",
                 "id": "bug-report-group",
                 "class": "bug-report-section",
                 "sections": [

@@ -49,11 +49,11 @@ const Help: React.FC<RouteComponentProps> = () => {
               </IonCard>
             </IonCol>
             <IonCol size="12" size-xs="12" size-sm="12" size-md="6" size-lg="6" size-xl="6">
-              <IonCard routerLink="/help/usingGwa" routerDirection='root' className='help-card'>
+              <IonCard routerLink="/help/getInvolved" routerDirection='root' className='help-card'>
                 <IonIcon aria-hidden="true" className='help-icon' icon={happyOutline} color="primary"></IonIcon>
                 <IonCardHeader className='help-card-content'>
-                  <IonCardTitle>Using the Great White App</IonCardTitle>
-                  <IonCardSubtitle>Information on interacting with the map and sharks.</IonCardSubtitle>
+                  <IonCardTitle>How You Can Help</IonCardTitle>
+                  <IonCardSubtitle>Ways you can support the Great White Project.</IonCardSubtitle>
                   <IonIcon size="large" className='help-card-arrow' aria-label="Open information" icon={arrowForwardCircleOutline}></IonIcon>
                 </IonCardHeader>
               </IonCard>

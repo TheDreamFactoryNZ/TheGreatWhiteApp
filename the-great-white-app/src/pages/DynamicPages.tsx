@@ -25,10 +25,10 @@ import NotFound from './primary/NotFound';
 const DynamicPage: React.FC = () => {
 
     interface Section {
-        type: "section-group" | "text" | "image" | "ordered-list" | "unordered-list" | "button" | "accordion-group" | "h1-heading" | "h2-heading" | "h3-heading";
+        type: "section-item" | "text" | "image" | "ordered-list" | "unordered-list" | "button" | "accordion-group" | "h1-heading" | "h2-heading" | "h3-heading";
         id?: string;
         class?: string;
-        sections?: Section[];
+        "section-content"?: Section[];
         content?: string;
         src?: string;
         alt?: string;
@@ -146,12 +146,11 @@ const DynamicPage: React.FC = () => {
                 <h3 id={section.id} className={section.class}>{section.content}</h3>
             </IonText>
         ),
-        "section-group": (section, index) => (
-            <div key={index} className={`section-group ${section.class || ""}`} id={section.id}>
-                {section.sections?.map((subSection, subIndex) => (
+        "section-item": (section, index) => (
+            <div key={index} className={`section-item ${section.class || ""}`} id={section.id}>
+                {section["section-content"]?.map((subSection, subIndex) => (
                     componentMap[subSection.type]?.(subSection, subIndex) ?? null
                 ))}
-
             </div>
         ),
     };
