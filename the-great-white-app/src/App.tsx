@@ -10,6 +10,7 @@ import {
   setupIonicReact
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
+
 import { newspaper, helpBuoyOutline, trophyOutline } from 'ionicons/icons';
 
 import SharkMap from './pages/primary/SharkMap';
@@ -53,46 +54,48 @@ import './theme/variables.css';
 
 setupIonicReact();
 
-const App: React.FC = () => (
-  <IonApp>
-    <IonReactRouter>
-      <IonTabs>
-        <IonRouterOutlet>
-          <Route exact path="/">
-            <Redirect to="/sharkmap" />
-          </Route>
+const App: React.FC = () => {
+  return (
+    <IonApp>
+      <IonReactRouter>
+        <IonTabs>
+          <IonRouterOutlet>
+            <Route exact path="/">
+              <Redirect to="/sharkmap" />
+            </Route>
 
-          <Route exact path="/sharkmap" component={SharkMap} />
+            <Route exact path="/sharkmap" component={SharkMap} />
 
-          <Route exact path="/:tab(help)" component={Help} />
-          <Route exact path="/:tab(help)/:pageKey" component={DynamicPages}/>
+            <Route exact path="/:tab(help)" component={Help} />
+            <Route exact path="/:tab(help)/:pageKey" component={DynamicPages} />
 
-          <Route exact path="/main/:pageKey" component={DynamicPages} animated="false"/>
+            <Route exact path="/main/:pageKey" component={DynamicPages} animated="false" />
 
-          <Route component={NotFound} />
+            <Route component={NotFound} />
 
-        </IonRouterOutlet>
-        <IonTabBar slot="bottom">
-          <IonTabButton tab="thelatest" href="/main/TheLatest">
-            <IonIcon size="medium" aria-label="The Latest" icon={newspaper} />
-            <IonLabel>The Latest</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="sharkmap" href="/sharkmap">
-            <IonIcon size="medium" id='great-whites-icon' aria-label="See Great Whites" src="/assets/icons/greatwhites.svg" />
-            <IonLabel>Great Whites</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="help" href="/help">
-            <IonIcon size="medium" aria-label="Help" icon={helpBuoyOutline} />
-            <IonLabel>Help</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="thanks" href="/main/Thanks">
-            <IonIcon size="medium" aria-label="Thanks" icon={trophyOutline} />
-            <IonLabel>Special Thanks</IonLabel>
-          </IonTabButton>
-        </IonTabBar>
-      </IonTabs>
-    </IonReactRouter>
-  </IonApp>
-);
+          </IonRouterOutlet>
+          <IonTabBar slot="bottom">
+            <IonTabButton tab="thelatest" href="/main/TheLatest">
+              <IonIcon size="medium" aria-label="The Latest" icon={newspaper} />
+              <IonLabel>The Latest</IonLabel>
+            </IonTabButton>
+            <IonTabButton tab="sharkmap" href="/sharkmap">
+              <IonIcon size="medium" id='great-whites-icon' aria-label="See Great Whites" src="/assets/icons/greatwhites.svg" />
+              <IonLabel>Great Whites</IonLabel>
+            </IonTabButton>
+            <IonTabButton tab="help" href="/help">
+              <IonIcon size="medium" aria-label="Help" icon={helpBuoyOutline} />
+              <IonLabel>Help</IonLabel>
+            </IonTabButton>
+            <IonTabButton tab="thanks" href="/main/Thanks">
+              <IonIcon size="medium" aria-label="Thanks" icon={trophyOutline} />
+              <IonLabel>Special Thanks</IonLabel>
+            </IonTabButton>
+          </IonTabBar>
+        </IonTabs>
+      </IonReactRouter>
+    </IonApp>
+  );
+};
 
 export default App;

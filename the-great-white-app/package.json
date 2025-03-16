@@ -1,7 +1,7 @@
 {
   "name": "the-great-white-app",
   "private": true,
-  "version": "0.0.1",
+  "version": "2.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@capacitor/android": "7.0.1",
-    "@capacitor/app": "7.0.0",
+    "@capacitor/app": "^7.0.0",
     "@capacitor/core": "7.0.1",
     "@capacitor/haptics": "7.0.0",
     "@capacitor/ios": "^7.1.0",
@@ -46,5 +46,5 @@
     "vite": "~5.2.0",
     "vitest": "^0.34.6"
   },
-  "description": "An Ionic project"
+  "description": "Track sharks throughout New Zealand and beyond with this interactive app!"
 }
