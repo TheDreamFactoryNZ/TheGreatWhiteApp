@@ -10,11 +10,6 @@
                 "class": "",
                 "section-content": [
                     {
-                        "type": "image",
-                        "src": "public/app-content-assets/images/aboutGwpHeader.jpg",
-                        "alt": "Photo of Riley diving with a great white shark"
-                    },
-                    {
                         "type": "text",
                         "content": "The Great White Project led by Dr Riley Elliott focuses on the presence of Great White sharks in New Zealand - their habitat use, their behaviour, overlap with fisheries and the recreation of people in the ocean. It started with a novel and emerging population of baby and juvenile Great Whites in northeast NZ, but has now grown to tag sub-adult and mature Great Whites in a world-famous aggregation site in southern NZ - Stewart Island."
                     }

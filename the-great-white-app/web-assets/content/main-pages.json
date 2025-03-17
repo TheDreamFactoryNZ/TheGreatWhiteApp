@@ -4,11 +4,6 @@
         "heading": "The Great White App 2.0 has Launched!",
         "sections": [
             {
-                "type": "image",
-                "src": "/assets/images/aboutGwpHeader.jpg",
-                "alt": "Photo of the new Great White App with text overlay \"Introducing the Great White App 2.0\""
-            },
-            {
                 "type": "h1-heading",
                 "content": "The new and improved Great White App has arrived on our shores"
             },
