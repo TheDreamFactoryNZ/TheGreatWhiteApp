@@ -219,7 +219,7 @@ const DynamicPage: React.FC = () => {
     return (
         <IonPage>
             <IonHeader>
-                <IonToolbar>
+                <IonToolbar color="primary">
                     <IonButtons slot="start">
                         {page?.backButtonHref ? (
                             <IonBackButton defaultHref={page.backButtonHref} />
