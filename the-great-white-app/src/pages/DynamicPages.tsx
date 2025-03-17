@@ -157,10 +157,10 @@ const DynamicPage: React.FC = () => {
 
     const getPageFile = () => {
         if (window.location.pathname.startsWith("/help")) {
-            return "https://map.sustainableoceansociety.co.nz/public/content/help-pages.json";
+            return "https://map.sustainableoceansociety.co.nz/public/app-content/help-pages.json";
         }
         if (window.location.pathname.startsWith("/main")) {
-            return "https://map.sustainableoceansociety.co.nz/public/content/main-pages.json";
+            return "https://map.sustainableoceansociety.co.nz/public/app-content/main-pages.json";
         }
         return null;
     };

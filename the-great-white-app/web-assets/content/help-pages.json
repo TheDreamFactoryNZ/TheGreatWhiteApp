@@ -11,7 +11,7 @@
                 "section-content": [
                     {
                         "type": "image",
-                        "src": "/assets/images/aboutGwpHeader.jpg",
+                        "src": "public/app-content-assets/images/aboutGwpHeader.jpg",
                         "alt": "Photo of Riley diving with a great white shark"
                     },
                     {
