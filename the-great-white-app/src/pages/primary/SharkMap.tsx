@@ -1,4 +1,4 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { IonContent, IonPage } from '@ionic/react';
 import './SharkMap.css';
 import '../../../../core/assets/mapstyle.css';
 import React, { StrictMode } from 'react';
