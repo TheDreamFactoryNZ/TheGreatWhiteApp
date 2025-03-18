@@ -22,6 +22,8 @@ import { useEffect, useState, useRef } from 'react';
 
 import NotFound from './primary/NotFound';
 
+import './dynamicpages.css'; // Default styles
+
 const DynamicPage: React.FC = () => {
 
     interface Section {
@@ -44,6 +46,7 @@ const DynamicPage: React.FC = () => {
         backButtonHref?: string;
         title: string;
         heading: string;
+        stylesheet?: string; // This is currently inactive
         sections: Section[];
     }
 
@@ -55,8 +58,6 @@ const DynamicPage: React.FC = () => {
 
     const contentRef = useRef<HTMLIonContentElement | null>(null);
 
-    //    const [present, dismiss] = useIonLoading();
-
     const scrollToTop = () => {
         if (contentRef.current) {
             contentRef.current.scrollToTop(500);
@@ -64,7 +65,6 @@ const DynamicPage: React.FC = () => {
             window.scrollTo({ top: 0, behavior: "smooth" });
         }
     };
-
 
     const buttonActions: Record<string, () => void> = {
         scrollToTop
@@ -171,7 +171,6 @@ const DynamicPage: React.FC = () => {
                 setLoading(true);
 
                 const file = getPageFile();
-
                 if (!file) {
                     setError("Page Not Found");
                     setLoading(false);
@@ -185,6 +184,10 @@ const DynamicPage: React.FC = () => {
                     setError("Page Not Found");
                 } else {
                     setPage(data[pageKey]);
+
+                    if (data[pageKey].stylesheet) {
+                        loadStylesheet(`https://map.sustainableoceansociety.co.nz/public/app-stylesheets/${data[pageKey].stylesheet}`);
+                    }
                 }
 
                 if (contentRef.current) {
@@ -200,6 +203,31 @@ const DynamicPage: React.FC = () => {
         fetchContent();
     }, [pageKey]);
 
+    // Dynamic stylesheets **INACTIVE**
+
+    // A custom stylesheet can be specified for pages in the json files.
+    // If a stylesheet is specified, it will be loaded for that particular page
+    // This feature is currently inactive because there is a bug where the stylesheet for one page will then apply to all pages.
+    // More investigation required!
+
+    const loadStylesheet = (url: string) => {
+        const stylesheetId = `dynamic-css-${pageKey}`;
+    
+        const existingLink = document.getElementById(stylesheetId);
+        if (existingLink) {
+            existingLink.remove();
+        }
+    
+        const link = document.createElement("link");
+        link.id = stylesheetId;  // Use a unique ID for each page
+        link.rel = "stylesheet";
+        link.href = url;
+    
+        // Append the new stylesheet to the <head>
+        document.head.appendChild(link);
+    };
+    
+
     useEffect(() => {
         if (hasLoaded) {
             const timer = setTimeout(() => setLoading(false), 0);
@@ -214,7 +242,6 @@ const DynamicPage: React.FC = () => {
     if (error || !page) {
         return <NotFound />;
     }
-
 
     return (
         <IonPage>
