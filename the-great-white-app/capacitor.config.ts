@@ -22,6 +22,9 @@ const config: CapacitorConfig = {
       layoutName: "launch_screen",
       useDialog: true,
     },
+    EdgeToEdge: {
+      backgroundColor: "#101855",
+    }
   },
 };
 

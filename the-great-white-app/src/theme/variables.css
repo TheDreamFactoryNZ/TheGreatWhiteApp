@@ -63,6 +63,7 @@ ul {
 :root {
 
 	--ion-font-family: 'SourceSans3', sans-serif;
+	--ion-safe-area-top: env(safe-area-inset-top);
 	--ion-safe-area-bottom: env(safe-area-inset-bottom);
 
 	/* Colours */
