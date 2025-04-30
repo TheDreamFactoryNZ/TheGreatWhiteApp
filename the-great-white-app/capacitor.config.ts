@@ -2,7 +2,7 @@ import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'nz.co.sustainableoceansociety.greatwhiteapp',
-  appName: 'The Great White App',
+  appName: 'Great Whites',
   webDir: 'dist',
   plugins: {
     StatusBar: {
