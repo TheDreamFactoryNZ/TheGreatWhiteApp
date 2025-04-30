@@ -1,6 +1,7 @@
 {
     "server": "ermap-server.pamdas.org",
     "public_name": "nzsharkman",
+    "subject_group": "5cd1e429-439c-47dd-adbc-e7746a5fe543",
     "map_title": "The Great White App",
     "color_scheme": "custom",
     "custom_colors": [
@@ -12,7 +13,7 @@
     "map": {
         "style": "mapbox://styles/izaakwicks/cm695163r00h001spfqn33x5h",
         "center": [173.497498, -40.043578],
-        "zoom": 5,
+        "zoom": 3,
         "pitch": 1,
         "simplify_map_data": false,
         "show_subject_names": true,
@@ -20,20 +21,20 @@
     },
     "subjects":
     {
-        "8b2f2d3d-831a-4a43-8aa7-9ce1b4d7d8d7":
+        "38277c36-da2a-4514-b203-720e3ee8cdad":
         {
-            "name": "Benny",
-            "age": "12 years",
+            "name": "Ra",
+            "age": "",
             "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon.png",
             "is_active": 0,
             "pictures":
             [
                 {
-                    "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/great_white.jpg"
+                    "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/ra/ra-1.webp"
                 }
             ],
-            "fun_fact": "Females give birth to between two and 10 pups per litter, and perhaps as many as 14!",
-            "detail_description": "<p><b>The Great White Shark is a species of large mackerel shark which can be found in the coastal surface waters of all the major oceans.</b> It is notable for its size, with larger female individuals growing to 6.1 m (20 ft) in length and 1,905–2,268 kg in weight at maturity.</p>"
+            "fun_fact": "Tagged 6th April 2025 near Motonui / Edwards Island. Tag sponsored by Shark Experience Bluff, NZ",
+            "detail_description": "<p>The presence of pilot fish indicate this mature male shark has migrated from the tropics.</p>"
         },
         "18a9e2b7-7629-46bf-9e03-0824122f45eb":
         {
@@ -52,18 +53,18 @@
         },
         "24b4c45f-bb3f-491e-b6c1-e1fe72cda06a":
         {
-            "name": "Mananui (Great Prestige)",
-            "age": "6 years (3.2 metres)",
-            "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon_inactive.png",
+            "name": "Bubbles",
+            "age": "",
+            "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon.png",
             "is_active": 0,
             "pictures":
             [
                 {
-                    "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/Mananui.png"
+                    "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/bubbles/bubbles-2.webp"
                 }
             ],
-            "fun_fact": "Tagged 16th January 2023 inside Bowentown Harbour. Tag named by Te Whānau a Tauwhao, the Hapu of this area",
-            "detail_description": "<p><b>Mananui is named by Te Whānau a Tauwhao, the Hapū of the area where she was tagged.</b> She is a female Great White shark, 3.2m in length, making her the largest Great White tagged so far.</p><p>Her presence was awe inspiring, both in size and demeanour. She wears battle scars and scratches, but was cautious and calculated. This prestige led to her naming; Mananui is the inshore headland of Bowentown, looking over the area she was tagged.</p><p>Mananui was a stronghold Pā site protecting Te Whānau a Tauwhao people. This Great White was identified through fishermen photos by Dr Elliott, as having resided in this area for the last three summers and thus, like Mananui the Pā, she represents a stronghold presence of prestige and great mana.</p><p>At this size she is classified as a sub-adult, which means she is no longer a juvenile, but is not reproductively mature. Generally at this size/age, Great Whites' metabolism speeds up, requiring them to feed on seals. Their teeth widen for hunting this prey, compared to more needle-like teeth of juveniles which eat fish.</p>"
+            "fun_fact": "Tagged 7th April 2025 near Motonui / Edwards Island. Tag sponsored by Bowentown Campground - Rebeccas Crosby",
+            "detail_description": "This immature female shark has many black scratches but is very confident"
         },
 		"79687522-b3d9-46a8-8592-07c893ea9372":
         {
@@ -95,95 +96,95 @@
             "fun_fact": "Tagged 8th February outside Matakana Island. Tag sponsored by Hughes-Hallett & Vipond Endeavours",
             "detail_description": "<p>SWAJ is so appropriately named, as this tiny baby Great White couldn't be further from the monster depicted in JAWS - The sponsors of this tag wanted to help reverse the JAWS mentality - hence the name!</p><p>SWAJ is the second baby GW seen in this region, but the first to be tagged. At this size SWAJ is literally a newborn, and one of only a handful to ever be witnessed alive and to be tagged. Mother GWs have to be bigger than 4.5m (35yrs +) to have babies, and they give birth to 1-5 pups which are born alive at this 1.4m length. Mum then leaves them to fend and learn for themselves, so stay tuned to see where SWAJ goes. This tracking data is super useful in determining the critical habitat use and vulnerability of this important life stage of the NZ Great White shark.</p>"
         },
-		"58d74fb1-c3c6-4938-b882-9b7e83bbbbe3":
+		"adc2a3e4-b516-46b2-8900-8d09f2fb9fba":
         {
-            "name": "Shindo",
-            "age": "12 years",
+            "name": "Ngaru",
+            "age": "",
             "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon.png",
             "is_active": 0,
             "pictures":
             [
                 {
-                    "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/great_white.jpg"
+                    "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/ngaru/ngaru-1.webp"
                 }
             ],
-            "fun_fact": "Females give birth to between two and 10 pups per litter, and perhaps as many as 14!",
-            "detail_description": "<p><b>The Great White Shark is a species of large mackerel shark which can be found in the coastal surface waters of all the major oceans.</b> It is notable for its size, with larger female individuals growing to 6.1 m (20 ft) in length and 1,905–2,268 kg in weight at maturity.</p>"
+            "fun_fact": "Tagged 6th April 2025 near Motonui / Edwards Island. Hazel McCulloch and Grandma Gillian",
+            "detail_description": "Immature male shark"
         },
-		"9670a7ae-a268-41eb-b82f-d4566bc8acd4":
+		"43f46c45-f4d9-438d-a8c8-d23d919c1872":
         {
-            "name": "Astros",
-            "age": "12 years",
+            "name": "Jonah",
+            "age": "",
             "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon.png",
             "is_active": 0,
             "pictures":
             [
                 {
-                    "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/great_white.jpg"
+                    "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/jonah/jonah-1.webp"
                 }
             ],
-            "fun_fact": "Females give birth to between two and 10 pups per litter, and perhaps as many as 14!",
-            "detail_description": "<p><b>The Great White Shark is a species of large mackerel shark which can be found in the coastal surface waters of all the major oceans.</b> It is notable for its size, with larger female individuals growing to 6.1 m (20 ft) in length and 1,905–2,268 kg in weight at maturity.</p>"
+            "fun_fact": "Tagged 6th April 2025 near Motonui / Edwards Island. Tag sponsored by C M Hudson",
+            "detail_description": ""
         },
-		"e4354ef0-f6a8-4ee3-9d12-6aa5b4089987":
+		"f0ab9320-961a-48bf-99ae-86f8da80c5a6":
         {
-            "name": "Lennon",
-            "age": "12 years",
+            "name": "Grace",
+            "age": "",
             "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon.png",
             "is_active": 0,
             "pictures":
             [
                 {
-                    "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/great_white.jpg"
+                    "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/grace/grace-2.webp"
                 }
             ],
-            "fun_fact": "Females give birth to between two and 10 pups per litter, and perhaps as many as 14!",
-            "detail_description": "<p><b>The Great White Shark is a species of large mackerel shark which can be found in the coastal surface waters of all the major oceans.</b> It is notable for its size, with larger female individuals growing to 6.1 m (20 ft) in length and 1,905–2,268 kg in weight at maturity.</p>"
+            "fun_fact": "Tagged 6th April 2025 near Motonui / Edwards Island. Tag sponsored by Steven Morris",
+            "detail_description": "Grace is a confident and dominant shark"
         },
-		"618e39e1-64d4-4184-9a57-2590f6216e11":
+		"9fca7c20-85a7-4948-aa6c-6e9b1e598795":
         {
-            "name": "Layne",
-            "age": "12 years",
+            "name": "Deep Blue",
+            "age": "",
             "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon.png",
             "is_active": 0,
             "pictures":
             [
                 {
-                    "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/great_white.jpg"
+                    "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/deep_blue/deep-blue-1.webp"
                 }
             ],
-            "fun_fact": "Females give birth to between two and 10 pups per litter, and perhaps as many as 14!",
-            "detail_description": "<p><b>The Great White Shark is a species of large mackerel shark which can be found in the coastal surface waters of all the major oceans.</b> It is notable for its size, with larger female individuals growing to 6.1 m (20 ft) in length and 1,905–2,268 kg in weight at maturity.</p>"
+            "fun_fact": "Tagged 7th April 2025 near Motonui / Edwards Island. Tag sponsored by the Cox Family",
+            "detail_description": "Mature male shark"
         },
-		"106b2de6-64b4-46a2-b34a-0701fe6317a5":
+		"51c120f2-66c8-48fd-a867-15e9d3cb06fe":
         {
-            "name": "Hendrix",
-            "age": "12 years",
+            "name": "Odin",
+            "age": "",
             "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon.png",
             "is_active": 0,
             "pictures":
             [
                 {
-                    "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/great_white.jpg"
+                    "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/odin/odin-1.webp"
                 }
             ],
-            "fun_fact": "Females give birth to between two and 10 pups per litter, and perhaps as many as 14!",
-            "detail_description": "<p><b>The Great White Shark is a species of large mackerel shark which can be found in the coastal surface waters of all the major oceans.</b> It is notable for its size, with larger female individuals growing to 6.1 m (20 ft) in length and 1,905–2,268 kg in weight at maturity.</p>"
+            "fun_fact": "Tagged 7th April 2025 near Motonui / Edwards Island. Tag sponsored by Ensidium Hire - Stuie T",
+            "detail_description": "<p>Nicknamed \"Aussie shark\" due to the existing Acoustic V16 tag thought to be from Australian tagging in New South Wales. Pilot fish also indicate it recently migrated from the tropics</p>"
         },
 		"94383181-8da2-4632-9fe0-ccae62241550":
         {
-            "name": "Debbie",
-            "age": "12 years",
+            "name": "Maureen",
+            "age": "",
             "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon.png",
             "is_active": 0,
             "pictures":
             [
                 {
-                    "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/great_white.jpg"
+                    "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/maureen/maureen-1.webp"
                 }
             ],
-            "fun_fact": "Females give birth to between two and 10 pups per litter, and perhaps as many as 14!",
-            "detail_description": "<p><b>The Great White Shark is a species of large mackerel shark which can be found in the coastal surface waters of all the major oceans.</b> It is notable for its size, with larger female individuals growing to 6.1 m (20 ft) in length and 1,905–2,268 kg in weight at maturity.</p>"
+            "fun_fact": "Tagged 7th April 2025 near Motonui / Edwards Island. Tag sponsored by Northcote Vets - Sue and Moira.",
+            "detail_description": "This mature female is a super healthy and fat shark. Very dominant."
         }
     }
 }

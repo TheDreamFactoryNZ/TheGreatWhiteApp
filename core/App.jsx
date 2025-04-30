@@ -94,7 +94,7 @@ const App = (props) => {
       });
 
       // fetch call for subjects
-      const url = `https://${config.server}/${config.public_name}/api/v1.0/subjects`;
+      const url = `https://${config.server}/${config.public_name}/api/v1.0/subjects?subject_group=${config.subject_group}`;
       fetch(url)
         .then(resp => {
           if (resp.ok) {
