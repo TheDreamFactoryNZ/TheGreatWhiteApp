@@ -74,7 +74,7 @@ const HelpButton = () => {
             <img className='tip-icon' width='24' height='24' src={tracks} />
             <p>Display a subject's track</p>
           </div>
-          <div>
+          <div style={{display: 'none'}}>
             <img className='tip-icon' width='24' height='24' style={refreshStyle} src={refresh} />
             <p>Refresh and update locations (internet connection required)</p>
           </div>
