@@ -127,7 +127,7 @@ const App = (props) => {
               console.warn('Invalid color scheme, falling back to earthtones.');
               colors = earthtones;
             }
-            console.log('Resolved track colors:', colors);
+            
             subject.color = colors[index % colors.length];
             index++;
 
