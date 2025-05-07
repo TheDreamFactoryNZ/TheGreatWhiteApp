@@ -115,17 +115,19 @@ const App = (props) => {
             }
 
             let colors = earthtones;
-            if (config.color_scheme) {
-              if (config.color_scheme === 'earthtones') {
-                colors = earthtones;
-              } else if (config.color_scheme === 'aquatic') {
-                colors = aquatic;
-              } else if (config.color_scheme === 'custom') {
-                colors = config.custom_colors;
-              } else {
-                colors = config.color_scheme;
-              }
+            if (Array.isArray(config.color_scheme)) {
+              colors = config.color_scheme;
+            } else if (config.color_scheme === 'earthtones') {
+              colors = earthtones;
+            } else if (config.color_scheme === 'aquatic') {
+              colors = aquatic;
+            } else if (config.color_scheme === 'custom' && Array.isArray(config.custom_colors)) {
+              colors = config.custom_colors;
+            } else {
+              console.warn('Invalid color scheme, falling back to earthtones.');
+              colors = earthtones;
             }
+            console.log('Resolved track colors:', colors);
             subject.color = colors[index % colors.length];
             index++;
 
