@@ -24,8 +24,8 @@
         "38277c36-da2a-4514-b203-720e3ee8cdad":
         {
             "name": "Ra",
-            "age": "",
-            "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon.png",
+            "age": "Total length: 3.7m",
+            "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon.webp",
             "is_active": 0,
             "pictures":
             [
@@ -33,14 +33,14 @@
                     "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/ra/ra-1.webp"
                 }
             ],
-            "fun_fact": "Tagged 6th April 2025 near Motonui / Edwards Island. Tag sponsored by Shark Experience Bluff, NZ",
-            "detail_description": "<p>The presence of pilot fish indicate this mature male shark has migrated from the tropics.</p>"
+            "fun_fact": "Tagged 6th April 2025 12:00 near Motonui / Edwards Island. Tag sponsored by Shark Experience Bluff, NZ",
+            "detail_description": "The presence of pilot fish indicate this male shark has migrated from the tropics. Large male."
         },
         "18a9e2b7-7629-46bf-9e03-0824122f45eb":
         {
             "name": "",
             "age": "",
-            "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon.png",
+            "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon.webp",
             "is_active": 0,
             "pictures":
             [
@@ -54,8 +54,8 @@
         "24b4c45f-bb3f-491e-b6c1-e1fe72cda06a":
         {
             "name": "Bubbles",
-            "age": "",
-            "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon.png",
+            "age": "Total length: 2.5m",
+            "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon.webp",
             "is_active": 0,
             "pictures":
             [
@@ -63,29 +63,29 @@
                     "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/bubbles/bubbles-2.webp"
                 }
             ],
-            "fun_fact": "Tagged 7th April 2025 near Motonui / Edwards Island. Tag sponsored by Bowentown Campground - Rebeccas Crosby",
+            "fun_fact": "Tagged 7th April 2025 14:15 near Motonui / Edwards Island. Tag sponsored by Bowentown Campground - Rebecca Crosby",
             "detail_description": "This immature female shark has many black scratches but is very confident"
-        },
-		"79687522-b3d9-46a8-8592-07c893ea9372":
-        {
-            "name": "",
-            "age": "",
-            "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon.png",
-            "is_active": 0,
-            "pictures":
-            [
-                {
-                    "path": ""
-                }
-            ],
-            "fun_fact": "",
-            "detail_description": "<p>Description coming soon...</p>"
         },
 		"c4291553-773c-4945-a44e-e9fe88371dba":
         {
-            "name": "",
-            "age": "",
-            "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon.png",
+            "name": "Midge",
+            "age": "Total length: 2.8m",
+            "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon.webp",
+            "is_active": 0,
+            "pictures":
+            [
+                {
+                    "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/midge/midge-1.webp"
+                }
+            ],
+            "fun_fact": "Tagged 3rd May 2025 12:15 near Motonui / Edwards Island",
+            "detail_description": "This shark has lots of scars and scratches, a very confident shark for its size!"
+        },
+		"58d74fb1-c3c6-4938-b882-9b7e83bbbbe3":
+        {
+            "name": "Nicole",
+            "age": "Total length: 3.0m",
+            "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon.webp",
             "is_active": 0,
             "pictures":
             [
@@ -93,14 +93,14 @@
                     "path": ""
                 }
             ],
-            "fun_fact": "",
-            "detail_description": "<p>Description coming soon...</p>"
+            "fun_fact": "Tagged 3rd May 2025 14:00 near Motonui / Edwards Island. Tag sponsored by Nicole Benz",
+            "detail_description": "This shark has big white scratches down the left and right sides."
         },
 		"adc2a3e4-b516-46b2-8900-8d09f2fb9fba":
         {
             "name": "Ngaru",
-            "age": "",
-            "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon.png",
+            "age": "Total length: 3.1m",
+            "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon.webp",
             "is_active": 0,
             "pictures":
             [
@@ -108,14 +108,14 @@
                     "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/ngaru/ngaru-1.webp"
                 }
             ],
-            "fun_fact": "Tagged 6th April 2025 near Motonui / Edwards Island. Hazel McCulloch and Grandma Gillian",
-            "detail_description": "Immature male shark"
+            "fun_fact": "Tagged 6th April 2025 12:45 near Motonui / Edwards Island. Tag sponsored by Hazel McCulloch and Grandma Gillian",
+            "detail_description": "Ngaru is a very fit and confident male."
         },
 		"43f46c45-f4d9-438d-a8c8-d23d919c1872":
         {
             "name": "Jonah",
-            "age": "",
-            "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon.png",
+            "age": "Total length: 3.1m",
+            "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon.webp",
             "is_active": 0,
             "pictures":
             [
@@ -123,14 +123,14 @@
                     "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/jonah/jonah-1.webp"
                 }
             ],
-            "fun_fact": "Tagged 6th April 2025 near Motonui / Edwards Island. Tag sponsored by C M Hudson",
-            "detail_description": ""
+            "fun_fact": "Tagged 6th April 2025 13:10 near Motonui / Edwards Island. Tag sponsored by C M Hudson",
+            "detail_description": "Feisty young male in very fit condition"
         },
 		"f0ab9320-961a-48bf-99ae-86f8da80c5a6":
         {
             "name": "Grace",
-            "age": "",
-            "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon.png",
+            "age": "Total length: 3.5m",
+            "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon.webp",
             "is_active": 0,
             "pictures":
             [
@@ -138,14 +138,14 @@
                     "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/grace/grace-2.webp"
                 }
             ],
-            "fun_fact": "Tagged 6th April 2025 near Motonui / Edwards Island. Tag sponsored by Steven Morris",
+            "fun_fact": "Tagged 6th April 2025 13:47 near Motonui / Edwards Island. Tag sponsored by Steven Morris",
             "detail_description": "Grace is a confident and dominant shark"
         },
 		"9fca7c20-85a7-4948-aa6c-6e9b1e598795":
         {
             "name": "Deep Blue",
-            "age": "",
-            "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon.png",
+            "age": "Total length: 3.5m",
+            "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon.webp",
             "is_active": 0,
             "pictures":
             [
@@ -153,14 +153,14 @@
                     "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/deep_blue/deep-blue-1.webp"
                 }
             ],
-            "fun_fact": "Tagged 7th April 2025 near Motonui / Edwards Island. Tag sponsored by the Cox Family",
+            "fun_fact": "Tagged 7th April 2025 12:40 near Motonui / Edwards Island. Tag sponsored by the Cox Family",
             "detail_description": "Mature male shark"
         },
 		"51c120f2-66c8-48fd-a867-15e9d3cb06fe":
         {
             "name": "Odin",
-            "age": "",
-            "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon.png",
+            "age": "Total length: 3.7m",
+            "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon.webp",
             "is_active": 0,
             "pictures":
             [
@@ -168,14 +168,14 @@
                     "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/odin/odin-1.webp"
                 }
             ],
-            "fun_fact": "Tagged 7th April 2025 near Motonui / Edwards Island. Tag sponsored by Ensidium Hire - Stuie T",
+            "fun_fact": "Tagged 7th April 2025 13:15 near Motonui / Edwards Island. Tag sponsored by Ensidium Hire - Stuie T",
             "detail_description": "<p>Nicknamed \"Aussie shark\" due to the existing Acoustic V16 tag thought to be from Australian tagging in New South Wales. Pilot fish also indicate it recently migrated from the tropics</p>"
         },
 		"94383181-8da2-4632-9fe0-ccae62241550":
         {
             "name": "Maureen",
-            "age": "",
-            "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon.png",
+            "age": "Total length: 3.5m",
+            "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon.webp",
             "is_active": 0,
             "pictures":
             [
@@ -183,8 +183,83 @@
                     "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/maureen/maureen-1.webp"
                 }
             ],
-            "fun_fact": "Tagged 7th April 2025 near Motonui / Edwards Island. Tag sponsored by Northcote Vets - Sue and Moira.",
+            "fun_fact": "Tagged 7th April 2025 13:45 near Motonui / Edwards Island. Tag sponsored by Northcote Vets - Sue and Moira.",
             "detail_description": "This mature female is a super healthy and fat shark. Very dominant."
+        },
+        "9670a7ae-a268-41eb-b82f-d4566bc8acd4":
+        {
+            "name": "Nui",
+            "age": "Total length: 3.7m",
+            "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon.webp",
+            "is_active": 0,
+            "pictures":
+            [
+                {
+                    "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/nui/nui-1.webp"
+                }
+            ],
+            "fun_fact": "Tagged 4th May 2025 near Motonui / Edwards Island. Tag sponsored by the Manage Family",
+            "detail_description": "A very fit and healthy large male great white with superior confidence."
+        },
+		"e4354ef0-f6a8-4ee3-9d12-6aa5b4089987":
+        {
+            "name": "Davenport",
+            "age": "Total length: 4.0m",
+            "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon.webp",
+            "is_active": 0,
+            "pictures":
+            [
+                {
+                    "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/davenport/davenport-1.webp"
+                }
+            ],
+            "fun_fact": "Tagged 4th May 2025 14:30 near Motonui / Edwards Island. Tag sponsored by Joe Davenport.",
+            "detail_description": "Very shy yet confident shark. Davenport only showed herself in one fast pass, enough to sex, ID and tag her"
+        },
+		"618e39e1-64d4-4184-9a57-2590f6216e11":
+        {
+            "name": "Happy",
+            "age": "Total length: 3.2m",
+            "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon.webp",
+            "is_active": 0,
+            "pictures":
+            [
+                {
+                    "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/happy/happy-1.webp"
+                }
+            ],
+            "fun_fact": "Tagged 4th May 2025 near Motonui / Edwards Island. Tag sponsored by Joy and Richard Bates.",
+            "detail_description": "Happy has lots of diatoms along dorsal and pec fins. A very friendly shark"
+        },
+		"106b2de6-64b4-46a2-b34a-0701fe6317a5":
+        {
+            "name": "Shingo",
+            "age": "Total length: 3.5m",
+            "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon.webp",
+            "is_active": 0,
+            "pictures":
+            [
+                {
+                    "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/shingo/shingo-2.webp"
+                }
+            ],
+            "fun_fact": "Tagged 5th May 2025 near Motonui / Edwards Island. Tag sponsored by Cam Marshall.",
+            "detail_description": "Shingo is a very cautious yet confident and fit female Great white"
+        },
+		"79687522-b3d9-46a8-8592-07c893ea9372":
+        {
+            "name": "Waihi",
+            "age": "Total length: 2.8m",
+            "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon.webp",
+            "is_active": 0,
+            "pictures":
+            [
+                {
+                    "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/waihi/waihi-2.webp"
+                }
+            ],
+            "fun_fact": "Tagged 9th May 2025 near Motonui / Edwards Island. Tag sponsored by Waihi School.",
+            "detail_description": "Waihi is a very shy and placid young female great white"
         }
     }
 }
