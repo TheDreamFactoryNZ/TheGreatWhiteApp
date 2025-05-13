@@ -83,31 +83,11 @@
                             },
                             {
                                 "header": "Leave a Review",
-                                "content": "Positive reviews means more downloads, support and funding for future development of the app and project. The app is an ongoing effort built from coffee, 5AM starts, 4AM finishes and a mighty dose of passion. If you love what we're doing, a review goes a long way. If something isn't working right or you've discovered a bug, contact our developers."
+                                "content": "Positive reviews means more downloads, support and funding for future development of the app and project. The app is an ongoing effort built from coffee, 5AM starts, 4AM finishes and a mighty dose of passion. If you love what we're doing, a review goes a long way. If something isn't working right or you've discovered a bug, contact our developers on the \"Report an Issue screen.\"."
                             }
                         ]
                     }
                 ]
-            },
-            {
-                "type": "section-item",
-                "id": "",
-                "class": "",
-                "section-content": [
-                    {
-                        "type": "h2-heading",
-                        "content": "Parting words from Riley"
-                    },
-                    {
-                        "type": "text",
-                        "content": "A bit of blurb and some closing remarks can go here."
-                    }
-                ]
-            },
-            {
-                "type": "button",
-                "buttonText": "Scroll to Top",
-                "onClick": "scrollToTop"
             }
         ]
     },
@@ -189,7 +169,11 @@
                     },
                     {
                         "type": "text",
-                        "content": "For reporting any TECHNICAL issues with the app you can e-mail innovate@thedreamfactory.nz . If applicable, please include a screen recording or video of the issue so we can investigate. You may not hear a reply straight away, but it does not mean your issue is not being investigated."
+                        "content": "For reporting any TECHNICAL issues with the app you can e-mail innovate@thedreamfactory.nz . If applicable, please include a screen recording or video of the issue so we can investigate. You may not receive a reply but it does not mean the issue isn't being investigated!"
+                    },
+                    {
+                        "type": "text",
+                        "content": "For issues or questions regarding movement or activity of the sharks, view the Frequently asked Questions page."
                     },
                     {
                         "type": "button",
