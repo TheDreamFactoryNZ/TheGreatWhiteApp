@@ -38,18 +38,18 @@
         },
         "18a9e2b7-7629-46bf-9e03-0824122f45eb":
         {
-            "name": "Takami",
-            "age": "3 years (2.2 metres)",
-            "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon_inactive.png",
+            "name": "",
+            "age": "",
+            "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon.png",
             "is_active": 0,
             "pictures":
             [
                 {
-                    "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/Takami.png"
+                    "path": ""
                 }
             ],
-            "detail_description": "<p><b>Takami is the second Great White Shark ever to be tagged in the northeast region of New Zealand.</b></p><p>Being 3 years old, her diet will consist of eating fish, stingrays, octopus and crustaceans, which are classic prey of juvenile Great White sharks. These prey types are abundant in harbours and shallow coastal ecosystems which is what makes this tagging location an ideal nursery ground for a shark like Takami.</p>",
-            "fun_fact": "Tagged 5th December 2022 inside Bowentown Harbour. Tag sponsored by Mazda New Zealand"
+            "detail_description": "<p>Description coming soon...</p>",
+            "fun_fact": ""
         },
         "24b4c45f-bb3f-491e-b6c1-e1fe72cda06a":
         {
@@ -68,33 +68,33 @@
         },
 		"79687522-b3d9-46a8-8592-07c893ea9372":
         {
-            "name": "Daisy",
-            "age": "4 years (2.75 metres)",
-            "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon_inactive.png",
+            "name": "",
+            "age": "",
+            "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon.png",
             "is_active": 0,
             "pictures":
             [
                 {
-                    "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/Daisy.png"
+                    "path": ""
                 }
             ],
-            "fun_fact": "Tagged 3rd December 2022 inside Bowentown Harbour. Tag sponsored by Jane Mowbray",
-            "detail_description": "<p><b>Daisy is the first ever Great White shark to be tagged in northeast New Zealand.</b> She was sighted on the 3rd of December along with two other juvenile Great White sharks. Daisy however was the only one with the confidence to come close enough to the boat to be tagged.</p><p>At this age - size, Daisy is moving from juvenile to sub-adult age. This means her metabolism speeds up, her teeth get more triangulated and her diet should change from fish to seals. This should encourage her, amazingly through pure instinct, to migrate south towards seal colonies. Where will she go next? The tag will tell the tale.</p>"
+            "fun_fact": "",
+            "detail_description": "<p>Description coming soon...</p>"
         },
 		"c4291553-773c-4945-a44e-e9fe88371dba":
         {
-            "name": "SWAJ (Reversing JAWS)",
-            "age": "<1 years (1.4 metres)",
-            "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon_inactive.png",
+            "name": "",
+            "age": "",
+            "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon.png",
             "is_active": 0,
             "pictures":
             [
                 {
-                    "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/SWAJ.png"
+                    "path": ""
                 }
             ],
-            "fun_fact": "Tagged 8th February outside Matakana Island. Tag sponsored by Hughes-Hallett & Vipond Endeavours",
-            "detail_description": "<p>SWAJ is so appropriately named, as this tiny baby Great White couldn't be further from the monster depicted in JAWS - The sponsors of this tag wanted to help reverse the JAWS mentality - hence the name!</p><p>SWAJ is the second baby GW seen in this region, but the first to be tagged. At this size SWAJ is literally a newborn, and one of only a handful to ever be witnessed alive and to be tagged. Mother GWs have to be bigger than 4.5m (35yrs +) to have babies, and they give birth to 1-5 pups which are born alive at this 1.4m length. Mum then leaves them to fend and learn for themselves, so stay tuned to see where SWAJ goes. This tracking data is super useful in determining the critical habitat use and vulnerability of this important life stage of the NZ Great White shark.</p>"
+            "fun_fact": "",
+            "detail_description": "<p>Description coming soon...</p>"
         },
 		"adc2a3e4-b516-46b2-8900-8d09f2fb9fba":
         {
