@@ -287,7 +287,7 @@ const App = (props) => {
 
     window.GlobalMap.addSource(geojson.features[0].geometry.type + ' ' + geojson.features[0].properties.id, {
       type: 'geojson',
-      data: json
+      data: geojson
     });
 
     window.GlobalMap.addLayer({
