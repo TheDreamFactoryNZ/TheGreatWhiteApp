@@ -29,8 +29,6 @@
     src: url('./fonts/SourceSans3-VariableFont_wght.ttf') format('truetype');
 }
 
-
-
 /* Base font size and responsive scaling for headings */
 html {
     font-size: 16px; /* Base font size */
@@ -48,7 +46,8 @@ h2 {
 }
 
 h3 {
-    font-family: 'Rajdhani-Medium', sans-serif;
+    font-family: 'Source-Sans', sans-serif;
+    font-weight: 600;
     font-size: calc(1.75rem + 0.25vw);
 }
 
@@ -68,3 +67,15 @@ h6 {
 }
 
 /* Paragraph Styles */
+p {
+    font-family: 'Source-Sans', sans-serif;
+    font-size: calc(1rem + 0.1vw);
+}
+
+p strong {
+    font-weight: 600;
+}
+
+em {
+    font-style: italic;
+}
