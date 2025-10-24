@@ -8,6 +8,7 @@ import Partners from './components/Partners';
 
 import './assets/mapstyle.css';
 import 'mapbox-gl/dist/mapbox-gl.css';
+import './assets/main.css';
 
 import med from './assets/images/med.png';
 

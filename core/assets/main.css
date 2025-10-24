@@ -1,0 +1,70 @@
+/* Font face declarations */
+@font-face {
+    font-family: 'Rajdhani-Bold';
+    src: url('./fonts/Rajdhani-Bold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Rajdhani-Semibold';
+    src: url('./fonts/Rajdhani-SemiBold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Rajdhani-Medium';
+    src: url('./fonts/Rajdhani-Medium.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Rajdhani-Regular';
+    src: url('./fonts/Rajdhani-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Rajdhani-Light';
+    src: url('./fonts/Rajdhani-Light.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Source-Sans';
+    src: url('./fonts/SourceSans3-VariableFont_wght.ttf') format('truetype');
+}
+
+
+
+/* Base font size and responsive scaling for headings */
+html {
+    font-size: 16px; /* Base font size */
+}
+
+/* Heading styles */
+h1 {
+    font-family: 'Rajdhani-Bold', sans-serif;
+    font-size: calc(2.5rem + 1vw);
+}
+
+h2 {
+    font-family: 'Rajdhani-Semibold', sans-serif;
+    font-size: calc(2rem + 0.5vw);
+}
+
+h3 {
+    font-family: 'Rajdhani-Medium', sans-serif;
+    font-size: calc(1.75rem + 0.25vw);
+}
+
+h4 {
+    font-family: 'Rajdhani-Regular', sans-serif;
+    font-size: calc(1.5rem + 0.2vw);
+}
+
+h5 {
+    font-family: 'Rajdhani-Light', sans-serif;
+    font-size: calc(1.25rem + 0.15vw);
+}
+
+h6 {
+    font-family: 'Rajdhani-Light', sans-serif;
+    font-size: calc(1rem + 0.1vw);
+}
+
+/* Paragraph Styles */
