@@ -62,7 +62,7 @@
             },
             {
                 "type": "text",
-                "content": "This App would not be alive without your support. The small fee paid contributes to the Great White Project and enables our epic web developers from The Dream Factory, to continue to run, update and improve the way we join these sharks on their amazing journeys."
+                "content": "This App would not be alive without your support. The small fee paid contributes to the Great White Project and also helps our epic web developers from The Dream Factory continue to run, update and improve the way we join these sharks on their amazing journeys."
             },
             {
                 "type": "button",
@@ -86,7 +86,7 @@
             },
             {
                 "type": "h3-heading",
-                "content": "App Sponsors"
+                "content": "Project Support"
             },
             {
                 "type": "text",
@@ -109,7 +109,8 @@
                     "Shark Experience Bluff - for access to the amazing animals",
                     "Discovery Channel - enabling the field effort and telling the story",
                     "Department of Conservation - for the research permit",
-                    "University of Auckland - for animal ethics"
+                    "University of Auckland - for animal ethics",
+                    "Ngāi Tahu - for cultural connection and access to the Titi Island region which form critical habitat for this endangered and protected shark species."
                 ]
             },
             {
@@ -125,16 +126,24 @@
                 "type": "unordered-list",
                 "items": [
                     "Allan McCulloch",
-                    "C M Hudson",
+                    "The Hudson Family",
                     "Cam Marshall",
+                    "The Cox Family",
+                    "Deane Vipond and Peter Hughes-Hallett",
                     "Ensidium Hire - Stuie T",
                     "Hazel McCulloch and Grandma Gillian",
+                    "Jane Mowbray",
                     "Joe Davenport",
+                    "The Managh Family",
+                    "Mazda NZ",
                     "Nicole Benz",
-                    "Rebecca Crosby",
-                    "Richard Bates",
+                    "Otawhiwhi Marae - Te Whanau A Tauwhao",
+                    "Rebecca Crosby - Bowentown Campground",
+                    "Sue and Moira Thompson - Northcote Vets",
+                    "Joy & Richard Bates",
                     "Shark Experience Bluff",
-                    "The Manage Family"
+                    "Steven Morris",
+                    "Waihi School"
                 ]
             },
             {
@@ -159,10 +168,11 @@
                     "Kieran Ashburner",
                     "Lauren Batcheldor",
                     "Maddie Burtis",
-                    "Marena Smith from Mapotic",
+                    "Marena Smith from Mapbox",
                     "Phil & Suyndie Wicks",
                     "Rebekah Knight",
-                    "Riki-Lee Krutz"
+                    "Riki-Lee Krutz",
+                    "Wyse Tabuavou"
                 ]
             },
             {

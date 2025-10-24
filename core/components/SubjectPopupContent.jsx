@@ -51,6 +51,7 @@ const SubjectPopup = (props) => {
       </div>
       <div id='pop-up-header'>
         <h3>{subject.name}</h3>
+        <p><strong>Last seen:</strong>{date}</p>
       </div>
       <p>{sex}{data && data.age && data.age + ' |'} {species}</p>
       {data && data.fun_fact && <p><i>{data.fun_fact}</i></p>}
@@ -59,7 +60,6 @@ const SubjectPopup = (props) => {
         <img height='10' id='story' src={story} />
       </div>
       <div id='pop-up-buttons'>
-        <p id='date'>{date}</p>
         <TrackButton subject={subject} />
       </div>
     </div>
