@@ -26,7 +26,9 @@ const MAP_ICON_SCALE = 2;
 
 window.GlobalMap = null;
 
-export const imgElFromSrc = (src, width = MAP_ICON_SIZE, height = null) => new Promise((resolve, reject) => {
+export const TrackContext = createContext({});
+
+const imgElFromSrc = (src, width = MAP_ICON_SIZE, height = null) => new Promise((resolve, reject) => {
   const img = new Image();
   img.setAttribute('crossorigin', 'anonymous');
 
@@ -59,7 +61,82 @@ export const imgElFromSrc = (src, width = MAP_ICON_SIZE, height = null) => new P
   img.src = src;
 });
 
-export const TrackContext = createContext({});
+const fixAntimeridianCrossing = (featCollection) => {
+  if (!featCollection?.features?.length) return featCollection;
+
+  const MAX_ABSOLUTE_LONGITUDE = 180;
+  const WORLD_TOTAL_LONGITUDE = 360;
+
+  const adjustCoordinatesForCrossing = (coordinates) => {
+    return coordinates.reduce((accumulator, coordinate, index) => {
+      let fixedCoordinate = coordinate;
+      if (index !== 0) {
+        const longitudeDifference = coordinate[0] - accumulator.at(-1)[0];
+
+        if (longitudeDifference > MAX_ABSOLUTE_LONGITUDE) {
+          fixedCoordinate = [coordinate[0] - WORLD_TOTAL_LONGITUDE, coordinate[1]];
+        }
+
+        if (longitudeDifference < -MAX_ABSOLUTE_LONGITUDE) {
+          fixedCoordinate = [coordinate[0] + WORLD_TOTAL_LONGITUDE, coordinate[1]];
+        }
+      }
+
+      accumulator.push(fixedCoordinate);
+      return accumulator;
+    }, []);
+  };
+
+  const processGeometry = (geometry) => {
+    if (!geometry || !geometry.coordinates) return geometry;
+
+    const { type, coordinates } = geometry;
+
+
+    switch (type) {
+      case 'LineString':
+        return {
+          ...geometry,
+          coordinates: adjustCoordinatesForCrossing(coordinates)
+        };
+
+      case 'Polygon':
+        return {
+          ...geometry,
+          coordinates: coordinates.map(ring => adjustCoordinatesForCrossing(ring))
+        };
+
+      case 'MultiLineString':
+        return {
+          ...geometry,
+          coordinates: coordinates.map(lineString => adjustCoordinatesForCrossing(lineString))
+        };
+
+      case 'MultiPolygon':
+        return {
+          ...geometry,
+          coordinates: coordinates.map(polygon =>
+            polygon.map(ring => adjustCoordinatesForCrossing(ring))
+          )
+        };
+
+      default:
+        return geometry;
+    }
+  };
+
+  featCollection.features = featCollection.features.map((feature) => {
+    if (!feature?.geometry) return feature;
+
+    return {
+      ...feature,
+      geometry: processGeometry(feature.geometry)
+    };
+  });
+
+  return featCollection;
+};
+
 
 /* eslint-disable react/prop-types */
 const App = (props) => {
@@ -127,7 +204,6 @@ const App = (props) => {
               console.warn('Invalid color scheme, falling back to earthtones.');
               colors = earthtones;
             }
-            
             subject.color = colors[index % colors.length];
             index++;
 
@@ -207,15 +283,17 @@ const App = (props) => {
   }
 
   function drawTrack(json, subjectId) {
-    window.GlobalMap.addSource(json.features[0].geometry.type + ' ' + json.features[0].properties.id, {
+    const geojson = fixAntimeridianCrossing(json);
+
+    window.GlobalMap.addSource(geojson.features[0].geometry.type + ' ' + geojson.features[0].properties.id, {
       type: 'geojson',
-      data: json
+      data: geojson
     });
 
     window.GlobalMap.addLayer({
-      id: json.features[0].geometry.type + ' ' + json.features[0].properties.id,
+      id: geojson.features[0].geometry.type + ' ' + geojson.features[0].properties.id,
       type: 'line',
-      source: json.features[0].geometry.type + ' ' + json.features[0].properties.id,
+      source: geojson.features[0].geometry.type + ' ' + geojson.features[0].properties.id,
       layout: {
         'line-join': 'round',
         'line-cap': 'round'
@@ -365,25 +443,25 @@ const App = (props) => {
   return (
     <>
       <TrackContext.Provider value={{ displayTracks, setTracks, tracks }}>
-          <div id='app-container'>
-            <div id='map-container' onKeyDown={logKey} onKeyUp={logKey}>
-              <HelpButton />
+        <div id='app-container'>
+          <div id='map-container' onKeyDown={logKey} onKeyUp={logKey}>
+            <HelpButton />
 
-              <Legend
-                title={config !== undefined ? config.map_title : null}
-                subs={subjects}
-                subjectData={config}
-                onLocClick={(coords) => goToLoc(coords)}
-                legendOpen={legendOpen}
-                onLegendStateToggle={toggleLegendState}
-                legSub={legSub}
-                onReturnClick={(subject) => setLegSub(subject)}
-                onStoryClick={(subject) => setLegSub(subject)}
-                tracks={tracks}
-              />
-            </div>
-            <Partners />
+            <Legend
+              title={config !== undefined ? config.map_title : null}
+              subs={subjects}
+              subjectData={config}
+              onLocClick={(coords) => goToLoc(coords)}
+              legendOpen={legendOpen}
+              onLegendStateToggle={toggleLegendState}
+              legSub={legSub}
+              onReturnClick={(subject) => setLegSub(subject)}
+              onStoryClick={(subject) => setLegSub(subject)}
+              tracks={tracks}
+            />
           </div>
+          <Partners />
+        </div>
         {subjectPopups.map(({ properties, geometry }) =>
           <Popup
             key={`${properties.id}-popup`}
