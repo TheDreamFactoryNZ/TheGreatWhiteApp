@@ -51,7 +51,7 @@ let species = speciesSource
       </div>
       <div id='pop-up-header'>
         <h3>{subject.name}</h3>
-        <p><strong>Last seen:</strong>{date}</p>
+        <p><strong>Last seen:</strong><br/>{date}<br/><span style={{fontSize: '0.75rem', lineHeight: '1.2em'}}><em>No recent location? This shark's probably deep underwater, yet to surface.</em></span></p>
       </div>
       <p>{sex}{data && data.age && data.age + ' |'} {species}</p>
       {data && data.fun_fact && <p><i>{data.fun_fact}</i></p>}
