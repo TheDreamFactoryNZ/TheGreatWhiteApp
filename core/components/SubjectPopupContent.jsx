@@ -16,12 +16,12 @@ const SubjectPopup = (props) => {
     sex = subject.sex.charAt(0).toUpperCase() + subject.sex.slice(1) + ' | ';
   }
 
-  let species;
-  if (subject.common_name === null) {
-    species = subject.subject_subtype.replace(/\b\w/g, l => l.toUpperCase());
-  } else {
-    species = subject.common_name.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase());
-  }
+let speciesSource = subject.common_name ?? subject.subject_subtype;
+
+let species = speciesSource
+  .replace(/_/g, ' ')
+  .replace(/\b\w/g, l => l.toUpperCase());
+
   let date = subject.last_position.properties.DateTime;
   date = date.substring(0, 10) + ' ' + date.substring(11, 16);
 
