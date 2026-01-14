@@ -1,0 +1,188 @@
+{
+    "aboutGwp": {
+        "title": "About the Great White Project",
+        "heading": "Tracking Great Whites in New Zealand",
+        "backButtonHref": "/help",
+        "sections": [
+            {
+                "type": "section-item",
+                "id": "hero-section",
+                "class": "",
+                "section-content": [
+                    {
+                        "type": "text",
+                        "content": "The Great White Project led by Dr Riley Elliott focuses on the presence of Great White sharks in New Zealand - their habitat use, their behaviour, overlap with fisheries and the recreation of people in the ocean. It started with a novel and emerging population of baby and juvenile Great Whites in northeast NZ, but has now grown to tag sub-adult and mature Great Whites in a world-famous aggregation site in southern NZ - Stewart Island."
+                    }
+                ]
+            },
+            {
+                "type": "section-item",
+                "id": "research-group",
+                "class": "",
+                "section-content": [
+                    {
+                        "type": "text",
+                        "content": "No tagging and monitoring of Great Whites has occurred in Stewart Island since 2015. In May 2025, The Great White App and tags sponsored by the NZ public began to fill a decade-old black hole of understanding."
+                    },
+                    {
+                        "type": "text",
+                        "content": "16 satellite tags are deployed on a range of sexes and ages, to track anywhere in the world these animals may roam. The project aims not just to entertain you with live tracks, but also to generate scientific data that allows insight into migration routes, predator-prey relationships, genetic links to Australia, population estimates in collaboration with Australia, and overall monitoring of habitat use by this protected species."
+                    }
+                ]
+            },
+            {
+                "type": "button",
+                "buttonText": "Scroll to Top",
+                "onClick": "scrollToTop"
+            }
+        ]
+    },
+    "getInvolved": {
+        "title": "Get Involved",
+        "heading": "How You Can Help",
+        "backButtonHref": "/help",
+        "sections": [
+            {
+                "type": "section-item",
+                "id": "hero-section",
+                "class": "",
+                "section-content": [
+                    {
+                        "type": "h2-heading",
+                        "content": "Keen to help support our mission?"
+                    },
+                    {
+                        "type": "text",
+                        "content": "Purchasing the app is your first step towards supporting the Great White Project. Here's some other things you can do to help support the project."
+                    }
+                ]
+            },
+            {
+                "type": "section-item",
+                "id": "",
+                "class": "how-to-help",
+                "section-content": [
+                    {
+                        "type": "h3-heading",
+                        "content": "Ways you can get involved"
+                    },
+                    {
+                        "type": "accordion-group",
+                        "accordions": [
+                            {
+                                "header": "Share with Friends and Family",
+                                "content": "Spread the word about this exciting project and encourage people to follow our socials and purchase the app"
+                            },
+                            {
+                                "header": "Follow our Socials",
+                                "content": "Check out the Sustainable Oceans Society NZ and Riley Elliott - Shark Scientist Facebook pages for news and updates"
+                            },
+                            {
+                                "header": "Sponsor a Shark",
+                                "content": "Do you know a person or organisation who may want to name and sponsor a shark to appear in the Great White App? We'd love to hear about it."
+                            },
+                            {
+                                "header": "Leave a Review",
+                                "content": "Positive reviews means more downloads, support and funding for future development of the app and project. The app is an ongoing effort built from coffee, 5AM starts, 4AM finishes and a mighty dose of passion. If you love what we're doing, a review goes a long way. If something isn't working right or you've discovered a bug, contact our developers on the \"Report an Issue screen.\"."
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "commonQuestions": {
+        "title": "Frequently Asked Questions",
+        "heading": "Answers to your questions",
+        "backButtonHref": "/help",
+        "sections": [
+            {
+                "type": "section-item",
+                "id": "hero-section",
+                "class": "",
+                "section-content": [
+                    {
+                        "type": "h2-heading",
+                        "content": "Common questions about the project, app, sharks and more"
+                    },
+                    {
+                        "type": "text",
+                        "content": "This short FAQ should answer the most common questions we've received from people."
+                    }
+                ]
+            },
+            {
+                "type": "section-item",
+                "id": "",
+                "class": "faq-section",
+                "section-content": [
+                    {
+                        "type": "h3-heading",
+                        "content": "Questions About the App"
+                    },
+                    {
+                        "type": "accordion-group",
+                        "accordions": [
+                            {
+                                "header": "How does it work?",
+                                "content": "Tracking tags are affixed to the dorsal fins of Great Whites tagged by Shark Scientist Dr. Riley Elliott. That's right - Dr. Elliott heads out into the ocean in search of sharks to tag... no easy feat. Once tagged, their location is transmitted via satellite into Earthranger where valuable insights can be gathered. Finally, this data is processed and pulled into the app for everybody to see here!"
+                            },
+                            {
+                                "header": "Why aren't the sharks moving/updating?",
+                                "content": "Perhaps one of the biggest misconceptions is that by tagging sharks, their location is transmitted to the app 24/7. Unfortunately, locations are dependent on the sharks surfacing therefore locations can be far and few at times. This is out of our control and it is simply the unavoidable reality of tagging sharks - marine animals which do not need to surface if they don't want to. Supporting this project via purchasing the app intends to provide the general public with Great White Shark activity over several years. The more support and engagement achieved via the app, the better resourced we are to tag even more sharks, thereby increasing the frequency of location updates!"
+                            },
+                            {
+                                "header": "The sharks are on land???",
+                                "content": "The longer a shark surfaces for, the more precise the location is from the satellite. Locations can be as accurate as within <250 metres whereas brief, weaker readings are only accurate up to several kilometres which is why sometimes sharks appear on land. They are not at the fish and chip shop!"
+                            },
+                            {
+                                "header": "When are sharks tagged?",
+                                "content": "Shark tagging is work best done in the warmer months when there's more food in the shallows. In cooler months, they tend to go deeper and further offshore due to ocean temperatures. "
+                            },
+                            {
+                                "header": "What are major obstacles faced when tagging sharks?",
+                                "content": "Climate and ocean conditions serve to be a massive factor, as well as affixing tags securely. Our second tagging season in 2023 was severely impacted by Cyclone Gabrielle which left debris and devastation out at sea, complicating tagging efforts. The inability to tag more sharks whilst losing the tags of Daisy, Mananui and SWAJ lead to a period of inactivity in the app. Now we're back and ready to deploy even more tags than we started with!"
+                            },
+                            {
+                                "header": "This app looks a little different, what's changed?",
+                                "content": "While no easy feat, \"V1\" of The Great White App was a fairly simple endeavour in what it achieved - take satellite readings of shark locations and display them on a website and in an app. While successfully fulfilling this purpose, the missing link was a way to share news, updates and education with the general public from within the app. The Great White App \"V2\" seeks to address that while also adding cosmetic improvements (such as the ocean-inspired map design) and numerous performance and stability improvements to the map seeing as components underpinning the map were several years old. Modernising, optimising and adding this new and improved functionality is what The Great White App V2 has brought."
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "bugReport": {
+        "title": "Report an Issue",
+        "heading": "Something wrong? Let us know.",
+        "backButtonHref": "/help",
+        "sections": [
+            {
+                "type": "section-item",
+                "id": "bug-report-group",
+                "class": "bug-report-section",
+                "section-content": [
+                    {
+                        "type": "h2-heading",
+                        "content": "Report a technical issue"
+                    },
+                    {
+                        "type": "text",
+                        "content": "For reporting any TECHNICAL issues with the app you can e-mail innovate@thedreamfactory.nz . If applicable, please include a screen recording or video of the issue so we can investigate. You may not receive a reply but it does not mean the issue isn't being investigated!"
+                    },
+                    {
+                        "type": "text",
+                        "content": "For issues or questions regarding movement or activity of the sharks, view the Frequently asked Questions page."
+                    },
+                    {
+                        "type": "button",
+                        "buttonText": "Report an Issue",
+                        "buttonUrl": "mailto:innovate@thedreamfactory.nz",
+                        "buttonUrlTarget": "_blank"
+                    }
+                ]
+            }
+        ]
+    }
+}

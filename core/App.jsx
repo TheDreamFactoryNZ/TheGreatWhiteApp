@@ -342,6 +342,25 @@ const App = (props) => {
         }
       }
 
+      // Build index mapping so oldest location is labelled 1, increasing for newer points.
+      // If valid times are available we rank by timestamp (oldest first). Otherwise
+      // we assume coords are ordered newest->oldest and reverse the numbering.
+      const n = coords.length;
+      const idxMap = new Array(n).fill(0);
+      const hasValidTimes = Array.isArray(times) && times.length === n && times.some(t => !Number.isNaN(Date.parse(t)));
+      if (hasValidTimes) {
+        const timePairs = times.map((t, i) => ({ i, tParsed: Number.isFinite(Date.parse(t)) ? Date.parse(t) : NaN }));
+        timePairs.sort((a, b) => {
+          const ta = Number.isFinite(a.tParsed) ? a.tParsed : Infinity;
+          const tb = Number.isFinite(b.tParsed) ? b.tParsed : Infinity;
+          return ta - tb; // ascending => oldest first
+        });
+        timePairs.forEach((item, rank) => { idxMap[item.i] = rank + 1; });
+      } else {
+        // fallback: assume coords are newest-first, so oldest should be highest index
+        for (let i = 0; i < n; i++) idxMap[i] = n - i;
+      }
+
       const pointsGeojson = {
         type: 'FeatureCollection',
         features: coords
@@ -350,7 +369,7 @@ const App = (props) => {
             geometry: { type: 'Point', coordinates: coord },
             properties: {
               time: times[i] || null,
-              idx: i,
+              idx: idxMap[i] || (i + 1),
               stroke: feature.properties?.stroke || subjectColor[subjectId] || '#000'
             }
           }))
@@ -387,9 +406,9 @@ const App = (props) => {
           source: pointsSourceId,
           paint: {
             'circle-color': pointCircleColor,
-            'circle-radius': ['interpolate', ['linear'], ['zoom'], 5, 2, 12, 5, 16, 7],
+            'circle-radius': ['interpolate', ['linear'], ['zoom'], 5, 4, 12, 10, 16, 14],
             'circle-stroke-color': '#eeeffc',
-            'circle-stroke-width': 6,
+            'circle-stroke-width': 4,
             'circle-opacity': 0.95
           }
         });
