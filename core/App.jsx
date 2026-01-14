@@ -253,16 +253,30 @@ const App = (props) => {
     const id = updatedTrack[0];
     const displayed = updatedTrack[1];
 
-    const layer = window.GlobalMap.getLayer('LineString ' + id);
+    const lineLayerId = 'LineString ' + id;
+    const pointsLayerId = 'track-points-layer-' + id;
+
+    const layer = window.GlobalMap.getLayer(lineLayerId);
 
     if (displayed) {
       if (layer === undefined) {
+        // layer (and its points) don't exist yet — fetch and draw them
         fetchTrack(id);
       } else {
-        window.GlobalMap.setLayoutProperty('LineString ' + id, 'visibility', 'visible'); // turn on visibility
+        // show both the line and its points (if points layer exists)
+        window.GlobalMap.setLayoutProperty(lineLayerId, 'visibility', 'visible'); // turn on visibility
+        if (window.GlobalMap.getLayer(pointsLayerId)) {
+          window.GlobalMap.setLayoutProperty(pointsLayerId, 'visibility', 'visible');
+        }
       }
     } else {
-      window.GlobalMap.setLayoutProperty('LineString ' + id, 'visibility', 'none'); // turn off visibility
+      // hide both line and points when toggled off
+      if (window.GlobalMap.getLayer(lineLayerId)) {
+        window.GlobalMap.setLayoutProperty(lineLayerId, 'visibility', 'none'); // turn off visibility
+      }
+      if (window.GlobalMap.getLayer(pointsLayerId)) {
+        window.GlobalMap.setLayoutProperty(pointsLayerId, 'visibility', 'none');
+      }
     }
   }
 
@@ -304,6 +318,122 @@ const App = (props) => {
         'line-width': 4
       }
     });
+
+    // --- Points for each coordinate (dots) ---
+    try {
+      const feature = geojson.features[0];
+      const coords = feature.geometry.coordinates || [];
+      const times = feature.properties?.coordinateProperties?.times || [];
+
+      // determine index of most recent point (if times available) so we can omit it
+      let recentIdx = -1;
+      if (Array.isArray(times) && times.length === coords.length && times.length > 0) {
+        try {
+          const timeMillis = times.map(t => {
+            const m = Date.parse(t);
+            return Number.isFinite(m) ? m : NaN;
+          });
+          const max = Math.max(...timeMillis.filter(Number.isFinite));
+          if (Number.isFinite(max)) {
+            recentIdx = timeMillis.indexOf(max);
+          }
+        } catch (e) {
+          recentIdx = -1;
+        }
+      }
+
+      const pointsGeojson = {
+        type: 'FeatureCollection',
+        features: coords
+          .map((coord, i) => ({
+            type: 'Feature',
+            geometry: { type: 'Point', coordinates: coord },
+            properties: {
+              time: times[i] || null,
+              idx: i,
+              stroke: feature.properties?.stroke || subjectColor[subjectId] || '#000'
+            }
+          }))
+          // remove the most recent point so it doesn't duplicate the subject icon
+          .filter((f, i) => i !== recentIdx)
+      };
+
+      const pointsSourceId = `track-points-${feature.properties.id}`;
+      const pointsLayerId = `track-points-layer-${feature.properties.id}`;
+
+      if (!window.GlobalMap.getSource(pointsSourceId)) {
+        window.GlobalMap.addSource(pointsSourceId, {
+          type: 'geojson',
+          data: pointsGeojson
+        });
+
+        // determine circle color: prefer valid config.point_colour; otherwise fallback to literal '#1bb159'
+        let pointCircleColor = '#1bb159'; // default
+        try {
+          const raw = config && config.point_colour;
+          if (typeof raw === 'string') {
+            const candidate = raw.trim();
+            // accept #RGB or #RRGGBB (case-insensitive)
+            const isHex = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/i.test(candidate);
+            if (isHex) pointCircleColor = candidate;
+          }
+        } catch (err) {
+          // keep default
+        }
+
+        window.GlobalMap.addLayer({
+          id: pointsLayerId,
+          type: 'circle',
+          source: pointsSourceId,
+          paint: {
+            'circle-color': pointCircleColor,
+            'circle-radius': ['interpolate', ['linear'], ['zoom'], 5, 2, 12, 5, 16, 7],
+            'circle-stroke-color': '#eeeffc',
+            'circle-stroke-width': 6,
+            'circle-opacity': 0.95
+          }
+        });
+
+        // Optional: text labels for points (commented out for now)
+        // window.GlobalMap.addLayer({
+        //   id: `track-points-labels-${feature.properties.id}`,
+        //   type: 'symbol',
+        //   source: pointsSourceId,
+        //   layout: {
+        //     'text-field': ['get', 'idx'],
+        //     'text-size': 10,
+        //     'text-ignore-placement': true
+        //   },
+        //   paint: {
+        //     'text-color': '#222'
+        //   }
+        // });
+
+        window.GlobalMap.on('click', pointsLayerId, (e) => {
+          const f = e.features && e.features[0];
+          if (!f) return;
+          const timeStr = f.properties && f.properties.time;
+          const html = `<div style="font-size:12px"><strong>Point ${f.properties.idx}</strong><br/>${timeStr ? `Time: ${timeStr}` : 'Time: unknown'}</div>`;
+
+          new mapboxgl.Popup()
+            .setLngLat(f.geometry.coordinates)
+            .setHTML(html)
+            .addTo(window.GlobalMap);
+        });
+
+        window.GlobalMap.on('mouseenter', pointsLayerId, () => {
+          window.GlobalMap.getCanvas().style.cursor = 'pointer';
+        });
+        window.GlobalMap.on('mouseleave', pointsLayerId, () => {
+          window.GlobalMap.getCanvas().style.cursor = '';
+        });
+      } else {
+        // Update the source data if it already exists
+        window.GlobalMap.getSource(pointsSourceId).setData(pointsGeojson);
+      }
+    } catch (e) {
+      console.warn('drawTrack: unable to add track points', e);
+    }
   }
 
   async function fileExists(file) {
