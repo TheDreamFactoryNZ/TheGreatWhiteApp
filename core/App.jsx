@@ -394,21 +394,6 @@ const App = (props) => {
           }
         });
 
-        // Optional: text labels for points (commented out for now)
-        // window.GlobalMap.addLayer({
-        //   id: `track-points-labels-${feature.properties.id}`,
-        //   type: 'symbol',
-        //   source: pointsSourceId,
-        //   layout: {
-        //     'text-field': ['get', 'idx'],
-        //     'text-size': 10,
-        //     'text-ignore-placement': true
-        //   },
-        //   paint: {
-        //     'text-color': '#222'
-        //   }
-        // });
-
         window.GlobalMap.on('click', pointsLayerId, (e) => {
           const f = e.features && e.features[0];
           if (!f) return;
