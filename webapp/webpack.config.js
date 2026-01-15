@@ -9,12 +9,16 @@ module.exports = (env, argv) => {
     output: {
       path: path.resolve(__dirname, "build"),
       filename: "bundle.js",
+      publicPath: '/',
       clean: true, // Cleans the output directory before building
     },
     mode: isDev ? "development" : "production",
     devtool: isDev ? "inline-source-map" : "source-map",
     devServer: {
-      static: path.join(__dirname, "public"),
+      static: {
+        directory: path.join(__dirname, 'public'),
+        publicPath: '/',
+      },
       hot: true,
       open: true,
       port: 3000,
@@ -34,10 +38,22 @@ module.exports = (env, argv) => {
         },
         {
           test: /\.css$/i,
-          use: ["style-loader", "css-loader"],
+          use: [
+            {
+              loader: 'style-loader'
+            },
+            {
+              loader: 'css-loader',
+              options: {
+                // Use CommonJS-style export to avoid ESM/CJS interop issues
+                esModule: false,
+                sourceMap: true
+              }
+            }
+          ],
         },
         {
-          test: /\.(png|jpg|jpeg|gif|webp|svg)$/,
+          test: /\.(png|jpg|jpeg|gif|webp|svg|woff|woff2|ttf|eot|otf)$/,
           type: "asset/resource",
           generator: {
             filename: "assets/[name][ext]",
