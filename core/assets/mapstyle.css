@@ -15,6 +15,10 @@ body {
     display: flex;
 }
 
+.mapboxgl-map {
+    font: 500 14px Rajdhani,Arial,sans-serif
+}
+
 #earth-ranger-logo {
     position: absolute;
     padding: 10px 15px 10px 15px;

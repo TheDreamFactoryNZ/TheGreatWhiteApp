@@ -6,9 +6,9 @@ import Legend from './components/Legend';
 import HelpButton from './components/HelpButton';
 import Partners from './components/Partners';
 
-import './assets/mapstyle.css';
-import 'mapbox-gl/dist/mapbox-gl.css';
-// import './assets/main.css'; // Custom theme for map - under construction
+import 'mapbox-gl/dist/mapbox-gl.css'; // Mapbox default styles
+import './assets/mapstyle.css'; // Overrides for mapbox default styles
+import './assets/main.css'; // Global styles for map - under construction
 
 import med from './assets/images/med.png';
 
