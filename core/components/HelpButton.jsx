@@ -1,5 +1,5 @@
 import React from 'react';
-import './Legend.css';
+import './HelpButton.css';
 
 import tipsOn from '../assets/images/button_icons/help.svg';
 import close from '../assets/images/button_icons/close.svg';
@@ -27,7 +27,7 @@ const HelpButton = () => {
         id='tips-button-container'
         className='hover'
         onClick={() => {
-          const tips = document.getElementById('tips');
+          const tips = document.getElementById('tips-content-container');
           const helpButtonContainer = document.getElementById('tips-button-container');
           tips.classList.toggle('hidden');
           helpButtonContainer.classList.toggle('tips-active');
@@ -35,7 +35,7 @@ const HelpButton = () => {
       >
         <img id='help-button' src={tipsOn} />
       </div>
-      <div id='tips' className='hidden'>
+      <div id='tips-content-container' className='hidden'>
         <div>
           <h2>Interacting With the Map:</h2>
           <img
@@ -45,7 +45,7 @@ const HelpButton = () => {
             onClick={() => {
               const helpButtonContainer = document.getElementById('tips-button-container');
               helpButtonContainer.classList.remove('tips-active');
-              const tips = document.getElementById('tips');
+              const tips = document.getElementById('tips-content-container');
               tips.classList.add('hidden');
             }}
           />
