@@ -208,9 +208,8 @@ const App = (props) => {
             subject.color = colors[index % colors.length];
             index++;
 
-            const oldSubjectColorState = subjectColor;
-            oldSubjectColorState[subject.id] = subject.color;
-            setSubjectColor(oldSubjectColorState);
+            // Use functional update to avoid mutating state directly
+            setSubjectColor(prev => ({ ...prev, [subject.id]: subject.color }));
           }); // looping through array of subjects
 
           // Sets a display_story to be true if subject has images or description
@@ -624,7 +623,12 @@ const App = (props) => {
 
         // bind popup to subject
         window.GlobalMap.on('click', 'points' + json.id, (e) => {
-          var coordinates = e.features[0].geometry.coordinates.slice();
+          // defensive: ensure features exist (sometimes map events fire without features)
+          const feat = e && e.features && e.features[0];
+          if (!feat) return;
+
+          // copy coords/geometry so we don't hold a reference to the (mutating) event object
+          const coordinates = Array.isArray(feat.geometry.coordinates) ? feat.geometry.coordinates.slice() : feat.geometry.coordinates;
 
           // Ensure that if the map is zoomed out such that multiple
           // copies of the feature are visible, the popup appears
@@ -633,12 +637,18 @@ const App = (props) => {
             coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
           }
 
-          setSubjectPopups(
-            [...subjectPopups, {
-              geometry: e.features[0].geometry,
+          const geometryCopy = {
+            type: feat.geometry.type,
+            coordinates
+          };
+
+          setSubjectPopups(prev => [
+            ...prev,
+            {
+              geometry: geometryCopy,
               properties: json
-            }]
-          );
+            }
+          ]);
         });
 
         window.GlobalMap.on('mouseenter', 'points' + json.id, () => {
@@ -708,12 +718,7 @@ const App = (props) => {
           <Popup
             key={`${properties.id}-popup`}
             onClose={() => {
-              setSubjectPopups(
-                subjectPopups
-                  .filter(({ properties: { id } }) =>
-                    id !== properties.id
-                  )
-              );
+              setSubjectPopups(prev => prev.filter(({ properties: { id } }) => id !== properties.id));
             }}
             coordinates={geometry.coordinates.slice()}
           >
