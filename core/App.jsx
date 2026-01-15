@@ -364,15 +364,40 @@ const App = (props) => {
       const pointsGeojson = {
         type: 'FeatureCollection',
         features: coords
-          .map((coord, i) => ({
-            type: 'Feature',
-            geometry: { type: 'Point', coordinates: coord },
-            properties: {
-              time: times[i] || null,
-              idx: idxMap[i] || (i + 1),
-              stroke: feature.properties?.stroke || subjectColor[subjectId] || '#000'
+          .map((coord, i) => {
+            const rawTime = times[i] || null;
+            let time_date = null;
+            let time_time = null;
+            let time_timezone = null;
+            let time_epoch = null;
+            if (rawTime && typeof rawTime === 'string') {
+              // match ISO 8601 like 2026-01-13T06:16:57+00:00 or with Z
+              const m = rawTime.match(/^(\d{4}-\d{2}-\d{2})T(\d{2}:\d{2}:\d{2})(Z|[+-]\d{2}:\d{2})$/);
+              if (m) {
+                time_date = m[1];
+                time_time = m[2];
+                time_timezone = (m[3] === 'Z') ? '+00:00' : m[3];
+              }
+              const parsed = Date.parse(rawTime);
+              if (Number.isFinite(parsed)) time_epoch = parsed;
             }
-          }))
+
+            return {
+              type: 'Feature',
+              geometry: { type: 'Point', coordinates: coord },
+              properties: {
+                // keep the raw ISO string for later conversions
+                time: rawTime,
+                // split fields (date, time, timezone) for UI and future timezone conversion
+                time_date,
+                time_time,
+                time_timezone,
+                time_epoch,
+                idx: idxMap[i] || (i + 1),
+                stroke: feature.properties?.stroke || subjectColor[subjectId] || '#000'
+              }
+            };
+          })
           // remove the most recent point so it doesn't duplicate the subject icon
           .filter((f, i) => i !== recentIdx)
       };
@@ -416,14 +441,53 @@ const App = (props) => {
         window.GlobalMap.on('click', pointsLayerId, (e) => {
           const f = e.features && e.features[0];
           if (!f) return;
-          const timeStr = f.properties && f.properties.time;
-          const html = `<div style="font-size:12px"><strong>Point ${f.properties.idx}</strong><br/>${timeStr ? `Time: ${timeStr}` : 'Time: unknown'}</div>`;
+          // If a subject icon is rendered above this point at the click location,
+          // prefer the subject icon (do not show the point popup). Query the
+          // topmost rendered feature at the point and skip if it's a subject layer.
+          try {
+            const top = window.GlobalMap.queryRenderedFeatures(e.point, { layers: undefined });
+            if (top && top.length > 0) {
+              const topLayerId = top[0].layer && top[0].layer.id;
+              if (typeof topLayerId === 'string' && topLayerId.startsWith('points')) {
+                return; // subject icon has priority
+              }
+            }
+          } catch (err) {
+            // ignore query errors and continue
+          }
+          // Prefer pre-split fields if available (time_date, time_time, time_timezone).
+          const props = f.properties || {};
+          const date = props.time_date || null;
+          const time = props.time_time || null;
+          const timezone = props.time_timezone || null;
+          const raw = props.time || null; // original ISO string
+
+          const timeHtml = date || time || timezone || raw
+            ? `<div>${date ? `${date}` : ''}${date && time ? ' ' : ''}${time ? `${time}` : ''}${(date || time) && timezone ? ' ' : ''}${timezone ? `${timezone}` : ''}${(!date && !time && raw) ? raw : ''}</div>`
+            : '<div>Time: unknown</div>';
+
+          const html = `<div><h2>Location #${props.idx}</h2><p><strong>Date: </strong>${date}<br/><strong>Time: </strong>${time} ${timezone}</div>`;
 
           new mapboxgl.Popup()
             .setLngLat(f.geometry.coordinates)
             .setHTML(html)
             .addTo(window.GlobalMap);
         });
+
+        // Ensure the subject's icon and name layers render above the points layer
+        // so the subject icon visually and interactively takes priority.
+        try {
+          const subjPointsLayer = 'points' + subjectId;
+          const subjBoxLayer = 'box' + subjectId;
+          if (window.GlobalMap.getLayer(subjBoxLayer)) {
+            window.GlobalMap.moveLayer(subjBoxLayer);
+          }
+          if (window.GlobalMap.getLayer(subjPointsLayer)) {
+            window.GlobalMap.moveLayer(subjPointsLayer);
+          }
+        } catch (err) {
+          // ignore if moveLayer is not available or fails
+        }
 
         window.GlobalMap.on('mouseenter', pointsLayerId, () => {
           window.GlobalMap.getCanvas().style.cursor = 'pointer';
