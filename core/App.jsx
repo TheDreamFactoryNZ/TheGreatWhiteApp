@@ -222,6 +222,29 @@ const App = (props) => {
           setSubjects(resp.data.data);
         })
         .catch(console.error);
+
+      // Ensure the map canvas sizes to its container right after load.
+      // Sometimes on mobile or in embedded webviews the container size isn't
+      // final when the map is created — trigger a resize (immediately and
+      // after a short delay) and wire window resize/orientation events.
+      try {
+        window.GlobalMap.resize();
+      } catch (err) {
+        // ignore
+      }
+      // second pass after layout settles
+      setTimeout(() => {
+        try { window.GlobalMap.resize(); } catch (e) { /* ignore */ }
+      }, 200);
+
+      // attach handlers so map adjusts when viewport changes (orientation, resize)
+      const __gw_onResize = () => { try { window.GlobalMap && window.GlobalMap.resize(); } catch (e) {} };
+      window.addEventListener('resize', __gw_onResize);
+      window.addEventListener('orientationchange', __gw_onResize);
+
+      // remember handlers so they can be removed on unmount
+      window.__gw_map_resize_handlers = window.__gw_map_resize_handlers || [];
+      window.__gw_map_resize_handlers.push(__gw_onResize);
     });
   }
 
@@ -246,6 +269,26 @@ const App = (props) => {
     // Cancel the subscription to useEffect().
     return function cleanup() {
       isSubscribed = false;
+      try {
+        if (window.__gw_map_resize_handlers && window.__gw_map_resize_handlers.length) {
+          window.__gw_map_resize_handlers.forEach(h => {
+            try { window.removeEventListener('resize', h); } catch (e) {}
+            try { window.removeEventListener('orientationchange', h); } catch (e) {}
+          });
+          window.__gw_map_resize_handlers = [];
+        }
+      } catch (err) {
+        // ignore
+      }
+      // Optionally destroy the map instance when component unmounts to free resources
+      try {
+        if (window.GlobalMap && typeof window.GlobalMap.remove === 'function') {
+          window.GlobalMap.remove();
+          window.GlobalMap = null;
+        }
+      } catch (e) {
+        // ignore
+      }
     };
   }, []); /* eslint-disable-line react-hooks/exhaustive-deps */
 
