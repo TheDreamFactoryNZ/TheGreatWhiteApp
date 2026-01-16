@@ -35,7 +35,7 @@ const HelpButton = () => {
       >
         <img id='help-button' src={tipsOn} />
       </div>
-      <div id='tips-content-container' className='hidden'>
+      <div id='tips-content-container' className='hidden popup-container'>
         <div id="tips-header">
           <h2>Interacting With the Map</h2>
           <img

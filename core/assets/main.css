@@ -79,3 +79,10 @@ p strong {
 em {
     font-style: italic;
 }
+
+.popup-container {
+    border-radius: 0.5rem;
+    background-color: #EEEFFC;
+    box-shadow: 0 4px 5px rgba(0,0,0,.25);
+    padding: 0.75rem;
+}

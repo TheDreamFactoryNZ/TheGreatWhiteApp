@@ -1,20 +1,4 @@
-#help-button {
-    width: 12px;
-}
-
-#tips-content-container {
-    border-radius: 3px;
-    width: 265px;
-    background-color: #EEEFFC;
-    margin-top: 15px;
-    padding: 0.25rem;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    
-}
-
+/* Container for the whole tips UI */
 #tips-container {
     position: absolute;
     z-index: 1;
@@ -22,6 +6,7 @@
     left: 10px;
 }
 
+/* The small button that toggles the tips */
 #tips-button-container {
     padding-top: 5px;
     padding-left: 8px;
@@ -33,6 +18,22 @@
     width: fit-content;
 }
 
+#help-button {
+    width: 12px;
+}
+
+/* The content panel that appears when tips are shown */
+#tips-content-container {
+    width: 265px;
+    margin-top: 15px;
+    padding: 0.25rem;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Header area inside the content panel */
 #tips-header {
     display: flex;
     justify-content: space-between;
@@ -45,14 +46,6 @@
     margin: 0;
 }
 
-#tips ul {
-    padding-bottom: 10px;
-}
-
-.hidden {
-    display: none;
-}
-
 #close-icon {
     width: 12px;
     height: 12px;
@@ -61,6 +54,15 @@
     cursor: pointer;
 }
 
+#tips ul {
+    padding-bottom: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+/* The list of tip items */
 #tip-items-container {
     display: flex;
     flex-direction: column;
@@ -80,6 +82,7 @@
     font-size: 0.75rem;
 }
 
+/* Divider between tip items */
 #tip-items-container .tip-item + .tip-item {
     border-top: 1px solid rgba(0,0,0,0.12);
     margin-top: 0; /* keep spacing controlled by padding */
@@ -89,10 +92,7 @@
     padding-bottom: 0;
 }
 
-.tip-icon {
-    pointer-events: none;
-}
-
+/* Icon styling and container */
 .tip-icon-container {
     width: 24px;
     height: 24px;
@@ -108,6 +108,10 @@
     width: auto;
     height: auto;
     object-fit: contain;
+}
+
+.tip-icon {
+    pointer-events: none;
 }
 
 /* Modifier for icons that are vertically biased (taller than wide).
