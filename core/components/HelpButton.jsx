@@ -24,16 +24,16 @@ const HelpButton = () => {
   return (
     <div id='tips-container'>
       <div
-        id='tips-button-container'
+        id='tips-icon'
         className='hover'
         onClick={() => {
           const tips = document.getElementById('tips-content-container');
-          const helpButtonContainer = document.getElementById('tips-button-container');
+          const helpButtonContainer = document.getElementById('tips-icon');
           tips.classList.toggle('hidden');
           helpButtonContainer.classList.toggle('tips-active');
         }}
+        src={tipsOn}
       >
-        <img id='help-button' src={tipsOn} />
       </div>
       <div id='tips-content-container' className='hidden popup-container'>
         <div id="tips-header">
@@ -43,7 +43,7 @@ const HelpButton = () => {
             draggable='false'
             src={close}
             onClick={() => {
-              const helpButtonContainer = document.getElementById('tips-button-container');
+              const helpButtonContainer = document.getElementById('tips-icon');
               helpButtonContainer.classList.remove('tips-active');
               const tips = document.getElementById('tips-content-container');
               tips.classList.add('hidden');

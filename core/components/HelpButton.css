@@ -7,19 +7,15 @@
 }
 
 /* The small button that toggles the tips */
-#tips-button-container {
-    padding-top: 5px;
-    padding-left: 8px;
-    padding-right: 8.5px;
+#tips-icon {
+    height: 29px;
+    width: 29px;
     background-color: white;
     border-radius: 3px;
-    width: -webkit-fit-content;
-    width: -moz-fit-content;
-    width: fit-content;
-}
-
-#help-button {
-    width: 12px;
+    background-image: url('../assets/images/button_icons/help.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 12px;
 }
 
 /* The content panel that appears when tips are shown */
