@@ -36,8 +36,8 @@ const HelpButton = () => {
         <img id='help-button' src={tipsOn} />
       </div>
       <div id='tips-content-container' className='hidden'>
-        <div>
-          <h2>Interacting With the Map:</h2>
+        <div id="tips-header">
+          <h2>Interacting With the Map</h2>
           <img
             id='close-icon'
             draggable='false'
@@ -50,36 +50,36 @@ const HelpButton = () => {
             }}
           />
         </div>
-        <div id='actual-tips'>
-          <div>
-            <img className='tip-icon' width='20' height='40' style={zoomStyle} src={zoom} />
-            <p style={zoomPStyle}>Zoom in and out with the + and - buttons.</p>
+        <div id='tip-items-container'>
+          <div class="tip-item">
+            <div className='tip-icon-container tip-icon--vertical'><img className='tip-icon' width='20' height='40' src={zoom} /></div>
+            <p>Zoom in and out with the + and - buttons.</p>
           </div>
-          <div>
-            <img className='tip-icon' width='24' style={orientStyle} height='24' src={reset} />
-            <p style={viewStyle}>Press to reset map orientation, hold and drag to adjust pitch.</p>
+          <div class="tip-item">
+            <div className='tip-icon-container'><img className='tip-icon' width='24' height='24' src={reset} /></div>
+            <p>Press to reset map orientation, hold and drag to adjust pitch.</p>
           </div>
-          <div>
-            <img className='tip-icon' width='24' height='24' style={ctrlStyle} src={control} />
-            <p style={viewStyle}>
+          <div class="tip-item">
+            <div className='tip-icon-container'><img className='tip-icon' width='24' height='24' src={control} /></div>
+            <p>
               Hold Ctrl / control key and drag left to right with mouse to rotate view, up and down
               to adjust pitch.
             </p>
           </div>
-          <div>
-            <img className='tip-icon' width='24' height='24' src={pin} />
+          <div class="tip-item">
+            <div className='tip-icon-container'><img className='tip-icon' width='24' height='24' src={pin} /></div>
             <p>Jump to a subject's location</p>
           </div>
-          <div>
-            <img className='tip-icon' width='24' height='24' src={tracks} />
+          <div class="tip-item">
+            <div className='tip-icon-container'><img className='tip-icon' width='24' height='24' src={tracks} /></div>
             <p>Display a subject's track</p>
           </div>
-          <div style={{display: 'none'}}>
-            <img className='tip-icon' width='24' height='24' style={refreshStyle} src={refresh} />
+          <div class="tip-item" style={{display: 'none'}}>
+            <div className='tip-icon-container'><img className='tip-icon' width='24' height='24' src={refresh} /></div>
             <p>Refresh and update locations (internet connection required)</p>
           </div>
-          <div>
-            <img className='tip-icon' width='7' height='10' style={storyStyle} src={story} />
+          <div class="tip-item">
+            <div className='tip-icon-container'><img className='tip-icon' width='7' height='10' src={story} /></div>
             <p>Display a subject's story</p>
           </div>
         </div>
