@@ -5,6 +5,7 @@ import Popup from './components/Popup';
 import Legend from './components/Legend';
 import HelpButton from './components/HelpButton';
 import Partners from './components/Partners';
+import mapHandlerRegistry from './utils/mapHandlerRegistry';
 
 import 'mapbox-gl/dist/mapbox-gl.css'; // Mapbox default styles
 import './assets/mapstyle.css'; // Overrides for mapbox default styles
@@ -448,6 +449,8 @@ const App = (props) => {
       const pointsLayerId = `track-points-layer-${feature.properties.id}`;
 
       if (!window.GlobalMap.getSource(pointsSourceId)) {
+        // ensure any previous handlers for this points layer are removed before re-adding
+        try { mapHandlerRegistry.removeLayer(window.GlobalMap, pointsLayerId); } catch (e) { /* ignore */ }
         window.GlobalMap.addSource(pointsSourceId, {
           type: 'geojson',
           data: pointsGeojson
@@ -480,7 +483,7 @@ const App = (props) => {
           }
         });
 
-        window.GlobalMap.on('click', pointsLayerId, (e) => {
+        mapHandlerRegistry.add(window.GlobalMap, pointsLayerId, 'click', (e) => {
           const f = e.features && e.features[0];
           if (!f) return;
           // If a subject icon is rendered above this point at the click location,
@@ -530,12 +533,11 @@ const App = (props) => {
         } catch (err) {
           // ignore if moveLayer is not available or fails
         }
-
-        window.GlobalMap.on('mouseenter', pointsLayerId, () => {
-          window.GlobalMap.getCanvas().style.cursor = 'pointer';
+        mapHandlerRegistry.add(window.GlobalMap, pointsLayerId, 'mouseenter', () => {
+          try { window.GlobalMap.getCanvas().style.cursor = 'pointer'; } catch (e) {}
         });
-        window.GlobalMap.on('mouseleave', pointsLayerId, () => {
-          window.GlobalMap.getCanvas().style.cursor = '';
+        mapHandlerRegistry.add(window.GlobalMap, pointsLayerId, 'mouseleave', () => {
+          try { window.GlobalMap.getCanvas().style.cursor = ''; } catch (e) {}
         });
       } else {
         // Update the source data if it already exists
@@ -621,8 +623,12 @@ const App = (props) => {
           }
         });
 
-        // bind popup to subject
-        window.GlobalMap.on('click', 'points' + json.id, (e) => {
+        // bind popup to subject — use registry so handlers can be removed if layer is replaced
+        const subjLayerId = 'points' + json.id;
+        // remove any previous handlers for this subject layer before adding.
+        try { mapHandlerRegistry.removeLayer(window.GlobalMap, subjLayerId); } catch (e) { /* ignore */ }
+
+        mapHandlerRegistry.add(window.GlobalMap, subjLayerId, 'click', (e) => {
           // defensive: ensure features exist (sometimes map events fire without features)
           const feat = e && e.features && e.features[0];
           if (!feat) return;
@@ -651,11 +657,11 @@ const App = (props) => {
           ]);
         });
 
-        window.GlobalMap.on('mouseenter', 'points' + json.id, () => {
-          window.GlobalMap.getCanvas().style.cursor = 'pointer';
+        mapHandlerRegistry.add(window.GlobalMap, subjLayerId, 'mouseenter', () => {
+          try { window.GlobalMap.getCanvas().style.cursor = 'pointer'; } catch (e) {}
         });
-        window.GlobalMap.on('mouseleave', 'points' + json.id, () => {
-          window.GlobalMap.getCanvas().style.cursor = '';
+        mapHandlerRegistry.add(window.GlobalMap, subjLayerId, 'mouseleave', () => {
+          try { window.GlobalMap.getCanvas().style.cursor = ''; } catch (e) {}
         });
       })
       .catch((error) => {
