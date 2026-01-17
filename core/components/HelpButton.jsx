@@ -13,13 +13,6 @@ import refresh from '../assets/images/button_icons/refresh.svg';
 
 /* eslint-disable react/prop-types */
 const HelpButton = () => {
-  const storyStyle = { paddingLeft: '9px', paddingRight: '8px', marginTop: '5px' };
-  const ctrlStyle = { marginTop: '6px' };
-  const zoomStyle = { paddingLeft: '2px' };
-  const viewStyle = { marginBottom: '2px', marginTop: '0px' };
-  const zoomPStyle = { marginTop: '10px' };
-  const orientStyle = { marginTop: '8px' };
-  const refreshStyle = { marginTop: '8px' };
 
   return (
     <div id='tips-container'>
