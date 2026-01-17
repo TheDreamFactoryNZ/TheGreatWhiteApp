@@ -282,8 +282,12 @@ const App = (props) => {
       }
       // Optionally destroy the map instance when component unmounts to free resources
       try {
-        if (window.GlobalMap && typeof window.GlobalMap.remove === 'function') {
-          window.GlobalMap.remove();
+        if (window.GlobalMap) {
+          // remove any registered handlers tracked by the registry to avoid leaks
+          try { mapHandlerRegistry.removeAll(window.GlobalMap); } catch (e) { /* ignore */ }
+          if (typeof window.GlobalMap.remove === 'function') {
+            window.GlobalMap.remove();
+          }
           window.GlobalMap = null;
         }
       } catch (e) {
