@@ -44,34 +44,34 @@ const HelpButton = () => {
           />
         </div>
         <div id='tip-items-container'>
-          <div class="tip-item">
+          <div className="tip-item">
             <div className='tip-icon-container tip-icon--vertical'><img className='tip-icon' width='20' height='40' src={zoom} /></div>
             <p>Zoom in and out with the + and - buttons.</p>
           </div>
-          <div class="tip-item">
+          <div className="tip-item">
             <div className='tip-icon-container'><img className='tip-icon' width='24' height='24' src={reset} /></div>
             <p>Press to reset map orientation, hold and drag to adjust pitch.</p>
           </div>
-          <div class="tip-item">
+          <div className="tip-item">
             <div className='tip-icon-container'><img className='tip-icon' width='24' height='24' src={control} /></div>
             <p>
               Hold Ctrl / control key and drag left to right with mouse to rotate view, up and down
               to adjust pitch.
             </p>
           </div>
-          <div class="tip-item">
+          <div className="tip-item">
             <div className='tip-icon-container'><img className='tip-icon' width='24' height='24' src={pin} /></div>
             <p>Jump to a subject's location</p>
           </div>
-          <div class="tip-item">
+          <div className="tip-item">
             <div className='tip-icon-container'><img className='tip-icon' width='24' height='24' src={tracks} /></div>
             <p>Display a subject's track</p>
           </div>
-          <div class="tip-item" style={{display: 'none'}}>
+          <div className="tip-item" style={{display: 'none'}}>
             <div className='tip-icon-container'><img className='tip-icon' width='24' height='24' src={refresh} /></div>
             <p>Refresh and update locations (internet connection required)</p>
           </div>
-          <div class="tip-item">
+          <div className="tip-item">
             <div className='tip-icon-container'><img className='tip-icon' width='7' height='10' src={story} /></div>
             <p>Display a subject's story</p>
           </div>
