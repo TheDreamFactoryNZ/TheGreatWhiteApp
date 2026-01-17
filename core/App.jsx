@@ -153,13 +153,110 @@ const App = (props) => {
     setLegendOpen(!legendOpen);
   };
 
+  // Fetch subjects and draw initial icons; sets up colors and subject stories
+  function loadSubjectsAndIcons() {
+    if (!config) return;
+    const url = `https://${config.server}/${config.public_name}/api/v1.0/subjects?subject_group=${config.subject_group}`;
+    fetch(url)
+      .then(resp => {
+        if (resp.ok) {
+          return resp;
+        }
+        throw Error('Error in request:' + resp.statusText);
+      })
+      .then(resp => resp.json())
+      .then(resp => {
+        let index = 0;
+        resp.data.data.map((subject) => {
+          if (subject.last_position !== undefined) {
+            // override subject name if provided in config
+            if (config.subjects && config.subjects[subject.id] && config.subjects[subject.id].name) {
+              subject.name = config.subjects[subject.id].name;
+            }
+            // Avoid duplicate icon/layers if they already exist
+            try {
+              const subjLayerId = 'points' + subject.id;
+              if (!window.GlobalMap || !window.GlobalMap.getLayer || !window.GlobalMap.getLayer(subjLayerId)) {
+                drawIcon(subject).then();
+              }
+            } catch (e) {
+              // fallback to drawing
+              drawIcon(subject).then();
+            }
+          }
+
+          let colors = earthtones;
+          if (Array.isArray(config.color_scheme)) {
+            colors = config.color_scheme;
+          } else if (config.color_scheme === 'earthtones') {
+            colors = earthtones;
+          } else if (config.color_scheme === 'aquatic') {
+            colors = aquatic;
+          } else if (config.color_scheme === 'custom' && Array.isArray(config.custom_colors)) {
+            colors = config.custom_colors;
+          } else {
+            console.warn('Invalid color scheme, falling back to earthtones.');
+            colors = earthtones;
+          }
+          subject.color = colors[index % colors.length];
+          index++;
+
+          setSubjectColor(prev => ({ ...prev, [subject.id]: subject.color }));
+        });
+
+        for (let i = 0; i < resp.data.data.length; i++) {
+          const id = resp.data.data[i].id;
+          resp.data.data[i].display_story = config.subjects && config.subjects[id] && (config.subjects[id].pictures || config.subjects[id].detail_description);
+        }
+        setSubjects(resp.data.data);
+        try { if (window.GlobalMap) window.GlobalMap.__gw_subjects_loaded = true; } catch (e) {}
+      })
+      .catch(console.error);
+  }
+
   function initMap() {
+    // If a map already exists, preserve it and just ensure proper sizing and visibility hooks
+    if (window.GlobalMap && typeof window.GlobalMap.resize === 'function') {
+      try { window.GlobalMap.resize(); } catch (err) {}
+      setTimeout(() => { try { window.GlobalMap.resize(); } catch (e) {} }, 200);
+      // Attach visibilitychange resize hook once (global flag avoids duplicates)
+      if (!window.__gw_visibility_hook_attached) {
+        const __gw_onVisibility = () => {
+          if (document.visibilityState === 'visible') {
+            try { window.GlobalMap && window.GlobalMap.resize(); } catch (e) {}
+          }
+        };
+        try { document.addEventListener('visibilitychange', __gw_onVisibility); } catch (e) {}
+        window.__gw_visibility_hook_attached = true;
+      }
+      // If the map's style is loaded, ensure subjects are loaded; otherwise, attach a one-time load hook
+      try {
+        const styleLoaded = typeof window.GlobalMap.isStyleLoaded === 'function'
+          ? window.GlobalMap.isStyleLoaded()
+          : (typeof window.GlobalMap.loaded === 'function' ? window.GlobalMap.loaded() : true);
+        if (styleLoaded) {
+          if (!window.GlobalMap.__gw_subjects_loaded) {
+            loadSubjectsAndIcons();
+          }
+        } else if (!window.GlobalMap.__gw_subjects_load_hook_attached) {
+          window.GlobalMap.__gw_subjects_load_hook_attached = true;
+          window.GlobalMap.on('load', () => {
+            try {
+              if (!window.GlobalMap.__gw_subjects_loaded) {
+                loadSubjectsAndIcons();
+              }
+            } catch (e) {}
+          });
+        }
+      } catch (e) {}
+      return;
+    }
 
     window.GlobalMap = new mapboxgl.Map({
-      container: 'map-container', // container ID
-      style: !config.map || !config.map.style ? 'mapbox://styles/vjoelm/cktdex96919t117p3rkq7c7yu' : config.map.style, // Specify a mapbox style
-      center: !config.map || !config.map.center ? [173.497498, -40.043578] : config.map.center, // starting position [lng, lat]
-      zoom: !config.map || !config.map.zoom ? 5 : config.map.zoom, // starting zoom,
+      container: 'map-container',
+      style: !config.map || !config.map.style ? 'mapbox://styles/vjoelm/cktdex96919t117p3rkq7c7yu' : config.map.style,
+      center: !config.map || !config.map.center ? [173.497498, -40.043578] : config.map.center,
+      zoom: !config.map || !config.map.zoom ? 5 : config.map.zoom,
       pitch: !config.map || !config.map.pitch ? 1 : config.map.pitch
     });
 
@@ -171,57 +268,8 @@ const App = (props) => {
       window.GlobalMap.loadImage(med, (_error, img) => {
         window.GlobalMap.addImage('subject-popup-box', img, { sdf: true });
       });
-
-      // fetch call for subjects
-      const url = `https://${config.server}/${config.public_name}/api/v1.0/subjects?subject_group=${config.subject_group}`;
-      fetch(url)
-        .then(resp => {
-          if (resp.ok) {
-            return resp;
-          }
-          throw Error('Error in request:' + resp.statusText);
-        })
-        .then(resp => resp.json()) // returns a json object
-        .then(resp => {
-          let index = 0;
-          resp.data.data.map((subject) => {
-            if (subject.last_position !== undefined) {
-              // override subject name if provided in config
-              if (config.subjects && config.subjects[subject.id] && config.subjects[subject.id].name) {
-                subject.name = config.subjects[subject.id].name;
-              }
-              drawIcon(subject).then();
-            }
-
-            let colors = earthtones;
-            if (Array.isArray(config.color_scheme)) {
-              colors = config.color_scheme;
-            } else if (config.color_scheme === 'earthtones') {
-              colors = earthtones;
-            } else if (config.color_scheme === 'aquatic') {
-              colors = aquatic;
-            } else if (config.color_scheme === 'custom' && Array.isArray(config.custom_colors)) {
-              colors = config.custom_colors;
-            } else {
-              console.warn('Invalid color scheme, falling back to earthtones.');
-              colors = earthtones;
-            }
-            subject.color = colors[index % colors.length];
-            index++;
-
-            // Use functional update to avoid mutating state directly
-            setSubjectColor(prev => ({ ...prev, [subject.id]: subject.color }));
-          }); // looping through array of subjects
-
-          // Sets a display_story to be true if subject has images or description
-          //   associated with it (more info to show in legend story)
-          for (let i = 0; i < resp.data.data.length; i++) {
-            const id = resp.data.data[i].id;
-            resp.data.data[i].display_story = config.subjects && config.subjects[id] && (config.subjects[id].pictures || config.subjects[id].detail_description);
-          }
-          setSubjects(resp.data.data);
-        })
-        .catch(console.error);
+      // Fetch and draw subjects/icons
+      loadSubjectsAndIcons();
 
       // Ensure the map canvas sizes to its container right after load.
       // Sometimes on mobile or in embedded webviews the container size isn't
@@ -245,6 +293,16 @@ const App = (props) => {
       // remember handlers so they can be removed on unmount
       window.__gw_map_resize_handlers = window.__gw_map_resize_handlers || [];
       window.__gw_map_resize_handlers.push(__gw_onResize);
+
+      // Attach visibilitychange resize hook once
+      const __gw_onVisibility = () => {
+        if (document.visibilityState === 'visible') {
+          try { window.GlobalMap && window.GlobalMap.resize(); } catch (e) {}
+        }
+      };
+      window.__gw_map_visibility_handlers = window.__gw_map_visibility_handlers || [];
+      window.__gw_map_visibility_handlers.push(__gw_onVisibility);
+      try { document.addEventListener('visibilitychange', __gw_onVisibility); } catch (e) {}
     });
   }
 
@@ -268,31 +326,8 @@ const App = (props) => {
       });
     // Cancel the subscription to useEffect().
     return function cleanup() {
+      // Keep the map instance and global handlers alive across screen changes.
       isSubscribed = false;
-      try {
-        if (window.__gw_map_resize_handlers && window.__gw_map_resize_handlers.length) {
-          window.__gw_map_resize_handlers.forEach(h => {
-            try { window.removeEventListener('resize', h); } catch (e) {}
-            try { window.removeEventListener('orientationchange', h); } catch (e) {}
-          });
-          window.__gw_map_resize_handlers = [];
-        }
-      } catch (err) {
-        // ignore
-      }
-      // Optionally destroy the map instance when component unmounts to free resources
-      try {
-        if (window.GlobalMap) {
-          // remove any registered handlers tracked by the registry to avoid leaks
-          try { mapHandlerRegistry.removeAll(window.GlobalMap); } catch (e) { /* ignore */ }
-          if (typeof window.GlobalMap.remove === 'function') {
-            window.GlobalMap.remove();
-          }
-          window.GlobalMap = null;
-        }
-      } catch (e) {
-        // ignore
-      }
     };
   }, []); /* eslint-disable-line react-hooks/exhaustive-deps */
 
