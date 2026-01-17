@@ -75,6 +75,10 @@
     gap: 0.5rem;
 }
 
+#tip-items-container .tip-item:first-of-type {
+  padding-top: 0.25rem;
+}
+
 .tip-item p {
     margin: 0;
     font-size: 0.75rem;
