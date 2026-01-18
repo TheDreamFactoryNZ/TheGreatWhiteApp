@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import mapboxgl from 'mapbox-gl';
 import SubjectPopupContent from './components/SubjectPopupContent';
 import Popup from './components/Popup';
@@ -100,6 +100,61 @@ const imgElFromSrc = (src, width = MAP_ICON_SIZE, height = null) => new Promise(
   img.src = src;
 });
 
+// Fetch with retry, timeout, and abort chaining
+async function fetchWithRetry(url, options = {}, retryCfg = {}) {
+  const {
+    retries = 2,
+    backoff = 700,
+    factor = 2,
+    timeout = 15000,
+    retryOn = (resp) => (resp && (resp.status === 429 || (resp.status >= 500 && resp.status < 600)))
+  } = retryCfg;
+
+  let attempt = 0;
+  let delay = backoff;
+  const parentSignal = options.signal;
+
+  while (true) {
+    const ctrl = new AbortController();
+    let onParentAbort;
+    let timeoutId;
+    try {
+      if (parentSignal) {
+        if (parentSignal.aborted) throw new DOMException('Aborted', 'AbortError');
+        onParentAbort = () => ctrl.abort();
+        parentSignal.addEventListener('abort', onParentAbort, { once: true });
+      }
+      timeoutId = setTimeout(() => ctrl.abort(), timeout);
+      const resp = await fetch(url, { ...options, signal: ctrl.signal });
+      clearTimeout(timeoutId);
+      if (onParentAbort) parentSignal.removeEventListener('abort', onParentAbort);
+      if (!resp.ok) {
+        if (attempt < retries && retryOn(resp)) {
+          await new Promise(r => setTimeout(r, delay));
+          attempt += 1;
+          delay *= factor;
+          continue;
+        }
+        throw new Error(`Request failed with status ${resp.status}`);
+      }
+      return resp;
+    } catch (err) {
+      clearTimeout(timeoutId);
+      if (onParentAbort) try { parentSignal.removeEventListener('abort', onParentAbort); } catch (_) {}
+      const isAbort = err && (err.name === 'AbortError');
+      const isNetwork = err instanceof TypeError; // fetch network error
+      if (isAbort) throw err;
+      if (attempt < retries && isNetwork) {
+        await new Promise(r => setTimeout(r, delay));
+        attempt += 1;
+        delay *= factor;
+        continue;
+      }
+      throw err;
+    }
+  }
+}
+
 const fixAntimeridianCrossing = (featCollection) => {
   if (!featCollection?.features?.length) return featCollection;
 
@@ -185,6 +240,8 @@ const App = (props) => {
   var [legSub, setLegSub] = useState(undefined);
   const [subjectPopups, setSubjectPopups] = useState([]);
   const [legendOpen, setLegendOpen] = useState(false);
+  const subjectsFetchCtlRef = useRef(null);
+  const tracksFetchCtlMapRef = useRef(new Map());
 
   const toggleLegendState = () => {
     setLegendOpen(!legendOpen);
@@ -194,15 +251,13 @@ const App = (props) => {
   function loadSubjectsAndIcons() {
     if (!config) return;
     const url = `https://${config.server}/${config.public_name}/api/v1.0/subjects?subject_group=${config.subject_group}`;
-    fetch(url)
-      .then(resp => {
-        if (resp.ok) {
-          return resp;
-        }
-        throw Error('Error in request:' + resp.statusText);
-      })
-      .then(resp => resp.json())
-      .then(resp => {
+    try {
+      if (subjectsFetchCtlRef.current) { try { subjectsFetchCtlRef.current.abort(); } catch (_) {} }
+      const ctl = new AbortController();
+      subjectsFetchCtlRef.current = ctl;
+      fetchWithRetry(url, { signal: ctl.signal }, { retries: 2, backoff: 700, factor: 2, timeout: 15000 })
+        .then(resp => resp.json())
+        .then(resp => {
         let index = 0;
         resp.data.data.map((subject) => {
           if (subject.last_position !== undefined) {
@@ -247,8 +302,10 @@ const App = (props) => {
         }
         setSubjects(resp.data.data);
         try { if (window.GlobalMap) window.GlobalMap.__gw_subjects_loaded = true; } catch (e) {}
-      })
-      .catch(console.error);
+        })
+        .catch((e) => { console.error(e); })
+        .finally(() => { if (subjectsFetchCtlRef.current === ctl) subjectsFetchCtlRef.current = null; });
+    } catch (e) { /* ignore */ }
   }
 
   function initMap() {
@@ -404,18 +461,18 @@ const App = (props) => {
   // Draw tracks and add button component to display tracks
   function fetchTrack(subjectId) {
     const url = `https://${config.server}/${config.public_name}/api/v1.0/subject/` + subjectId + '/tracks';
-    fetch(url)
-      .then(resp => {
-        if (resp.ok) {
-          return resp;
-        }
-        throw Error('Error in request:' + resp.statusText);
-      })
-      .then(resp => resp.json()) // returns a json object
-      .then(resp => {
-        drawTrack(resp.data, subjectId);
-      })
-      .catch(console.error);
+    try {
+      const mapRef = tracksFetchCtlMapRef.current;
+      const prev = mapRef.get(subjectId);
+      if (prev) { try { prev.abort(); } catch (_) {} }
+      const ctl = new AbortController();
+      mapRef.set(subjectId, ctl);
+      fetchWithRetry(url, { signal: ctl.signal }, { retries: 2, backoff: 700, factor: 2, timeout: 20000 })
+        .then(resp => resp.json())
+        .then(resp => { drawTrack(resp.data, subjectId); })
+        .catch((e) => { console.error(e); })
+        .finally(() => { if (mapRef.get(subjectId) === ctl) mapRef.delete(subjectId); });
+    } catch (e) { /* ignore */ }
   }
 
   function drawTrack(json, subjectId) {
