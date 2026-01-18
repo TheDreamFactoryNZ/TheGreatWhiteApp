@@ -29,6 +29,44 @@ const MAP_ICON_SCALE = 2;
 
 window.GlobalMap = null;
 
+// Safe guard helpers to prevent duplicate Mapbox resource additions
+function safeAddImage(map, id, image, options) {
+  try {
+    if (typeof map?.hasImage === 'function' && map.hasImage(id)) {
+      return; // image already present
+    }
+    map.addImage(id, image, options || {});
+  } catch (e) { /* ignore */ }
+}
+
+function safeAddSource(map, id, sourceSpec) {
+  try {
+    const existing = typeof map?.getSource === 'function' ? map.getSource(id) : null;
+    if (existing) {
+      // If source exists and it's geojson, update its data
+      if (sourceSpec && sourceSpec.type === 'geojson' && sourceSpec.data) {
+        try { existing.setData(sourceSpec.data); } catch (_) {}
+      }
+      return;
+    }
+    map.addSource(id, sourceSpec);
+  } catch (e) { /* ignore */ }
+}
+
+function safeAddLayer(map, layerSpec) {
+  try {
+    const id = layerSpec && layerSpec.id;
+    if (!id) return;
+    const exists = typeof map?.getLayer === 'function' ? map.getLayer(id) : null;
+    if (exists) {
+      // Layer already exists; optionally ensure ordering
+      try { map.moveLayer(id); } catch (_) {}
+      return;
+    }
+    map.addLayer(layerSpec);
+  } catch (e) { /* ignore */ }
+}
+
 const imgElFromSrc = (src, width = MAP_ICON_SIZE, height = null) => new Promise((resolve, reject) => {
   const img = new Image();
   img.setAttribute('crossorigin', 'anonymous');
@@ -265,7 +303,7 @@ const App = (props) => {
     window.GlobalMap.on('load', function () {
       // console.log(process.env.PUBLIC_URL); - This will not function in Ionic/Capacitor
       window.GlobalMap.loadImage(med, (_error, img) => {
-        window.GlobalMap.addImage('subject-popup-box', img, { sdf: true });
+        safeAddImage(window.GlobalMap, 'subject-popup-box', img, { sdf: true });
       });
       // Fetch and draw subjects/icons
       loadSubjectsAndIcons();
@@ -383,15 +421,16 @@ const App = (props) => {
   function drawTrack(json, subjectId) {
     const geojson = fixAntimeridianCrossing(json);
 
-    window.GlobalMap.addSource(geojson.features[0].geometry.type + ' ' + geojson.features[0].properties.id, {
+    const lineSourceId = geojson.features[0].geometry.type + ' ' + geojson.features[0].properties.id;
+    safeAddSource(window.GlobalMap, lineSourceId, {
       type: 'geojson',
       data: geojson
     });
 
-    window.GlobalMap.addLayer({
+    safeAddLayer(window.GlobalMap, {
       id: geojson.features[0].geometry.type + ' ' + geojson.features[0].properties.id,
       type: 'line',
-      source: geojson.features[0].geometry.type + ' ' + geojson.features[0].properties.id,
+      source: lineSourceId,
       layout: {
         'line-join': 'round',
         'line-cap': 'round'
@@ -491,7 +530,7 @@ const App = (props) => {
       if (!window.GlobalMap.getSource(pointsSourceId)) {
         // ensure any previous handlers for this points layer are removed before re-adding
         try { mapHandlerRegistry.removeLayer(window.GlobalMap, pointsLayerId); } catch (e) { /* ignore */ }
-        window.GlobalMap.addSource(pointsSourceId, {
+        safeAddSource(window.GlobalMap, pointsSourceId, {
           type: 'geojson',
           data: pointsGeojson
         });
@@ -510,7 +549,7 @@ const App = (props) => {
           // keep default
         }
 
-        window.GlobalMap.addLayer({
+        safeAddLayer(window.GlobalMap, {
           id: pointsLayerId,
           type: 'circle',
           source: pointsSourceId,
@@ -581,7 +620,7 @@ const App = (props) => {
         });
       } else {
         // Update the source data if it already exists
-        window.GlobalMap.getSource(pointsSourceId).setData(pointsGeojson);
+        try { window.GlobalMap.getSource(pointsSourceId).setData(pointsGeojson); } catch (e) {}
       }
     } catch (e) {
       console.warn('drawTrack: unable to add track points', e);
@@ -620,8 +659,8 @@ const App = (props) => {
       (height ? (height * MAP_ICON_SCALE) : undefined)
     )
       .then((image) => {
-        window.GlobalMap.addImage(json.subject_subtype + json.id, image);
-        window.GlobalMap.addSource('point' + json.id, {
+        safeAddImage(window.GlobalMap, json.subject_subtype + json.id, image);
+        safeAddSource(window.GlobalMap, 'point' + json.id, {
           type: 'geojson',
           data: json.last_position
         });
@@ -629,7 +668,7 @@ const App = (props) => {
         // Animal Icon
         const iconSize = 0.5;
         const iconSizeLayout = ['interpolate', ['linear'], ['zoom'], 1, (iconSize / MAP_ICON_SCALE), 10, (iconSize / MAP_ICON_SCALE), 16, iconSize];
-        window.GlobalMap.addLayer({
+        safeAddLayer(window.GlobalMap, {
           id: 'points' + json.id,
           type: 'symbol',
           source: 'point' + json.id,
@@ -643,7 +682,7 @@ const App = (props) => {
 
         // Subject Nametag Icon
         const iconSizeSubjectNametagText = ['step', ['zoom'], 12, 10, 16];
-        window.GlobalMap.addLayer({
+        safeAddLayer(window.GlobalMap, {
           id: 'box' + json.id,
           type: 'symbol',
           source: 'point' + json.id,
