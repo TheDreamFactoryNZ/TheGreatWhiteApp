@@ -67,6 +67,40 @@ function safeAddLayer(map, layerSpec) {
   } catch (e) { /* ignore */ }
 }
 
+// Simple debounce utility for global resize/visibility handlers
+function debounce(fn, wait) {
+  let t = null;
+  return function (...args) {
+    if (t) clearTimeout(t);
+    t = setTimeout(() => {
+      t = null;
+      try { fn.apply(this, args); } catch (e) { /* ignore */ }
+    }, wait);
+  };
+}
+
+// Attach global, debounced map resize handlers once
+function attachGlobalResizeHandlers() {
+  try {
+    if (window.__gw_global_resize_attached) return;
+    const handler = debounce(() => {
+      try { window.GlobalMap && window.GlobalMap.resize(); } catch (e) {}
+    }, 150);
+
+    window.addEventListener('resize', handler);
+    window.addEventListener('orientationchange', handler);
+
+    const onVisibility = () => {
+      if (document.visibilityState === 'visible') handler();
+    };
+    document.addEventListener('visibilitychange', onVisibility);
+
+    window.__gw_global_resize_attached = true;
+    window.__gw_global_resize_handler = handler;
+    window.__gw_global_visibility_handler = onVisibility;
+  } catch (e) { /* ignore */ }
+}
+
 const imgElFromSrc = (src, width = MAP_ICON_SIZE, height = null) => new Promise((resolve, reject) => {
   const img = new Image();
   img.setAttribute('crossorigin', 'anonymous');
@@ -313,16 +347,8 @@ const App = (props) => {
     if (window.GlobalMap && typeof window.GlobalMap.resize === 'function') {
       try { window.GlobalMap.resize(); } catch (err) {}
       setTimeout(() => { try { window.GlobalMap.resize(); } catch (e) {} }, 200);
-      // Attach visibilitychange resize hook once (global flag avoids duplicates)
-      if (!window.__gw_visibility_hook_attached) {
-        const __gw_onVisibility = () => {
-          if (document.visibilityState === 'visible') {
-            try { window.GlobalMap && window.GlobalMap.resize(); } catch (e) {}
-          }
-        };
-        try { document.addEventListener('visibilitychange', __gw_onVisibility); } catch (e) {}
-        window.__gw_visibility_hook_attached = true;
-      }
+      // Attach debounced global handlers once
+      attachGlobalResizeHandlers();
       // If the map's style is loaded, ensure subjects are loaded; otherwise, attach a one-time load hook
       try {
         const styleLoaded = typeof window.GlobalMap.isStyleLoaded === 'function'
@@ -379,24 +405,8 @@ const App = (props) => {
         try { window.GlobalMap.resize(); } catch (e) { /* ignore */ }
       }, 200);
 
-      // attach handlers so map adjusts when viewport changes (orientation, resize)
-      const __gw_onResize = () => { try { window.GlobalMap && window.GlobalMap.resize(); } catch (e) {} };
-      window.addEventListener('resize', __gw_onResize);
-      window.addEventListener('orientationchange', __gw_onResize);
-
-      // remember handlers so they can be removed on unmount
-      window.__gw_map_resize_handlers = window.__gw_map_resize_handlers || [];
-      window.__gw_map_resize_handlers.push(__gw_onResize);
-
-      // Attach visibilitychange resize hook once
-      const __gw_onVisibility = () => {
-        if (document.visibilityState === 'visible') {
-          try { window.GlobalMap && window.GlobalMap.resize(); } catch (e) {}
-        }
-      };
-      window.__gw_map_visibility_handlers = window.__gw_map_visibility_handlers || [];
-      window.__gw_map_visibility_handlers.push(__gw_onVisibility);
-      try { document.addEventListener('visibilitychange', __gw_onVisibility); } catch (e) {}
+      // Attach debounced global resize/visibility handlers once
+      attachGlobalResizeHandlers();
     });
   }
 

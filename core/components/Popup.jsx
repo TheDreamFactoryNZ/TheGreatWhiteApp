@@ -5,25 +5,53 @@ import PropTypes from 'prop-types';
 
 const Popup = ({ children, coordinates, onClose }) => {
   const popup = useRef(new mapboxgl.Popup({ closeButton: false }));
+  const disposedRef = useRef(false);
   const [container] = useState(() => document.createElement('div'));
 
+  // Mount: attach to map and set initial DOM/content
   useEffect(() => {
-    const currentPopup = popup.current;
-    currentPopup.addTo(window.GlobalMap);
+    try {
+      if (window.GlobalMap) {
+        popup.current.addTo(window.GlobalMap);
+        popup.current.setDOMContent(container);
+        popup.current.setLngLat(coordinates);
+      }
+    } catch (e) {
+      // ignore attach errors
+    }
+    return () => {
+      // Cleanup: detach events and remove popup from map safely
+      try {
+        disposedRef.current = true;
+        popup.current.off('close', onClose);
+        popup.current.remove();
+      } catch (err) {
+        // ignore remove errors
+      }
+    };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  
 
+  // Update coordinates
   useEffect(() => {
-    popup.current.setLngLat(coordinates);
-  }, [coordinates]);  
+    try {
+      if (!disposedRef.current) popup.current.setLngLat(coordinates);
+    } catch (e) {
+      // ignore update errors
+    }
+  }, [coordinates]);
 
+  // Close handler lifecycle
   useEffect(() => {
-    popup.current.on('close', onClose);
-    return () => popup.current.off('close', onClose);
+    try { popup.current.on('close', onClose); } catch (e) {}
+    return () => {
+      try { popup.current.off('close', onClose); } catch (e) {}
+    };
   }, [onClose]);
 
+  // Container updates (rare, but guard anyway)
   useEffect(() => {
-    popup.current.setDOMContent(container);
+    try { if (!disposedRef.current) popup.current.setDOMContent(container); } catch (e) {}
   }, [container]);
 
   return createPortal(children, container);
