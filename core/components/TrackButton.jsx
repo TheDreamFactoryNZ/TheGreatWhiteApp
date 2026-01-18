@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { TrackContext } from '../App';
+import TrackContext from '@track-context';
 import './Legend.css';
 
 import tracksOn from '../assets/images/button_icons/pin_tracks-green.png';
@@ -13,11 +13,13 @@ const TrackButton = ({ subject }) => {
   const imgSrc = vis ? tracksOn : tracksOff;
 
   const onTrackButtonClick = () => {
-    const update = [subject.id, !vis];
-    const newState = Object.assign({}, tracks);
-    newState[update[0]] = update[1];
-    setTracks(newState);
-    displayTracks(update);
+  const nextVis = !vis;
+  const update = [subject.id, nextVis];
+    // One-line identity log to confirm unified context source
+    try { console.log('[TrackButton] sameSymbol', TrackContext === window.__gw_TrackContext); } catch (e) {}
+  // Functional update to avoid stale overwrites; ensures both buttons stay in sync
+  setTracks(prev => ({ ...prev, [subject.id]: nextVis }));
+  displayTracks(update);
   };
 
   return <img width='24' height='24' className='hover' src={imgSrc} id='subject-track-button' onClick={onTrackButtonClick} />;

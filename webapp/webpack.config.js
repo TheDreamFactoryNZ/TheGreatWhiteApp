@@ -63,7 +63,13 @@ module.exports = (env, argv) => {
     },
     resolve: {
       extensions: [".js", ".jsx"],
-      modules: [path.resolve(__dirname, 'node_modules'), 'node_modules'], // Compile modules from this directory instead of core
+      modules: [path.resolve(__dirname, "../node_modules"), 'node_modules'], // Prefer workspace root node_modules to unify React
+      alias: {
+        react: path.resolve(__dirname, "../node_modules/react"),
+        "react-dom": path.resolve(__dirname, "../node_modules/react-dom"),
+        "@core": path.resolve(__dirname, "../core"),
+        "@track-context": path.resolve(__dirname, "../core/context/TrackContext.js"),
+      },
     },
     plugins: [
       new HtmlWebpackPlugin({

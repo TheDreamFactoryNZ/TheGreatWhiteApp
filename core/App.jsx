@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import SubjectPopupContent from './components/SubjectPopupContent';
 import Popup from './components/Popup';
@@ -6,6 +6,7 @@ import Legend from './components/Legend';
 import HelpButton from './components/HelpButton';
 import Partners from './components/Partners';
 import mapHandlerRegistry from './utils/mapHandlerRegistry';
+import TrackContext from '@track-context';
 
 import 'mapbox-gl/dist/mapbox-gl.css'; // Mapbox default styles
 import './assets/mapstyle.css'; // Overrides for mapbox default styles
@@ -28,7 +29,8 @@ const MAP_ICON_SCALE = 2;
 
 window.GlobalMap = null;
 
-export const TrackContext = createContext({});
+// One-line global assignment so diagnostics can verify context identity
+try { window.__gw_TrackContext = TrackContext; } catch (e) {}
 
 const imgElFromSrc = (src, width = MAP_ICON_SIZE, height = null) => new Promise((resolve, reject) => {
   const img = new Image();
@@ -767,13 +769,11 @@ const App = (props) => {
             }}
             coordinates={geometry.coordinates.slice()}
           >
-            <TrackContext.Provider value={{ displayTracks, setTracks, tracks }}>
-              <SubjectPopupContent
-                subject={properties} subjectData={config.subjects[properties.id]}
-                onStoryClick={(subject) => setLegSub(subject)} legendOpen={legendOpen}
-                onLegendStateToggle={toggleLegendState} {...props}
-              />
-            </TrackContext.Provider>
+            <SubjectPopupContent
+              subject={properties} subjectData={config.subjects[properties.id]}
+              onStoryClick={(subject) => setLegSub(subject)} legendOpen={legendOpen}
+              onLegendStateToggle={toggleLegendState} {...props}
+            />
           </Popup>
         )}
       </TrackContext.Provider> {/* eslint-disable-line react/jsx-closing-tag-location */}
