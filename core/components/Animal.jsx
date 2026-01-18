@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import TrackButton from './TrackButton.jsx';
 import LocButton from './LocButton.jsx';
 import './Legend.css';
 
 import storyIcon from '../assets/images/button_icons/story-f.png';
+import TrackContext from '../context/TrackContext.js';
 
 /* eslint-disable react/prop-types */
-const Animal = ({ animal, configData, animalOnLocClicked, onNameClick, displayStory, tracks }) => {
+const Animal = ({ animal, configData, animalOnLocClicked, onNameClick, displayStory }) => {
+  const { tracks } = useContext(TrackContext);
   const backgroundColor = { backgroundColor: animal.color };
   const animalId = animal.id + ' animal';
   let hover = 'hover';
@@ -18,10 +20,8 @@ const Animal = ({ animal, configData, animalOnLocClicked, onNameClick, displaySt
     truncAnimalName = truncAnimalName.substring(0, 15) + '...';
   }
 
-  let trackState = '';
-  if (tracks !== undefined && tracks) {
-    trackState = ' bold ';
-  }
+  const isTrackOn = !!(tracks && tracks[animal.id]);
+  const trackState = isTrackOn ? ' bold ' : '';
 
   if (configData === undefined || !displayStory) {
     hover = 'default';
@@ -58,7 +58,7 @@ const Animal = ({ animal, configData, animalOnLocClicked, onNameClick, displaySt
           </div>
         </div>
         <div id='track-buttons' className={hover}>
-          <TrackButton subject={animal} trackState={tracks} />
+          <TrackButton subject={animal} />
           <LocButton
             subject={animal}
             handleOnLocButtonClicked={animalOnLocClicked}

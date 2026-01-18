@@ -10,7 +10,7 @@ import caretLeft from '../assets/images/button_icons/view-animals-caret-left.png
 /* eslint-disable react/prop-types */
 const Legend = ({
   subs, subjectData, onLocClick, legSub, onReturnClick, onStoryClick,
-  legendOpen, onLegendStateToggle, tracks, title
+  legendOpen, onLegendStateToggle, title
 }) => {
   const doubleCaretIcon = doubleCaret;
 
@@ -52,7 +52,6 @@ const Legend = ({
                     key={s.id}
                     animalOnLocClicked={onLocClick} onNameClick={onStoryClick}
                     displayStory={s.display_story}
-                    tracks={tracks[s.id]}
                   />
                 </div>
               ))}
@@ -90,7 +89,7 @@ const Legend = ({
             </div>
             <div id='animal-story'>
               <div id='subject-div'>
-                <Animal animal={legSub[0]} key={legSub[0].id} animalOnLocClicked={onLocClick} tracks={tracks[legSub[0].id]} />
+                <Animal animal={legSub[0]} key={legSub[0].id} animalOnLocClicked={onLocClick} />
               </div>
               {legSub[1].pictures.map((pic) => {
                 return <img draggable='false' className='sub-image' key={pic} src={pic.path} height={200} width={200} alt='picture' />;

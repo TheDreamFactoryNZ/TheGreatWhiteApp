@@ -6,7 +6,7 @@ import Legend from './components/Legend';
 import HelpButton from './components/HelpButton';
 import Partners from './components/Partners';
 import mapHandlerRegistry from './utils/mapHandlerRegistry';
-import TrackContext from '@track-context';
+import TrackContext from './context/TrackContext.js';
 
 import 'mapbox-gl/dist/mapbox-gl.css'; // Mapbox default styles
 import './assets/mapstyle.css'; // Overrides for mapbox default styles
@@ -28,9 +28,6 @@ const MAP_ICON_SIZE = 30;
 const MAP_ICON_SCALE = 2;
 
 window.GlobalMap = null;
-
-// One-line global assignment so diagnostics can verify context identity
-try { window.__gw_TrackContext = TrackContext; } catch (e) {}
 
 const imgElFromSrc = (src, width = MAP_ICON_SIZE, height = null) => new Promise((resolve, reject) => {
   const img = new Image();
@@ -352,6 +349,7 @@ const App = (props) => {
         if (window.GlobalMap.getLayer(pointsLayerId)) {
           window.GlobalMap.setLayoutProperty(pointsLayerId, 'visibility', 'visible');
         }
+        
       }
     } else {
       // hide both line and points when toggled off
@@ -361,6 +359,7 @@ const App = (props) => {
       if (window.GlobalMap.getLayer(pointsLayerId)) {
         window.GlobalMap.setLayoutProperty(pointsLayerId, 'visibility', 'none');
       }
+      
     }
   }
 
@@ -756,7 +755,6 @@ const App = (props) => {
               legSub={legSub}
               onReturnClick={(subject) => setLegSub(subject)}
               onStoryClick={(subject) => setLegSub(subject)}
-              tracks={tracks}
             />
           </div>
           <Partners />

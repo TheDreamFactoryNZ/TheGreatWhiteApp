@@ -11,6 +11,10 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
+  "resolutions": {
+    "react": "19.0.0",
+    "react-dom": "19.0.0"
+  },
   "scripts": {
     "start:webapp": "webpack serve --config webapp/webpack.config.js --mode development",
     "build:webapp": "webpack --config webapp/webpack.config.js --mode production",
