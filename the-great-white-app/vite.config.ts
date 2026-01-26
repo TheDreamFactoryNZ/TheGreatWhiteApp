@@ -12,9 +12,18 @@ export default defineConfig({
     legacy()
   ],
   resolve: {
-    alias: [
-      { find: '@core', replacement: path.resolve(__dirname, '../core') },
-      { find: '@track-context', replacement: path.resolve(__dirname, '../core/context/TrackContext.js') },
-    ]
-  }
+    alias: {
+      '@core': path.resolve(__dirname, '../core'),
+      '@track-context': path.resolve(__dirname, '../core/context/TrackContext.js'),
+  },
+    dedupe: ['react', 'react-dom'],
+  },
+  server: {
+    fs: {
+      allow: [
+        __dirname,
+        path.resolve(__dirname, '../core'), // allow imports from core
+      ],
+    },
+  },
 })
