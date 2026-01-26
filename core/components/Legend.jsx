@@ -1,6 +1,7 @@
 import React from 'react';
 import './Legend.css';
 import Animal from './Animal.jsx';
+import sanitizeHtml from '../utils/sanitizeHtml';
 
 import doubleCaret from '../assets/images/button_icons/double-caret.svg';
 import tdfLogo from '../assets/images/the-dream-factory-n-slogan-white.svg';
@@ -94,7 +95,7 @@ const Legend = ({
               {legSub[1].pictures.map((pic) => {
                 return <img draggable='false' className='sub-image' key={pic} src={pic.path} height={200} width={200} alt='picture' />;
               })}
-              <div id='sub-content' className='default' dangerouslySetInnerHTML={{ __html: legSub[1].detail_description }} />
+              <div id='sub-content' className='default' dangerouslySetInnerHTML={{ __html: sanitizeHtml(legSub[1].detail_description || '') }} />
             </div>
           </div>
         </>
