@@ -61,7 +61,7 @@ a.mapboxgl-ctrl-logo.mapboxgl-compact {
     border-bottom-color: #EEEFFC;
 }
 
-.mapboxgl-popup-content {
+.mapboxgl-popup-content /* Mirrors .popup-container in main.css */ {
     border-radius: 0.5rem;
     background-color: #EEEFFC;
     box-shadow: 0 4px 5px rgba(0,0,0,.25);
