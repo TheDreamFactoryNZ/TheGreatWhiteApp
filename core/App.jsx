@@ -7,7 +7,7 @@ import HelpButton from './components/HelpButton';
 import Partners from './components/Partners';
 import mapHandlerRegistry from './utils/mapHandlerRegistry';
 import TrackContext from './context/TrackContext.js';
-import sanitizeHtml from './utils/sanitizeHtml';
+import buildTrackPopupDom from './utils/buildTrackPopupDom';
 
 import 'mapbox-gl/dist/mapbox-gl.css'; // Mapbox default styles
 import './assets/mapstyle.css'; // Overrides for mapbox default styles
@@ -658,11 +658,17 @@ const App = (props) => {
             ? `<div>${date ? `${date}` : ''}${date && time ? ' ' : ''}${time ? `${time}` : ''}${(date || time) && timezone ? ' ' : ''}${timezone ? `${timezone}` : ''}${(!date && !time && raw) ? raw : ''}</div>`
             : '<div>Time: unknown</div>';
 
-          const html = `<div><h2>Location #${props.idx}</h2><p><strong>Date: </strong>${date}<br/><strong>Time: </strong>${time} ${timezone}</div>`;
+          const node = buildTrackPopupDom({
+            title: `Location #${props.idx}`,
+            rows: [
+              { label: 'Date', value: date || '' },
+              { label: 'Time', value: [time, timezone].filter(Boolean).join(' ') }
+            ]
+          });
 
           new mapboxgl.Popup()
             .setLngLat(f.geometry.coordinates)
-            .setHTML(sanitizeHtml(html))
+            .setDOMContent(node)
             .addTo(window.GlobalMap);
         });
 
