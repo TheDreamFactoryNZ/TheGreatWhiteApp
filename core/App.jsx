@@ -277,6 +277,13 @@ const App = (props) => {
   const [legendOpen, setLegendOpen] = useState(false);
   const subjectsFetchCtlRef = useRef(null);
   const tracksFetchCtlMapRef = useRef(new Map());
+  // Track subject icon layers to scope feature queries and resolve overlaps
+  const subjectIconLayerIdsRef = useRef(new Set());
+
+  const registerSubjectIconLayer = (id) => {
+    try { subjectIconLayerIdsRef.current.add(id); } catch (e) { /* ignore */ }
+  };
+  const getSubjectIconLayerIds = () => Array.from(subjectIconLayerIdsRef.current);
 
   const toggleLegendState = () => {
     setLegendOpen(!legendOpen);
@@ -637,7 +644,10 @@ const App = (props) => {
           // prefer the subject icon (do not show the point popup). Query the
           // topmost rendered feature at the point and skip if it's a subject layer.
           try {
-            const top = window.GlobalMap.queryRenderedFeatures(e.point, { layers: undefined });
+            const iconLayers = getSubjectIconLayerIds();
+            const top = iconLayers && iconLayers.length
+              ? window.GlobalMap.queryRenderedFeatures(e.point, { layers: iconLayers })
+              : [];
             if (top && top.length > 0) {
               const topLayerId = top[0].layer && top[0].layer.id;
               if (typeof topLayerId === 'string' && topLayerId.startsWith('points')) {
@@ -754,6 +764,9 @@ const App = (props) => {
           }
         });
 
+        // Register subject icon layer id for scoped queries
+        try { registerSubjectIconLayer('points' + json.id); } catch (e) { /* ignore */ }
+
         // Subject Nametag Icon
         const iconSizeSubjectNametagText = ['step', ['zoom'], 12, 10, 16];
         safeAddLayer(window.GlobalMap, {
@@ -785,6 +798,20 @@ const App = (props) => {
           // defensive: ensure features exist (sometimes map events fire without features)
           const feat = e && e.features && e.features[0];
           if (!feat) return;
+
+          // Overlap guard: only allow the topmost subject icon to handle the click
+          try {
+            const iconLayers = getSubjectIconLayerIds();
+            const top = iconLayers && iconLayers.length
+              ? window.GlobalMap.queryRenderedFeatures(e.point, { layers: iconLayers })
+              : [];
+            const topLayerId = top && top[0] && top[0].layer && top[0].layer.id;
+            if (typeof topLayerId === 'string' && topLayerId !== subjLayerId) {
+              return; // another subject icon is visually topmost; ignore
+            }
+          } catch (err) {
+            // ignore query errors
+          }
 
           // copy coords/geometry so we don't hold a reference to the (mutating) event object
           const coordinates = Array.isArray(feat.geometry.coordinates) ? feat.geometry.coordinates.slice() : feat.geometry.coordinates;
