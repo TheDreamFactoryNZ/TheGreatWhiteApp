@@ -6,6 +6,8 @@ import close from '../assets/images/button_icons/close.svg';
 import zoom from '../assets/images/button_icons/help-zoom.svg';
 import reset from '../assets/images/button_icons/help-pitch-reset.svg';
 import control from '../assets/images/button_icons/control-key.svg';
+import animalIcon from '../assets/images/animal_icons/shark_icon.webp';
+import inactiveAnimalIcon from '../assets/images/animal_icons/shark_icon_inactive.webp';
 import pin from '../assets/images/button_icons/map-pin.svg';
 import tracks from '../assets/images/button_icons/subject-tracks.svg';
 import story from '../assets/images/button_icons/story-f.png'; // Unused at this stage?
@@ -58,6 +60,14 @@ const HelpButton = () => {
               Hold Ctrl / control key and drag left to right with mouse to rotate view, up and down
               to adjust pitch.
             </p>
+          </div>
+          <div className="tip-item">
+            <div className='tip-icon-container'><img className='tip-icon' width='24' height='24' src={animalIcon} /></div>
+            <p>Choose a shark icon on the map to view summary and date of last known location</p>
+          </div>
+          <div className="tip-item">
+            <div className='tip-icon-container'><img className='tip-icon' width='24' height='24' src={inactiveAnimalIcon} /></div>
+            <p>These sharks have been determined "inactive" due to a lack of movement, tags falling off or other reasons.</p>
           </div>
           <div className="tip-item">
             <div className='tip-icon-container'><img className='tip-icon' width='24' height='24' src={pin} /></div>
