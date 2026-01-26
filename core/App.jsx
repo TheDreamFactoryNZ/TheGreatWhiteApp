@@ -275,6 +275,7 @@ const App = (props) => {
   var [legSub, setLegSub] = useState(undefined);
   const [subjectPopups, setSubjectPopups] = useState([]);
   const [legendOpen, setLegendOpen] = useState(false);
+  const configFetchCtlRef = useRef(null);
   const subjectsFetchCtlRef = useRef(null);
   const tracksFetchCtlMapRef = useRef(new Map());
   // Track subject icon layers to scope feature queries and resolve overlaps
@@ -383,9 +384,9 @@ const App = (props) => {
     window.GlobalMap = new mapboxgl.Map({
       container: 'map-container',
       style: !config.map || !config.map.style ? 'mapbox://styles/vjoelm/cktdex96919t117p3rkq7c7yu' : config.map.style,
-      center: !config.map || !config.map.center ? [173.497498, -40.043578] : config.map.center,
-      zoom: !config.map || !config.map.zoom ? 5 : config.map.zoom,
-      pitch: !config.map || !config.map.pitch ? 1 : config.map.pitch
+      center: !config.map || !Array.isArray(config.map.center) ? [173.497498, -40.043578] : config.map.center,
+      zoom: !config.map || typeof config.map.zoom !== 'number' ? 5 : config.map.zoom,
+      pitch: !config.map || typeof config.map.pitch !== 'number' ? 1 : config.map.pitch
     });
 
     var nav = new mapboxgl.NavigationControl({ visualizePitch: true });
@@ -420,26 +421,41 @@ const App = (props) => {
 
   useEffect(() => {
     let isSubscribed = true;
-    // load configuration data
-    fetch(props.configFile, {
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json'
-      }
-    })
-      .then((response) => {
-        return response.json();
-      })
-      .then((json) => {
-        if (isSubscribed) {
-          config = json;
+    // load configuration data with retry, timeout and abort
+    try {
+      if (configFetchCtlRef.current) { try { configFetchCtlRef.current.abort(); } catch (_) {} }
+      const ctl = new AbortController();
+      configFetchCtlRef.current = ctl;
+      fetchWithRetry(props.configFile, {
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json'
+        },
+        signal: ctl.signal
+      }, { retries: 2, backoff: 700, factor: 2, timeout: 15000 })
+        .then((response) => response.json())
+        .then((json) => {
+          if (!isSubscribed) return;
+          try {
+            config = validateAndNormalizeConfig(json);
+          } catch (e) {
+            console.warn('Invalid config, using defaults:', e);
+            config = validateAndNormalizeConfig({});
+          }
           initMap();
-        }
-      });
+        })
+        .catch((e) => {
+          console.error('Failed to load config:', e);
+          try { config = validateAndNormalizeConfig({}); } catch (_) {}
+          if (isSubscribed) initMap();
+        })
+        .finally(() => { if (configFetchCtlRef.current === ctl) configFetchCtlRef.current = null; });
+    } catch (e) { /* ignore */ }
     // Cancel the subscription to useEffect().
     return function cleanup() {
       // Keep the map instance and global handlers alive across screen changes.
       isSubscribed = false;
+      try { if (configFetchCtlRef.current) configFetchCtlRef.current.abort(); } catch (_) {}
     };
   }, []); /* eslint-disable-line react-hooks/exhaustive-deps */
 
@@ -869,9 +885,9 @@ const App = (props) => {
 
   const resetMap = () => {
     window.GlobalMap.flyTo({
-      center: !config.map || !config.map.center ? [-109.3666652, -27.1166662] : config.map.center, // starting position [lng, lat]
-      zoom: !config.map || !config.map.zoom ? 11 : config.map.zoom, // starting zoom,
-      pitch: !config.map || !config.map.pitch ? 75 : config.map.pitch,
+      center: !config.map || !Array.isArray(config.map.center) ? [-109.3666652, -27.1166662] : config.map.center, // starting position [lng, lat]
+      zoom: !config.map || typeof config.map.zoom !== 'number' ? 11 : config.map.zoom, // starting zoom,
+      pitch: !config.map || typeof config.map.pitch !== 'number' ? 75 : config.map.pitch,
       essential: true,
       bearing: 0
     });
@@ -920,3 +936,78 @@ const App = (props) => {
 };
 
 export default App;
+
+// Validate and normalize configuration, applying safe defaults
+function validateAndNormalizeConfig(raw) {
+  const safe = typeof raw === 'object' && raw ? { ...raw } : {};
+
+  // Basic required fields
+  if (typeof safe.server !== 'string') {
+    console.warn('config.server missing or invalid; network calls may fail');
+    safe.server = safe.server || '';
+  }
+  if (typeof safe.public_name !== 'string') {
+    console.warn('config.public_name missing or invalid');
+    safe.public_name = safe.public_name || '';
+  }
+  if (typeof safe.subject_group !== 'string') {
+    console.warn('config.subject_group missing or invalid');
+    safe.subject_group = safe.subject_group || '';
+  }
+
+  // Map config defaults and validation
+  const map = typeof safe.map === 'object' && safe.map ? { ...safe.map } : {};
+  if (typeof map.style !== 'string' || !map.style) {
+    map.style = 'mapbox://styles/vjoelm/cktdex96919t117p3rkq7c7yu';
+  }
+  // center: [lng, lat]
+  const center = Array.isArray(map.center) ? map.center.slice(0, 2) : [173.497498, -40.043578];
+  const lng = Number(center[0]);
+  const lat = Number(center[1]);
+  map.center = (
+    Number.isFinite(lng) && Number.isFinite(lat) && lng >= -180 && lng <= 180 && lat >= -90 && lat <= 90
+  ) ? [lng, lat] : [173.497498, -40.043578];
+
+  const zoom = Number(map.zoom);
+  map.zoom = Number.isFinite(zoom) ? zoom : 5;
+  const pitch = Number(map.pitch);
+  map.pitch = Number.isFinite(pitch) ? pitch : 1;
+
+  // show_subject_names boolean
+  map.show_subject_names = !!map.show_subject_names;
+  // map_icon_size numeric
+  const iconSize = Number(map.map_icon_size);
+  map.map_icon_size = Number.isFinite(iconSize) ? iconSize : MAP_ICON_SIZE;
+  safe.map = map;
+
+  // color scheme validation
+  if (safe.color_scheme === 'custom' && Array.isArray(safe.custom_colors)) {
+    // accept as-is
+  } else if (safe.color_scheme === 'earthtones' || safe.color_scheme === 'aquatic') {
+    // accept
+  } else if (Array.isArray(safe.color_scheme)) {
+    // accept provided array
+  } else if (safe.color_scheme) {
+    console.warn('Invalid color_scheme; falling back to earthtones');
+    safe.color_scheme = 'earthtones';
+  }
+
+  // point_colour hex validation (used elsewhere)
+  if (typeof safe.point_colour === 'string') {
+    const cand = safe.point_colour.trim();
+    const isHex = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/i.test(cand);
+    if (!isHex) {
+      console.warn('config.point_colour invalid hex; ignoring');
+      delete safe.point_colour;
+    } else {
+      safe.point_colour = cand;
+    }
+  }
+
+  // subjects map optional
+  if (typeof safe.subjects !== 'object' || !safe.subjects) {
+    safe.subjects = {};
+  }
+
+  return safe;
+}
