@@ -7,6 +7,7 @@ import HelpButton from './components/HelpButton';
 import Partners from './components/Partners';
 import mapHandlerRegistry from './utils/mapHandlerRegistry';
 import TrackContext from './context/TrackContext.js';
+import sanitizeHtml from './utils/sanitizeHtml';
 
 import 'mapbox-gl/dist/mapbox-gl.css'; // Mapbox default styles
 import './assets/mapstyle.css'; // Overrides for mapbox default styles
@@ -661,7 +662,7 @@ const App = (props) => {
 
           new mapboxgl.Popup()
             .setLngLat(f.geometry.coordinates)
-            .setHTML(html)
+            .setHTML(sanitizeHtml(html))
             .addTo(window.GlobalMap);
         });
 
