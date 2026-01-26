@@ -75,6 +75,10 @@
     gap: 0.5rem;
 }
 
+.tip-item--desktop {
+    display: none;
+}
+
 #tip-items-container .tip-item:first-of-type {
   padding-top: 0.25rem;
 }

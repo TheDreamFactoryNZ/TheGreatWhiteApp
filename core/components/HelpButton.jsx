@@ -54,7 +54,7 @@ const HelpButton = () => {
             <div className='tip-icon-container'><img className='tip-icon' width='24' height='24' src={reset} /></div>
             <p>Press to reset map orientation, hold and drag to adjust pitch.</p>
           </div>
-          <div className="tip-item">
+          <div className="tip-item tip-item--desktop">
             <div className='tip-icon-container'><img className='tip-icon' width='24' height='24' src={control} /></div>
             <p>
               Hold Ctrl / control key and drag left to right with mouse to rotate view, up and down
