@@ -1,10 +1,11 @@
 #map-page {
   position: relative;
-  height: 100%;
   color: #000 !important;
 }
 
-#map-page #app-container {
+#map-page,
+#gw-app,
+#app-container {
   height: 100%;
 }
 

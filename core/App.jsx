@@ -926,39 +926,41 @@ const App = (props) => {
   return (
     <>
       <TrackContext.Provider value={{ displayTracks, setTracks, tracks }}>
-        <div id='app-container'>
-          <div id='map-container' onKeyDown={logKey} onKeyUp={logKey}>
-            <HelpButton />
+        <div id='gw-map'>
+          <div id='app-container'>
+            <div id='map-container' onKeyDown={logKey} onKeyUp={logKey}>
+              <HelpButton />
 
-            <Legend
-              title={config !== undefined ? config.map_title : null}
-              subs={subjects}
-              subjectData={config}
-              onLocClick={(coords) => goToLoc(coords)}
-              legendOpen={legendOpen}
-              onLegendStateToggle={toggleLegendState}
-              legSub={legSub}
-              onReturnClick={(subject) => setLegSub(subject)}
-              onStoryClick={(subject) => setLegSub(subject)}
-            />
+              <Legend
+                title={config !== undefined ? config.map_title : null}
+                subs={subjects}
+                subjectData={config}
+                onLocClick={(coords) => goToLoc(coords)}
+                legendOpen={legendOpen}
+                onLegendStateToggle={toggleLegendState}
+                legSub={legSub}
+                onReturnClick={(subject) => setLegSub(subject)}
+                onStoryClick={(subject) => setLegSub(subject)}
+              />
+            </div>
+            <Partners />
           </div>
-          <Partners />
+          {subjectPopups.map(({ properties, geometry }) =>
+            <Popup
+              key={`${properties.id}-popup`}
+              onClose={() => {
+                setSubjectPopups(prev => prev.filter(({ properties: { id } }) => id !== properties.id));
+              }}
+              coordinates={geometry.coordinates.slice()}
+            >
+              <SubjectPopupContent
+                subject={properties} subjectData={config.subjects[properties.id]}
+                onStoryClick={(subject) => setLegSub(subject)} legendOpen={legendOpen}
+                onLegendStateToggle={toggleLegendState} {...props}
+              />
+            </Popup>
+          )}
         </div>
-        {subjectPopups.map(({ properties, geometry }) =>
-          <Popup
-            key={`${properties.id}-popup`}
-            onClose={() => {
-              setSubjectPopups(prev => prev.filter(({ properties: { id } }) => id !== properties.id));
-            }}
-            coordinates={geometry.coordinates.slice()}
-          >
-            <SubjectPopupContent
-              subject={properties} subjectData={config.subjects[properties.id]}
-              onStoryClick={(subject) => setLegSub(subject)} legendOpen={legendOpen}
-              onLegendStateToggle={toggleLegendState} {...props}
-            />
-          </Popup>
-        )}
       </TrackContext.Provider> {/* eslint-disable-line react/jsx-closing-tag-location */}
     </>
   );

@@ -1,3 +1,45 @@
+/* Map-scoped variables and typography to avoid app theme overrides */
+/* Variable scope: only within the map container */
+#gw-map {
+    /* fonts */
+    --map-font-title: 'Rajdhani-Bold', system-ui, sans-serif;
+    --map-font-heading: 'Rajdhani-Semibold', system-ui, sans-serif;
+    --map-font-body: 'Source-Sans', system-ui, sans-serif;
+
+    /* fluid sizes with caps */
+    --map-h1-size: clamp(1.8rem, 1.2rem + 2.2vw, 3.2rem);
+    --map-h2-size: clamp(1.6rem, 1.1rem + 1.6vw, 2.6rem);
+    --map-h3-size: clamp(1.4rem, 1.0rem + 1.1vw, 2.2rem);
+    --map-body-size: clamp(1rem, 0.95rem + 0.2vw, 1.15rem);
+
+    /* popup */
+    --map-popup-bg: #EEEFFC;
+    --map-popup-radius: 8px;
+    --map-popup-shadow: 0 4px 5px rgba(0,0,0,.25);
+}
+
+/* Scope headings to map only */
+#gw-map :where(h1, h2, h3, h4, h5, h6) {
+    margin: 0;
+    line-height: 1.2;
+}
+
+#gw-map h1 { font-family: var(--map-font-title); font-size: var(--map-h1-size); }
+#gw-map h2 { font-family: var(--map-font-heading); font-size: var(--map-h2-size); }
+#gw-map h3 { font-family: var(--map-font-body); font-weight: 600; font-size: var(--map-h3-size); }
+
+#gw-map :where(p) { font-family: var(--map-font-body); font-size: var(--map-body-size); }
+#gw-map p strong { font-weight: 600; }
+#gw-map em { font-style: italic; }
+
+/* Map popup container styling */
+#gw-map .popup-container {
+    border-radius: var(--map-popup-radius);
+    background-color: var(--map-popup-bg);
+    box-shadow: var(--map-popup-shadow);
+    padding: 0.75rem;
+}
+
 /* Font face declarations */
 @font-face {
     font-family: 'Rajdhani-Bold';
