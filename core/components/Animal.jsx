@@ -10,6 +10,16 @@ import TrackContext from '../context/TrackContext.js';
 const Animal = ({ animal, configData, animalOnLocClicked, onNameClick, displayStory }) => {
   const { tracks } = useContext(TrackContext);
   const backgroundColor = { backgroundColor: animal.color };
+  // Determine bullet color based on subject status in configData
+  const statusColorMap = {
+    active: '#4CBE23',
+    inactive: '#FFC60A',
+    deactivated: '#B63E4E'
+  };
+  const rawStatus = (configData && configData.subjects && configData.subjects[animal.id] && configData.subjects[animal.id].status)
+    ? String(configData.subjects[animal.id].status).trim().toLowerCase()
+    : '';
+  const bulletBackgroundStyle = { backgroundColor: statusColorMap[rawStatus] || '#B0B0B0' };
   const animalId = animal.id + ' animal';
   let hover = 'hover';
   let animalName = 'animal-name ';
@@ -50,7 +60,7 @@ const Animal = ({ animal, configData, animalOnLocClicked, onNameClick, displaySt
         />
         <div id='animal-color' />
         <div className={'animal-name-bullet ' + animalName + hover} id={animalId}>
-          <div id='animal-bullet'><div style={backgroundColor} /></div>
+          <div id='animal-bullet'><div style={bulletBackgroundStyle} /></div>
           <div
             className={'animal-name-style ' + hover + trackState}
             id={animal.name.replace(' ', '-')}
