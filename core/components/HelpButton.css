@@ -20,13 +20,14 @@
 
 /* The content panel that appears when tips are shown */
 #tips-content-container {
-    width: 265px;
+    width: min(75vw, clamp(270px, 25vw, 320px));
     margin-top: 15px;
     padding: 0.25rem;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    box-sizing:border-box;
 }
 
 /* Header area inside the content panel */
@@ -34,12 +35,17 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 0.25rem;
+    padding-left: 10px;
 }
 
 #tips-header h2 {
-    font-size: 1.25rem;
-    padding-left: 10px;
+    flex: 1 1 auto;
+    min-width: 0;
     margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 1.25rem;
 }
 
 #close-icon {
@@ -48,6 +54,7 @@
     padding: 10px;
     opacity: 90%;
     cursor: pointer;
+    box-sizing: content-box;
 }
 
 #tips ul {
@@ -73,10 +80,6 @@
     align-items: center;
     padding: 1rem 0;
     gap: 0.5rem;
-}
-
-.tip-item--desktop {
-    display: none;
 }
 
 #tip-items-container .tip-item:first-of-type {

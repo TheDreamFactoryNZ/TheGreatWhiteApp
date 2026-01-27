@@ -1,7 +1,7 @@
 import { IonContent, IonPage } from '@ionic/react';
-import './SharkMap.css';
 import React, { StrictMode } from 'react';
 import MainApp from '@core/App';
+import './SharkMap.css';
 
 const SharkMap: React.FC = () => {
   return (
