@@ -6,8 +6,9 @@ import close from '../assets/images/button_icons/close.svg';
 import zoom from '../assets/images/button_icons/help-zoom.svg';
 import reset from '../assets/images/button_icons/help-pitch-reset.svg';
 import control from '../assets/images/button_icons/control-key.svg';
-import animalIcon from '../assets/images/animal_icons/shark_icon.webp';
-import inactiveAnimalIcon from '../assets/images/animal_icons/shark_icon_inactive.webp';
+import animalIcon from '../assets/images/button_icons/shark-icon-default-tip.svg';
+import inactiveAnimalIcon from '../assets/images/button_icons/shark-icon-inactive-tip.svg';
+import deactivatedAnimalIcon from '../assets/images/button_icons/shark-icon-deactivated-tip.svg';
 import pin from '../assets/images/button_icons/map-pin.svg';
 import tracks from '../assets/images/button_icons/subject-tracks--inactive.svg';
 import story from '../assets/images/button_icons/story-f.png'; // Unused at this stage?
@@ -64,15 +65,19 @@ const HelpButton = () => {
           </div>
           <div className="tip-item">
             <div className='tip-icon-container'><img className='tip-icon' width='24' height='24' src={inactiveAnimalIcon} /></div>
-            <p>These sharks have been determined "inactive" due to a lack of movement, tags falling off or other reasons.</p>
+            <p>These sharks have not transmitted a location for an extended period of time and are inactive.</p>
+          </div>
+          <div className="tip-item">
+            <div className='tip-icon-container'><img className='tip-icon' width='24' height='24' src={deactivatedAnimalIcon} /></div>
+            <p>These sharks have lost their tags and are confirmed no longer transmitting.</p>
           </div>
           <div className="tip-item">
             <div className='tip-icon-container'><img className='tip-icon' width='24' height='24' src={pin} /></div>
-            <p>Jump to a subject's location</p>
+            <p>Jump to a subject's location.</p>
           </div>
           <div className="tip-item">
             <div className='tip-icon-container'><img className='tip-icon' width='24' height='24' src={tracks} /></div>
-            <p>Display a subject's track</p>
+            <p>Display a subject's track.</p>
           </div>
           <div className="tip-item" style={{display: 'none'}}>
             <div className='tip-icon-container'><img className='tip-icon' width='24' height='24' src={refresh} /></div>
@@ -80,7 +85,7 @@ const HelpButton = () => {
           </div>
           <div className="tip-item">
             <div className='tip-icon-container'><img className='tip-icon' width='7' height='10' src={story} /></div>
-            <p>Display a subject's story</p>
+            <p>Display a subject's story.</p>
           </div>
         </div>
       </div>
