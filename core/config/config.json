@@ -44,7 +44,7 @@
             "name": "Ra",
             "age": "Total length: 3.7m",
             "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon_inactive.webp",
-            "is_active": 0,
+            "status": "deactivated",
             "pictures": [
                 {
                     "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/ra/ra-1.webp"
@@ -57,7 +57,7 @@
             "name": "",
             "age": "",
             "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon.webp",
-            "is_active": 0,
+            "status": "deactivated",
             "pictures": [
                 {
                     "path": ""
@@ -70,7 +70,7 @@
             "name": "Bubbles",
             "age": "Total length: 2.5m",
             "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon.webp",
-            "is_active": 0,
+            "status": "active",
             "pictures": [
                 {
                     "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/bubbles/bubbles-2.webp"
@@ -83,7 +83,7 @@
             "name": "Midge",
             "age": "Total length: 2.8m",
             "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon.webp",
-            "is_active": 0,
+            "status": "deactivated",
             "pictures": [
                 {
                     "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/midge/midge-1.webp"
@@ -96,7 +96,7 @@
             "name": "Nicole",
             "age": "Total length: 3.0m",
             "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon_inactive.webp",
-            "is_active": 0,
+            "status": "deactivated",
             "pictures": [
                 {
                     "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/nicole/nicole-1.webp"
@@ -109,7 +109,7 @@
             "name": "Ngaru",
             "age": "Total length: 3.1m",
             "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon.webp",
-            "is_active": 0,
+            "status": "active",
             "pictures": [
                 {
                     "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/ngaru/ngaru-1.webp"
@@ -122,7 +122,7 @@
             "name": "Jonah",
             "age": "Total length: 3.1m",
             "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon.webp",
-            "is_active": 0,
+            "status": "active",
             "pictures": [
                 {
                     "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/jonah/jonah-1.webp"
@@ -135,7 +135,7 @@
             "name": "Grace",
             "age": "Total length: 3.5m",
             "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon_inactive.webp",
-            "is_active": 0,
+            "status": "deactivated",
             "pictures": [
                 {
                     "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/grace/grace-2.webp"
@@ -148,7 +148,7 @@
             "name": "Deep Blue",
             "age": "Total length: 3.5m",
             "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon.webp",
-            "is_active": 0,
+            "status": "active",
             "pictures": [
                 {
                     "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/deep_blue/deep-blue-1.webp"
@@ -161,7 +161,7 @@
             "name": "Odin",
             "age": "Total length: 3.7m",
             "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon_inactive.webp",
-            "is_active": 0,
+            "status": "deactivated",
             "pictures": [
                 {
                     "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/odin/odin-1.webp"
@@ -174,7 +174,7 @@
             "name": "Maureen",
             "age": "Total length: 3.5m",
             "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon.webp",
-            "is_active": 0,
+            "status": "active",
             "pictures": [
                 {
                     "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/maureen/maureen-1.webp"
@@ -187,7 +187,7 @@
             "name": "Nui",
             "age": "Total length: 3.7m",
             "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon_inactive.webp",
-            "is_active": 0,
+            "status": "deactivated",
             "pictures": [
                 {
                     "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/nui/nui-1.webp"
@@ -200,7 +200,7 @@
             "name": "Davenport",
             "age": "Total length: 4.0m",
             "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon.webp",
-            "is_active": 0,
+            "status": "active",
             "pictures": [
                 {
                     "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/davenport/davenport-1.webp"
@@ -213,7 +213,7 @@
             "name": "Happy",
             "age": "Total length: 3.2m",
             "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon.webp",
-            "is_active": 0,
+            "status": "active",
             "pictures": [
                 {
                     "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/happy/happy-2.webp"
@@ -226,7 +226,7 @@
             "name": "Shingo",
             "age": "Total length: 3.5m",
             "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon.webp",
-            "is_active": 0,
+            "status": "active",
             "pictures": [
                 {
                     "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/shingo/shingo-2.webp"
@@ -239,7 +239,7 @@
             "name": "Waihi",
             "age": "Total length: 2.8m",
             "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon.webp",
-            "is_active": 0,
+            "status": "active",
             "pictures": [
                 {
                     "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/waihi/waihi-1.webp"
@@ -252,7 +252,7 @@
             "name": "Takami",
             "age": "3 years (2.2 metres)",
             "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon_inactive.webp",
-            "is_active": 0,
+            "status": "deactivated",
             "pictures": [
                 {
                     "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/Takami.png"
@@ -265,7 +265,7 @@
             "name": "Daisy",
             "age": "4 years (2.75 metres)",
             "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon_inactive.webp",
-            "is_active": 0,
+            "status": "deactivated",
             "pictures": [
                 {
                     "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/Daisy.png"
@@ -278,7 +278,7 @@
             "name": "SWAJ (Reversing JAWS)",
             "age": "<1 years (1.4 metres)",
             "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon_inactive.webp",
-            "is_active": 0,
+            "status": "deactivated",
             "pictures": [
                 {
                     "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/SWAJ.png"
@@ -291,6 +291,7 @@
             "name": "Mananui (Great Prestige)",
             "age": "6 years (3.2 metres)",
             "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon_inactive.webp",
+            "status": "deactivated",
             "pictures": [
                 {
                     "path": "public/images/animal_photos/Mananui.png"

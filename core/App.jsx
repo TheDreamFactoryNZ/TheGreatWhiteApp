@@ -14,6 +14,9 @@ import './assets/mapstyle.css'; // Overrides for mapbox default styles
 import './assets/main.css'; // Global styles for map - under construction
 
 import med from './assets/images/med.png';
+import sharkIconActive from './assets/images/animal_icons/shark-icon-active.svg';
+import sharkIconInactive from './assets/images/animal_icons/shark-icon-inactive.svg';
+import sharkIconDeactivated from './assets/images/animal_icons/shark-icon-deactivated.svg';
 
 // instantiate the Map
 mapboxgl.accessToken = 'pk.eyJ1IjoidmpvZWxtIiwiYSI6ImNra2hiZXNpMzA1bTcybnA3OXlycnN2ZjcifQ.gH6Nls61WTMVutUH57jMJQ'; // development token
@@ -27,6 +30,13 @@ const earthtones = ['#511913', '#711E17', '#961F1A', '#DB2222', '#E5632E',
 
 const MAP_ICON_SIZE = 30;
 const MAP_ICON_SCALE = 2;
+
+// Map subject status to local icon assets
+const STATUS_ICON_MAP = {
+  active: sharkIconActive,
+  inactive: sharkIconInactive,
+  deactivated: sharkIconDeactivated
+};
 
 window.GlobalMap = null;
 
@@ -741,12 +751,31 @@ const App = (props) => {
 
   async function drawIcon(json) {
     let imgURL = null;
-    if (config.subjects && config.subjects[json.id] && config.subjects[json.id].icon) {
-      imgURL = config.subjects[json.id].icon;
-    } else if (json.common_name !== null && await fileExists(`public/images/animal_icons/${json.common_name}.png`)) {
-      imgURL = `public/images/animal_icons/${json.common_name}.png`;
-    } else {
-      imgURL = json.last_position.properties.image;
+    const subjCfg = (config && config.subjects && config.subjects[json.id]) ? config.subjects[json.id] : null;
+    const rawStatus = subjCfg && typeof subjCfg.status === 'string' ? subjCfg.status.trim().toLowerCase() : null;
+
+    // If a valid status is present, prefer the corresponding local icon
+    if (rawStatus) {
+      if (STATUS_ICON_MAP[rawStatus]) {
+        imgURL = STATUS_ICON_MAP[rawStatus];
+      } else {
+        // Invalid status: warn and fall back to the configured icon
+        console.warn(`Unknown subject status "${rawStatus}" for subject ${json.id}; falling back to configured icon.`);
+        if (subjCfg && typeof subjCfg.icon === 'string' && subjCfg.icon) {
+          imgURL = subjCfg.icon;
+        }
+      }
+    }
+
+    // If no status override applied, follow existing precedence
+    if (!imgURL) {
+      if (subjCfg && typeof subjCfg.icon === 'string' && subjCfg.icon) {
+        imgURL = subjCfg.icon;
+      } else if (json.common_name !== null && await fileExists(`public/images/animal_icons/${json.common_name}.png`)) {
+        imgURL = `public/images/animal_icons/${json.common_name}.png`;
+      } else {
+        imgURL = json.last_position.properties.image;
+      }
     }
     addImage(json, imgURL);
   }
