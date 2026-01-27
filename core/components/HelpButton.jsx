@@ -9,7 +9,7 @@ import control from '../assets/images/button_icons/control-key.svg';
 import animalIcon from '../assets/images/animal_icons/shark_icon.webp';
 import inactiveAnimalIcon from '../assets/images/animal_icons/shark_icon_inactive.webp';
 import pin from '../assets/images/button_icons/map-pin.svg';
-import tracks from '../assets/images/button_icons/subject-tracks.svg';
+import tracks from '../assets/images/button_icons/subject-tracks--inactive.svg';
 import story from '../assets/images/button_icons/story-f.png'; // Unused at this stage?
 import refresh from '../assets/images/button_icons/refresh.svg';
 

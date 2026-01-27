@@ -2,8 +2,8 @@ import React, { useContext } from 'react';
 import TrackContext from '../context/TrackContext.js';
 import './Legend.css';
 
-import tracksOn from '../assets/images/button_icons/pin_tracks-green.png';
-import tracksOff from '../assets/images/button_icons/pin_tracks-gray.png';
+import tracksOn from '../assets/images/button_icons/subject-tracks--active.svg';
+import tracksOff from '../assets/images/button_icons/subject-tracks--inactive.svg';
 
 /* eslint-disable react/prop-types */
 const TrackButton = ({ subject }) => {
