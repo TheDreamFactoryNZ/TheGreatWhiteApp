@@ -7,6 +7,7 @@ import zoom from '../assets/images/button_icons/help-zoom.svg';
 import reset from '../assets/images/button_icons/help-pitch-reset.svg';
 import control from '../assets/images/button_icons/control-key.svg';
 import animalIcon from '../assets/images/button_icons/shark-icon-default-tip.svg';
+import activeAnimalIcon from '../assets/images/button_icons/shark-icon-active-tip.svg';
 import inactiveAnimalIcon from '../assets/images/button_icons/shark-icon-inactive-tip.svg';
 import deactivatedAnimalIcon from '../assets/images/button_icons/shark-icon-deactivated-tip.svg';
 import pin from '../assets/images/button_icons/map-pin.svg';
@@ -64,6 +65,10 @@ const HelpButton = () => {
             <p>Choose a shark icon on the map to view summary and date of last known location.</p>
           </div>
           <div className="tip-item">
+            <div className='tip-icon-container'><img className='tip-icon' width='24' height='24' src={activeAnimalIcon} /></div>
+            <p>A green light means the tag on the shark is active and transmitting location data. No recent updates? This is because the shark hasn't surfaced high enough to transmit a location to satellites.</p>
+          </div>
+          <div className="tip-item" style={{display: 'none'}}> // This tip will be restored when automatic updating of locations is re-enabled
             <div className='tip-icon-container'><img className='tip-icon' width='24' height='24' src={inactiveAnimalIcon} /></div>
             <p>These sharks have not transmitted a location for an extended period of time and are inactive.</p>
           </div>
