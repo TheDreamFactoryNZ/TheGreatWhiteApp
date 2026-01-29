@@ -47,7 +47,8 @@ module.exports = (env, argv) => {
               options: {
                 // Use CommonJS-style export to avoid ESM/CJS interop issues
                 esModule: false,
-                sourceMap: true
+                sourceMap: true,
+                modules: true
               }
             }
           ],

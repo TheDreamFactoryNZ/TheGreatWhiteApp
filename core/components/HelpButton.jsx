@@ -1,7 +1,6 @@
-import React from 'react';
-import './HelpButton.css';
+import React, { useState } from 'react';
+import styles from './HelpButton.module.css';
 
-import tipsOn from '../assets/images/button_icons/help.svg';
 import close from '../assets/images/button_icons/close.svg';
 import zoom from '../assets/images/button_icons/help-zoom.svg';
 import reset from '../assets/images/button_icons/help-pitch-reset.svg';
@@ -18,78 +17,79 @@ import refresh from '../assets/images/button_icons/refresh.svg';
 /* eslint-disable react/prop-types */
 const HelpButton = () => {
 
+  const [tipsOpen, setTipsOpen] = useState(false);
+
   return (
-    <div id='tips-container'>
+    <div className={styles.tipsContainer}>
+      <button
+        type="button"
+        className={styles.tipsToggleIcon}
+        onClick={() => setTipsOpen(o => !o)}
+        aria-expanded={tipsOpen}
+        aria-label="Toggle help tips"
+      />
+
+
       <div
-        id='tips-icon'
-        className='hover'
-        onClick={() => {
-          const tips = document.getElementById('tips-content-container');
-          const helpButtonContainer = document.getElementById('tips-icon');
-          tips.classList.toggle('hidden');
-          helpButtonContainer.classList.toggle('tips-active');
-        }}
-        src={tipsOn}
+        className={[
+          styles.tipsContentContainer,
+          !tipsOpen && styles.hidden,
+          styles.popupContainer,
+        ].filter(Boolean).join(' ')}
       >
-      </div>
-      <div id='tips-content-container' className='hidden popup-container'>
-        <div id="tips-header">
+        <div className={styles.tipsHeader}>
           <h2>Interacting With the Map</h2>
           <img
-            id='close-icon'
-            draggable='false'
             src={close}
-            onClick={() => {
-              const helpButtonContainer = document.getElementById('tips-icon');
-              helpButtonContainer.classList.remove('tips-active');
-              const tips = document.getElementById('tips-content-container');
-              tips.classList.add('hidden');
-            }}
+            draggable={false}
+            className={styles.closeIcon}
+            onClick={() => setTipsOpen(false)}
           />
         </div>
-        <div id='tip-items-container'>
-          <div className="tip-item">
-            <div className='tip-icon-container tip-icon--vertical'><img className='tip-icon' width='20' height='40' src={zoom} /></div>
+        <div className={styles.tipItemsContainer}>
+          <div className={styles.tipItem}>
+            <div className={`${styles.tipIconContainer} ${styles['tipIconVertical']}`}><img className={styles.tipIcon} width='20' height='40' src={zoom} /></div>
             <p>Zoom in and out with the + and - buttons.</p>
           </div>
-          <div className="tip-item">
-            <div className='tip-icon-container'><img className='tip-icon' width='24' height='24' src={reset} /></div>
+          <div className={styles.tipItem}>
+            <div className={styles.tipIconContainer}><img className={styles.tipIcon} width='24' height='24' src={reset} /></div>
             <p>Press to reset map orientation, hold and drag to adjust pitch.</p>
           </div>
-          <div className="tip-item tip-item--desktop">
-            <div className='tip-icon-container'><img className='tip-icon' width='24' height='24' src={control} /></div>
+          <div className={`${styles.tipItem} tipItemDesktop`}>
+            <div className={styles.tipIconContainer}><img className={styles.tipIcon} width='24' height='24' src={control} /></div>
             <p>Hold Ctrl / control key and drag left to right with mouse to rotate view, up and down to adjust pitch.</p>
           </div>
-          <div className="tip-item">
-            <div className='tip-icon-container'><img className='tip-icon' width='24' height='24' src={animalIcon} /></div>
+          <div className={styles.tipItem}>
+            <div className={styles.tipIconContainer}><img className={styles.tipIcon} width='24' height='24' src={animalIcon} /></div>
             <p>Choose a shark icon on the map to view summary and date of last known location.</p>
           </div>
-          <div className="tip-item">
-            <div className='tip-icon-container'><img className='tip-icon' width='24' height='24' src={activeAnimalIcon} /></div>
+          <div className={styles.tipItem}>
+            <div className={styles.tipIconContainer}><img className={styles.tipIcon} width='24' height='24' src={activeAnimalIcon} /></div>
             <p>A green light means the tag on the shark is active and transmitting location data. No recent updates? This is because the shark hasn't surfaced high enough to transmit a location to satellites.</p>
           </div>
-          <div className="tip-item" style={{display: 'none'}}> // This tip will be restored when automatic updating of locations is re-enabled
-            <div className='tip-icon-container'><img className='tip-icon' width='24' height='24' src={inactiveAnimalIcon} /></div>
+          {/* vvv This tip will be restored when automatic status updates are implemented vvv */}
+          <div className={styles.tipItem} style={{ display: 'none' }}>
+            <div className={styles.tipIconContainer}><img className={styles.tipIcon} width='24' height='24' src={inactiveAnimalIcon} /></div>
             <p>These sharks have not transmitted a location for an extended period of time and are inactive.</p>
           </div>
-          <div className="tip-item">
-            <div className='tip-icon-container'><img className='tip-icon' width='24' height='24' src={deactivatedAnimalIcon} /></div>
+          <div className={styles.tipItem}>
+            <div className={styles.tipIconContainer}><img className={styles.tipIcon} width='24' height='24' src={deactivatedAnimalIcon} /></div>
             <p>These sharks have lost their tags and are confirmed no longer transmitting.</p>
           </div>
-          <div className="tip-item">
-            <div className='tip-icon-container'><img className='tip-icon' width='24' height='24' src={pin} /></div>
+          <div className={styles.tipItem}>
+            <div className={styles.tipIconContainer}><img className={styles.tipIcon} width='24' height='24' src={pin} /></div>
             <p>Jump to a subject's location.</p>
           </div>
-          <div className="tip-item">
-            <div className='tip-icon-container'><img className='tip-icon' width='24' height='24' src={tracks} /></div>
+          <div className={styles.tipItem}>
+            <div className={styles.tipIconContainer}><img className={styles.tipIcon} width='24' height='24' src={tracks} /></div>
             <p>Display a subject's track.</p>
           </div>
-          <div className="tip-item" style={{display: 'none'}}>
-            <div className='tip-icon-container'><img className='tip-icon' width='24' height='24' src={refresh} /></div>
+          <div className={styles.tipItem} style={{ display: 'none' }}>
+            <div className={styles.tipIconContainer}><img className={styles.tipIcon} width='24' height='24' src={refresh} /></div>
             <p>Refresh and update locations (internet connection required)</p>
           </div>
-          <div className="tip-item">
-            <div className='tip-icon-container'><img className='tip-icon' width='7' height='10' src={story} /></div>
+          <div className={styles.tipItem}>
+            <div className={styles.tipIconContainer}><img className={styles.tipIcon} width='7' height='10' src={story} /></div>
             <p>Display a subject's story.</p>
           </div>
         </div>

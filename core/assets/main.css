@@ -1,5 +1,10 @@
+/* Optional: keep global base font if desired app-wide */
+html {
+    font-size: 16px;
+}
+
+
 /* Map-scoped variables and typography to avoid app theme overrides */
-/* Variable scope: only within the map container */
 #gw-map {
     /* fonts */
     --map-font-title: 'Rajdhani-Bold', system-ui, sans-serif;
@@ -12,35 +17,29 @@
     --map-h3-size: clamp(1.4rem, 1.0rem + 1.1vw, 2.2rem);
     --map-body-size: clamp(1rem, 0.95rem + 0.2vw, 1.15rem);
 
-    /* popup */
+    /* popups */
     --map-popup-bg: #EEEFFC;
     --map-popup-radius: 8px;
-    --map-popup-shadow: 0 4px 5px rgba(0,0,0,.25);
+    --map-popup-shadow: 0 4px 5px rgba(0, 0, 0, .25);
+
+    /* interactivity */
+    --focus-outline: 2px solid #A8BEF0;
 }
 
-/* Scope headings to map only */
+/* Scoped headings and text (map-only) 
 #gw-map :where(h1, h2, h3, h4, h5, h6) {
-    margin: 0;
-    line-height: 1.2;
+  margin: 0;
+  line-height: 1.2;
 }
-
 #gw-map h1 { font-family: var(--map-font-title); font-size: var(--map-h1-size); }
 #gw-map h2 { font-family: var(--map-font-heading); font-size: var(--map-h2-size); }
 #gw-map h3 { font-family: var(--map-font-body); font-weight: 600; font-size: var(--map-h3-size); }
 
 #gw-map :where(p) { font-family: var(--map-font-body); font-size: var(--map-body-size); }
 #gw-map p strong { font-weight: 600; }
-#gw-map em { font-style: italic; }
+#gw-map em { font-style: italic; }*/
 
-/* Map popup container styling */
-#gw-map .popup-container {
-    border-radius: var(--map-popup-radius);
-    background-color: var(--map-popup-bg);
-    box-shadow: var(--map-popup-shadow);
-    padding: 0.75rem;
-}
-
-/* Font face declarations */
+/* Font face declarations (keep) */
 @font-face {
     font-family: 'Rajdhani-Bold';
     src: url('./fonts/Rajdhani-Bold.ttf') format('truetype');
@@ -71,66 +70,14 @@
     src: url('./fonts/SourceSans3-VariableFont_wght.ttf') format('truetype');
 }
 
-/* Base font size and responsive scaling for headings */
-html {
-    font-size: 16px; /* Base font size */
+#gw-map {
+    height: 100%;
 }
 
-/* Heading styles */
-h1, h2, h3, h4, h5, h6 {
-    margin: 0;
-    padding: 0;
-    line-height: 1.2;
-}
-
-h1 {
-    font-family: 'Rajdhani-Bold', sans-serif;
-    font-size: calc(2.5rem + 1vw);
-}
-
-h2 {
-    font-family: 'Rajdhani-Semibold', sans-serif;
-    font-size: calc(2rem + 0.5vw);
-}
-
-h3 {
-    font-family: 'Source-Sans', sans-serif;
-    font-weight: 600;
-    font-size: calc(1.75rem + 0.25vw);
-}
-
-h4 {
-    font-family: 'Rajdhani-Regular', sans-serif;
-    font-size: calc(1.5rem + 0.2vw);
-}
-
-h5 {
-    font-family: 'Rajdhani-Light', sans-serif;
-    font-size: calc(1.25rem + 0.15vw);
-}
-
-h6 {
-    font-family: 'Rajdhani-Light', sans-serif;
-    font-size: calc(1rem + 0.1vw);
-}
-
-/* Paragraph Styles */
-p {
-    font-family: 'Source-Sans', sans-serif;
-    font-size: calc(1rem + 0.1vw);
-}
-
-p strong {
-    font-weight: 600;
-}
-
-em {
-    font-style: italic;
-}
-
-.popup-container {
-    border-radius: 0.5rem;
-    background-color: #EEEFFC;
-    box-shadow: 0 4px 5px rgba(0,0,0,.25);
+/* Map popup container styling (map-only) */
+#gw-map .popup-container {
+    border-radius: var(--map-popup-radius);
+    background-color: var(--map-popup-bg);
+    box-shadow: var(--map-popup-shadow);
     padding: 0.75rem;
 }
