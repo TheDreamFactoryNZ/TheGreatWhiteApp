@@ -3,49 +3,94 @@ html {
     font-size: 12px;
 }
 
-/* Font face declarations (keep) */
+/* Font face declarations */
+
 @font-face {
-    font-family: 'Rajdhani-Bold';
-    src: url('./fonts/Rajdhani-Bold.ttf') format('truetype');
+    font-family: 'Rajdhani';
+    src: url('./fonts/rajdhani/rajdhani-latin-ext-300.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
-    font-family: 'Rajdhani-Semibold';
-    src: url('./fonts/Rajdhani-SemiBold.ttf') format('truetype');
+    font-family: 'Rajdhani';
+    src: url('./fonts/rajdhani/rajdhani-latin-ext-regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
-    font-family: 'Rajdhani-Medium';
-    src: url('./fonts/Rajdhani-Medium.ttf') format('truetype');
+    font-family: 'Rajdhani';
+    src: url('./fonts/rajdhani/rajdhani-latin-ext-500.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
-    font-family: 'Rajdhani-Regular';
-    src: url('./fonts/Rajdhani-Regular.ttf') format('truetype');
+    font-family: 'Rajdhani';
+    src: url('./fonts/rajdhani/rajdhani-latin-ext-600.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
-    font-family: 'Rajdhani-Light';
-    src: url('./fonts/Rajdhani-Light.ttf') format('truetype');
+    font-family: 'Rajdhani';
+    src: url('./fonts/rajdhani/rajdhani-latin-ext-700.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
     font-family: 'Source-Sans';
-    src: url('./fonts/SourceSans3-VariableFont_wght.ttf') format('truetype');
+    src: url('./fonts/source-sans/source-sans-3-latin-ext-regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Source-Sans';
+    src: url('./fonts/source-sans/source-sans-3-latin-ext-italic.woff2') format('woff2');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Source-Sans';
+    src: url('./fonts/source-sans/source-sans-3-latin-ext-700.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Source-Sans';
+    src: url('./fonts/source-sans/source-sans-3-latin-ext-700-italic.woff2') format('woff2');
+    font-weight: 700;
+    font-style: italic;
+    font-display: swap;
 }
 
 #gw-map {
-    /* fonts */
-    --map-h1-font: 'Rajdhani-Bold', system-ui, sans-serif;
-    --map-h2-font: 'Rajdhani-Semibold', system-ui, sans-serif;
-    --map-h3-font: 'Rajdhani-Light', system-ui, sans-serif;
+    --map-h1-font: 'Rajdhani', system-ui, sans-serif;
+    --map-h2-font: 'Rajdhani', system-ui, sans-serif;
+    --map-h3-font: 'Rajdhani', system-ui, sans-serif;
     --map-body-font: 'Source-Sans', system-ui, sans-serif;
 
-    /* fluid sizes with caps */
     --map-h1-size: clamp(1.8rem, 1.2rem + 2.2vw, 3.2rem);
     --map-h2-size: clamp(1.6rem, 1.1rem + 1.6vw, 2.6rem);
     --map-h3-size: clamp(1.4rem, 1.0rem + 1.1vw, 2.2rem);
     --map-body-size: clamp(1.5rem, 0.5rem + 0.2vw, 2.5rem);
+
+    --h1-font-weight: 700;
+    --h2-font-weight: 600;
+    --h3-font-weight: 300;
 
     --heading-letter-spacing: 0.05em;
 
