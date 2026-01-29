@@ -37,8 +37,8 @@ const HelpButton = () => {
           styles.popupContainer,
         ].filter(Boolean).join(' ')}
       >
-        <div className={styles.tipsHeader}>
-          <h2>Interacting With the Map</h2>
+        <div className={styles.tipsHeaderContainer}>
+          <h2 className={styles.tipsHeader}>Interacting With the Map</h2>
           <img
             src={close}
             draggable={false}
@@ -78,11 +78,11 @@ const HelpButton = () => {
           </div>
           <div className={styles.tipItem}>
             <div className={styles.tipIconContainer}><img className={styles.tipIcon} width='24' height='24' src={pin} /></div>
-            <p>Jump to a subject's location.</p>
+            <p>Jump to a shark's location.</p>
           </div>
           <div className={styles.tipItem}>
             <div className={styles.tipIconContainer}><img className={styles.tipIcon} width='24' height='24' src={tracks} /></div>
-            <p>Display a subject's track.</p>
+            <p>Display a shark's track.</p>
           </div>
           <div className={styles.tipItem} style={{ display: 'none' }}>
             <div className={styles.tipIconContainer}><img className={styles.tipIcon} width='24' height='24' src={refresh} /></div>
@@ -90,7 +90,7 @@ const HelpButton = () => {
           </div>
           <div className={styles.tipItem}>
             <div className={styles.tipIconContainer}><img className={styles.tipIcon} width='7' height='10' src={story} /></div>
-            <p>Display a subject's story.</p>
+            <p>Display a shark's story.</p>
           </div>
         </div>
       </div>

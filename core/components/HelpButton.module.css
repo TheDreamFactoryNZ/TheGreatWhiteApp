@@ -22,13 +22,18 @@
     cursor: pointer
 }
 
+.tipsToggleIcon:hover {
+    filter: brightness(0.95);
+}
+
 .tipsToggleIcon:focus {
     outline: var(--focus-outline);
+    filter: brightness(0.95);
 }
 
 /* The content panel that appears when tips are shown */
 .tipsContentContainer {
-    width: min(75vw, clamp(270px, 25vw, 320px));
+    width: min(75vw, clamp(270px, 25vw, 340px));
     margin-top: 15px;
     padding: 0.25rem;
     background: var(--map-popup-bg);
@@ -42,7 +47,7 @@
 }
 
 /* Header area inside the content panel */
-.tipsHeader {
+.tipsHeaderContainer {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -50,13 +55,13 @@
     padding-left: 10px;
 }
 
-.tipsHeader h2 {
+h2.tipsHeader {
     flex: 1 1 auto;
     min-width: 0;
     margin: 0;
     overflow: hidden;
     text-overflow: ellipsis;
-    font-size: 1.125rem;
+    font-size: 1.625rem;
     font-weight: 600;
 }
 
@@ -91,16 +96,11 @@
     justify-content: flex-start;
     align-items: center;
     padding: 1rem 0;
-    gap: 0.5rem;
+    gap: 1rem;
 }
 
 .tipItemsContainer .tipItem:first-of-type {
   padding-top: 0.25rem;
-}
-
-.tipItem p {
-    margin: 0;
-    font-size: 0.75rem;
 }
 
 /* Divider between tip items */
