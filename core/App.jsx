@@ -112,6 +112,34 @@ function attachGlobalResizeHandlers() {
   } catch (e) { /* ignore */ }
 }
 
+// Observe the map container for size changes and trigger a resize with logging
+function attachContainerResizeObserver() {
+  try {
+    if (window.__gw_map_resize_observer) return;
+    const container = document.getElementById('map-container');
+    if (!container) return;
+
+    const handler = debounce(() => {
+      try {
+        const rect = container.getBoundingClientRect();
+        const canvas = window.GlobalMap && typeof window.GlobalMap.getCanvas === 'function' ? window.GlobalMap.getCanvas() : null;
+        const canvasRect = canvas ? canvas.getBoundingClientRect() : null;
+        console.info('[GW] Map container resize', {
+          container: { width: Math.round(rect.width), height: Math.round(rect.height) },
+          canvas: canvasRect ? { width: Math.round(canvasRect.width), height: Math.round(canvasRect.height) } : null,
+          dpr: window.devicePixelRatio || 1
+        });
+        window.GlobalMap && window.GlobalMap.resize();
+      } catch (e) { /* ignore */ }
+    }, 120);
+
+    const ro = new ResizeObserver(() => handler());
+    ro.observe(container);
+    window.__gw_map_resize_observer = ro;
+    window.__gw_map_container_resize_handler = handler;
+  } catch (e) { /* ignore */ }
+}
+
 const imgElFromSrc = (src, width = MAP_ICON_SIZE, height = null) => new Promise((resolve, reject) => {
   const img = new Image();
   img.setAttribute('crossorigin', 'anonymous');
@@ -368,6 +396,8 @@ const App = (props) => {
       setTimeout(() => { try { window.GlobalMap.resize(); } catch (e) {} }, 200);
       // Attach debounced global handlers once
       attachGlobalResizeHandlers();
+      // Observe container for subsequent size changes
+      attachContainerResizeObserver();
       // If the map's style is loaded, ensure subjects are loaded; otherwise, attach a one-time load hook
       try {
         const styleLoaded = typeof window.GlobalMap.isStyleLoaded === 'function'
@@ -426,6 +456,8 @@ const App = (props) => {
 
       // Attach debounced global resize/visibility handlers once
       attachGlobalResizeHandlers();
+      // Observe container for subsequent size changes
+      attachContainerResizeObserver();
     });
   }
 
