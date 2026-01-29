@@ -115,12 +115,12 @@ h2.tipsHeader {
 
 /* Icon styling and container */
 .tipIconContainer {
-    width: 24px;
-    height: 24px;
+    width: auto;
+    height: auto;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex: 0 0 24px; /* don't grow or shrink */
+    flex: 0 0 40px;
 }
 
 .tipIconContainer .tipIcon {
