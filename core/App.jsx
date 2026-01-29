@@ -636,8 +636,8 @@ const App = (props) => {
           data: pointsGeojson
         });
 
-        // determine circle color: prefer valid config.point_colour; otherwise fallback to literal '#1bb159'
-        let pointCircleColor = '#1bb159'; // default
+        // determine circle color: prefer valid config.point_colour; otherwise fallback to literal '#4CBE23'
+        let pointCircleColor = '#4CBE23'; // default
         try {
           const raw = config && config.point_colour;
           if (typeof raw === 'string') {
