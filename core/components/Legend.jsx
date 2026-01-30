@@ -15,11 +15,11 @@ const Legend = ({
 }) => {
   const doubleCaretIcon = doubleCaret;
 
-  function toggleLegend () {
+  function toggleLegend() {
     onLegendStateToggle();
   }
 
-  function display () {
+  function display() {
     if (legSub === undefined) {
       return (
         <div className={styles.legendContent}>
@@ -90,14 +90,20 @@ const Legend = ({
             </div>
             <div className={styles.animalStory}>
               <div className={styles.subjectDiv}>
-                <Animal animal={legSub[0]} key={legSub[0].id} animalOnLocClicked={onLocClick} />
+                <Animal
+                  animal={legSub[0]}
+                  key={legSub[0].id}
+                  configData={subjectData}
+                  isStoryView={true}
+                  animalOnLocClicked={onLocClick}
+                />
               </div>
               {legSub[1].pictures.map((pic) => {
                 return <img draggable='false' className={styles.subImage} key={pic} src={pic.path} alt='picture' />;
               })}
               <div className={styles.subContentContainer}>
-              <h2 className={styles.subContentTitle}>About {legSub[0].name}</h2>
-              <div className={styles.subContentBody} dangerouslySetInnerHTML={{ __html: sanitizeHtml(legSub[1].detail_description || '') }} />
+                <h2 className={styles.subContentTitle}>About {legSub[0].name}</h2>
+                <div className={styles.subContentBody} dangerouslySetInnerHTML={{ __html: sanitizeHtml(legSub[1].detail_description || '') }} />
               </div>
             </div>
           </div>

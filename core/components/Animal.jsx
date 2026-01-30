@@ -7,9 +7,9 @@ import storyIcon from '../assets/images/button_icons/story-f.png';
 import TrackContext from '../context/TrackContext.js';
 
 /* eslint-disable react/prop-types */
-const Animal = ({ animal, configData, animalOnLocClicked, onNameClick, displayStory }) => {
+const Animal = ({ animal, configData, animalOnLocClicked, onNameClick, displayStory, isStoryView: isStoryViewProp }) => {
   const { tracks } = useContext(TrackContext);
-  const isStoryView = configData === undefined;
+  const isStoryView = (isStoryViewProp ?? (configData === undefined));
   const backgroundColor = { backgroundColor: animal.color };
   // Determine bullet color based on subject status in configData
   const statusColorMap = {
