@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import mapboxgl from 'mapbox-gl';
 import PropTypes from 'prop-types';
-import './SubjectPopupContent.css'
+import './SubjectPopupContent.module.css'
 
 const Popup = ({ children, coordinates, onClose }) => {
   const popup = useRef(new mapboxgl.Popup({ closeButton: false }));

@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import TrackContext from '../context/TrackContext.js';
-import './Legend.css';
 
 import tracksOn from '../assets/images/button_icons/subject-tracks--active.svg';
 import tracksOff from '../assets/images/button_icons/subject-tracks--inactive.svg';

@@ -1,7 +1,7 @@
 import React from 'react';
-import './Legend.css';
+import styles from './Legend.module.css';
 import Animal from './Animal.jsx';
-import sanitizeHtml from '../utils/sanitizeHtml';
+import sanitizeHtml from '../utils/sanitizeHtml.js';
 
 import doubleCaret from '../assets/images/button_icons/double-caret.svg';
 import tdfLogo from '../assets/images/the-dream-factory-n-slogan-white.svg';
@@ -22,32 +22,32 @@ const Legend = ({
   function display () {
     if (legSub === undefined) {
       return (
-        <div id='legend-content'>
-          <div className='title'>
-            <div id='tracker'>
-              <p>{title !== null ? title : 'Animal Tracker'}</p>
+        <div className={styles.legendContent}>
+          <div className={styles.title}>
+            <div className={styles.tracker}>
+              <h1 className={styles.mapTitle}>{title !== null ? title : 'Animal Tracker'}</h1>
             </div>
-            <div id='developer-logo'>
-              <span className='developer-text'>Developed by</span>
-              <div className='developer-container'>
-                <div className='developer-item'>
-                  <a href='https://thedreamfactory.nz/' rel='noreferrer' target='_blank' className='developer-logo'>
+            <div className={styles.developerLogo}>
+              <span className={styles.developerText}>Developed by</span>
+              <div className={styles.developerContainer}>
+                <div className={styles.developerItem}>
+                  <a href='https://thedreamfactory.nz/' rel='noreferrer' target='_blank'>
                     <img draggable='false' src={tdfLogo} />
                   </a>
                 </div>
-                <div className='developer-item dividerbox' />
-                <div className='developer-item'>
-                  <a href='https://earthranger.com/' rel='noreferrer' target='_blank' className='developer-logo'>
+                <div className={`${styles.developerItem} ${styles.dividerbox}`} />
+                <div className={styles.developerItem}>
+                  <a href='https://earthranger.com/' rel='noreferrer' target='_blank'>
                     <img draggable='false' src={erLogo} />
                   </a>
                 </div>
               </div>
             </div>
           </div>
-          <div id='subs'>
+          <div className={styles.subs}>
             {subs === undefined ? <div />
               : subs.map((s) => (
-                <div key={s.id} id='subject-div'>
+                <div key={s.id} className={styles.subjectDiv}>
                   <Animal
                     animal={s} configData={subjectData}
                     key={s.id}
@@ -62,40 +62,43 @@ const Legend = ({
     } else {
       return (
         <>
-          <div id='legend-content'>
-            <div className='title'>
-              <div id='tracker'>
-                <p>{title !== null ? title : 'Animal Tracker'}</p>
+          <div className={styles.legendContent}>
+            <div className={styles.title}>
+              <div className={styles.tracker}>
+                <h1 className={styles.mapTitle}>{title !== null ? title : 'Animal Tracker'}</h1>
               </div>
-              <div id='developer-logo'>
-                <span className='developer-text'>Developed by</span>
-                <div className='developer-container'>
-                  <div className='developer-item'>
-                    <a href='https://thedreamfactory.nz/' rel='noreferrer' target='_blank' className='developer-logo'>
+              <div className={styles.developerLogo}>
+                <span className={styles.developerText}>Developed by</span>
+                <div className={styles.developerContainer}>
+                  <div className={styles.developerItem}>
+                    <a href='https://thedreamfactory.nz/' rel='noreferrer' target='_blank'>
                       <img draggable='false' src={tdfLogo} />
                     </a>
                   </div>
-                  <div className='developer-item dividerbox' />
-                  <div className='developer-item'>
-                    <a href='https://earthranger.com/' rel='noreferrer' target='_blank' className='developer-logo'>
+                  <div className={`${styles.developerItem} ${styles.dividerbox}`} />
+                  <div className={styles.developerItem}>
+                    <a href='https://earthranger.com/' rel='noreferrer' target='_blank'>
                       <img draggable='false' src={erLogo} />
                     </a>
                   </div>
                 </div>
               </div>
             </div>
-            <div onClick={() => onReturnClick(undefined)} id='return' className='hover'>
+            <div onClick={() => onReturnClick(undefined)} className={styles.return}>
               <img draggable='false' width='7px' height='10px' src={caretLeft} />
               <p>Back</p>
             </div>
-            <div id='animal-story'>
-              <div id='subject-div'>
+            <div className={styles.animalStory}>
+              <div className={styles.subjectDiv}>
                 <Animal animal={legSub[0]} key={legSub[0].id} animalOnLocClicked={onLocClick} />
               </div>
               {legSub[1].pictures.map((pic) => {
-                return <img draggable='false' className='sub-image' key={pic} src={pic.path} height={200} width={200} alt='picture' />;
+                return <img draggable='false' className={styles.subImage} key={pic} src={pic.path} alt='picture' />;
               })}
-              <div id='sub-content' className='default' dangerouslySetInnerHTML={{ __html: sanitizeHtml(legSub[1].detail_description || '') }} />
+              <div className={styles.subContentContainer}>
+              <h2 className={styles.subContentTitle}>About {legSub[0].name}</h2>
+              <div className={styles.subContentBody} dangerouslySetInnerHTML={{ __html: sanitizeHtml(legSub[1].detail_description || '') }} />
+              </div>
             </div>
           </div>
         </>
@@ -105,8 +108,8 @@ const Legend = ({
 
   return (
     <>
-      <div id='legend' className={legendOpen ? 'legend-open' : 'legend-close'}>
-        <div id='legend-open-button' onClick={() => toggleLegend()}>
+      <div className={`${styles.legend} ${legendOpen ? styles.legendOpen : styles.legendClose}`}>
+        <div className={styles.legendOpenButton} onClick={() => toggleLegend()}>
           <img draggable='false' src={doubleCaretIcon} />
         </div>
         {display()}

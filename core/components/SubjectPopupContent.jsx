@@ -1,6 +1,7 @@
 import React from 'react';
-import './Legend.css';
 import TrackButton from './TrackButton.jsx';
+
+import styles from './SubjectPopupContent.module.css';
 
 import story from '../assets/images/button_icons/caret-right-orange.png';
 
@@ -32,7 +33,7 @@ let species = speciesSource
 
   function returnImage () {
     if (data !== undefined && data.pictures !== undefined && data.pictures.length > 0) {
-      return <img className='pop-up-image' src={data.pictures[0].path} alt='picture' />;
+      return <img className={styles.popUpImage} src={data.pictures[0].path} alt='picture' />;
     }
   }
 
@@ -44,22 +45,22 @@ let species = speciesSource
   };
 
   return (
-    <div id='pop-up'>
+    <div className={styles.popUp}>
 
       <div>
         {returnImage()}
       </div>
-      <div id='pop-up-header'>
+      <div className={styles.popUpHeader}>
         <h3>{subject.name}</h3>
         <p><strong>Last seen:</strong><br/>{date}<br/><span style={{fontSize: '0.75rem', lineHeight: '1.2em'}}><em>No recent location? This shark's probably deep underwater, yet to surface.</em></span></p>
       </div>
       <p>{sex}{data && data.age && data.age + ' |'} {species}</p>
       {data && data.fun_fact && <p><i>{data.fun_fact}</i></p>}
-      <div onClick={handleStoryClick} className='hover' style={display} id='view-story-button'>
+      <div onClick={handleStoryClick} style={display} className={`${styles.viewStoryButton} ${styles.hover}`}>
         <p>View my story</p>
         <img height='10' id='story' src={story} />
       </div>
-      <div id='pop-up-buttons'>
+      <div className={styles.popUpButtons}>
         <TrackButton subject={subject} />
       </div>
     </div>

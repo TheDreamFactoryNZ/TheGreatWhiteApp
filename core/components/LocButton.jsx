@@ -1,5 +1,4 @@
 import React from 'react';
-import './Legend.css';
 
 import pin from '../assets/images/button_icons/map-pin.svg';
 

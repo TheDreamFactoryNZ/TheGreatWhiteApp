@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import TrackButton from './TrackButton.jsx';
 import LocButton from './LocButton.jsx';
-import './Legend.css';
+import styles from './Animal.module.css';
 
 import storyIcon from '../assets/images/button_icons/story-f.png';
 import TrackContext from '../context/TrackContext.js';
@@ -9,6 +9,7 @@ import TrackContext from '../context/TrackContext.js';
 /* eslint-disable react/prop-types */
 const Animal = ({ animal, configData, animalOnLocClicked, onNameClick, displayStory }) => {
   const { tracks } = useContext(TrackContext);
+  const isStoryView = configData === undefined;
   const backgroundColor = { backgroundColor: animal.color };
   // Determine bullet color based on subject status in configData
   const statusColorMap = {
@@ -31,7 +32,7 @@ const Animal = ({ animal, configData, animalOnLocClicked, onNameClick, displaySt
   }
 
   const isTrackOn = !!(tracks && tracks[animal.id]);
-  const trackState = isTrackOn ? ' bold ' : '';
+  const trackState = isTrackOn ? ' tracksActive ' : '';
 
   if (configData === undefined || !displayStory) {
     hover = 'default';
@@ -42,7 +43,7 @@ const Animal = ({ animal, configData, animalOnLocClicked, onNameClick, displaySt
   return (
     <>
       <div
-        className='animal-legend-content' onClick={(e) => {
+        className={styles.animalLegendContent} onClick={(e) => {
           const name = document.getElementById(animalId);
           const clicked = e.target;
 
@@ -56,25 +57,25 @@ const Animal = ({ animal, configData, animalOnLocClicked, onNameClick, displaySt
       >
         <div id='animal-color' style={backgroundColor} />
         <div
-          className={'fit-content ' + animalName + hover} id={animalId}
+          className={`${styles.fitContent} ${animalName}`} id={animalId}
         />
         <div id='animal-color' />
-        <div className={'animal-name-bullet ' + animalName + hover} id={animalId}>
-          <div id='animal-bullet'><div style={bulletBackgroundStyle} /></div>
+        <div className={`${styles.animalNameBullet} ${animalName} ${isStoryView ? styles.animalStoryView : ''}`} id={animalId}>
+          <div className={styles.animalBullet}><div style={bulletBackgroundStyle} /></div>
           <div
-            className={'animal-name-style ' + hover + trackState}
+            className={`${styles.animalNameStyle} ${trackState ? styles.tracksActive : ''}`}
             id={animal.name.replace(' ', '-')}
           >{truncAnimalName}
           </div>
         </div>
-        <div id='track-buttons' className={hover}>
+        <div className={styles.trackButtons}>
           <TrackButton subject={animal} />
           <LocButton
             subject={animal}
             handleOnLocButtonClicked={animalOnLocClicked}
           />
         </div>
-        <img id='story-button' className={hover} style={display} width='7px' height='10px' src={storyIcon} />
+        <img className={styles.storyButton} style={display} width='7px' height='10px' src={storyIcon} />
       </div>
     </>
   );
