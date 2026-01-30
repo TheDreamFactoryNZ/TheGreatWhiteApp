@@ -5,6 +5,17 @@
     display: flex;
     justify-content: flex-start;
     background: #eeeffc;
+    transition: filter 0.25s;
+}
+
+.animalLegendContent:hover:not(:has(.animalStoryView)),
+.animalLegendContent:focus:not(:has(.animalStoryView)) {
+  filter: brightness(95%);
+}
+
+.animalLegendContent:hover:has(.animalStoryView),
+.animalLegendContent:focus:has(.animalStoryView) {
+  filter: none;
 }
 
 .animalStory .subjectDiv .animalLegendContent {
