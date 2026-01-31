@@ -6,7 +6,7 @@ html {
 /* Font face declarations */
 
 @font-face {
-    font-family: 'Rajdhani';
+    font-family: 'Rajdhani Light';
     src: url('./fonts/rajdhani/rajdhani-latin-ext-300.woff2') format('woff2');
     font-weight: 300;
     font-style: normal;
@@ -14,7 +14,7 @@ html {
 }
 
 @font-face {
-    font-family: 'Rajdhani';
+    font-family: 'Rajdhani Regular';
     src: url('./fonts/rajdhani/rajdhani-latin-ext-regular.woff2') format('woff2');
     font-weight: 400;
     font-style: normal;
@@ -22,7 +22,7 @@ html {
 }
 
 @font-face {
-    font-family: 'Rajdhani';
+    font-family: 'Rajdhani Medium';
     src: url('./fonts/rajdhani/rajdhani-latin-ext-500.woff2') format('woff2');
     font-weight: 500;
     font-style: normal;
@@ -30,7 +30,7 @@ html {
 }
 
 @font-face {
-    font-family: 'Rajdhani';
+    font-family: 'Rajdhani Semibold';
     src: url('./fonts/rajdhani/rajdhani-latin-ext-600.woff2') format('woff2');
     font-weight: 600;
     font-style: normal;
@@ -38,7 +38,7 @@ html {
 }
 
 @font-face {
-    font-family: 'Rajdhani';
+    font-family: 'Rajdhani Bold';
     src: url('./fonts/rajdhani/rajdhani-latin-ext-700.woff2') format('woff2');
     font-weight: 700;
     font-style: normal;
@@ -46,7 +46,7 @@ html {
 }
 
 @font-face {
-    font-family: 'Source-Sans';
+    font-family: 'Source-Sans Regular';
     src: url('./fonts/source-sans/source-sans-3-latin-ext-regular.woff2') format('woff2');
     font-weight: 400;
     font-style: normal;
@@ -54,7 +54,7 @@ html {
 }
 
 @font-face {
-    font-family: 'Source-Sans';
+    font-family: 'Source-Sans Regular Italic';
     src: url('./fonts/source-sans/source-sans-3-latin-ext-italic.woff2') format('woff2');
     font-weight: 400;
     font-style: italic;
@@ -62,7 +62,7 @@ html {
 }
 
 @font-face {
-    font-family: 'Source-Sans';
+    font-family: 'Source-Sans Bold';
     src: url('./fonts/source-sans/source-sans-3-latin-ext-700.woff2') format('woff2');
     font-weight: 700;
     font-style: normal;
@@ -70,7 +70,7 @@ html {
 }
 
 @font-face {
-    font-family: 'Source-Sans';
+    font-family: 'Source-Sans Bold Italic';
     src: url('./fonts/source-sans/source-sans-3-latin-ext-700-italic.woff2') format('woff2');
     font-weight: 700;
     font-style: italic;
@@ -78,19 +78,19 @@ html {
 }
 
 #gw-map {
-    --map-h1-font: 'Rajdhani', system-ui, sans-serif;
-    --map-h2-font: 'Rajdhani', system-ui, sans-serif;
-    --map-h3-font: 'Rajdhani', system-ui, sans-serif;
-    --map-body-font: 'Source-Sans', system-ui, sans-serif;
+    --map-h1-font: 'Rajdhani Bold', system-ui, sans-serif;
+    --map-h2-font: 'Rajdhani Semibold', system-ui, sans-serif;
+    --map-h3-font: 'Rajdhani Light', system-ui, sans-serif;
+    --map-body-font: 'Source-Sans Regular', system-ui, sans-serif;
 
-    --map-h1-size: clamp(1.8rem, 1.2rem + 2.2vw, 3.2rem);
-    --map-h2-size: clamp(1.6rem, 1.1rem + 1.6vw, 2.6rem);
-    --map-h3-size: clamp(1.4rem, 1.0rem + 1.1vw, 2.2rem);
-    --map-body-size: clamp(1.5rem, 0.5rem + 0.2vw, 2.5rem);
+    --map-h1-font-size: clamp(1.8rem, 1.2rem + 2.2vw, 3.2rem);
+    --map-h2-font-size: clamp(1.6rem, 1.1rem + 1.6vw, 2.6rem);
+    --map-h3-font-size: clamp(1.4rem, 1.0rem + 1.1vw, 2.2rem);
+    --map-body-font-size: clamp(1.5rem, 0.5rem + 0.2vw, 2.5rem);
 
-    --h1-font-weight: 700;
-    --h2-font-weight: 600;
-    --h3-font-weight: 300;
+    --map-h1-font-weight: 700;
+    --map-h2-font-weight: 600;
+    --map-h3-font-weight: 300;
 
     --heading-letter-spacing: 0.05em;
 
@@ -109,22 +109,33 @@ html {
   line-height: 1.2;
 }
 
-#gw-map h1 {
+#gw-map h1.mapTitle {
     font-family: var(--map-h1-font);
+    font-size: var(--map-h1-font-size);
+    letter-spacing: var(--heading-letter-spacing);
+    font-weight: var(--h1-font-weight);
+    margin-bottom: 0.5rem;
+}
+
+#gw-map h1.map-heading {
+    font-family: var(--map-h1-font);
+    font-size: var(--map-h1-font-size);
     letter-spacing: var(--heading-letter-spacing);
 }
 
-#gw-map h2 {
+#gw-map h2.map-heading {
     font-family: var(--map-h2-font);
+    font-size: var(--map-h2-font-size);
     letter-spacing: var(--heading-letter-spacing);
 }
 
-#gw-map h3 {
+#gw-map h3.map-heading {
     font-family: var(--map-h3-font);
+    font-size: var(--map-h3-font-size);
     letter-spacing: var(--heading-letter-spacing);
 }
 
-#gw-map p {
+#gw-map p.map-body {
     font-family: var(--map-body-font);
 }
 
