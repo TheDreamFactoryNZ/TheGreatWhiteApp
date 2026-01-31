@@ -99,6 +99,10 @@ h2.tipsHeader {
     gap: 1rem;
 }
 
+.tipItem p {
+    font-size: calc(var(--map-body-font-size) * 0.875);
+}
+
 .tipItemsContainer .tipItem:first-of-type {
   padding-top: 0.25rem;
 }

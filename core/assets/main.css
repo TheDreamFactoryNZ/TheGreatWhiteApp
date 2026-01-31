@@ -84,7 +84,7 @@ html {
     --map-h1-font-size: clamp(1.8rem, 1.2rem + 2.2vw, 3.2rem);
     --map-h2-font-size: clamp(1.6rem, 1.1rem + 1.6vw, 2.6rem);
     --map-h3-font-size: clamp(1.4rem, 1.0rem + 1.1vw, 2.2rem);
-    --map-body-font-size: clamp(1.5rem, 0.5rem + 0.2vw, 2.5rem);
+    --map-body-font-size: clamp(1.25rem, 0.5rem + 0.2vw, 2.5rem);
 
     --map-h1-font-weight: 700;
     --map-h2-font-weight: 600;
@@ -112,6 +112,14 @@ html {
   line-height: 1.2;
 }
 
+#gw-map h1, h2, h3, h4, h5, h6 {
+    font-family: var(--map-heading-font);
+}
+
+#gw-map p {
+    font-family: var(--map-body-font);
+}
+
 #gw-map .map-heading {
     font-family: var(--map-heading-font);
 }
@@ -126,18 +134,21 @@ html {
 
 #gw-map h1.map-heading {
     font-size: var(--map-h1-font-size);
+    font-weight: var(--map-h1-font-weight);
     letter-spacing: var(--heading-letter-spacing);
     color: var(--map-h1-color);
 }
 
 #gw-map h2.map-heading {
     font-size: var(--map-h2-font-size);
+    font-weight: var(--map-h2-font-weight);
     letter-spacing: var(--heading-letter-spacing);
     color: var(--map-h2-color);
 }
 
 #gw-map h3.map-heading {
     font-size: var(--map-h3-font-size);
+    font-weight: var(--map-h3-font-weight);
     letter-spacing: var(--heading-letter-spacing);
     color: var(--map-h3-color);
 }
@@ -155,11 +166,6 @@ html {
 #gw-map p em {
     font-style: italic;
 }
-
-#gw-map h1.map-heading { font-size: var(--map-h1-size); }
-#gw-map h2.map-heading { font-size: var(--map-h2-size); }
-#gw-map h3.map-heading { font-size: var(--map-h3-size); }
-#gw-map p.map-body { font-size: var(--map-body-size); }
 
 #gw-map em { font-style: italic; }
 

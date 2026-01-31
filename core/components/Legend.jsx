@@ -102,7 +102,7 @@ const Legend = ({
                 return <img draggable='false' className={styles.subImage} key={pic} src={pic.path} alt='picture' />;
               })}
               <div className={styles.subContentContainer}>
-                <h2 className={styles.subContentTitle}>About {legSub[0].name}</h2>
+                <h2 className="map-heading">About {legSub[0].name}</h2>
                 <div className={styles.subContentBody} dangerouslySetInnerHTML={{ __html: sanitizeHtml(legSub[1].detail_description || '') }} />
               </div>
             </div>
