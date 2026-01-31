@@ -63,7 +63,7 @@
     padding: 0 0 0 1.25rem;
 }
 
-.animalNameText {
+.animalNameText:not(.animalStoryView .animalNameText) {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -76,6 +76,11 @@
 
 :global(#gw-map) .tracksActive h3:global(.map-heading).animalNameText {
     font-weight: 700;
+}
+
+.animalStoryView .animalNameText {
+    text-wrap: wrap;
+    word-break: break-word;
 }
 
 .animalStoryView .animalStatus, 
