@@ -12,6 +12,7 @@
     grid-template-columns: minmax(0, 2rem) minmax(0, auto);
     user-select: none;
     overscroll-behavior: none;
+    width: min(75vw, clamp(270px, 25vw, 480px));
 }
 
 .legend::after {
@@ -69,7 +70,6 @@
     background: linear-gradient(-135deg, #FFFFFF 0%, #EEEFFC 50%, #EEEFFC 75%, #E3E5FA 90%, #D9DBF7 100%);
     background-color: #eeeffc;
     height: 100%;
-    max-width: 302px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -103,7 +103,7 @@
     display: flex;
     flex-flow: column nowrap;
     gap: 1rem;
-    padding: 1rem 0 0.5rem 0;
+    padding: 1rem 0 1.5rem 0;
     background: linear-gradient(135deg, #060A23 0%, #060A23 75%, #0A0E2C 90%, #0E1235 100%);
     background-color: #060A23;
 }
@@ -168,11 +168,17 @@
     display: flex;
     align-items: center;
     padding: 1rem;
-    background-color: whitesmoke;
+    background-color: #ebebeb;
     border-bottom: solid 1pt rgba(0, 0, 0, .15);
     box-sizing: border-box;
+    font-size: 1rem;
     cursor: pointer;
     transition: filter var(--hover-transition-duration);
+}
+
+.return img {
+    width: 1rem;
+    height: auto;
 }
 
 .return:hover {
@@ -181,7 +187,7 @@
 
 .return p {
     font-size: 14px;
-    padding-left: 10px;
+    padding-left: 0.75rem
 }
 
 .animalColor {

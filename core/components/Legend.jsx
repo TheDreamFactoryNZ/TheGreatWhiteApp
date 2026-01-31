@@ -6,7 +6,7 @@ import sanitizeHtml from '../utils/sanitizeHtml.js';
 import doubleCaret from '../assets/images/button_icons/double-caret.svg';
 import tdfLogo from '../assets/images/the-dream-factory-n-slogan-white.svg';
 import erLogo from '../assets/images/LogoEarthRanger.png';
-import caretLeft from '../assets/images/button_icons/view-animals-caret-left.png';
+import backArrow from '../assets/images/button_icons/back-arrow.svg';
 
 /* eslint-disable react/prop-types */
 const Legend = ({
@@ -85,7 +85,7 @@ const Legend = ({
               </div>
             </div>
             <div onClick={() => onReturnClick(undefined)} className={styles.return}>
-              <img draggable='false' width='7px' height='10px' src={caretLeft} />
+              <img draggable='false' width='7px' height='10px' src={backArrow} />
               <p>Back</p>
             </div>
             <div className={styles.animalStory}>

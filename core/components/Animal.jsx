@@ -3,7 +3,7 @@ import TrackButton from './TrackButton.jsx';
 import LocButton from './LocButton.jsx';
 import styles from './Animal.module.css';
 
-import storyIcon from '../assets/images/button_icons/story-f.png';
+import storyIcon from '../assets/images/button_icons/view-story-arrow.svg';
 import TrackContext from '../context/TrackContext.js';
 
 /* eslint-disable react/prop-types */
@@ -22,7 +22,6 @@ const Animal = ({ animal, configData, animalOnLocClicked, onNameClick, displaySt
     : '';
   const bulletBackgroundStyle = { backgroundColor: statusColorMap[rawStatus] || '#B0B0B0' };
   const animalId = animal.id + ' animal';
-  let hover = 'hover';
   let animalName = 'animal-name ';
   let display = { };
   let truncAnimalName = animal.name;
@@ -35,7 +34,6 @@ const Animal = ({ animal, configData, animalOnLocClicked, onNameClick, displaySt
   const trackState = isTrackOn ? ' tracksActive ' : '';
 
   if (configData === undefined || !displayStory) {
-    hover = 'default';
     animalName = '';
     display = { visibility: 'hidden' };
   }
@@ -54,21 +52,18 @@ const Animal = ({ animal, configData, animalOnLocClicked, onNameClick, displaySt
           clicked.id !== 'subject-location-button') {
             onNameClick([animal, configData.subjects[animal.id]]);
             name.classList.toggle('animal-name');
-            name.classList.toggle('hover');
           }
         }}
       >
-        <div style={backgroundColor} />
-        <div
-          className={`${styles.fitContent} ${animalName}`} id={animalId}
-        />
-        <div/>
-        <div className={`${styles.animalNameBullet} ${animalName} ${isStoryView ? styles.animalStoryView : ''}`} id={animalId}>
-          <div className={styles.animalBullet}><div style={bulletBackgroundStyle} /></div>
+        <div className={`${styles.animalNameStatus} ${animalName} ${isStoryView ? styles.animalStoryView : ''}`} id={animalId}>
+          <div className={styles.animalStatus}><div style={bulletBackgroundStyle} /></div>
           <div
             className={`${styles.animalNameStyle} ${trackState ? styles.tracksActive : ''}`}
             id={animal.name.replace(' ', '-')}
-          >{truncAnimalName}
+          >
+            <h3 className={`${'map-heading'} ${styles.animalNameText}`}>
+            {truncAnimalName}
+            </h3>
           </div>
         </div>
         <div className={styles.trackButtons}>
@@ -77,8 +72,8 @@ const Animal = ({ animal, configData, animalOnLocClicked, onNameClick, displaySt
             subject={animal}
             handleOnLocButtonClicked={animalOnLocClicked}
           />
+          <img className={styles.storyButton} style={display} src={storyIcon} />
         </div>
-        <img className={styles.storyButton} style={display} width='7px' height='10px' src={storyIcon} />
       </div>
     </>
   );
