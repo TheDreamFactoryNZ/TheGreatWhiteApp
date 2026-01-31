@@ -18,3 +18,7 @@ IonTabBar IonIcon {
     --min-width: 100%;
     --spinner-color: var(--ion-color-tertiary);
 }
+
+.desktopItem {
+    display: none;
+}
