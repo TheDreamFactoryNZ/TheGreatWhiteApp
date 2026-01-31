@@ -37,7 +37,22 @@ module.exports = (env, argv) => {
           },
         },
         {
+          test: /\.module\.css$/i,
+          use: [
+            'style-loader',
+            {
+              loader: 'css-loader',
+              options: {
+                modules: true,
+                esModule: false,
+                sourceMap: true,
+              },
+            },
+          ],
+        },
+        {
           test: /\.css$/i,
+          exclude: /\.module\.css$/i,
           use: [
             {
               loader: 'style-loader'
@@ -48,7 +63,7 @@ module.exports = (env, argv) => {
                 // Use CommonJS-style export to avoid ESM/CJS interop issues
                 esModule: false,
                 sourceMap: true,
-                modules: true
+                modules: false
               }
             }
           ],
