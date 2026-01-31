@@ -92,6 +92,9 @@ const HelpButton = () => {
             <div className={styles.tipIconContainer}><img className={styles.tipIcon} width='7' height='10' src={story} /></div>
             <p>Display a shark's story.</p>
           </div>
+          <div className={styles.tipItem}>
+            <p><strong>Why hasn't there been an update?</strong> A shark needs to breach the surface of the ocean to transmit its location to satellites. These majestic creatures can spend months underwater, so it is not unusual for there to be periods of inactivity.</p>
+          </div>
         </div>
       </div>
     </div>
