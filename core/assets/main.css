@@ -101,6 +101,7 @@ html {
 
     /* interactivity */
     --focus-outline: 2px solid #A8BEF0;
+    --hover-transition-duration: 0.25s;
 }
 
 #gw-map :where(h1, h2, h3, h4, h5, h6, p) {

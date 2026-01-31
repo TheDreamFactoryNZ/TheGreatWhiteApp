@@ -90,13 +90,11 @@
 }
 
 .trackButtons img {
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-    padding: 11px;
-    margin: auto;
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: calc(0.5rem + 0.125rem);
+    margin: 0;
     box-sizing: content-box;
-    cursor: pointer;
 }
 
 .storyButton {

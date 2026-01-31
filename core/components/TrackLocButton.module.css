@@ -1,0 +1,13 @@
+button.iconButton {
+    all: unset;
+    line-height: 0;
+    cursor: pointer
+}
+
+.iconButton img {
+    transition: opacity linear var(--hover-transition-duration);
+}
+
+.iconButton:hover img {
+    opacity: 0.5;
+}

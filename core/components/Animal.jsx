@@ -44,6 +44,9 @@ const Animal = ({ animal, configData, animalOnLocClicked, onNameClick, displaySt
     <>
       <div
         className={styles.animalLegendContent} onClick={(e) => {
+          const fromButton = e.target.closest('#subject-track-button, #subject-location-button');
+          if (fromButton) return;
+
           const name = document.getElementById(animalId);
           const clicked = e.target;
 
