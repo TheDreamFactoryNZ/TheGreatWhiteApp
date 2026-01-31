@@ -24,11 +24,6 @@ const Animal = ({ animal, configData, animalOnLocClicked, onNameClick, displaySt
   const animalId = animal.id + ' animal';
   let animalName = 'animal-name ';
   let display = { };
-  let truncAnimalName = animal.name;
-
-  if (truncAnimalName.length > 15) {
-    truncAnimalName = truncAnimalName.substring(0, 15) + '...';
-  }
 
   const isTrackOn = !!(tracks && tracks[animal.id]);
   const trackState = isTrackOn ? ' tracksActive ' : '';
@@ -61,8 +56,8 @@ const Animal = ({ animal, configData, animalOnLocClicked, onNameClick, displaySt
             className={`${styles.animalNameStyle} ${trackState ? styles.tracksActive : ''}`}
             id={animal.name.replace(' ', '-')}
           >
-            <h3 className={`${'map-heading'} ${styles.animalNameText}`}>
-            {truncAnimalName}
+            <h3 className={`${'map-heading'} ${styles.animalNameText}`} title={animal.name}>
+            {animal.name}
             </h3>
           </div>
         </div>

@@ -57,9 +57,17 @@
 }
 
 .animalNameStyle {
+    min-width: 0;
     display: flex;
     align-items: center;
     padding: 0 0 0 1.25rem;
+}
+
+.animalNameText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 16ch;
 }
 
 :global(#gw-map) h3:global(.map-heading).animalNameText {
