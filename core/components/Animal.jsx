@@ -55,11 +55,11 @@ const Animal = ({ animal, configData, animalOnLocClicked, onNameClick, displaySt
           }
         }}
       >
-        <div id='animal-color' style={backgroundColor} />
+        <div style={backgroundColor} />
         <div
           className={`${styles.fitContent} ${animalName}`} id={animalId}
         />
-        <div id='animal-color' />
+        <div/>
         <div className={`${styles.animalNameBullet} ${animalName} ${isStoryView ? styles.animalStoryView : ''}`} id={animalId}>
           <div className={styles.animalBullet}><div style={bulletBackgroundStyle} /></div>
           <div
