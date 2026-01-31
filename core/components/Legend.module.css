@@ -38,16 +38,6 @@
     -webkit-transform: translateX(calc(100% - 2rem));
 }
 
-.legendOpenButton img {
-    width: 50%;
-    transition: transform 0.5s;
-}
-
-.legendOpen .legendOpenButton img {
-    transform: scaleX(-1);
-    -webkit-transform: scaleX(-1);
-}
-
 .legendOpenButton {
     border-radius: 1rem 0 0 1rem;
     display: flex;
@@ -64,6 +54,22 @@
     border-top: 2px solid #00C49A;
     border-left: 2px solid #00C49A;
     border-bottom: 2px solid #00C49A;
+    box-sizing: content-box;
+    transition: filter var(--hover-transition-duration);
+}
+
+.legendOpenButton:hover {
+    filter: brightness(95%);
+}
+
+.legendOpenButton img {
+    width: 50%;
+    transition: transform 0.5s;
+}
+
+.legendOpen .legendOpenButton img {
+    transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
 }
 
 .legendContent {
