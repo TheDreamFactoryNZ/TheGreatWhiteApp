@@ -34,6 +34,7 @@
     justify-content: center;
     align-items: center;
     padding-left: 7px;
+    cursor: pointer;
 }
 
 .animalBullet div {
@@ -55,7 +56,7 @@
 .animalNameStyle {
     display: flex;
     align-items: center;
-    margin: 0 0 0 7px;
+    padding: 0 0 0 7px;
     font-size: 14px;
     width: 133px;
     cursor: pointer;
