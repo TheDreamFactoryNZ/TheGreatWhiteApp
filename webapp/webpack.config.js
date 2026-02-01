@@ -25,6 +25,20 @@ module.exports = (env, argv) => {
       port: 3000,
       historyApiFallback: true, // Ensures React Router works
     },
+    resolve: {
+      extensions: [".js", ".jsx"],
+      modules: [path.resolve(__dirname, "../node_modules"), 'node_modules'], // Prefer workspace root node_modules to unify React
+      alias: {
+        react: path.resolve(__dirname, "../node_modules/react"),
+        "react-dom": path.resolve(__dirname, "../node_modules/react-dom"),
+        "@core": path.resolve(__dirname, "../core"),
+        '@components': path.resolve(__dirname, '../core/components'),
+        '@buttons': path.resolve(__dirname, '../core/components/buttons'),
+        '@assets': path.resolve(__dirname, '../core/assets'),
+        '@images': path.resolve(__dirname, '../core/assets/images'),
+        "@track-context": path.resolve(__dirname, "../core/context/TrackContext.js"),
+      },
+    },
     module: {
       rules: [
         {
@@ -100,16 +114,6 @@ module.exports = (env, argv) => {
           ],
         },
       ],
-    },
-    resolve: {
-      extensions: [".js", ".jsx"],
-      modules: [path.resolve(__dirname, "../node_modules"), 'node_modules'], // Prefer workspace root node_modules to unify React
-      alias: {
-        react: path.resolve(__dirname, "../node_modules/react"),
-        "react-dom": path.resolve(__dirname, "../node_modules/react-dom"),
-        "@core": path.resolve(__dirname, "../core"),
-        "@track-context": path.resolve(__dirname, "../core/context/TrackContext.js"),
-      },
     },
     plugins: [
       new HtmlWebpackPlugin({

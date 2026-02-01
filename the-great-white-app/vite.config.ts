@@ -22,9 +22,12 @@ export default defineConfig({
   resolve: {
     alias: {
       '@core': path.resolve(__dirname, '../core'),
+      '@components': path.resolve(__dirname, '../core/components'),
+      '@buttons': path.resolve(__dirname, '../core/components/buttons'),
       '@assets': path.resolve(__dirname, '../core/assets'),
-      '@track-context': path.resolve(__dirname, '../core/context/TrackContext.js'),
-  },
+      '@images': path.resolve(__dirname, '../core/assets/images'),
+      "@track-context": path.resolve(__dirname, "../core/context/TrackContext.js"),
+    },
     dedupe: ['react', 'react-dom'],
   },
   server: {

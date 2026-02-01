@@ -2,10 +2,7 @@ import React, { useContext } from 'react';
 import TrackContext from '../../context/TrackContext.js';
 import styles from './IconButton.module.css';
 
-import tracksOn from '../assets/images/button_icons/subject-tracks--active.svg?url';
-import tracksOff from '../assets/images/button_icons/subject-tracks--inactive.svg?url';
-
-import TracksIcon from '../assets/images/button_icons/subjectTracks.svg?component';
+import TracksIcon from '@images/button_icons/subjectTracks.svg?component';
 
 /* eslint-disable react/prop-types */
 const TrackButton = ({ subject, trackButtonClass, iconText, iconTextClassName }) => {

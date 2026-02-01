@@ -1,10 +1,10 @@
 import React from 'react';
 import styles from './IconButton.module.css';
 
-import pin from '../assets/images/button_icons/map-pin.svg?url';
+import pin from '@images/button_icons/map-pin.svg?url';
 
 /* eslint-disable react/prop-types */
-const LocButton = ({ subject, locButtonClass, handleOnLocButtonClicked, iconText, iconTextClassName }) => {
+const LocateButton = ({ subject, locButtonClass, handleOnLocButtonClicked, iconText, iconTextClassName }) => {
   const label = subject?.name
     ? `Fly to ${subject.name}'s last location`
     : 'Fly to subject location';

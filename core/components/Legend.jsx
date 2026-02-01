@@ -3,10 +3,10 @@ import styles from './Legend.module.css';
 import Animal from './Animal.jsx';
 import sanitizeHtml from '../utils/sanitizeHtml.js';
 
-import doubleCaret from '../assets/images/button_icons/double-caret.svg?url';
-import tdfLogo from '../assets/images/the-dream-factory-n-slogan-white.svg?url';
-import erLogo from '../assets/images/LogoEarthRanger.png';
-import backArrow from '../assets/images/button_icons/back-arrow.svg?url';
+import doubleCaret from '@images/button_icons/double-caret.svg';
+import tdfLogo from '@images/the-dream-factory-n-slogan-white.svg';
+import erLogo from '@images/LogoEarthRanger.png';
+import backArrow from '@images/button_icons/back-arrow.svg';
 
 /* eslint-disable react/prop-types */
 const Legend = ({

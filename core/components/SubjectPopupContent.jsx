@@ -3,8 +3,6 @@ import { TrackButton, StoryButton } from './buttons';
 
 import styles from './SubjectPopupContent.module.css';
 
-import story from '../assets/images/button_icons/caret-right-orange.png';
-
 /* eslint-disable react/prop-types */
 const SubjectPopup = (props) => {
   // TODO: detailed handling of missing data fields

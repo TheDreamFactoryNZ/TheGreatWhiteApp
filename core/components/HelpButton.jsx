@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 import styles from './HelpButton.module.css';
 
-import close from '../assets/images/button_icons/close.svg?url';
-import zoom from '../assets/images/button_icons/help-zoom.svg?url?url';
-import reset from '../assets/images/button_icons/help-pitch-reset.svg?url';
-import control from '../assets/images/button_icons/control-key.svg?url';
-import animalIcon from '../assets/images/button_icons/shark-icon-default-tip.svg?url';
-import activeAnimalIcon from '../assets/images/button_icons/shark-icon-active-tip.svg?url';
-import inactiveAnimalIcon from '../assets/images/button_icons/shark-icon-inactive-tip.svg?url';
-import deactivatedAnimalIcon from '../assets/images/button_icons/shark-icon-deactivated-tip.svg?url';
-import pin from '../assets/images/button_icons/map-pin.svg?url';
-import tracks from '../assets/images/button_icons/subject-tracks--inactive.svg?url';
-import story from '../assets/images/button_icons/subject-story.svg?url';
-import refresh from '../assets/images/button_icons/refresh.svg?url';
+import close from '@images/button_icons/close.svg';
+import zoom from '@images/button_icons/help-zoom.svg';
+import reset from '@images/button_icons/help-pitch-reset.svg';
+import control from '@images/button_icons/control-key.svg';
+import animalIcon from '@images/button_icons/shark-icon-default-tip.svg';
+import activeAnimalIcon from '@images/button_icons/shark-icon-active-tip.svg';
+import inactiveAnimalIcon from '@images/button_icons/shark-icon-inactive-tip.svg';
+import deactivatedAnimalIcon from '@images/button_icons/shark-icon-deactivated-tip.svg';
+import pin from '@images/button_icons/map-pin.svg';
+import tracks from '@images/button_icons/subject-tracks--inactive.svg';
+import story from '@images/button_icons/subject-story.svg';
+import refresh from '@images/button_icons/refresh.svg';
 
 /* eslint-disable react/prop-types */
 const HelpButton = () => {

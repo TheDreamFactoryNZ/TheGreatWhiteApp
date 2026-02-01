@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import styles from './IconButton.module.css';
 
-import storyIcon from '../assets/images/button_icons/subject-story.svg';
+import storyIcon from '@images/button_icons/subject-story.svg';
 
 const StoryButton = (props) => {
   const {

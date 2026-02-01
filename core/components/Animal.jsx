@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
-import { TrackButton, LocateButton } from './buttons';
+import { TrackButton, LocateButton } from '@buttons';
 import styles from './Animal.module.css';
 
-import storyIcon from '../assets/images/button_icons/view-story-arrow.svg?url';
-import TrackContext from '../context/TrackContext.js';
+import storyIcon from '@images/button_icons/view-story-arrow.svg';
+import TrackContext from '@track-context';
 
 /* eslint-disable react/prop-types */
 const Animal = ({ animal, configData, animalOnLocClicked, onNameClick, displayStory, isStoryView: isStoryViewProp }) => {
@@ -62,7 +62,7 @@ const Animal = ({ animal, configData, animalOnLocClicked, onNameClick, displaySt
         </div>
         <div className={styles.trackButtons}>
           <TrackButton subject={animal} />
-          <LocButton
+          <LocateButton
             subject={animal}
             handleOnLocButtonClicked={animalOnLocClicked}
           />
