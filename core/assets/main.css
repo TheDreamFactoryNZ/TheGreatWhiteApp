@@ -120,6 +120,10 @@ html {
     font-family: var(--map-body-font);
 }
 
+#gw-map p + p {
+    margin-top: 1rem;
+}
+
 #gw-map .map-heading {
     font-family: var(--map-heading-font);
 }
