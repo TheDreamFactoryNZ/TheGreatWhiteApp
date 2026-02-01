@@ -73,7 +73,21 @@ module.exports = (env, argv) => {
           type: "asset/resource",
           generator: {
             filename: "assets/[name][ext]",
-          },
+          }
+        },
+        {
+          test: /\.svg$/i,
+          oneOf: [
+            {
+              issuer: /\.[jt]sx?$/,
+              resourceQuery: /component/, // import icon.svg?component => React component
+              use: ['@svgr/webpack'],
+            },
+            {
+              type: 'asset/resource',
+              generator: { filename: 'assets/[name][ext]' },
+            },
+          ],
         },
       ],
     },
