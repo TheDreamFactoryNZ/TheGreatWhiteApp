@@ -1,22 +1,22 @@
 import React, { useEffect, useState, useRef } from 'react';
 import mapboxgl from 'mapbox-gl';
 import SubjectPopupContent from './components/SubjectPopupContent';
+import PointPopupContent from './components/PointPopupContent';
 import Popup from './components/Popup';
 import Legend from './components/Legend';
 import HelpButton from './components/HelpButton';
 import Partners from './components/Partners';
 import mapHandlerRegistry from './utils/mapHandlerRegistry';
 import TrackContext from './context/TrackContext.js';
-import buildTrackPopupDom from './utils/buildTrackPopupDom';
 
 import 'mapbox-gl/dist/mapbox-gl.css'; // Mapbox default styles
 import './assets/mapstyle.css'; // Overrides for mapbox default styles
 import './assets/main.css'; // Global styles for map - under construction
 
 import med from './assets/images/med.png';
-import sharkIconActive from './assets/images/animal_icons/shark-icon-active.svg?url';
-import sharkIconInactive from './assets/images/animal_icons/shark-icon-inactive.svg?url';
-import sharkIconDeactivated from './assets/images/animal_icons/shark-icon-deactivated.svg?url';
+import sharkIconActive from './assets/images/animal_icons/shark-icon-active.svg';
+import sharkIconInactive from './assets/images/animal_icons/shark-icon-inactive.svg';
+import sharkIconDeactivated from './assets/images/animal_icons/shark-icon-deactivated.svg';
 
 // instantiate the Map
 mapboxgl.accessToken = 'pk.eyJ1IjoidmpvZWxtIiwiYSI6ImNra2hiZXNpMzA1bTcybnA3OXlycnN2ZjcifQ.gH6Nls61WTMVutUH57jMJQ'; // development token
@@ -316,6 +316,7 @@ const App = (props) => {
   var [subjectColor, setSubjectColor] = useState({});
   var [legSub, setLegSub] = useState(undefined);
   const [subjectPopups, setSubjectPopups] = useState([]);
+  const [pointPopups, setPointPopups] = useState([]);
   const [legendOpen, setLegendOpen] = useState(false);
   const configFetchCtlRef = useRef(null);
   const subjectsFetchCtlRef = useRef(null);
@@ -710,42 +711,31 @@ const App = (props) => {
           // prefer the subject icon (do not show the point popup). Query the
           // topmost rendered feature at the point and skip if it's a subject layer.
           try {
-            const iconLayers = getSubjectIconLayerIds();
-            const top = iconLayers && iconLayers.length
-              ? window.GlobalMap.queryRenderedFeatures(e.point, { layers: iconLayers })
-              : [];
-            if (top && top.length > 0) {
-              const topLayerId = top[0].layer && top[0].layer.id;
-              if (typeof topLayerId === 'string' && topLayerId.startsWith('points')) {
-                return; // subject icon has priority
-              }
-            }
-          } catch (err) {
-            // ignore query errors and continue
+          const iconLayers = getSubjectIconLayerIds();
+          const top = iconLayers && iconLayers.length
+            ? window.GlobalMap.queryRenderedFeatures(e.point, { layers: iconLayers })
+            : [];
+          if (top && top.length > 0) {
+            const topLayerId = top[0]?.layer?.id;
+            if (typeof topLayerId === 'string' && topLayerId.startsWith('points')) return;
           }
+        } catch (_) {}
           // Prefer pre-split fields if available (time_date, time_time, time_timezone).
           const props = f.properties || {};
-          const date = props.time_date || null;
-          const time = props.time_time || null;
-          const timezone = props.time_timezone || null;
-          const raw = props.time || null; // original ISO string
+        const coordinates = Array.isArray(f.geometry?.coordinates)
+          ? f.geometry.coordinates.slice()
+          : f.geometry?.coordinates;
 
-          const timeHtml = date || time || timezone || raw
-            ? `<div>${date ? `${date}` : ''}${date && time ? ' ' : ''}${time ? `${time}` : ''}${(date || time) && timezone ? ' ' : ''}${timezone ? `${timezone}` : ''}${(!date && !time && raw) ? raw : ''}</div>`
-            : '<div>Time: unknown</div>';
-
-          const node = buildTrackPopupDom({
-            title: `Location #${props.idx}`,
-            rows: [
-              { label: 'Date', value: date || '' },
-              { label: 'Time', value: [time, timezone].filter(Boolean).join(' ') }
-            ]
-          });
-
-          new mapboxgl.Popup()
-            .setLngLat(f.geometry.coordinates)
-            .setDOMContent(node)
-            .addTo(window.GlobalMap);
+        const key = `${subjectId}-${props.idx}-${Date.now()}`;
+        setPointPopups(prev => [
+          ...prev,
+          { key, coordinates, props: {
+            idx: props.idx,
+            date: props.time_date || null,
+            time: props.time_time || null,
+            timezone: props.time_timezone || null
+          } }
+        ]);
         });
 
         // Ensure the subject's icon and name layers render above the points layer
@@ -985,21 +975,35 @@ const App = (props) => {
             </div>
             <Partners />
           </div>
-          {subjectPopups.map(({ properties, geometry }) =>
-            <Popup
-              key={`${properties.id}-popup`}
-              onClose={() => {
-                setSubjectPopups(prev => prev.filter(({ properties: { id } }) => id !== properties.id));
-              }}
-              coordinates={geometry.coordinates.slice()}
-            >
-              <SubjectPopupContent
-                subject={properties} subjectData={config.subjects[properties.id]}
-                onStoryClick={(subject) => setLegSub(subject)} legendOpen={legendOpen}
-                onLegendStateToggle={toggleLegendState} {...props}
-              />
-            </Popup>
-          )}
+          {subjectPopups.map(({ properties, geometry }) => (
+          <Popup
+            key={`${properties.id}-popup`}
+            coordinates={geometry.coordinates.slice()}
+            onClose={() => {
+              setSubjectPopups(prev => prev.filter(({ properties: { id } }) => id !== properties.id));
+            }}
+          >
+            <SubjectPopupContent
+              subject={properties}
+              subjectData={config.subjects[properties.id]}
+              onStoryClick={(subject) => setLegSub(subject)}
+              legendOpen={legendOpen}
+              onLegendStateToggle={toggleLegendState}
+              {...props}
+            />
+          </Popup>
+        ))}
+
+        {/* Track-point popups (siblings, not nested) */}
+        {pointPopups.map(({ key, coordinates, props: p }) => (
+          <Popup
+            key={key}
+            coordinates={coordinates}
+            onClose={() => setPointPopups(prev => prev.filter(pp => pp.key !== key))}
+          >
+            <PointPopupContent idx={p.idx} date={p.date} time={p.time} timezone={p.timezone} />
+          </Popup>
+        ))}
         </div>
       </TrackContext.Provider> {/* eslint-disable-line react/jsx-closing-tag-location */}
     </>
