@@ -11,7 +11,7 @@ import inactiveAnimalIcon from '../assets/images/button_icons/shark-icon-inactiv
 import deactivatedAnimalIcon from '../assets/images/button_icons/shark-icon-deactivated-tip.svg';
 import pin from '../assets/images/button_icons/map-pin.svg';
 import tracks from '../assets/images/button_icons/subject-tracks--inactive.svg';
-import story from '../assets/images/button_icons/story-f.png'; // Unused at this stage?
+import story from '../assets/images/button_icons/subject-story.svg';
 import refresh from '../assets/images/button_icons/refresh.svg';
 
 /* eslint-disable react/prop-types */
