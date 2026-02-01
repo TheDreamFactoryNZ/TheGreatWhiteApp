@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import styles from './TrackLocButton.module.css';
+import styles from './IconButton.module.css';
 
 import storyIcon from '../assets/images/button_icons/subject-story.svg';
 

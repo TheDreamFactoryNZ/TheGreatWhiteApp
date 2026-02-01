@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import TrackContext from '../context/TrackContext.js';
-import styles from './TrackLocButton.module.css';
+import TrackContext from '../../context/TrackContext.js';
+import styles from './IconButton.module.css';
 
 import tracksOn from '../assets/images/button_icons/subject-tracks--active.svg?url';
 import tracksOff from '../assets/images/button_icons/subject-tracks--inactive.svg?url';

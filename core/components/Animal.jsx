@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
-import TrackButton from './TrackButton.jsx';
-import LocButton from './LocButton.jsx';
+import { TrackButton, LocateButton } from './buttons';
 import styles from './Animal.module.css';
 
 import storyIcon from '../assets/images/button_icons/view-story-arrow.svg?url';

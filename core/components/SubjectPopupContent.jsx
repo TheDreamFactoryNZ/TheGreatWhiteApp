@@ -1,6 +1,5 @@
 import React from 'react';
-import TrackButton from './TrackButton.jsx';
-import StoryButton from './StoryButton.jsx';
+import { TrackButton, StoryButton } from './buttons';
 
 import styles from './SubjectPopupContent.module.css';
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './TrackLocButton.module.css';
+import styles from './IconButton.module.css';
 
 import pin from '../assets/images/button_icons/map-pin.svg?url';
 
@@ -34,4 +34,4 @@ const LocButton = ({ subject, locButtonClass, handleOnLocButtonClicked, iconText
   );
 };
 
-export default LocButton;
+export default LocateButton;
