@@ -12,7 +12,7 @@
     grid-template-columns: minmax(0, 2rem) minmax(0, auto);
     user-select: none;
     overscroll-behavior: none;
-    width: min(75vw, clamp(270px, 25vw, 480px));
+    width: min(75vw, clamp(380px, 15vw, 33vw));
 }
 
 .legend::after {
@@ -92,6 +92,7 @@
 
 .subs {
     height: 100%;
+    overflow-x: hidden;
     overflow-y: scroll;
     box-sizing: border-box;
     background-color: #EEEFFC;
