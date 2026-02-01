@@ -54,6 +54,12 @@
     padding: 1rem 0;
 }
 
+.popUpButtonText {
+    margin-left: 0.5rem;
+    font-size: 0.875rem;
+    white-space: nowrap;
+}
+
 .nameContainer {
     padding: 15px;
 }

@@ -73,10 +73,20 @@ const SubjectPopup = (props) => {
           </div>
           <div className={styles.popUpButtonsContainer}>
             <div className={styles.popUpButton}>
-              <TrackButton subject={subject} />
+              <TrackButton
+              subject={subject}
+              iconText={`See ${subject.name}'s journey`}
+              iconTextClassName={styles.popUpButtonText}/>
             </div>
             <div className={styles.popUpButton}>
-              <StoryButton subject={subject} subjectData={data} legendOpen={legendOpen} onLegendStateToggle={onLegendStateToggle} onStoryClick={props.onStoryClick} />
+              <StoryButton
+              subject={subject}
+              subjectData={data}
+              legendOpen={legendOpen}
+              onLegendStateToggle={onLegendStateToggle}
+              onStoryClick={props.onStoryClick}
+              iconText={`See ${subject.name}'s factsheet`}
+              iconTextClassName={styles.popUpButtonText}/>
             </div>
           </div>
         </div>

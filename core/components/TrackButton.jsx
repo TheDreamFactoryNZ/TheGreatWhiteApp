@@ -8,7 +8,7 @@ import tracksOff from '../assets/images/button_icons/subject-tracks--inactive.sv
 import TracksIcon from '../assets/images/button_icons/subjectTracks.svg?component';
 
 /* eslint-disable react/prop-types */
-const TrackButton = ({ subject }) => {
+const TrackButton = ({ subject, iconText, iconTextClassName }) => {
     const label = subject?.name
     ? `View ${subject.name}'s tracks`
     : 'View this shark\'s tracks';
@@ -41,6 +41,7 @@ const TrackButton = ({ subject }) => {
       onTouchStart={(e) => e.stopPropagation()}
     >
     <TracksIcon width="24px" height="24px" className={styles.iconSvg} aria-hidden="true" />
+    {iconText ? <span className={`${styles.iconText} ${iconTextClassName || ''}`}>{iconText}</span> : null}
       </button>
     </>
   );

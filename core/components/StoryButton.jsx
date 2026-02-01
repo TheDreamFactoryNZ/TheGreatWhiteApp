@@ -4,9 +4,14 @@ import styles from './TrackLocButton.module.css';
 import storyIcon from '../assets/images/button_icons/subject-story.svg';
 
 const StoryButton = (props) => {
-  const data = props.subjectData;
-  const subject = props.subject;
-  const { legendOpen, onLegendStateToggle } = props;
+  const {
+    subject,
+    subjectData: data,
+    legendOpen,
+    onLegendStateToggle,
+    iconText,
+    iconTextClassName
+  } = props;
 
   const label = subject?.name
     ? `View ${subject.name}'s story`
@@ -41,6 +46,7 @@ const StoryButton = (props) => {
         width='24' height='24' className='hover' src={storyIcon}
       />
       </button>
+      {iconText ? <span className={`${styles.iconText} ${iconTextClassName || ''}`}>{iconText}</span> : null}
     </>
   );
 };
