@@ -40,13 +40,6 @@ const SubjectPopup = (props) => {
     }
   }
 
-  const handleStoryClick = () => {
-    props.onStoryClick([subject, data]);
-    if (!legendOpen) {
-      onLegendStateToggle();
-    }
-  };
-
   return (
     <div className={styles.popUp}>
       <div className={styles.imageContainer}>
@@ -76,7 +69,7 @@ const SubjectPopup = (props) => {
               iconText={`See ${subject.name}'s journey`}/>
               
               <StoryButton
-              className={styles.popUpButton}
+              storyButtonClass={styles.popUpButton}
               iconTextClassName={styles.popUpButtonText}
               subject={subject}
               subjectData={data}

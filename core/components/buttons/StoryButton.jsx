@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import styles from './IconButton.module.css';
 
-import storyIcon from '@images/button_icons/subject-story.svg';
+import StoryIcon from '@images/button_icons/subject-story.svg?component';
 
 const StoryButton = (props) => {
   const {
@@ -43,9 +43,7 @@ const StoryButton = (props) => {
       onMouseDown={(e) => e.stopPropagation()}
       onTouchStart={(e) => e.stopPropagation()}
     >
-      <img
-        width='24' height='24' className='hover' src={storyIcon}
-      />
+      <StoryIcon width="24px" height="24px" className={styles.iconSvg} aria-hidden="true" />
       {iconText ? <span className={`${styles.iconText} ${iconTextClassName || ''}`}>{iconText}</span> : null}
       </button>
     </>
