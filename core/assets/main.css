@@ -97,6 +97,8 @@ html {
 
     --heading-letter-spacing: 0.05em;
 
+    --ocean-gradient: linear-gradient(135deg, #060A23 0%, #060A23 75%, #0A0E2C 90%, #0E1235 100%);
+
     /* popups */
     --map-popup-bg: #EEEFFC;
     --map-popup-radius: 8px;

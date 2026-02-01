@@ -1,59 +1,61 @@
 /* POP-UP STYLING */
 .popUp {
-    width: 200px;
+    width: clamp(12.5rem, 11.3103rem + 5.2874vw, 24rem);
     overflow: auto;
+    border-radius: 0.5rem;
+    background-color: #EEEFFC;
+    box-shadow: 0 4px 5px rgba(0,0,0,.25);
+    border: 0.125rem solid #333;
 }
 
-.popUpHeader {
-    font-size: 15px;
-}
-
-.popUpHeader h3 {
-    margin: 0 0 5px 0;
+.imageContainer {
+    width: 100%;
+    height: auto;
+    line-height: 0;
+    border-bottom: 0.125rem solid #00C49A;
+    box-shadow: 0 0 0.25rem #333;
 }
 
 .popUpImage {
     width: 100%;
 }
 
-.popUpButtons {
+.popUpContent {
+    padding: 0;
+}
+
+.popUpHeader {
+    background: var(--ocean-gradient);
+    padding: 0.25rem 0 0.625rem 1rem;
+}
+
+:global(#gw-map) h2:global(.map-heading).subjectName,
+.species {
+    color: #fff;
+}
+
+.species {
+    font-style: italic;
+}
+
+.popUpBody {
+    padding: 1rem;
+}
+
+:global(#gw-map) h3:global(.map-heading).summaryHeading {
+    margin-bottom: 0.25rem;
+}
+
+.popUpButtonsContainer {
     display: flex;
     flex-direction: row;
-    justify-content: left;
+    justify-content: flex-start;
     align-items: center;
+    padding: 1rem 0;
 }
 
 .nameContainer {
     padding: 15px;
-}
-
-.viewStoryButton {
-    display: flex;
-    flex-direction: row;
-    justify-content: left;
-    align-items: center;
-    width: -webkit-fit-content;
-    width: -moz-fit-content;
-    width: fit-content;
-}
-
-.viewStoryButton p {
-    color: #DB580F;
-    font-size: 9pt;
-    font-weight: bold;
-    margin: 0 0 0 0;
-}
-
-.viewStoryButton img {
-    padding-left: 5px;
-}
-
-.hover {
-    cursor: pointer !important;
-}
-
-.default {
-    cursor: default;
 }
 
 .popUp>p {

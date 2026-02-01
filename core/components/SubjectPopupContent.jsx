@@ -15,14 +15,19 @@ const SubjectPopup = (props) => {
 
   let sex = '';
   if (subject.sex !== undefined) {
-    sex = subject.sex.charAt(0).toUpperCase() + subject.sex.slice(1) + ' | ';
+    sex = subject.sex.charAt(0).toUpperCase() + subject.sex.slice(1);
   }
 
-let speciesSource = subject.common_name ?? subject.subject_subtype;
+  let age = '';
+  if (data !== undefined && data.age !== undefined) {
+    age = data.age;
+  }
 
-let species = speciesSource
-  .replace(/_/g, ' ')
-  .replace(/\b\w/g, l => l.toUpperCase());
+  let speciesSource = subject.common_name ?? subject.subject_subtype;
+
+  let species = speciesSource
+    .replace(/_/g, ' ')
+    .replace(/\b\w/g, l => l.toUpperCase());
 
   let date = subject.last_position.properties.DateTime;
   date = date.substring(0, 10) + ' ' + date.substring(11, 16);
@@ -32,7 +37,7 @@ let species = speciesSource
     display = { display: 'none' };
   }
 
-  function returnImage () {
+  function returnImage() {
     if (data !== undefined && data.pictures !== undefined && data.pictures.length > 0) {
       return <img className={styles.popUpImage} src={data.pictures[0].path} alt='picture' />;
     }
@@ -47,23 +52,34 @@ let species = speciesSource
 
   return (
     <div className={styles.popUp}>
-
-      <div>
+      <div className={styles.imageContainer}>
         {returnImage()}
       </div>
-      <div className={styles.popUpHeader}>
-        <h3>{subject.name}</h3>
-        <p><strong>Last seen:</strong><br/>{date}<br/><span style={{fontSize: '0.75rem', lineHeight: '1.2em'}}><em>No recent location? This shark's probably deep underwater, yet to surface.</em></span></p>
-      </div>
-      <p>{sex}{data && data.age && data.age + ' |'} {species}</p>
-      {data && data.fun_fact && <p><i>{data.fun_fact}</i></p>}
-      <div onClick={handleStoryClick} style={display} className={`${styles.viewStoryButton} ${styles.hover}`}>
-        <p>View my story</p>
-        <img height='10' id='story' src={story} />
-      </div>
-      <div className={styles.popUpButtons}>
-        <TrackButton subject={subject} />
-        <StoryButton subject={subject} subjectData={data} legendOpen={legendOpen} onLegendStateToggle={onLegendStateToggle} onStoryClick={props.onStoryClick} />
+      <div className={styles.popUpContent}>
+        <div className={styles.popUpHeader}>
+          <h2 className={`${'map-heading'} ${styles.subjectName}`}>{subject.name}</h2>
+          <p className={`${styles.species}`}>{species}</p>
+        </div>
+        <div className={styles.popUpBody}>
+          <div className={styles.subjectSummary}>
+            <h3 className={`${'map-heading'} ${styles.summaryHeading}`}>Info:</h3>
+            <p className={`${'map-body'} ${styles.summaryText}`}>
+              <strong>Sex: </strong>{sex}<br />
+              <strong>Total Length: </strong>{age}<br />
+              {/*<strong>Tag Sponsor: </strong>{tagSponsor}*/}</p>
+            {data && data.fun_fact && <p><i>{data.fun_fact}</i><br />
+            </p>}
+            <p className={`${'map-body'} ${styles.summaryText}`}><strong>Last seen:</strong><br />{date} UTC<br /><em>No recent location? This shark's probably deep underwater, yet to surface.</em></p>
+          </div>
+          <div className={styles.popUpButtonsContainer}>
+            <div className={styles.popUpButton}>
+              <TrackButton subject={subject} />
+            </div>
+            <div className={styles.popUpButton}>
+              <StoryButton subject={subject} subjectData={data} legendOpen={legendOpen} onLegendStateToggle={onLegendStateToggle} onStoryClick={props.onStoryClick} />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
