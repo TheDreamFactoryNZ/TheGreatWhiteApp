@@ -1,5 +1,6 @@
 import React from 'react';
 import TrackButton from './TrackButton.jsx';
+import StoryButton from './StoryButton.jsx';
 
 import styles from './SubjectPopupContent.module.css';
 
@@ -62,6 +63,7 @@ let species = speciesSource
       </div>
       <div className={styles.popUpButtons}>
         <TrackButton subject={subject} />
+        <StoryButton subject={subject} subjectData={data} legendOpen={legendOpen} onLegendStateToggle={onLegendStateToggle} onStoryClick={props.onStoryClick} />
       </div>
     </div>
   );
