@@ -7,8 +7,8 @@ import TracksIcon from '@images/button_icons/subjectTracks.svg?component';
 /* eslint-disable react/prop-types */
 const TrackButton = ({ subject, trackButtonClass, iconText, iconTextClassName }) => {
     const label = subject?.name
-    ? `View ${subject.name}'s tracks`
-    : 'View this shark\'s tracks';
+    ? `View ${subject.name}'s journey`
+    : 'View this shark\'s journey';
 
   const { displayTracks, setTracks, tracks } = useContext(TrackContext);
 
