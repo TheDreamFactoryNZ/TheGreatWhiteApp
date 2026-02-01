@@ -45,8 +45,8 @@ const StoryButton = (props) => {
       <img
         width='24' height='24' className='hover' src={storyIcon}
       />
-      </button>
       {iconText ? <span className={`${styles.iconText} ${iconTextClassName || ''}`}>{iconText}</span> : null}
+      </button>
     </>
   );
 };

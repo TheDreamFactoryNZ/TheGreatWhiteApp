@@ -28,8 +28,8 @@ const LocButton = ({ subject, handleOnLocButtonClicked, iconText, iconTextClassN
       <img
         width='24' height='24' className='hover' src={pin}
       />
-      </button>
       {iconText ? <span className={`${styles.iconText} ${iconTextClassName || ''}`}>{iconText}</span> : null}
+      </button>
     </>
   );
 };
