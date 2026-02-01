@@ -48,13 +48,21 @@
 
 .popUpButtonsContainer {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: flex-start;
-    align-items: center;
+    align-items: flex-start;
     padding: 1rem 0;
 }
 
+:global(#gw-map) button.popUpButton {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+}
+
 .popUpButtonText {
+    align-self: center;
     margin-left: 0.5rem;
     font-size: 0.875rem;
     white-space: nowrap;

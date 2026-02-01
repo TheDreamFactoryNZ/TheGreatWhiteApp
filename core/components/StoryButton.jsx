@@ -9,6 +9,7 @@ const StoryButton = (props) => {
     subjectData: data,
     legendOpen,
     onLegendStateToggle,
+    storyButtonClass,
     iconText,
     iconTextClassName
   } = props;
@@ -33,7 +34,7 @@ const StoryButton = (props) => {
     <>
     <button
       id="subject-story-button"
-      className={styles.iconButton}
+      className={[styles.iconButton, storyButtonClass].filter(Boolean).join(' ')}
       type="button"
       aria-label={label}
       title={label}

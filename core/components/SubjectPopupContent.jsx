@@ -72,22 +72,21 @@ const SubjectPopup = (props) => {
             <p className={`${'map-body'} ${styles.summaryText}`}><strong>Last seen:</strong><br />{date} UTC<br /><em>No recent location? This shark's probably deep underwater, yet to surface.</em></p>
           </div>
           <div className={styles.popUpButtonsContainer}>
-            <div className={styles.popUpButton}>
               <TrackButton
+              trackButtonClass={styles.popUpButton}
+              iconTextClassName={styles.popUpButtonText}
               subject={subject}
-              iconText={`See ${subject.name}'s journey`}
-              iconTextClassName={styles.popUpButtonText}/>
-            </div>
-            <div className={styles.popUpButton}>
+              iconText={`See ${subject.name}'s journey`}/>
+              
               <StoryButton
+              className={styles.popUpButton}
+              iconTextClassName={styles.popUpButtonText}
               subject={subject}
               subjectData={data}
               legendOpen={legendOpen}
               onLegendStateToggle={onLegendStateToggle}
               onStoryClick={props.onStoryClick}
-              iconText={`See ${subject.name}'s factsheet`}
-              iconTextClassName={styles.popUpButtonText}/>
-            </div>
+              iconText={`See ${subject.name}'s factsheet`}/>
           </div>
         </div>
       </div>

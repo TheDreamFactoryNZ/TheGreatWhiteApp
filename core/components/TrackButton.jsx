@@ -8,7 +8,7 @@ import tracksOff from '../assets/images/button_icons/subject-tracks--inactive.sv
 import TracksIcon from '../assets/images/button_icons/subjectTracks.svg?component';
 
 /* eslint-disable react/prop-types */
-const TrackButton = ({ subject, iconText, iconTextClassName }) => {
+const TrackButton = ({ subject, trackButtonClass, iconText, iconTextClassName }) => {
     const label = subject?.name
     ? `View ${subject.name}'s tracks`
     : 'View this shark\'s tracks';
@@ -30,7 +30,7 @@ const TrackButton = ({ subject, iconText, iconTextClassName }) => {
     <>
     <button
       id='subject-track-button'
-      className={styles.iconButton}
+      className={[styles.iconButton, trackButtonClass].filter(Boolean).join(' ')}
       type="button"
       aria-label={label}
       title={label}
