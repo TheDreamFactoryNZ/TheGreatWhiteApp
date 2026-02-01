@@ -1,0 +1,28 @@
+.popUp {
+    width: clamp(12.5rem, 11.3103rem + 5.2874vw, 24rem);
+    height: auto;
+    overflow: auto;
+    border-radius: var(--map-popup-border-radius);
+    background-color: var(--map-popup-background-color);
+    box-shadow: var(--map-popup-box-shadow);
+    border: var(--map-popup-border);
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.popUpHeader {
+    background: var(--ocean-gradient);
+    padding: 0.25rem 0 0.625rem 1rem;
+}
+
+:global(#gw-map) h2:global(.map-heading).locationNumber {
+    color: #fff;
+}
+
+.popUpBody {
+    padding: 1rem;
+}
+
+:global(#gw-map) h3:global(.map-heading) {
+    margin-bottom: 0.25rem;
+}
