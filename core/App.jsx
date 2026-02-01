@@ -191,13 +191,14 @@ async function fetchWithRetry(url, options = {}, retryCfg = {}) {
     const ctrl = new AbortController();
     let onParentAbort;
     let timeoutId;
+    let abortReason = null;
     try {
       if (parentSignal) {
         if (parentSignal.aborted) throw new DOMException('Aborted', 'AbortError');
-        onParentAbort = () => ctrl.abort();
+        onParentAbort = () => { abortReason = 'parent'; ctrl.abort(); };
         parentSignal.addEventListener('abort', onParentAbort, { once: true });
       }
-      timeoutId = setTimeout(() => ctrl.abort(), timeout);
+      timeoutId = setTimeout(() => { abortReason = 'timeout'; ctrl.abort(); }, timeout);
       const resp = await fetch(url, { ...options, signal: ctrl.signal });
       clearTimeout(timeoutId);
       if (onParentAbort) parentSignal.removeEventListener('abort', onParentAbort);
@@ -215,8 +216,11 @@ async function fetchWithRetry(url, options = {}, retryCfg = {}) {
       clearTimeout(timeoutId);
       if (onParentAbort) try { parentSignal.removeEventListener('abort', onParentAbort); } catch (_) {}
       const isAbort = err && (err.name === 'AbortError');
-      const isNetwork = err instanceof TypeError; // fetch network error
-      if (isAbort) throw err;
+      const isNetwork = err instanceof TypeError;
+      if (isAbort) {
+        try { err.__gwAbortReason = abortReason || 'unknown'; } catch (_) {}
+        throw err;
+      };
       if (attempt < retries && isNetwork) {
         await new Promise(r => setTimeout(r, delay));
         attempt += 1;
@@ -487,6 +491,10 @@ const App = (props) => {
           initMap();
         })
         .catch((e) => {
+          // Ignore aborts caused by effect cleanup (StrictMode double-invoke)
+          if (e?.name === 'AbortError' && e.__gwAbortReason === 'parent') {
+            return;
+          }
           console.error('Failed to load config:', e);
           try { config = validateAndNormalizeConfig({}); } catch (_) {}
           if (isSubscribed) initMap();
