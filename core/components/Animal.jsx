@@ -3,7 +3,7 @@ import TrackButton from './TrackButton.jsx';
 import LocButton from './LocButton.jsx';
 import styles from './Animal.module.css';
 
-import storyIcon from '../assets/images/button_icons/view-story-arrow.svg';
+import storyIcon from '../assets/images/button_icons/view-story-arrow.svg?url';
 import TrackContext from '../context/TrackContext.js';
 
 /* eslint-disable react/prop-types */

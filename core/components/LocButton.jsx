@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './TrackLocButton.module.css';
 
-import pin from '../assets/images/button_icons/map-pin.svg';
+import pin from '../assets/images/button_icons/map-pin.svg?url';
 
 /* eslint-disable react/prop-types */
 const LocButton = ({ subject, handleOnLocButtonClicked }) => {

@@ -2,8 +2,10 @@ import React, { useContext } from 'react';
 import TrackContext from '../context/TrackContext.js';
 import styles from './TrackLocButton.module.css';
 
-import tracksOn from '../assets/images/button_icons/subject-tracks--active.svg';
-import tracksOff from '../assets/images/button_icons/subject-tracks--inactive.svg';
+import tracksOn from '../assets/images/button_icons/subject-tracks--active.svg?url';
+import tracksOff from '../assets/images/button_icons/subject-tracks--inactive.svg?url';
+
+import TracksIcon from '../assets/images/button_icons/subjectTracks.svg';
 
 /* eslint-disable react/prop-types */
 const TrackButton = ({ subject }) => {
@@ -14,7 +16,7 @@ const TrackButton = ({ subject }) => {
   const { displayTracks, setTracks, tracks } = useContext(TrackContext);
 
   const vis = !!tracks[subject.id];
-  const imgSrc = vis ? tracksOn : tracksOff;
+//  const imgSrc = vis ? tracksOn : tracksOff;
 
   const onTrackButtonClick = () => {
     const nextVis = !vis;
@@ -32,15 +34,13 @@ const TrackButton = ({ subject }) => {
       type="button"
       aria-label={label}
       title={label}
+      aria-pressed={vis}
+      data-active={vis}
       onClick={onTrackButtonClick}
       onMouseDown={(e) => e.stopPropagation()}
       onTouchStart={(e) => e.stopPropagation()}
     >
-      <img
-        width='24'
-        height='24'
-        src={imgSrc}
-      />
+    <TracksIcon className={styles.iconSvg} aria-hidden="true" />
       </button>
     </>
   );

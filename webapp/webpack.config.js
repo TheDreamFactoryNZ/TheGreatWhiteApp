@@ -69,7 +69,7 @@ module.exports = (env, argv) => {
           ],
         },
         {
-          test: /\.(png|jpg|jpeg|gif|webp|svg|woff|woff2|ttf|eot|otf)$/,
+          test: /\.(png|jpg|jpeg|gif|webp|woff|woff2|ttf|eot|otf)$/,
           type: "asset/resource",
           generator: {
             filename: "assets/[name][ext]",
@@ -77,17 +77,14 @@ module.exports = (env, argv) => {
         },
         {
           test: /\.svg$/i,
-          oneOf: [
-            {
-              issuer: /\.[jt]sx?$/,
-              resourceQuery: /component/, // import icon.svg?component => React component
-              use: ['@svgr/webpack'],
-            },
-            {
-              type: 'asset/resource',
-              generator: { filename: 'assets/[name][ext]' },
-            },
-          ],
+          type: 'asset',
+          resourceQuery: /url/, // *.svg?url
+        },
+        {
+          test: /\.svg$/i,
+          issuer: /\.[jt]sx?$/,
+          resourceQuery: { not: [/url/] }, // exclude react component if *.svg?url
+          use: ['@svgr/webpack'],
         },
       ],
     },

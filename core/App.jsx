@@ -14,9 +14,9 @@ import './assets/mapstyle.css'; // Overrides for mapbox default styles
 import './assets/main.css'; // Global styles for map - under construction
 
 import med from './assets/images/med.png';
-import sharkIconActive from './assets/images/animal_icons/shark-icon-active.svg';
-import sharkIconInactive from './assets/images/animal_icons/shark-icon-inactive.svg';
-import sharkIconDeactivated from './assets/images/animal_icons/shark-icon-deactivated.svg';
+import sharkIconActive from './assets/images/animal_icons/shark-icon-active.svg?url';
+import sharkIconInactive from './assets/images/animal_icons/shark-icon-inactive.svg?url';
+import sharkIconDeactivated from './assets/images/animal_icons/shark-icon-deactivated.svg?url';
 
 // instantiate the Map
 mapboxgl.accessToken = 'pk.eyJ1IjoidmpvZWxtIiwiYSI6ImNra2hiZXNpMzA1bTcybnA3OXlycnN2ZjcifQ.gH6Nls61WTMVutUH57jMJQ'; // development token

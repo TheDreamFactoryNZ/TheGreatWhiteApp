@@ -13,3 +13,15 @@ button.iconButton {
 .iconButton:hover img {
     opacity: 0.5;
 }
+
+.iconSvg {
+    color: var(--default-icon-color);
+}
+
+.iconSvg :where(path, circle, rect, polygon) {
+    fill: currentColor !important;
+}
+
+.iconButton[data-active="true"] .iconSvg {
+    color: var(--active-icon-color);
+}

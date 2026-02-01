@@ -102,6 +102,10 @@ html {
     --map-popup-radius: 8px;
     --map-popup-shadow: 0 4px 5px rgba(0, 0, 0, .25);
 
+    /* icons */
+    --default-icon-color: #333333;
+    --active-icon-color: #4CBE23;
+
     /* interactivity */
     --focus-outline: 2px solid #A8BEF0;
     --hover-transition-duration: 0.25s;
