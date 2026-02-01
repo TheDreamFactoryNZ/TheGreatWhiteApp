@@ -11,7 +11,13 @@ export default defineConfig({
   plugins: [
     react(),
     legacy(),
-    svgr()
+    svgr({
+      svgrOptions: {
+        exportType: 'default',
+      },
+      include: ['**/*.svg?component', '**/*.svg?react'],
+      exclude: '**/*.svg?url'
+    })
   ],
   resolve: {
     alias: {

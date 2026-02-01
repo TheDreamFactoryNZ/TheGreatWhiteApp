@@ -1,5 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { type } = require("os");
 
 module.exports = (env, argv) => {
   const isDev = argv.mode === "development";
@@ -77,14 +78,26 @@ module.exports = (env, argv) => {
         },
         {
           test: /\.svg$/i,
-          type: 'asset',
-          resourceQuery: /url/, // *.svg?url
-        },
-        {
-          test: /\.svg$/i,
-          issuer: /\.[jt]sx?$/,
-          resourceQuery: { not: [/url/] }, // exclude react component if *.svg?url
-          use: ['@svgr/webpack'],
+          oneOf: [
+            {
+              issuer: /\.[jt]sx?$/,
+              resourceQuery: [/component/, /react/], // make svg a react component if ?component or ?react is used
+              use: [{ loader: '@svgr/webpack', options: { exportType: 'default' } }],
+            },
+            {
+              resourceQuery: /url/, // *.svg?url 
+              type: 'asset/resource',
+              generator: {
+                filename: "assets/[name][ext]",
+              },
+            },
+            {
+              type: 'asset/resource',
+              generator: {
+                filename: "assets/[name][ext]",
+              },
+            },
+          ],
         },
       ],
     },
