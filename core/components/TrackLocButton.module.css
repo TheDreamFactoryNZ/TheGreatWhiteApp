@@ -6,6 +6,8 @@ button.iconButton {
 
 .iconButton img {
     transition: opacity linear var(--hover-transition-duration);
+    pointer-events: none;
+    user-select: none;
 }
 
 .iconButton:hover img {
