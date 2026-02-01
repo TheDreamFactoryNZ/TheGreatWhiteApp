@@ -4,13 +4,15 @@ button.iconButton {
     cursor: pointer
 }
 
-.iconButton img {
+.iconButton img,
+.iconButton .iconSvg {
     transition: opacity linear var(--hover-transition-duration);
     pointer-events: none;
     user-select: none;
 }
 
-.iconButton:hover img {
+.iconButton:hover img,
+.iconButton:hover .iconSvg {
     opacity: 0.5;
 }
 
@@ -18,7 +20,11 @@ button.iconButton {
     color: var(--default-icon-color);
 }
 
-.iconSvg :where(path, circle, rect, polygon) {
+.iconSvg :where(path, rect) {
+    stroke: currentColor !important;
+}
+
+.iconSvg :where(circle) {
     fill: currentColor !important;
 }
 

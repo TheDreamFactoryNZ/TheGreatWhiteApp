@@ -108,7 +108,8 @@
     gap: 0.25rem;
 }
 
-.trackButtons img {
+.trackButtons img,
+.trackButtons svg {
     width: 2.5rem;
     height: 2.5rem;
     margin: 0;

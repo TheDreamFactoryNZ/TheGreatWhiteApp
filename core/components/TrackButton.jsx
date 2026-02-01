@@ -5,7 +5,7 @@ import styles from './TrackLocButton.module.css';
 import tracksOn from '../assets/images/button_icons/subject-tracks--active.svg?url';
 import tracksOff from '../assets/images/button_icons/subject-tracks--inactive.svg?url';
 
-import TracksIcon from '../assets/images/button_icons/subjectTracks.svg';
+import TracksIcon from '../assets/images/button_icons/subjectTracks.svg?component';
 
 /* eslint-disable react/prop-types */
 const TrackButton = ({ subject }) => {
@@ -40,7 +40,7 @@ const TrackButton = ({ subject }) => {
       onMouseDown={(e) => e.stopPropagation()}
       onTouchStart={(e) => e.stopPropagation()}
     >
-    <TracksIcon className={styles.iconSvg} aria-hidden="true" />
+    <TracksIcon width="24px" height="24px" className={styles.iconSvg} aria-hidden="true" />
       </button>
     </>
   );
