@@ -1,5 +1,5 @@
 .popUp {
-    width: clamp(12.5rem, 11.3103rem + 5.2874vw, 24rem);
+    width: clamp(12.5rem, 33vw + 10vw, 20rem);
     height: auto;
     overflow: auto;
     border-radius: var(--map-popup-border-radius);
