@@ -1,0 +1,33 @@
+/* Shared styles for buttons at top left of map (i.e. tips menu, refresh button etc) */
+.mapButtonContainer {
+    position: absolute;
+    z-index: 1;
+    top: var(--control-top, 0px);
+    left: 10px;
+}
+
+/* The small button that toggles the tips */
+
+
+.mapButtonIcon {
+    all: unset;
+    height: 29px;
+    width: 29px;
+    background-color: white;
+    border-radius: 3px;
+    background-image: var(--icon-background-image);
+    background-size: var(--icon-background-size, 17px);
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    box-shadow: var(--map-button-box-shadow);
+}
+
+.mapButtonIcon:hover {
+    filter: brightness(0.95);
+}
+
+.mapButtonIcon:focus {
+    outline: var(--focus-outline);
+    filter: brightness(0.95);
+}

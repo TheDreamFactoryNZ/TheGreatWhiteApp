@@ -1,35 +1,16 @@
 /* Container for the whole tips UI */
 .tipsContainer {
-    position: absolute;
-    z-index: 1;
-    top: 105px;
-    left: 10px;
+    composes: mapButtonContainer from './MapButtons.module.css';
+    --control-top: 105px;
 }
 
 /* The small button that toggles the tips */
 
 
 .tipsToggleIcon {
-    all: unset;
-    height: 29px;
-    width: 29px;
-    background-color: white;
-    border-radius: 3px;
-    background-image: url('../assets/images/button_icons/help.svg');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 12px;
-    cursor: pointer;
-    box-shadow: var(--map-button-box-shadow);
-}
-
-.tipsToggleIcon:hover {
-    filter: brightness(0.95);
-}
-
-.tipsToggleIcon:focus {
-    outline: var(--focus-outline);
-    filter: brightness(0.95);
+    composes: mapButtonIcon from './MapButtons.module.css';
+    --icon-background-image: url('../assets/images/button_icons/help.svg');
+    --icon-background-size: 12px;
 }
 
 /* The content panel that appears when tips are shown */
