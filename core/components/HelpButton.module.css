@@ -65,7 +65,8 @@ h2.tipsHeader {
     overflow: hidden;
     text-overflow: ellipsis;
     font-size: 1.625rem;
-    font-weight: 600;
+    font-weight: var(--map-h2-font-weight);
+    color: var(--map-h2-color);
 }
 
 .closeIcon {

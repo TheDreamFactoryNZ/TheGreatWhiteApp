@@ -125,6 +125,7 @@ html {
 
 #gw-map h1, h2, h3, h4, h5, h6 {
     font-family: var(--map-heading-font);
+    letter-spacing: var(--heading-letter-spacing)
 }
 
 #gw-map p {
