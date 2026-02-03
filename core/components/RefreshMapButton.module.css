@@ -2,7 +2,7 @@
 .refreshMapContainer {
     position: absolute;
     z-index: 1;
-    top: 138px;
+    top: 142px;
     left: 10px;
 }
 
@@ -18,7 +18,7 @@
     background-image: url('../assets/images/button_icons/refresh.svg');
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 16px;
+    background-size: 21px;
     cursor: pointer;
     box-shadow: var(--map-button-box-shadow);
 }
