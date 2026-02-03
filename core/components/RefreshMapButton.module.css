@@ -1,0 +1,33 @@
+/* Container for the whole refresh UI */
+.refreshMapContainer {
+    position: absolute;
+    z-index: 1;
+    top: 138px;
+    left: 10px;
+}
+
+/* The small button that triggers the refresh */
+
+
+.refreshMapIcon {
+    all: unset;
+    height: 29px;
+    width: 29px;
+    background-color: white;
+    border-radius: 3px;
+    background-image: url('../assets/images/button_icons/refresh.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 16px;
+    cursor: pointer;
+    box-shadow: var(--map-button-box-shadow);
+}
+
+.refreshMapIcon:hover {
+    filter: brightness(0.95);
+}
+
+.refreshMapIcon:focus {
+    outline: var(--focus-outline);
+    filter: brightness(0.95);
+}

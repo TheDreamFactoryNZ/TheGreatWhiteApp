@@ -99,6 +99,10 @@ html {
 
     --ocean-gradient: linear-gradient(135deg, #060A23 0%, #060A23 75%, #0A0E2C 90%, #0E1235 100%);
 
+    /* Map floating buttons */
+
+    --map-button-box-shadow: 0 0 0 2px rgba(0,0,0,.1);
+
     /* popups */
     --map-popup-background-color: #EEEFFC;
     --map-popup-border: 0.125rem solid #333;

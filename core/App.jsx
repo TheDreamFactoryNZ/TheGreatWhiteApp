@@ -5,6 +5,7 @@ import PointPopupContent from './components/PointPopupContent';
 import Popup from './components/Popup';
 import Legend from './components/Legend';
 import HelpButton from './components/HelpButton';
+import RefreshMapButton from './components/RefreshMapButton';
 import Partners from './components/Partners';
 import mapHandlerRegistry from './utils/mapHandlerRegistry';
 import TrackContext from './context/TrackContext.js';
@@ -960,6 +961,7 @@ const App = (props) => {
           <div id='app-container'>
             <div id='map-container' onKeyDown={logKey} onKeyUp={logKey}>
               <HelpButton />
+              <RefreshMapButton onClick={resetMap} />
 
               <Legend
                 title={config !== undefined ? config.map_title : null}

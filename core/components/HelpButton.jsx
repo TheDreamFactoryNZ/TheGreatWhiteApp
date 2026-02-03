@@ -84,9 +84,9 @@ const HelpButton = () => {
             <div className={styles.tipIconContainer}><img className={styles.tipIcon} width='24' height='24' src={tracks} /></div>
             <div className={styles.tipTextContainer}><p>Display a shark's track.</p></div>
           </div>
-          <div className={styles.tipItem} style={{ display: 'none' }}>
+          <div className={styles.tipItem}>
             <div className={styles.tipIconContainer}><img className={styles.tipIcon} width='24' height='24' src={refresh} /></div>
-            <div className={styles.tipTextContainer}><p>Refresh and update locations (internet connection required)</p></div>
+            <div className={styles.tipTextContainer}><p>Refresh the map and fetch new locations (internet connection required)</p></div>
           </div>
           <div className={styles.tipItem}>
             <div className={styles.tipIconContainer}><img className={styles.tipIcon} width='7' height='10' src={story} /></div>
