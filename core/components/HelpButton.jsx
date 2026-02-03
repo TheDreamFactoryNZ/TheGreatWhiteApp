@@ -85,12 +85,12 @@ const HelpButton = () => {
             <div className={styles.tipTextContainer}><p>Display a shark's track.</p></div>
           </div>
           <div className={styles.tipItem}>
-            <div className={styles.tipIconContainer}><img className={styles.tipIcon} width='24' height='24' src={refresh} /></div>
-            <div className={styles.tipTextContainer}><p>Refresh the map and fetch new locations (internet connection required)</p></div>
-          </div>
-          <div className={styles.tipItem}>
             <div className={styles.tipIconContainer}><img className={styles.tipIcon} width='7' height='10' src={story} /></div>
             <div className={styles.tipTextContainer}><p>Display a shark's story.</p></div>
+          </div>
+          <div className={styles.tipItem}>
+            <div className={styles.tipIconContainer}><img className={styles.tipIcon} width='24' height='24' src={refresh} /></div>
+            <div className={styles.tipTextContainer}><p>Refresh the map and fetch new locations (internet connection required)</p></div>
           </div>
           <div className={styles.tipItem}>
             <div className={styles.tipTextContainer}><p><strong>Why hasn't there been an update?</strong> A shark needs to breach the surface of the ocean to transmit its location to satellites.</p><p>These majestic creatures can spend <em><strong>months</strong></em> underwater, so it is not unusual for there to be periods of inactivity.</p></div>
