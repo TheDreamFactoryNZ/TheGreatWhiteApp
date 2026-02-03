@@ -954,6 +954,109 @@ const App = (props) => {
     // toggle off all tracks??
   };
 
+  // Re-fetch config safely; returns true on success, false on failure
+async function refreshConfig() {
+  try {
+    if (configFetchCtlRef.current) { try { configFetchCtlRef.current.abort(); } catch (_) {} }
+    const ctl = new AbortController();
+    configFetchCtlRef.current = ctl;
+
+    const resp = await fetchWithRetry(props.configFile, {
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      signal: ctl.signal
+    }, { retries: 2, backoff: 700, factor: 2, timeout: 15000 });
+
+    const json = await resp.json();
+    try {
+      config = validateAndNormalizeConfig(json);
+      return true;
+    } catch (e) {
+      console.warn('Invalid refreshed config, keeping existing:', e);
+      return false;
+    } finally {
+      if (configFetchCtlRef.current === ctl) configFetchCtlRef.current = null;
+    }
+  } catch (e) {
+    // Ignore aborts triggered by cleanup; log real failures
+    if (!(e?.name === 'AbortError' && e.__gwAbortReason === 'parent')) {
+      console.error('Refresh: failed to fetch config:', e);
+    }
+    return false;
+  }
+}
+
+const hardRefreshMap = async () => {
+  // abort in-flight requests
+  try { subjectsFetchCtlRef.current?.abort(); } catch (_) {}
+  try {
+    for (const ctl of tracksFetchCtlMapRef.current.values()) { try { ctl.abort(); } catch (_) {} }
+    tracksFetchCtlMapRef.current.clear();
+  } catch (_) {}
+
+  // clear UI state
+  setSubjectPopups([]);
+  setPointPopups([]);
+  try { subjectIconLayerIdsRef.current.clear(); } catch (_) {}
+
+  // fetch config first
+  await refreshConfig();
+
+  // remove existing map and recreate
+  try { if (window.GlobalMap?.remove) window.GlobalMap.remove(); } catch (_) {}
+  window.GlobalMap = null;
+  initMap();
+
+  // re-fetch visible tracks after the new map loads
+  const visibleIds = Object.entries(tracks).filter(([_, v]) => v).map(([id]) => id);
+  if (visibleIds.length) {
+    const onLoad = () => {
+      try { visibleIds.forEach((id) => fetchTrack(id)); } catch (_) {}
+      try { window.GlobalMap.off('load', onLoad); } catch (_) {}
+    };
+    try { window.GlobalMap.on('load', onLoad); } catch (_) {}
+  }
+  resetMap();
+};
+
+// optional: auto-refresh when device goes online
+useEffect(() => {
+  const onOnline = () => { hardRefreshMap(); };
+  window.addEventListener('online', onOnline);
+  return () => window.removeEventListener('online', onOnline);
+}, []);
+
+const softStyleReload = async () => {
+  await refreshConfig();
+
+  // Clear “loaded” flag and icon registry so subjects/icons rehydrate
+  try { window.GlobalMap && (window.GlobalMap.__gw_subjects_loaded = false); } catch (_) {}
+  try { subjectIconLayerIdsRef.current.clear(); } catch (_) {}
+
+  try {
+    const styleUrl = (!config.map || !config.map.style)
+      ? 'mapbox://styles/vjoelm/cktdex96919t117p3rkq7c7yu'
+      : config.map.style;
+
+    let hydrated = false;
+    const rehydrate = () => {
+      if (hydrated) return;
+      hydrated = true;
+      attachGlobalResizeHandlers();
+      attachContainerResizeObserver();
+      loadSubjectsAndIcons();
+      Object.entries(tracks).forEach(([id, vis]) => { if (vis) fetchTrack(id); });
+      resetMap();
+    };
+
+    window.GlobalMap.setStyle(styleUrl);
+    window.GlobalMap.once('load', rehydrate);
+    // Fallback in rare cases ‘load’ is missed
+    window.GlobalMap.once('idle', rehydrate);
+  } catch {
+    hardRefreshMap();
+  }
+};
+
   return (
     <>
       <TrackContext.Provider value={{ displayTracks, setTracks, tracks }}>
@@ -961,7 +1064,7 @@ const App = (props) => {
           <div id='app-container'>
             <div id='map-container' onKeyDown={logKey} onKeyUp={logKey}>
               <HelpButton />
-              <RefreshMapButton onClick={resetMap} />
+              <RefreshMapButton onClick={softStyleReload} />
 
               <Legend
                 title={config !== undefined ? config.map_title : null}
