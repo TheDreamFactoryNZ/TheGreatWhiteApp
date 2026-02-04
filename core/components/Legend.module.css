@@ -44,8 +44,8 @@
     justify-content: center;
     align-items: center;
     -webkit-writing-mode: vertical-rl;
-        -ms-writing-mode: tb-rl;
-            writing-mode: vertical-rl;
+    -ms-writing-mode: tb-rl;
+    writing-mode: vertical-rl;
     cursor: pointer;
     height: 70px;
     background-color: #EEEFFC;
@@ -58,7 +58,13 @@
     transition: filter var(--hover-transition-duration);
 }
 
-.legendOpenButton:hover {
+@media (hover: hover) {
+    .legendOpenButton:hover {
+        filter: brightness(95%);
+    }
+}
+
+.legendOpenButton:active {
     filter: brightness(95%);
 }
 
@@ -189,6 +195,16 @@
 }
 
 .return:hover {
+    filter: brightness(95%);
+}
+
+@media (hover: hover) {
+    .return:hover {
+        filter: brightness(95%);
+    }
+}
+
+.return:active {
     filter: brightness(95%);
 }
 
