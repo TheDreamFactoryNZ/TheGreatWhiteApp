@@ -1,6 +1,12 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { type } = require("os");
+const dotenv = require("dotenv");
+const webpack = require("webpack");
+
+// Load env from webapp/.env.local
+dotenv.config({ path: path.resolve(__dirname, ".env.local") });
+dotenv.config();
 
 module.exports = (env, argv) => {
   const isDev = argv.mode === "development";
@@ -118,6 +124,9 @@ module.exports = (env, argv) => {
     plugins: [
       new HtmlWebpackPlugin({
         template: path.resolve(__dirname, "public", "index.html"),
+      }),
+      new webpack.DefinePlugin({
+        __MAPBOX_TOKEN__: JSON.stringify(process.env.MAPBOX_TOKEN ?? ""),
       }),
     ],
   };

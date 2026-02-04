@@ -19,8 +19,19 @@ import sharkIconActive from './assets/images/animal_icons/shark-icon-active.svg'
 import sharkIconInactive from './assets/images/animal_icons/shark-icon-inactive.svg';
 import sharkIconDeactivated from './assets/images/animal_icons/shark-icon-deactivated.svg';
 
-// instantiate the Map
-mapboxgl.accessToken = 'pk.eyJ1IjoidmpvZWxtIiwiYSI6ImNra2hiZXNpMzA1bTcybnA3OXlycnN2ZjcifQ.gH6Nls61WTMVutUH57jMJQ'; // development token
+const envToken =
+  (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.VITE_MAPBOX_TOKEN) ||
+  __MAPBOX_TOKEN__ || // Webpack-injected at build time
+  (typeof window !== 'undefined' && window.__MAPBOX_TOKEN) ||
+  '';
+
+
+// Define MAPBOX_TOKEN via .env.local in webapp/, the-great-white-app/, or inject into window.__MAPBOX_TOKEN 
+if (!envToken) {
+  console.error('[GW] Missing Mapbox token. Set VITE_MAPBOX_TOKEN in .env.local or inject window.__MAPBOX_TOKEN.');
+} else {
+  mapboxgl.accessToken = envToken;
+}
 
 let config;
 const keymap = {}; // alt, r

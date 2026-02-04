@@ -348,3 +348,11 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+
+# Environment variables
+.env
+.env.local
+/webapp/.env
+/webapp/.env.local
+/the-great-white-app/.env
+/the-great-white-app/.env.local
