@@ -2128,30 +2128,30 @@
     debug "^4.0.0"
     tslib "^2.0.1"
 
-"@ionic/core@8.5.5":
-  version "8.5.5"
-  resolved "https://registry.npmjs.org/@ionic/core/-/core-8.5.5.tgz"
-  integrity sha512-CrV93791fMLLmr+U81yTjNuHVFCDTspnB+TBhsWxdAHd5ErBzhlWn4tLjfyL/mRUO1vUy6sxU2oU4X6ooXi4Mg==
+"@ionic/core@8.7.17":
+  version "8.7.17"
+  resolved "https://registry.yarnpkg.com/@ionic/core/-/core-8.7.17.tgz#6b2ea9727b1ec727e9f994c37fe33524dfd1bfc0"
+  integrity sha512-gp7PIEJX27NX/FkjiUlpjQUtJiFFE5W1lofRC5CfORQ8p4PrLh9wJO9EJH0YryCr2qZS0k47sYgRQP5FwiXlpg==
   dependencies:
-    "@stencil/core" "4.20.0"
-    ionicons "^7.2.2"
+    "@stencil/core" "4.38.0"
+    ionicons "^8.0.13"
     tslib "^2.1.0"
 
-"@ionic/react-router@^8.0.0":
-  version "8.5.5"
-  resolved "https://registry.npmjs.org/@ionic/react-router/-/react-router-8.5.5.tgz"
-  integrity sha512-D0eqYjCbXLHHaKtUBOnjvlfzonluvW06dFzD0eJD/OUJfKLHom0hHHKqmZp3Y7nojFV7oXibScNvc/aEsuz9uA==
+"@ionic/react-router@^8.7.17":
+  version "8.7.17"
+  resolved "https://registry.yarnpkg.com/@ionic/react-router/-/react-router-8.7.17.tgz#b830ee399510c5a6bebfeaa2753916ed812e63e6"
+  integrity sha512-kSkFNNA5m0vgnzpvWU9PDwJNHdEYqD9THpEGFh5aSM/pENvs59qlo5ziQQ5MMWy21EgKCGa045VmaO2D/5tF6g==
   dependencies:
-    "@ionic/react" "8.5.5"
+    "@ionic/react" "8.7.17"
     tslib "*"
 
-"@ionic/react@8.5.5", "@ionic/react@^8.0.0":
-  version "8.5.5"
-  resolved "https://registry.npmjs.org/@ionic/react/-/react-8.5.5.tgz"
-  integrity sha512-FZQXbWe1vdFQMCP0IbHbCT0BWOwg1IBor7+7RKto5pmU0Ue5OQ6zrK1tHI8DrwWmDwY8GFOx7sOgW8r/N8njFg==
+"@ionic/react@8.7.17", "@ionic/react@^8.7.17":
+  version "8.7.17"
+  resolved "https://registry.yarnpkg.com/@ionic/react/-/react-8.7.17.tgz#81c425a62ce35450c04b703dbe028b13b33f390b"
+  integrity sha512-t/ApHBEigSTvovM/hKtNAMrddoOQ5l2GlyjOzASUq7sJLvDS4ewDMk5pRahjGqmFSYSN8TIBlF9QAHswp6XTRg==
   dependencies:
-    "@ionic/core" "8.5.5"
-    ionicons "^7.0.0"
+    "@ionic/core" "8.7.17"
+    ionicons "^8.0.13"
     tslib "*"
 
 "@ionic/utils-array@2.1.6":
@@ -2645,15 +2645,38 @@
   resolved "https://registry.npmjs.org/@sinclair/typebox/-/typebox-0.27.8.tgz"
   integrity sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==
 
-"@stencil/core@4.20.0":
-  version "4.20.0"
-  resolved "https://registry.npmjs.org/@stencil/core/-/core-4.20.0.tgz"
-  integrity sha512-WPrTHFngvN081RY+dJPneKQLwnOFD60OMCOQGmmSHfCW0f4ujPMzzhwWU1gcSwXPWXz5O+8cBiiCaxAbJU7kAg==
+"@stencil/core@4.38.0":
+  version "4.38.0"
+  resolved "https://registry.yarnpkg.com/@stencil/core/-/core-4.38.0.tgz#44ca8bafee9e46842630a42b3ad2546ea73eb95e"
+  integrity sha512-oC3QFKO0X1yXVvETgc8OLY525MNKhn9vISBrbtKnGoPlokJ6rI8Vk1RK22TevnNrHLI4SExNLbcDnqilKR35JQ==
+  optionalDependencies:
+    "@rollup/rollup-darwin-arm64" "4.34.9"
+    "@rollup/rollup-darwin-x64" "4.34.9"
+    "@rollup/rollup-linux-arm64-gnu" "4.34.9"
+    "@rollup/rollup-linux-arm64-musl" "4.34.9"
+    "@rollup/rollup-linux-x64-gnu" "4.34.9"
+    "@rollup/rollup-linux-x64-musl" "4.34.9"
+    "@rollup/rollup-win32-arm64-msvc" "4.34.9"
+    "@rollup/rollup-win32-x64-msvc" "4.34.9"
 
 "@stencil/core@^4.0.3":
   version "4.30.0"
   resolved "https://registry.npmjs.org/@stencil/core/-/core-4.30.0.tgz"
   integrity sha512-rInn2BaN3ISgtz+yfOeiTvAvY+xjz8g5v9hDtQMIP6uefjO6JHXGhUJw2CujnuEOWjYeVR/BYdZJTi0dWN9/vQ==
+  optionalDependencies:
+    "@rollup/rollup-darwin-arm64" "4.34.9"
+    "@rollup/rollup-darwin-x64" "4.34.9"
+    "@rollup/rollup-linux-arm64-gnu" "4.34.9"
+    "@rollup/rollup-linux-arm64-musl" "4.34.9"
+    "@rollup/rollup-linux-x64-gnu" "4.34.9"
+    "@rollup/rollup-linux-x64-musl" "4.34.9"
+    "@rollup/rollup-win32-arm64-msvc" "4.34.9"
+    "@rollup/rollup-win32-x64-msvc" "4.34.9"
+
+"@stencil/core@^4.35.3":
+  version "4.42.0"
+  resolved "https://registry.yarnpkg.com/@stencil/core/-/core-4.42.0.tgz#723923270917adbc9056de1d46ac1de00fe90a06"
+  integrity sha512-1mMkQ3+5jE343detvyFK+U3tJM8Qp8aaaOnGMo815BKMnFShUpioF9ziaX0dJ+goDKWIWbGZ2438dHIGsvE5ug==
   optionalDependencies:
     "@rollup/rollup-darwin-arm64" "4.34.9"
     "@rollup/rollup-darwin-x64" "4.34.9"
@@ -6782,12 +6805,19 @@ interpret@^3.1.1:
   resolved "https://registry.npmjs.org/interpret/-/interpret-3.1.1.tgz"
   integrity sha512-6xwYfHbajpoF0xLW+iwLkhwgvLoZDfjYfoFNu8ftMoXINzwuymNLd9u/KmwtdT2GbR+/Cz66otEGEVVUHX9QLQ==
 
-ionicons@^7.0.0, ionicons@^7.2.2:
+ionicons@^7.0.0:
   version "7.4.0"
   resolved "https://registry.npmjs.org/ionicons/-/ionicons-7.4.0.tgz"
   integrity sha512-ZK94MMqgzMCPPMhmk8Ouu6goyVHFIlw/ACP6oe3FrikcI0N7CX0xcwVaEbUc0G/v3W0shI93vo+9ve/KpvcNhQ==
   dependencies:
     "@stencil/core" "^4.0.3"
+
+ionicons@^8.0.13:
+  version "8.0.13"
+  resolved "https://registry.yarnpkg.com/ionicons/-/ionicons-8.0.13.tgz#afaea839809b819cf073325f54d73b1ba99e59fc"
+  integrity sha512-2QQVyG2P4wszne79jemMjWYLp0DBbDhr4/yFroPCxvPP1wtMxgdIV3l5n+XZ5E9mgoXU79w7yTWpm2XzJsISxQ==
+  dependencies:
+    "@stencil/core" "^4.35.3"
 
 ipaddr.js@1.9.1:
   version "1.9.1"
@@ -8711,12 +8741,12 @@ rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-dom@^19.0.0:
-  version "19.0.0"
-  resolved "https://registry.npmjs.org/react-dom/-/react-dom-19.0.0.tgz"
-  integrity sha512-4GV5sHFG0e/0AD4X+ySy6UJd3jVl1iNsNHdpad0qhABJ11twS3TTBnseqsKurKcsNqCEFeGL3uLpVChpIO3QfQ==
+react-dom@19.2.3:
+  version "19.2.3"
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-19.2.3.tgz#f0b61d7e5c4a86773889fcc1853af3ed5f215b17"
+  integrity sha512-yELu4WmLPw5Mr/lmeEpox5rw3RETacE++JgHqQzd2dg+YbJuat3jH4ingc+WPZhxaoFzdv9y33G+F7Nl5O0GBg==
   dependencies:
-    scheduler "^0.25.0"
+    scheduler "^0.27.0"
 
 react-is@^16.13.1, react-is@^16.6.0, react-is@^16.7.0:
   version "16.13.1"
@@ -8766,10 +8796,10 @@ react-router@5.3.4, react-router@^5.3.4:
     tiny-invariant "^1.0.2"
     tiny-warning "^1.0.0"
 
-react@^19.0.0:
-  version "19.0.0"
-  resolved "https://registry.npmjs.org/react/-/react-19.0.0.tgz"
-  integrity sha512-V8AVnmPIICiWpGfm6GLzCR/W5FXLchHop40W4nXBmdlEceh16rCN8O8LNWm5bh5XUX91fh7KpA+W0TgMKmgTpQ==
+react@19.2.3:
+  version "19.2.3"
+  resolved "https://registry.yarnpkg.com/react/-/react-19.2.3.tgz#d83e5e8e7a258cf6b4fe28640515f99b87cd19b8"
+  integrity sha512-Ku/hhYbVjOQnXDZFv2+RibmLFGwFdeeKHFcOTlrt7xplBnya5OGn/hIRDsqDiSUcfORsDC7MPxwork8jBwsIWA==
 
 read-pkg-up@^3.0.0:
   version "3.0.0"
@@ -9227,10 +9257,10 @@ saxes@^6.0.0:
   dependencies:
     xmlchars "^2.2.0"
 
-scheduler@^0.25.0:
-  version "0.25.0"
-  resolved "https://registry.npmjs.org/scheduler/-/scheduler-0.25.0.tgz"
-  integrity sha512-xFVuu11jh+xcO7JOAGJNOXld8/TcEHK/4CituBUeUb5hqxJLj9YuemAEuvm9gQ/+pgXYfbQuqAkiYu+u7YEsNA==
+scheduler@^0.27.0:
+  version "0.27.0"
+  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.27.0.tgz#0c4ef82d67d1e5c1e359e8fc76d3a87f045fe5bd"
+  integrity sha512-eNv+WrVbKu1f3vbYJT/xtiF5syA5HPIMtf9IgY/nKg0sWqzAUEvqY/xm7OcZc/qafLx/iO9FgOmeSAp4v5ti/Q==
 
 schema-utils@^4.0.0, schema-utils@^4.2.0, schema-utils@^4.3.0, schema-utils@^4.3.2:
   version "4.3.2"
