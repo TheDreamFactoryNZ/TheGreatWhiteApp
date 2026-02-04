@@ -20,15 +20,14 @@ import sharkIconInactive from './assets/images/animal_icons/shark-icon-inactive.
 import sharkIconDeactivated from './assets/images/animal_icons/shark-icon-deactivated.svg';
 
 const envToken =
-  (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.VITE_MAPBOX_TOKEN) ||
-  __MAPBOX_TOKEN__ || // Webpack-injected at build time
+  __MAPBOX_TOKEN__ || // Build-time injected in both Vite and Webpack
   (typeof window !== 'undefined' && window.__MAPBOX_TOKEN) ||
   '';
 
 
-// Define MAPBOX_TOKEN via .env.local in webapp/, the-great-white-app/, or inject into window.__MAPBOX_TOKEN 
+// Define MAPBOX_TOKEN via .env.local (MAPBOX_TOKEN) or inject into window.__MAPBOX_TOKEN 
 if (!envToken) {
-  console.error('[GW] Missing Mapbox token. Set VITE_MAPBOX_TOKEN in .env.local or inject window.__MAPBOX_TOKEN.');
+  console.error('[GW] Missing Mapbox token. Set MAPBOX_TOKEN in .env files or inject window.__MAPBOX_TOKEN.');
 } else {
   mapboxgl.accessToken = envToken;
 }

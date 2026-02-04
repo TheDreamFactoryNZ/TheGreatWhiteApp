@@ -3,11 +3,18 @@
 import react from '@vitejs/plugin-react'
 import legacy from '@vitejs/plugin-legacy'
 import svgr from 'vite-plugin-svgr'
-import { defineConfig } from 'vite'
+import { defineConfig, loadEnv } from 'vite'
 import path from 'path'
 
 // https://vitejs.dev/config/
-export default defineConfig({
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, process.cwd(), '')
+  const token = env.VITE_MAPBOX_TOKEN
+    || process.env.VITE_MAPBOX_TOKEN
+    || env.MAPBOX_TOKEN
+    || process.env.MAPBOX_TOKEN
+    || ''
+  return {
   plugins: [
     react(),
     legacy(),
@@ -19,6 +26,9 @@ export default defineConfig({
       exclude: '**/*.svg?url'
     })
   ],
+  define: {
+    __MAPBOX_TOKEN__: JSON.stringify(token),
+  },
   resolve: {
     alias: {
       '@core': path.resolve(__dirname, '../core'),
@@ -38,4 +48,4 @@ export default defineConfig({
       ],
     },
   },
-})
+}})
