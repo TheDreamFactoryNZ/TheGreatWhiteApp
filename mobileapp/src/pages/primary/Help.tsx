@@ -1,4 +1,3 @@
-import { RouteComponentProps } from 'react-router-dom';
 
 import {
   IonPage,
@@ -27,7 +26,7 @@ import {
 
 import './Help.css';
 
-const Help: React.FC<RouteComponentProps> = () => {
+const Help: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>

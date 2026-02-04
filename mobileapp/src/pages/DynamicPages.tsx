@@ -70,7 +70,7 @@ const DynamicPage: React.FC = () => {
         scrollToTop
     };
 
-    const componentMap: Record<string, (section: Section, index: number) => JSX.Element | null> = {
+    const componentMap: Record<string, (section: Section, index: number) => any> = {
         "text": (section, index) => (
             <IonText className={`para-text ${section.class || ""}`} key={index}>
                 <p id={section.id}>{section.content}</p>
@@ -263,9 +263,8 @@ const DynamicPage: React.FC = () => {
                     <h1 className='ion-text-center'>{page.heading}</h1>
                 </IonText>
 
-                {page.sections
-                    .map((section: Section, index: number) => componentMap[section.type]?.(section, index))
-                    .filter(Boolean)}
+                {(page.sections
+                    .map((section: Section, index: number) => componentMap[section.type]?.(section, index)) as any)}
 
             </IonContent>
         </IonPage>

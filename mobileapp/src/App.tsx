@@ -64,14 +64,18 @@ const App: React.FC = () => {
               <Redirect to="/sharkmap" />
             </Route>
 
-            <Route exact path="/sharkmap" component={SharkMap} />
+            <Route exact path="/sharkmap" render={() => <SharkMap />} />
 
-            <Route exact path="/:tab(help)" component={Help} />
-            <Route exact path="/:tab(help)/:pageKey" component={DynamicPages} />
+            <Route exact path="/:tab(help)">
+              <Help />
+            </Route>
+            <Route exact path="/:tab(help)/:pageKey">
+              <DynamicPages />
+            </Route>
 
-            <Route exact path="/main/:pageKey" component={DynamicPages} animated="false" />
+            <Route exact path="/main/:pageKey" render={() => <DynamicPages />} />
 
-            <Route component={NotFound} />
+            <Route render={() => <NotFound />} />
 
           </IonRouterOutlet>
           <IonTabBar slot="bottom">
