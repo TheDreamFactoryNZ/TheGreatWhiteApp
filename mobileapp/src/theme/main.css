@@ -1,0 +1,24 @@
+/* Global Styles */
+
+/* Tab Bar */
+ion-tab-bar,
+ion-tab-button {
+    background: var(--ion-background-color-step-50);
+}
+
+IonTabBar IonIcon {
+    color: var(--ion-color-primary);
+}
+
+/* Loader */
+.page-loader {
+    --backdrop-opacity: 1;
+    --background: #000;
+    --min-height: 100%;
+    --min-width: 100%;
+    --spinner-color: var(--ion-color-tertiary);
+}
+
+.desktopItem {
+    display: none;
+}

@@ -1,0 +1,194 @@
+{
+    "TheLatest": {
+        "title": "The Latest",
+        "heading": "The Great White App 2.0 has Launched!",
+        "sections": [
+            {
+                "type": "h1-heading",
+                "content": "The new and improved Great White App has arrived on our shores"
+            },
+            {
+                "type": "text",
+                "content": "Welcome to V2 of the app!"
+            },
+            {
+                "type": "text",
+                "content": "Success of V1.0 came through the tagging of four Great White sharks in 2022/23 in the Bowentown Harbour entrance. This was spurred by the novel emergence of Great Whites in the area where they have been historically absent. The sharks were tracked for 3-8 months in duration however two extreme flood events in NZ resulted in sharks leaving the area, tags coming off, and since that time, no return presence of these once prolific Great Whites to the area......"
+            },
+            {
+                "type": "text",
+                "content": "During this forced hiatus, V2.0 of the Great White App has been developed, with more interaction, better maps and data, and greater opportunity to engage with evolving and current information about each shark tagged; where it’s going, what it’s doing."
+            },
+            {
+                "type": "text",
+                "content": "While field effort has and continues to occur to identify presence of Great Whites in NE NZ, we couldn’t leave the App empty of tracks for longer, and in effort to learn more about these amazing creatures, effort was made to obtain a very special permit to tag Great Whites within one of the most notorious aggregation sites on earth - Stewart Island in southern NZ."
+            },
+            {
+                "type": "h2-heading",
+                "content": "An update on tagging"
+            },
+            {
+                "type": "text",
+                "content": "Stewart Island is one of the last ‘intact’ and stable aggregation sites of Great Whites on earth. We have seen other infamous aggregation sites like those in South Africa, disappear entirely, with no real insight as to where they went. In California and the east coast of America, we are observing redistribution of populations."
+            },
+            {
+                "type": "text",
+                "content": "No tagging and monitoring of Great Whites has occurred in New Zealand’s Stewart Island since 2015. The Great White App, and tags sponsored by the NZ public, provide an amazing opportunity to fill a decade-old black hole of understanding."
+            },
+            {
+                "type": "text",
+                "content": "The project aim is not just to entertain you with live tracks, but also to generate scientific data that allows insight to migration routes, predator prey relationships, genetic links to Australia, population estimates in collaboration with Australia, and overall monitoring of habitat use by this protected species."
+            },
+            {
+                "type": "h2-heading",
+                "content": "What's new in the app"
+            },
+            {
+                "type": "text",
+                "content": "The Great White App has received a significant overhaul and is not the app it was before! Here are some of the major changes:"
+            },
+            {
+                "type": "ordered-list",
+                "items": [
+                    "Map received a brand new look and feel.",
+                    "Major updates to *all* the components underpinning the app: enjoy a smoother, more reliable experience when seeing what the sharks are up to.",
+                    "New pages and screens added such as The Latest news and updates (as you are reading here) and a help section.",
+                    "Credits added as a token of gratitude to sponsors and contributers to The Great White Project."
+                ]
+            },
+            {
+                "type": "h2-heading",
+                "content": "Summary"
+            },
+            {
+                "type": "text",
+                "content": "This App would not be alive without your support. The small fee paid contributes to the Great White Project and also helps our epic web developers from The Dream Factory continue to run, update and improve the way we join these sharks on their amazing journeys."
+            },
+            {
+                "type": "button",
+                "buttonText": "Scroll to Top",
+                "onClick": "scrollToTop"
+            }
+        ]
+    },
+    "Thanks": {
+        "title": "Special Thanks",
+        "heading": "Thank you to everybody who has helped make the Great White Project possible!",
+        "sections": [
+            {
+                "type": "text",
+                "content": "From sponsoring a shark or equipment through to purchasing and supporting development of this app, you and thousands of people across NZ and beyond are making a difference.",
+                "class": "ion-text-center"
+            },
+            {
+                "type": "h2-heading",
+                "content": "A special thanks to..."
+            },
+            {
+                "type": "h3-heading",
+                "content": "Project Support"
+            },
+            {
+                "type": "text",
+                "content": "These organisations have provided the means for SOS to deploy tags and provide this app to the general public",
+                "class": ""
+            },
+            {
+                "type": "unordered-list",
+                "items": [
+                    "Yamaha - Marine Engine",
+                    "Extreme Boats - Boat",
+                    "GFAB Trailers - Boat Trailer",
+                    "Mazda - Vehicle",
+                    "Raymarine - Marine Electronics",
+                    "SeaDek - Marine Flooring",
+                    "The Dream Factory - Technology & App Development",
+                    "EarthRanger - Conservation & Public Map Technology",
+                    "Wildlife Computers - Satellite Tags",
+                    "Argos Satellites - for connecting us to the sharks",
+                    "Shark Experience Bluff - for access to the amazing animals",
+                    "Discovery Channel - enabling the field effort and telling the story",
+                    "Department of Conservation - for the research permit",
+                    "University of Auckland - for animal ethics",
+                    "Ngāi Tahu - for cultural connection and access to the Titi Island region which form critical habitat for this endangered and protected shark species."
+                ]
+            },
+            {
+                "type": "h3-heading",
+                "content": "Tag Sponsors"
+            },
+            {
+                "type": "text",
+                "content": "These are individuals and organisations who have contributed towards the tags themselves - the device necessary to successfully track the location of sharks",
+                "class": ""
+            },
+            {
+                "type": "unordered-list",
+                "items": [
+                    "Allan McCulloch",
+                    "The Hudson Family",
+                    "Cam Marshall",
+                    "The Cox Family",
+                    "Deane Vipond and Peter Hughes-Hallett",
+                    "Ensidium Hire - Stuie T",
+                    "Hazel McCulloch and Grandma Gillian",
+                    "Jane Mowbray",
+                    "Joe Davenport",
+                    "The Managh Family",
+                    "Mazda NZ",
+                    "Nicole Benz",
+                    "Otawhiwhi Marae - Te Whanau A Tauwhao",
+                    "Rebecca Crosby - Bowentown Campground",
+                    "Sue and Moira Thompson - Northcote Vets",
+                    "Joy & Richard Bates",
+                    "Shark Experience Bluff",
+                    "Steven Morris",
+                    "Waihi School"
+                ]
+            },
+            {
+                "type": "h3-heading",
+                "content": "Development Support"
+            },
+            {
+                "type": "text",
+                "content": "What started as building a website turned into developing an app to track sharks - no easy feat. These people assisted with development every step of the way: whether in support, resources, testing or their constructive criticism, they are appreciated.",
+                "class": ""
+            },
+            {
+                "type": "unordered-list",
+                "items": [
+                    "Andrew Wheelhouse",
+                    "Ben Gaze",
+                    "Courtney Moody",
+                    "Daniel Lansdaal",
+                    "The Earthranger team",
+                    "Joseph Nicholls",
+                    "Kandy Mulcahy",
+                    "Kieran Ashburner",
+                    "Lauren Batcheldor",
+                    "Maddie Burtis",
+                    "Marena Smith from Mapbox",
+                    "Phil & Suyndie Wicks",
+                    "Rebekah Knight",
+                    "Riki-Lee Krutz",
+                    "Wyse Tabuavou"
+                ]
+            },
+            {
+                "type": "h3-heading",
+                "content": "YOU"
+            },
+            {
+                "type": "text",
+                "content": "For the purchasing of this app, a means of supporting the Great White Project.",
+                "class": ""
+            },
+            {
+                "type": "button",
+                "buttonText": "Scroll to Top",
+                "onClick": "scrollToTop"
+            }
+        ]
+    }
+}

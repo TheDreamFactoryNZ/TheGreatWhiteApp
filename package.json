@@ -2,7 +2,7 @@
   "name": "the-great-white-app",
   "private": true,
   "workspaces": [
-    "the-great-white-app",
+    "mobileapp",
     "webapp"
   ],
   "dependencies": {
@@ -18,11 +18,11 @@
   "scripts": {
     "start:webapp": "webpack serve --config webapp/webpack.config.js --mode development",
     "build:webapp": "webpack --config webapp/webpack.config.js --mode production",
-    "start:mobileapp": "cd the-great-white-app && ionic serve",
-    "build:mobileapp": "cd the-great-white-app && ionic build",
+    "start:mobileapp": "cd mobileapp && ionic serve",
+    "build:mobileapp": "cd mobileapp && ionic build",
     "start": "concurrently \"yarn start:webapp\" \"yarn start:mobileapp\"",
-    "cap:sync:android": "yarn workspace the-great-white-app run cap:sync:android",
-    "cap:open:android": "yarn workspace the-great-white-app run cap:open:android"
+    "cap:sync:android": "yarn workspace mobileapp run cap:sync:android",
+    "cap:open:android": "yarn workspace mobileapp run cap:open:android"
 
   },
   "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"

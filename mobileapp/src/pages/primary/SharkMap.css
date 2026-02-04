@@ -1,0 +1,11 @@
+#map-page {
+  position: relative;
+  color: #000 !important;
+}
+#map-page,
+#gw-app,
+#app-container {
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+}

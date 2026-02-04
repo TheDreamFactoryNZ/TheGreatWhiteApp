@@ -1,0 +1,250 @@
+/* For information on how to create your own theme, please see:
+http://ionicframework.com/docs/theming/ */
+
+/* Font face declarations */
+
+@font-face {
+    font-family: 'Rajdhani';
+    src: url('@assets/fonts/rajdhani/rajdhani-latin-ext-300.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Rajdhani';
+    src: url('@assets/fonts/rajdhani/rajdhani-latin-ext-regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Rajdhani';
+    src: url('@assets/fonts/rajdhani/rajdhani-latin-ext-500.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Rajdhani';
+    src: url('@assets/fonts/rajdhani/rajdhani-latin-ext-600.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Rajdhani';
+    src: url('@assets/fonts/rajdhani/rajdhani-latin-ext-700.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Source-Sans';
+    src: url('@assets/fonts/source-sans/source-sans-3-latin-ext-regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Source-Sans';
+    src: url('@assets/fonts/source-sans/source-sans-3-latin-ext-italic.woff2') format('woff2');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Source-Sans';
+    src: url('@assets/fonts/source-sans/source-sans-3-latin-ext-700.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Source-Sans';
+    src: url('@assets/fonts/source-sans/source-sans-3-latin-ext-700-italic.woff2') format('woff2');
+    font-weight: 700;
+    font-style: italic;
+    font-display: swap;
+}
+
+h1:not(#gw-map h1) {
+	font-family: 'Rajdhani', sans-serif;
+	font-weight: 700;
+	letter-spacing: 0.05em;
+}
+
+h2:not(#gw-map h2) {
+	font-family: 'Rajdhani', sans-serif;
+	font-weight: 600;
+	letter-spacing: 0.05em;
+}
+
+h3:not(#gw-map h3) {
+	font-family: 'Rajdhani', sans-serif;
+	font-weight: 300;
+	letter-spacing: 0.05em;
+}
+
+p:not(#gw-map p),
+ul:not(#gw-map ul) {
+	font-family: 'SourceSans3', sans-serif;
+	font-weight: 400;
+}
+
+:root {
+
+	--ion-font-family: 'SourceSans3', sans-serif;
+	--ion-safe-area-top: env(safe-area-inset-top);
+	--ion-safe-area-bottom: env(safe-area-inset-bottom);
+
+	/* Colours */
+
+	--ion-color-primary: #0b1039;
+	--ion-color-primary-rgb: 11, 16, 57;
+	--ion-color-primary-contrast: #ffffff;
+	--ion-color-primary-contrast-rgb: 255, 255, 255;
+	--ion-color-primary-shade: #0a0e32;
+	--ion-color-primary-tint: #23284d;
+
+	--ion-color-secondary: #1d285b;
+	--ion-color-secondary-rgb: 29, 40, 91;
+	--ion-color-secondary-contrast: #ffffff;
+	--ion-color-secondary-contrast-rgb: 255, 255, 255;
+	--ion-color-secondary-shade: #1a2350;
+	--ion-color-secondary-tint: #343e6b;
+
+	--ion-color-tertiary: #1a1aa8;
+	--ion-color-tertiary-rgb: 26, 26, 168;
+	--ion-color-tertiary-contrast: #ffffff;
+	--ion-color-tertiary-contrast-rgb: 255, 255, 255;
+	--ion-color-tertiary-shade: #171794;
+	--ion-color-tertiary-tint: #3131b1;
+
+	--ion-color-success: #00b358;
+	--ion-color-success-rgb: 0, 179, 88;
+	--ion-color-success-contrast: #000000;
+	--ion-color-success-contrast-rgb: 0, 0, 0;
+	--ion-color-success-shade: #009e4d;
+	--ion-color-success-tint: #1abb69;
+
+	--ion-color-warning: #ff5833;
+	--ion-color-warning-rgb: 255, 88, 51;
+	--ion-color-warning-contrast: #000000;
+	--ion-color-warning-contrast-rgb: 0, 0, 0;
+	--ion-color-warning-shade: #e04d2d;
+	--ion-color-warning-tint: #ff6947;
+
+	--ion-color-danger: #e53e33;
+	--ion-color-danger-rgb: 229, 62, 51;
+	--ion-color-danger-contrast: #000000;
+	--ion-color-danger-contrast-rgb: 0, 0, 0;
+	--ion-color-danger-shade: #ca372d;
+	--ion-color-danger-tint: #e85147;
+
+	--ion-color-light: #f3f8ff;
+	--ion-color-light-rgb: 243, 248, 255;
+	--ion-color-light-contrast: #000000;
+	--ion-color-light-contrast-rgb: 0, 0, 0;
+	--ion-color-light-shade: #d6dae0;
+	--ion-color-light-tint: #f4f9ff;
+
+	--ion-color-medium: #888c93;
+	--ion-color-medium-rgb: 136, 140, 147;
+	--ion-color-medium-contrast: #000000;
+	--ion-color-medium-contrast-rgb: 0, 0, 0;
+	--ion-color-medium-shade: #787b81;
+	--ion-color-medium-tint: #94989e;
+
+	--ion-color-dark: #101419;
+	--ion-color-dark-rgb: 16, 20, 25;
+	--ion-color-dark-contrast: #ffffff;
+	--ion-color-dark-contrast-rgb: 255, 255, 255;
+	--ion-color-dark-shade: #0e1216;
+	--ion-color-dark-tint: #282c30;
+
+	/* Stepped Colours */
+
+	--ion-background-color: #f3f8ff;
+	--ion-background-color-rgb: 243, 248, 255;
+
+	--ion-text-color: #101419;
+	--ion-text-color-rgb: 16, 20, 25;
+
+	--ion-text-color-step-50: #1b1f25;
+	--ion-text-color-step-100: #272b30;
+	--ion-text-color-step-150: #32363c;
+	--ion-text-color-step-200: #3d4247;
+	--ion-text-color-step-250: #494d53;
+	--ion-text-color-step-300: #54585e;
+	--ion-text-color-step-350: #5f646a;
+	--ion-text-color-step-400: #6b6f75;
+	--ion-text-color-step-450: #767b81;
+	--ion-text-color-step-500: #82868c;
+	--ion-text-color-step-550: #8d9198;
+	--ion-text-color-step-600: #989da3;
+	--ion-text-color-step-650: #a4a8af;
+	--ion-text-color-step-700: #afb4ba;
+	--ion-text-color-step-750: #babfc6;
+	--ion-text-color-step-800: #c6cad1;
+	--ion-text-color-step-850: #d1d6dd;
+	--ion-text-color-step-900: #dce1e8;
+	--ion-text-color-step-950: #e8edf4;
+
+	--ion-background-color-step-50: #e8edf4;
+	--ion-background-color-step-100: #dce1e8;
+	--ion-background-color-step-150: #d1d6dd;
+	--ion-background-color-step-200: #c6cad1;
+	--ion-background-color-step-250: #babfc6;
+	--ion-background-color-step-300: #afb4ba;
+	--ion-background-color-step-350: #a4a8af;
+	--ion-background-color-step-400: #989da3;
+	--ion-background-color-step-450: #8d9198;
+	--ion-background-color-step-500: #82868c;
+	--ion-background-color-step-550: #767b81;
+	--ion-background-color-step-600: #6b6f75;
+	--ion-background-color-step-650: #5f646a;
+	--ion-background-color-step-700: #54585e;
+	--ion-background-color-step-750: #494d53;
+	--ion-background-color-step-800: #3d4247;
+	--ion-background-color-step-850: #32363c;
+	--ion-background-color-step-900: #272b30;
+	--ion-background-color-step-950: #1b1f25;
+}
+
+@media (prefers-color-scheme: dark) {
+
+	:root.ios,
+	:root.md {
+		--ion-item-background: #1c1c1d;
+
+		--ion-color-primary: #e4e5ec;
+		--ion-color-primary-rgb: 228, 229, 236;
+		--ion-color-primary-contrast: #000000;
+		--ion-color-primary-contrast-rgb: 0, 0, 0;
+		--ion-color-primary-shade: #c9cad0;
+		--ion-color-primary-tint: #e7e8ee;
+
+		--ion-color-secondary: #e7eaf1;
+		--ion-color-secondary-rgb: 231, 234, 241;
+		--ion-color-secondary-contrast: #000000;
+		--ion-color-secondary-contrast-rgb: 0, 0, 0;
+		--ion-color-secondary-shade: #cbced4;
+		--ion-color-secondary-tint: #e9ecf2;
+	}
+
+	#great-whites-icon {
+		color: #101855;
+	}
+}
+
+ion-tab-bar {
+	padding-bottom: var(--ion-safe-area-bottom);
+}
