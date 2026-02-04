@@ -8,12 +8,12 @@
   "dependencies": {
     "mapbox-gl": "2.15.0",
     "prop-types": "^15.8.1",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react": "19.2.3",
+    "react-dom": "19.2.3"
   },
   "resolutions": {
-    "react": "19.0.0",
-    "react-dom": "19.0.0"
+    "react": "19.2.3",
+    "react-dom": "19.2.3"
   },
   "scripts": {
     "start:webapp": "webpack serve --config webapp/webpack.config.js --mode development",
