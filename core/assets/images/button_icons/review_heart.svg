@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #333;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 6px;
+      }
+    </style>
+  </defs>
+  <path id="review_x5F_heart" class="cls-1" d="M55.33,11.61h0c-6.22-6.15-16.4-6.15-22.63,0l-.71.7-.71-.7c-6.22-6.15-16.4-6.15-22.63,0h0c-6.22,6.15-6.22,16.2,0,22.35l.71.7,22.63,22.35,22.63-22.35.71-.7c6.22-6.15,6.22-16.2,0-22.35Z"/>
+</svg>
