@@ -189,6 +189,101 @@ function attachContainerResizeObserver() {
     logLifecycleSummary('attachContainerResizeObserver');
   } catch (e) { /* ignore */ }
 }
+
+// Centralized setup of global resize handlers and container ResizeObserver with idempotency and cleanup
+function setupResize(map, containerEl) {
+  try {
+    // Global handlers: attach once
+    if (!window.__gw_global_resize_attached) {
+      const handler = debounce(() => {
+        try { window.GlobalMap && window.GlobalMap.resize(); } catch (e) {}
+      }, 150);
+
+      window.addEventListener('resize', handler);
+      if (DEBUG) { try { __gwLifecycle.winAttach.resize++; console.info('[GW:LIFECYCLE] attach window.resize', __gwLifecycle.winAttach.resize); } catch (_) {} }
+      window.addEventListener('orientationchange', handler);
+      if (DEBUG) { try { __gwLifecycle.winAttach.orientationchange++; console.info('[GW:LIFECYCLE] attach window.orientationchange', __gwLifecycle.winAttach.orientationchange); } catch (_) {} }
+
+      const onVisibility = () => {
+        if (document.visibilityState === 'visible') handler();
+      };
+      document.addEventListener('visibilitychange', onVisibility);
+      if (DEBUG) { try { __gwLifecycle.winAttach.visibilitychange++; console.info('[GW:LIFECYCLE] attach document.visibilitychange', __gwLifecycle.winAttach.visibilitychange); } catch (_) {} }
+
+      window.__gw_global_resize_attached = true;
+      window.__gw_global_resize_handler = handler;
+      window.__gw_global_visibility_handler = onVisibility;
+      logLifecycleSummary('setupResize:global');
+    }
+
+    // Container observer: observe provided element; handle container swaps
+    const container = containerEl || document.getElementById('map-container');
+    if (container) {
+      const prevObserver = window.__gw_map_resize_observer;
+      const prevEl = window.__gw_map_resize_container_el;
+      if (!prevObserver || prevEl !== container) {
+        // Disconnect previous observer if present
+        if (prevObserver) {
+          try { prevObserver.disconnect(); if (DEBUG) { __gwLifecycle.roDetach++; console.info('[GW:LIFECYCLE] detach ResizeObserver', __gwLifecycle.roDetach); } } catch (_) {}
+          window.__gw_map_resize_observer = null;
+          window.__gw_map_container_resize_handler = null;
+          window.__gw_map_resize_container_el = null;
+          logLifecycleSummary('setupResize:container:detached');
+        }
+
+        const handler = debounce(() => {
+          try {
+            const rect = container.getBoundingClientRect();
+            const canvas = window.GlobalMap && typeof window.GlobalMap.getCanvas === 'function' ? window.GlobalMap.getCanvas() : null;
+            const canvasRect = canvas ? canvas.getBoundingClientRect() : null;
+            console.info('[GW] Map container resize', {
+              container: { width: Math.round(rect.width), height: Math.round(rect.height) },
+              canvas: canvasRect ? { width: Math.round(canvasRect.width), height: Math.round(canvasRect.height) } : null,
+              dpr: window.devicePixelRatio || 1
+            });
+            window.GlobalMap && window.GlobalMap.resize();
+          } catch (e) { /* ignore */ }
+        }, 120);
+
+        const ro = new ResizeObserver(() => handler());
+        ro.observe(container);
+        window.__gw_map_resize_observer = ro;
+        window.__gw_map_container_resize_handler = handler;
+        window.__gw_map_resize_container_el = container;
+        if (DEBUG) { try { __gwLifecycle.roAttach++; console.info('[GW:LIFECYCLE] attach ResizeObserver', __gwLifecycle.roAttach); } catch (_) {} }
+        logLifecycleSummary('setupResize:container');
+      }
+    }
+
+    const cleanup = () => {
+      try {
+        if (window.__gw_global_resize_attached) {
+          const h = window.__gw_global_resize_handler;
+          const v = window.__gw_global_visibility_handler;
+          try { window.removeEventListener('resize', h); if (DEBUG) { __gwLifecycle.winDetach.resize++; console.info('[GW:LIFECYCLE] detach window.resize', __gwLifecycle.winDetach.resize); } } catch (_) {}
+          try { window.removeEventListener('orientationchange', h); if (DEBUG) { __gwLifecycle.winDetach.orientationchange++; console.info('[GW:LIFECYCLE] detach window.orientationchange', __gwLifecycle.winDetach.orientationchange); } } catch (_) {}
+          try { document.removeEventListener('visibilitychange', v); if (DEBUG) { __gwLifecycle.winDetach.visibilitychange++; console.info('[GW:LIFECYCLE] detach document.visibilitychange', __gwLifecycle.winDetach.visibilitychange); } } catch (_) {}
+          window.__gw_global_resize_attached = false;
+          window.__gw_global_resize_handler = null;
+          window.__gw_global_visibility_handler = null;
+          logLifecycleSummary('setupResize:global:detached');
+        }
+
+        const ro = window.__gw_map_resize_observer;
+        if (ro) {
+          try { ro.disconnect(); if (DEBUG) { __gwLifecycle.roDetach++; console.info('[GW:LIFECYCLE] detach ResizeObserver', __gwLifecycle.roDetach); } } catch (_) {}
+          window.__gw_map_resize_observer = null;
+          window.__gw_map_container_resize_handler = null;
+          window.__gw_map_resize_container_el = null;
+          logLifecycleSummary('setupResize:container:detached:cleanup');
+        }
+      } catch (e) { /* ignore */ }
+    };
+    window.__gw_resize_cleanup = cleanup;
+    return cleanup;
+  } catch (e) { /* ignore */ }
+  return () => {};
+}
           if (DEBUG) { try { __gwLifecycle.mapEventAttach['load'] = (__gwLifecycle.mapEventAttach['load'] || 0) + 1; console.info('[GW:LIFECYCLE] attach map.on(load)', __gwLifecycle.mapEventAttach['load']); } catch (_) {} }
   if (DEBUG) { try { __gwLifecycle.mapEventAttach['load'] = (__gwLifecycle.mapEventAttach['load'] || 0) + 1; console.info('[GW:LIFECYCLE] attach map.on(load)', __gwLifecycle.mapEventAttach['load']); } catch (_) {} }
   try { window.GlobalMap.off('load', onLoad); if (DEBUG) { __gwLifecycle.mapEventDetach['load'] = (__gwLifecycle.mapEventDetach['load'] || 0) + 1; console.info('[GW:LIFECYCLE] detach map.off(load)', __gwLifecycle.mapEventDetach['load']); } } catch (_) {}
@@ -453,10 +548,8 @@ const App = (props) => {
     if (window.GlobalMap && typeof window.GlobalMap.resize === 'function') {
       try { window.GlobalMap.resize(); } catch (err) {}
       setTimeout(() => { try { window.GlobalMap.resize(); } catch (e) {} }, 200);
-      // Attach debounced global handlers once
-      attachGlobalResizeHandlers();
-      // Observe container for subsequent size changes
-      attachContainerResizeObserver();
+      // Centralized setup of resize wiring (global + container)
+      setupResize(window.GlobalMap, document.getElementById('map-container'));
       // If the map's style is loaded, ensure subjects are loaded; otherwise, attach a one-time load hook
       try {
         const styleLoaded = typeof window.GlobalMap.isStyleLoaded === 'function'
@@ -513,10 +606,8 @@ const App = (props) => {
         try { window.GlobalMap.resize(); } catch (e) { /* ignore */ }
       }, 200);
 
-      // Attach debounced global resize/visibility handlers once
-      attachGlobalResizeHandlers();
-      // Observe container for subsequent size changes
-      attachContainerResizeObserver();
+      // Centralized setup of resize wiring (global + container)
+      setupResize(window.GlobalMap, document.getElementById('map-container'));
     });
   }
 
@@ -1094,8 +1185,7 @@ const softStyleReload = async () => {
     const rehydrate = () => {
       if (hydrated) return;
       hydrated = true;
-      attachGlobalResizeHandlers();
-      attachContainerResizeObserver();
+      setupResize(window.GlobalMap, document.getElementById('map-container'));
       loadSubjectsAndIcons();
       Object.entries(tracks).forEach(([id, vis]) => { if (vis) fetchTrack(id); });
       resetMap();
