@@ -135,6 +135,8 @@ function debounce(fn, wait) {
 }
 
 // Attach global, debounced map resize handlers once
+// Legacy helper: superseded by setupResize().
+// Kept for reference and backwards compatibility where needed.
 function attachGlobalResizeHandlers() {
   try {
     if (window.__gw_global_resize_attached) return;
@@ -161,6 +163,8 @@ function attachGlobalResizeHandlers() {
 }
 
 // Observe the map container for size changes and trigger a resize with logging
+// Legacy helper: superseded by setupResize().
+// Kept for reference and backwards compatibility where needed.
 function attachContainerResizeObserver() {
   try {
     if (window.__gw_map_resize_observer) return;
@@ -191,6 +195,9 @@ function attachContainerResizeObserver() {
 }
 
 // Centralized setup of global resize handlers and container ResizeObserver with idempotency and cleanup
+// Centralized resize wiring: attaches global listeners and container ResizeObserver.
+// Idempotent: reuses existing handlers; safely re-observes when container changes.
+// Exposes cleanup via window.__gw_resize_cleanup for unified teardown.
 function setupResize(map, containerEl) {
   try {
     // Global handlers: attach once
@@ -1182,6 +1189,7 @@ const softStyleReload = async () => {
       : config.map.style;
 
     let hydrated = false;
+    // Rehydrate after style change; expected to fire once(load)/once(idle) and auto-detach.
     const rehydrate = () => {
       if (hydrated) return;
       hydrated = true;
@@ -1189,19 +1197,71 @@ const softStyleReload = async () => {
       loadSubjectsAndIcons();
       Object.entries(tracks).forEach(([id, vis]) => { if (vis) fetchTrack(id); });
       resetMap();
+      if (DEBUG) { try { console.info('[GW:LIFECYCLE] rehydrate completed'); } catch (_) {} }
+    };
+
+    const onceWithLog = (eventName) => () => {
+      if (DEBUG) {
+        try {
+          const key = `once(${eventName})`;
+          __gwLifecycle.mapEventDetach[key] = (__gwLifecycle.mapEventDetach[key] || 0) + 1;
+          console.info(`[GW:LIFECYCLE] fired ${key} (auto-detach)`, __gwLifecycle.mapEventDetach[key]);
+        } catch (_) {}
+      }
+      rehydrate();
     };
 
     window.GlobalMap.setStyle(styleUrl);
-    window.GlobalMap.once('load', rehydrate);
-    window.GlobalMap.once('load', rehydrate);
+    // Expected: attach count increases per refresh; handlers auto-detach after firing.
+    window.GlobalMap.once('load', onceWithLog('load'));
     if (DEBUG) { try { __gwLifecycle.mapEventAttach['once(load)'] = (__gwLifecycle.mapEventAttach['once(load)'] || 0) + 1; console.info('[GW:LIFECYCLE] attach map.once(load)', __gwLifecycle.mapEventAttach['once(load)']); } catch (_) {} }
     // Fallback in rare cases ‘load’ is missed
-    window.GlobalMap.once('idle', rehydrate);
+    // Fallback in rare cases ‘load’ is missed.
+    window.GlobalMap.once('idle', onceWithLog('idle'));
     if (DEBUG) { try { __gwLifecycle.mapEventAttach['once(idle)'] = (__gwLifecycle.mapEventAttach['once(idle)'] || 0) + 1; console.info('[GW:LIFECYCLE] attach map.once(idle)', __gwLifecycle.mapEventAttach['once(idle)']); } catch (_) {} }
   } catch {
     hardRefreshMap();
   }
 };
+
+// Teardown: free resources, abort work, and remove the global map
+// Full teardown: reserved for hard refresh flows.
+// Frees resources, aborts work, removes map, and resets globals.
+function teardownGlobalMap() {
+  try {
+    // Detach global listeners and container observer via centralized cleanup
+    if (typeof window.__gw_resize_cleanup === 'function') {
+      try { window.__gw_resize_cleanup(); } catch (_) {}
+    }
+
+    // Abort any in-flight work
+    try { configFetchCtlRef.current?.abort(); } catch (_) {}
+    try { subjectsFetchCtlRef.current?.abort(); } catch (_) {}
+    try {
+      for (const ctl of tracksFetchCtlMapRef.current.values()) { try { ctl.abort(); } catch (_) {} }
+      tracksFetchCtlMapRef.current.clear();
+    } catch (_) {}
+
+    // Remove registered map handlers
+    try { if (window.GlobalMap) mapHandlerRegistry.removeAll(window.GlobalMap); } catch (_) {}
+
+    // Reset subject/icon registries and flags
+    try { subjectIconLayerIdsRef.current?.clear(); } catch (_) {}
+    try {
+      if (window.GlobalMap) {
+        window.GlobalMap.__gw_subjects_loaded = false;
+        window.GlobalMap.__gw_subjects_load_hook_attached = false;
+      }
+    } catch (_) {}
+
+    // Remove map and null global
+    try { if (window.GlobalMap?.remove) window.GlobalMap.remove(); } catch (_) {}
+    try { window.GlobalMap = null; } catch (_) {}
+  } catch (e) { /* ignore */ }
+}
+
+// Expose teardown for manual hard refreshes
+try { window.__gw_teardown_global_map = teardownGlobalMap; } catch (_) {}
 
   return (
     <>
@@ -1262,6 +1322,32 @@ const softStyleReload = async () => {
 };
 
 export default App;
+
+// HMR dispose hooks (module scope): run light cleanup on module reload.
+// Must be outside the React component to execute on replacement.
+// Light cleanup for HMR: intentionally outside the React component.
+// Detaches listeners/observer and clears registry handlers; preserves the map instance.
+function cleanupForHMR() {
+  try {
+    if (typeof window.__gw_resize_cleanup === 'function') {
+      try { window.__gw_resize_cleanup(); } catch (_) {}
+    }
+    try { if (window.GlobalMap) mapHandlerRegistry.removeAll(window.GlobalMap); } catch (_) {}
+    if (DEBUG) { try { logLifecycleSummary('hmr:cleanup'); } catch (_) {} }
+  } catch (_) {}
+}
+
+try {
+  if (typeof import.meta !== 'undefined' && import.meta.hot) {
+    import.meta.hot.dispose(() => { try { cleanupForHMR(); } catch (_) {} });
+  }
+} catch (_) {}
+
+try {
+  if (typeof module !== 'undefined' && module.hot) {
+    module.hot.dispose(() => { try { cleanupForHMR(); } catch (_) {} });
+  }
+} catch (_) {}
 
 // Validate and normalize configuration, applying safe defaults
 function validateAndNormalizeConfig(raw) {
