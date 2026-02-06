@@ -40,6 +40,27 @@ References:
 - Vite define in [mobileapp/vite.config.ts](mobileapp/vite.config.ts#L1) injects `__MAPBOX_TOKEN__` from `VITE_MAPBOX_TOKEN || MAPBOX_TOKEN`.
 - Webpack DefinePlugin in [webapp/webpack.config.js](webapp/webpack.config.js#L1) injects `__MAPBOX_TOKEN__` from `MAPBOX_TOKEN`.
 
+### Debug Flags
+- `GW_DEBUG`: enables lifecycle instrumentation and future debug features.
+- Enable in `.env.local` per workspace:
+
+```bash
+# webapp/.env.local
+GW_DEBUG=1
+
+# mobileapp/.env.local
+GW_DEBUG=1
+```
+
+- Default behavior:
+- If `GW_DEBUG` is unset, debug is enabled in development and disabled in production.
+- If `GW_DEBUG` is set, only `1` or `true` enables; `0` or `false` disables.
+Both toolchains inject a build-time `__GW_DEBUG__` used by core.
+
+References:
+- Vite definition: see [mobileapp/vite.config.ts](mobileapp/vite.config.ts) (`define.__GW_DEBUG__`).
+- Webpack definition: see [webapp/webpack.config.js](webapp/webpack.config.js) (`DefinePlugin` for `__GW_DEBUG__`).
+
 ## Scripts
 
 From the repo root:

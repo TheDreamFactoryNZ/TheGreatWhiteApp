@@ -14,6 +14,10 @@ export default defineConfig(({ mode }) => {
     || env.MAPBOX_TOKEN
     || process.env.MAPBOX_TOKEN
     || ''
+  const rawDebug = env.GW_DEBUG ?? process.env.GW_DEBUG ?? undefined
+  const hasRaw = rawDebug !== undefined && rawDebug !== ''
+  const norm = hasRaw ? String(rawDebug).toLowerCase().trim() : undefined
+  const debugFlag = hasRaw ? (norm === '1' || norm === 'true') : (mode === 'development')
   return {
   plugins: [
     react(),
@@ -28,6 +32,7 @@ export default defineConfig(({ mode }) => {
   ],
   define: {
     __MAPBOX_TOKEN__: JSON.stringify(token),
+    __GW_DEBUG__: JSON.stringify(!!debugFlag),
   },
   resolve: {
     alias: {

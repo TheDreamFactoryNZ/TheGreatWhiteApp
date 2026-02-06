@@ -10,6 +10,10 @@ dotenv.config();
 
 module.exports = (env, argv) => {
   const isDev = argv.mode === "development";
+  const rawDebug = process.env.GW_DEBUG;
+  const hasRaw = rawDebug !== undefined && rawDebug !== '';
+  const norm = hasRaw ? String(rawDebug).toLowerCase().trim() : undefined;
+  const debugFlag = hasRaw ? (norm === '1' || norm === 'true') : isDev;
 
   return {
     entry: path.resolve(__dirname, "../core/index.jsx"),
@@ -127,6 +131,7 @@ module.exports = (env, argv) => {
       }),
       new webpack.DefinePlugin({
         __MAPBOX_TOKEN__: JSON.stringify(process.env.MAPBOX_TOKEN ?? ""),
+        __GW_DEBUG__: JSON.stringify(!!debugFlag),
       }),
     ],
   };

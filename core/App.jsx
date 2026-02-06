@@ -12,12 +12,45 @@ import TrackContext from './context/TrackContext.js';
 
 import 'mapbox-gl/dist/mapbox-gl.css'; // Mapbox default styles
 import './assets/mapstyle.css'; // Overrides for mapbox default styles
-import './assets/main.css'; // Global styles for map - under construction
+import './assets/main.css'; // Global styles for map + map UI
 
 import med from './assets/images/med.png';
 import sharkIconActive from './assets/images/animal_icons/shark-icon-active.svg';
 import sharkIconInactive from './assets/images/animal_icons/shark-icon-inactive.svg';
 import sharkIconDeactivated from './assets/images/animal_icons/shark-icon-deactivated.svg';
+
+// Lifecycle instrumentation (Step 0)
+// Prefer build-time flag; fallback to dev mode; default false
+const DEBUG = (typeof __GW_DEBUG__ !== 'undefined' ? __GW_DEBUG__ : ((typeof import.meta !== 'undefined' && import.meta.env && typeof import.meta.env.DEV !== 'undefined') ? !!import.meta.env.DEV : false));
+const __gwLifecycle = (typeof window !== 'undefined') ? (window.__gw_lifecycle || (window.__gw_lifecycle = {
+  winAttach: { resize: 0, orientationchange: 0, visibilitychange: 0 },
+  winDetach: { resize: 0, orientationchange: 0, visibilitychange: 0 },
+  roAttach: 0,
+  roDetach: 0,
+  mapEventAttach: {},
+  mapEventDetach: {}
+})) : {
+  winAttach: { resize: 0, orientationchange: 0, visibilitychange: 0 },
+  winDetach: { resize: 0, orientationchange: 0, visibilitychange: 0 },
+  roAttach: 0,
+  roDetach: 0,
+  mapEventAttach: {},
+  mapEventDetach: {}
+};
+function logLifecycleSummary(where) {
+  if (!DEBUG) return;
+  try {
+    console.info('[GW:LIFECYCLE] summary', {
+      where,
+      winAttach: __gwLifecycle.winAttach,
+      winDetach: __gwLifecycle.winDetach,
+      roAttach: __gwLifecycle.roAttach,
+      roDetach: __gwLifecycle.roDetach,
+      mapEventAttach: __gwLifecycle.mapEventAttach,
+      mapEventDetach: __gwLifecycle.mapEventDetach,
+    });
+  } catch (_) {}
+}
 
 const envToken =
   __MAPBOX_TOKEN__ || // Build-time injected in both Vite and Webpack
@@ -110,16 +143,20 @@ function attachGlobalResizeHandlers() {
     }, 150);
 
     window.addEventListener('resize', handler);
+    if (DEBUG) { try { __gwLifecycle.winAttach.resize++; console.info('[GW:LIFECYCLE] attach window.resize', __gwLifecycle.winAttach.resize); } catch (_) {} }
     window.addEventListener('orientationchange', handler);
+    if (DEBUG) { try { __gwLifecycle.winAttach.orientationchange++; console.info('[GW:LIFECYCLE] attach window.orientationchange', __gwLifecycle.winAttach.orientationchange); } catch (_) {} }
 
     const onVisibility = () => {
       if (document.visibilityState === 'visible') handler();
     };
     document.addEventListener('visibilitychange', onVisibility);
+    if (DEBUG) { try { __gwLifecycle.winAttach.visibilitychange++; console.info('[GW:LIFECYCLE] attach document.visibilitychange', __gwLifecycle.winAttach.visibilitychange); } catch (_) {} }
 
     window.__gw_global_resize_attached = true;
     window.__gw_global_resize_handler = handler;
     window.__gw_global_visibility_handler = onVisibility;
+    logLifecycleSummary('attachGlobalResizeHandlers');
   } catch (e) { /* ignore */ }
 }
 
@@ -148,8 +185,14 @@ function attachContainerResizeObserver() {
     ro.observe(container);
     window.__gw_map_resize_observer = ro;
     window.__gw_map_container_resize_handler = handler;
+    if (DEBUG) { try { __gwLifecycle.roAttach++; console.info('[GW:LIFECYCLE] attach ResizeObserver', __gwLifecycle.roAttach); } catch (_) {} }
+    logLifecycleSummary('attachContainerResizeObserver');
   } catch (e) { /* ignore */ }
 }
+          if (DEBUG) { try { __gwLifecycle.mapEventAttach['load'] = (__gwLifecycle.mapEventAttach['load'] || 0) + 1; console.info('[GW:LIFECYCLE] attach map.on(load)', __gwLifecycle.mapEventAttach['load']); } catch (_) {} }
+  if (DEBUG) { try { __gwLifecycle.mapEventAttach['load'] = (__gwLifecycle.mapEventAttach['load'] || 0) + 1; console.info('[GW:LIFECYCLE] attach map.on(load)', __gwLifecycle.mapEventAttach['load']); } catch (_) {} }
+  try { window.GlobalMap.off('load', onLoad); if (DEBUG) { __gwLifecycle.mapEventDetach['load'] = (__gwLifecycle.mapEventDetach['load'] || 0) + 1; console.info('[GW:LIFECYCLE] detach map.off(load)', __gwLifecycle.mapEventDetach['load']); } } catch (_) {}
+  try { window.GlobalMap.on('load', onLoad); if (DEBUG) { __gwLifecycle.mapEventAttach['load'] = (__gwLifecycle.mapEventAttach['load'] || 0) + 1; console.info('[GW:LIFECYCLE] attach map.on(load)', __gwLifecycle.mapEventAttach['load']); } } catch (_) {}
 
 const imgElFromSrc = (src, width = MAP_ICON_SIZE, height = null) => new Promise((resolve, reject) => {
   const img = new Image();
@@ -1060,8 +1103,11 @@ const softStyleReload = async () => {
 
     window.GlobalMap.setStyle(styleUrl);
     window.GlobalMap.once('load', rehydrate);
+    window.GlobalMap.once('load', rehydrate);
+    if (DEBUG) { try { __gwLifecycle.mapEventAttach['once(load)'] = (__gwLifecycle.mapEventAttach['once(load)'] || 0) + 1; console.info('[GW:LIFECYCLE] attach map.once(load)', __gwLifecycle.mapEventAttach['once(load)']); } catch (_) {} }
     // Fallback in rare cases ‘load’ is missed
     window.GlobalMap.once('idle', rehydrate);
+    if (DEBUG) { try { __gwLifecycle.mapEventAttach['once(idle)'] = (__gwLifecycle.mapEventAttach['once(idle)'] || 0) + 1; console.info('[GW:LIFECYCLE] attach map.once(idle)', __gwLifecycle.mapEventAttach['once(idle)']); } catch (_) {} }
   } catch {
     hardRefreshMap();
   }
