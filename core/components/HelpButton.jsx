@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './HelpButton.module.css';
 
 import close from '@images/button_icons/close.svg';
@@ -19,12 +19,35 @@ const HelpButton = () => {
 
   const [tipsOpen, setTipsOpen] = useState(false);
 
+  // Close when another popup announces it opened
+  useEffect(() => {
+    const id = 'help';
+    const onPopupOpen = (e) => {
+      try {
+        const otherId = e?.detail?.id;
+        if (otherId && otherId !== id) {
+          setTipsOpen(false);
+        }
+      } catch (_) {}
+    };
+    try { window.addEventListener('gw:popup-open', onPopupOpen); } catch (_) {}
+    return () => { try { window.removeEventListener('gw:popup-open', onPopupOpen); } catch (_) {} };
+  }, []);
+
   return (
     <div className={styles.tipsContainer}>
       <button
         type="button"
         className={styles.tipsToggleIcon}
-        onClick={() => setTipsOpen(o => !o)}
+        onClick={() => {
+          setTipsOpen((prev) => {
+            const next = !prev;
+            if (next) {
+              try { window.dispatchEvent(new CustomEvent('gw:popup-open', { detail: { id: 'help' } })); } catch (_) {}
+            }
+            return next;
+          });
+        }}
         aria-expanded={tipsOpen}
         aria-label="Toggle help tips"
       />

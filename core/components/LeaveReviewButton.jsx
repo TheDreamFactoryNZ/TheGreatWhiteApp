@@ -1,17 +1,41 @@
 import React, { useEffect, useState } from 'react';
 import styles from './LeaveReviewButton.module.css';
+import close from '@images/button_icons/close.svg';
 
 /* eslint-disable react/prop-types */
 const LeaveReviewButton = () => {
 
   const [reviewOpen, setReviewOpen] = useState(false);
 
+  // Close when another popup announces it opened
+  useEffect(() => {
+    const id = 'leave-review';
+    const onPopupOpen = (e) => {
+      try {
+        const otherId = e?.detail?.id;
+        if (otherId && otherId !== id) {
+          setReviewOpen(false);
+        }
+      } catch (_) {}
+    };
+    try { window.addEventListener('gw:popup-open', onPopupOpen); } catch (_) {}
+    return () => { try { window.removeEventListener('gw:popup-open', onPopupOpen); } catch (_) {} };
+  }, []);
+
   return (
     <div className={styles.leaveReviewContainer}>
       <button
         type="button"
         className={styles.leaveReviewIcon}
-        onClick={() => setReviewOpen(o => !o)}
+        onClick={() => {
+          setReviewOpen((prev) => {
+            const next = !prev;
+            if (next) {
+              try { window.dispatchEvent(new CustomEvent('gw:popup-open', { detail: { id: 'leave-review' } })); } catch (_) {}
+            }
+            return next;
+          });
+        }}
         aria-expanded={reviewOpen}
         aria-label="Submit feedback and leave a review"
       />
