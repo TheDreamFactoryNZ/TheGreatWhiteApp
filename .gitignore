@@ -356,3 +356,6 @@ MigrationBackup/
 /webapp/.env.local
 /the-great-white-app/.env
 /the-great-white-app/.env.local
+
+# Context files for local AI development
+/context

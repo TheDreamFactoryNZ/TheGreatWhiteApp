@@ -1,7 +1,0 @@
-{
-  "name": "The Great White App",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "react-vite"
-}
