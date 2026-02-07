@@ -1,24 +1,20 @@
-/* Container for the whole refresh UI */
-.leaveReviewContainer {
+/* Container for the whole tips UI */
+.tipsContainer {
     composes: mapButtonContainer from './MapButtons.module.css';
-    --control-top: 105px;
+    --control-top: 142px;
 }
 
-/* The small button that triggers the refresh */
+/* The small button that toggles the tips */
 
 
-.leaveReviewIcon {
+.tipsToggleIcon {
     composes: mapButtonIcon from './MapButtons.module.css';
-    --icon-background-image: url('../assets/images/button_icons/review_heart.svg');
-    --icon-background-size: 21px;
-}
-
-.hidden {
-    display: none;
+    --icon-background-image: url('@assets/images/button_icons/help.svg');
+    --icon-background-size: 12px;
 }
 
 /* The content panel that appears when tips are shown */
-.supportContentContainer {
+.tipsContentContainer {
     width: min(75vw, clamp(270px, 25vw, 340px));
     margin-top: -34px;
     margin-left: 44px;
@@ -35,7 +31,7 @@
 }
 
 /* Header area inside the content panel */
-.supportHeaderContainer {
+.tipsHeaderContainer {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -43,7 +39,7 @@
     padding-left: 10px;
 }
 
-h2.supportHeader {
+h2.tipsHeader {
     flex: 1 1 auto;
     min-width: 0;
     margin: 0;
@@ -63,8 +59,16 @@ h2.supportHeader {
     box-sizing: content-box;
 }
 
+.tips ul {
+    padding-bottom: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
 /* The list of tip items */
-.supportItemsContainer {
+.tipItemsContainer {
     display: flex;
     flex-direction: column;
     padding: 10px;
@@ -72,7 +76,7 @@ h2.supportHeader {
     max-height: 50vh;
 }
 
-.supportItem {
+.tipItem {
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -80,20 +84,50 @@ h2.supportHeader {
     gap: 1rem;
 }
 
-.supportItem p {
+.tipItem p {
     font-size: calc(var(--map-body-font-size) * 0.875);
 }
 
-.supportItemsContainer .supportItem:first-of-type {
+.tipItemsContainer .tipItem:first-of-type {
   padding-top: 0.25rem;
 }
 
 /* Divider between tip items */
-.supportItemsContainer .supportItem + .supportItem {
+.tipItemsContainer .tipItem + .tipItem {
     border-top: 1px solid rgba(0,0,0,0.12);
     margin-top: 0; /* keep spacing controlled by padding */
 }
 
-.supportItem:last-of-type {
+.tipItem:last-of-type {
     padding-bottom: 0;
+}
+
+/* Icon styling and container */
+.tipIconContainer {
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 40px;
+}
+
+.tipIconContainer .tipIcon {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
+.tipIcon {
+    pointer-events: none;
+}
+
+/* Modifier for icons that are vertically biased (taller than wide).
+   Make them fill the container height so they appear balanced with square icons. */
+.tipIconContainer.tipIconVertical {
+    height: 100%;
+    width: auto;
+    max-height: 100%;
 }

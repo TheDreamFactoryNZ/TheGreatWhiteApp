@@ -9,6 +9,6 @@
 
 .refreshMapIcon {
     composes: mapButtonIcon from './MapButtons.module.css';
-    --icon-background-image: url('../assets/images/button_icons/refresh.svg');
+    --icon-background-image: url('@images/button_icons/refresh.svg');
     --icon-background-size: 21px;
 }
