@@ -1,7 +1,7 @@
 /* Container for the whole refresh UI */
 .refreshMapContainer {
     composes: mapButtonContainer from './MapButtons.module.css';
-    --control-top: 142px;
+    --control-top: 179px;
 }
 
 /* The small button that triggers the refresh */

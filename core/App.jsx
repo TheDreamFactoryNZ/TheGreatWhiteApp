@@ -4,6 +4,7 @@ import SubjectPopupContent from './components/SubjectPopupContent';
 import PointPopupContent from './components/PointPopupContent';
 import Popup from './components/Popup';
 import Legend from './components/Legend';
+import LeaveReviewButton from './components/LeaveReviewButton';
 import HelpButton from './components/HelpButton';
 import RefreshMapButton from './components/RefreshMapButton';
 import Partners from './components/Partners';
@@ -1269,6 +1270,7 @@ try { window.__gw_teardown_global_map = teardownGlobalMap; } catch (_) {}
         <div id='gw-map'>
           <div id='app-container'>
             <div id='map-container' onKeyDown={logKey} onKeyUp={logKey}>
+              <LeaveReviewButton />
               <HelpButton />
               <RefreshMapButton onClick={softStyleReload} />
 
