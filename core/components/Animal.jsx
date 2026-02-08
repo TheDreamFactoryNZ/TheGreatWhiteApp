@@ -4,6 +4,7 @@ import styles from './Animal.module.css';
 
 import storyIcon from '@images/button_icons/view-story-arrow.svg';
 import TrackContext from '@track-context';
+import LastSeenInfo from './LastSeenInfo';
 
 /* eslint-disable react/prop-types */
 const Animal = ({ animal, configData, animalOnLocClicked, onNameClick, displayStory, isStoryView: isStoryViewProp }) => {
@@ -22,7 +23,7 @@ const Animal = ({ animal, configData, animalOnLocClicked, onNameClick, displaySt
   const bulletBackgroundStyle = { backgroundColor: statusColorMap[rawStatus] || '#B0B0B0' };
   const animalId = animal.id + ' animal';
   let animalName = 'animal-name ';
-  let display = { };
+  let display = {};
 
   const isTrackOn = !!(tracks && tracks[animal.id]);
   const trackState = isTrackOn ? ' tracksActive ' : '';
@@ -43,7 +44,7 @@ const Animal = ({ animal, configData, animalOnLocClicked, onNameClick, displaySt
           const clicked = e.target;
 
           if (name.classList.contains('animal-name') && clicked.id !== 'subject-track-button' &&
-          clicked.id !== 'subject-location-button') {
+            clicked.id !== 'subject-location-button') {
             onNameClick([animal, configData.subjects[animal.id]]);
             name.classList.toggle('animal-name');
           }
@@ -56,8 +57,13 @@ const Animal = ({ animal, configData, animalOnLocClicked, onNameClick, displaySt
             id={animal.name.replace(' ', '-')}
           >
             <h3 className={`${'map-heading'} ${styles.animalNameText}`} title={animal.name}>
-            {animal.name}
+              {animal.name}
             </h3>
+            <LastSeenInfo
+              isoDate={animal?.last_position?.properties?.DateTime}
+              timezoneLabel="UTC"
+              className={`${'map-body'} ${styles.lastSeen}`}
+            />
           </div>
         </div>
         <div className={styles.trackButtons}>
