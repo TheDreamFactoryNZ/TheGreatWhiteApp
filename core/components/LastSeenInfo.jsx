@@ -203,7 +203,7 @@ export default function LastSeenInfo({
 
   // Non-expandable: print summary only (no full date shown here), show .
   return (
-    <div className={className}>
+    <p className={className}>
       {withBullet && (
         <span
           className={`${styles.statusBullet} ${statusClass} ${statusClassName}`}
@@ -211,6 +211,6 @@ export default function LastSeenInfo({
         />
       )}
       {dateSummaryText}
-    </div>
+    </p>
   );
 }
