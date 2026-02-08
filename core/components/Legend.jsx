@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import styles from './Legend.module.css';
 import Animal from './Animal.jsx';
 import sanitizeHtml from '../utils/sanitizeHtml.js';
@@ -9,11 +9,27 @@ import erLogo from '@images/LogoEarthRanger.png';
 import BackArrow from '@images/button_icons/back-arrow.svg?component';
 
 /* eslint-disable react/prop-types */
+
+function getLastSeenMs(subject) {
+  const iso = subject?.last_position?.properties?.DateTime;
+  if (typeof iso === 'string') {
+    const t = new Date(iso).getTime();
+    if (!Number.isNaN(t)) return t;
+  }
+  const epoch = subject?.last_position?.properties?.time_epoch; // optional fallback
+  if (typeof epoch === 'number') return epoch * 1000;
+  return -Infinity; // missing dates go to the end
+}
+
 const Legend = ({
   subs, subjectData, onLocClick, legSub, onReturnClick, onStoryClick,
   legendOpen, onLegendStateToggle, title
 }) => {
   const doubleCaretIcon = doubleCaret;
+
+  const sortedSubs = useMemo(() => {
+    return [...(subs || [])].sort((a, b) => getLastSeenMs(b) - getLastSeenMs(a));
+  }, [subs]);
 
   function toggleLegend() {
     onLegendStateToggle();
@@ -25,7 +41,7 @@ const Legend = ({
         <div className={styles.legendContent}>
           <div className={styles.title}>
             <div className={styles.tracker}>
-              <h1 className={styles.mapTitle}>{title !== null ? title : 'Animal Tracker'}</h1>
+              <h1 className={styles.mapTitle}>{title !== null ? title : 'The Great White App'}</h1>
             </div>
             <div className={styles.developerLogo}>
               <span className={styles.developerText}>Developed by</span>
@@ -45,15 +61,16 @@ const Legend = ({
             </div>
           </div>
           <div className={styles.subs}>
-            {subs === undefined ? <div />
-              : subs.map((s) => (
-                <div key={s.id} className={styles.subjectDiv}>
-                  <Animal
-                    animal={s} configData={subjectData}
-                    key={s.id}
-                    animalOnLocClicked={onLocClick} onNameClick={onStoryClick}
-                    displayStory={s.display_story}
-                  />
+            {sortedSubs.map((s) => (
+              <div key={s.id} className={styles.subjectDiv}>
+                <Animal
+                  animal={s}
+                  configData={subjectData}
+                  key={s.id}
+                  animalOnLocClicked={onLocClick}
+                  onNameClick={onStoryClick}
+                  displayStory={s.display_story}
+                />
                 </div>
               ))}
           </div>
