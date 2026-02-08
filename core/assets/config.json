@@ -54,17 +54,17 @@
             "detail_description": "The presence of pilot fish indicate this male shark has migrated from the tropics. Large male."
         },
         "18a9e2b7-7629-46bf-9e03-0824122f45eb": {
-            "name": "",
-            "age": "",
+            "name": "Joe",
+            "age": "Total length: 3.2m",
             "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon.webp",
-            "status": "deactivated",
+            "status": "active",
             "pictures": [
                 {
-                    "path": ""
+                    "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/joe/joe.webp"
                 }
             ],
-            "detail_description": "<p>Description coming soon...</p>",
-            "fun_fact": ""
+            "detail_description": "Joe is a fit and healthy young male, likely hailing from Australia as he had an existing acoustic tag, most likely from the NSW Shark Smart tagging program.",
+            "fun_fact": "Tagged 19 January 2026 15:50. Tag sponsored by Joe Davenport"
         },
         "24b4c45f-bb3f-491e-b6c1-e1fe72cda06a": {
             "name": "Bubbles",
@@ -121,8 +121,8 @@
         "43f46c45-f4d9-438d-a8c8-d23d919c1872": {
             "name": "Jonah",
             "age": "Total length: 3.1m",
-            "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon.webp",
-            "status": "active",
+            "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon_inactive.webp",
+            "status": "deactivated",
             "pictures": [
                 {
                     "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/jonah/jonah-1.webp"
@@ -147,8 +147,8 @@
         "9fca7c20-85a7-4948-aa6c-6e9b1e598795": {
             "name": "Deep Blue",
             "age": "Total length: 3.5m",
-            "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon.webp",
-            "status": "active",
+            "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon_inactive.webp",
+            "status": "deactivated",
             "pictures": [
                 {
                     "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/deep_blue/deep-blue-1.webp"
@@ -199,8 +199,8 @@
         "e4354ef0-f6a8-4ee3-9d12-6aa5b4089987": {
             "name": "Davenport",
             "age": "Total length: 4.0m",
-            "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon.webp",
-            "status": "active",
+            "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon_inactive.webp",
+            "status": "deactivated",
             "pictures": [
                 {
                     "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/davenport/davenport-1.webp"
@@ -299,6 +299,71 @@
             ],
             "fun_fact": "Tagged 16th January 2023 inside Bowentown Harbour. Tag named by Te Whānau a Tauwhao, the Hapu of this area",
             "detail_description": "<p><b>Mananui is named by Te Whānau a Tauwhao, the Hapū of the area where she was tagged.</b> She is a female Great White shark, 3.2m in length, making her the largest Great White tagged so far.</p><p>Her presence was awe inspiring, both in size and demeanour. She wears battle scars and scratches, but was cautious and calculated. This prestige led to her naming; Mananui is the inshore headland of Bowentown, looking over the area she was tagged.</p><p>Mananui was a stronghold Pā site protecting Te Whānau a Tauwhao people. This Great White was identified through fishermen photos by Dr Elliott, as having resided in this area for the last three summers and thus, like Mananui the Pā, she represents a stronghold presence of prestige and great mana.</p><p>At this size she is classified as a sub-adult, which means she is no longer a juvenile, but is not reproductively mature. Generally at this size/age, Great Whites' metabolism speeds up, requiring them to feed on seals. Their teeth widen for hunting this prey, compared to more needle-like teeth of juveniles which eat fish.</p>"
+        },
+        "ae829f7c-941c-4818-99b9-73117f6de2ca": {
+            "name": "Otama",
+            "age": "Total length: 3.9m",
+            "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon.webp",
+            "status": "active",
+            "pictures": [
+                {
+                    "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/otama/otama.webp"
+                }
+            ],
+            "fun_fact": "Tagged 19 January 2026. Tag sponsored by Andrew Faulkner",
+            "detail_description": "Otama is a large mature male with a chilled attitude. He has diatoms on the rear of his dorsal fin"
+        },
+        "5e8b457b-ea84-43f9-90cf-4b8bf3eb6e8c": {
+            "name": "Jim",
+            "age": "Total length: 4.0m",
+            "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon.webp",
+            "status": "active",
+            "pictures": [
+                {
+                    "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/jim/jim.webp"
+                }
+            ],
+            "fun_fact": "Tagged 20 January 2026. Tag sponsored by Katherine Mason",
+            "detail_description": "Jim is a very large, fit and healthy mature male shark. He has a super confident but chilled attitude."
+        },
+        "534dad8b-ccaf-47a8-a1e5-e73e263c0c8b": {
+            "name": "Angel",
+            "age": "Total length: 3.6m",
+            "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon.webp",
+            "status": "active",
+            "pictures": [
+                {
+                    "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/angel/angel.webp"
+                }
+            ],
+            "fun_fact": "Tagged 20 January 2026. Tag sponsored by Angel Aesthetics",
+            "detail_description": "Angel is a male Great White that was very dark in colour with white scratches on nose. He's a very chilled shark."
+        },
+        "2a974e25-9023-4899-a16c-2d7fb6cba345": {
+            "name": "Vincent",
+            "age": "Total length: 3.4m",
+            "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon.webp",
+            "status": "active",
+            "pictures": [
+                {
+                    "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/vincent/vincent.webp"
+                }
+            ],
+            "fun_fact": "Tagged 20 January 2026. Tag sponsored by Lynda Bushe",
+            "detail_description": "This immature but very feisty male was previously tagged in 2025 named Jonah. Jonah unfortunately lost his SPOT tag Oct 2025 having returned from Fiji all the way back to Edwards Island."
+        },
+        "d30c3f3c-bbad-4736-af3f-9313fb3f9b40": {
+            "name": "Nerina Daphne",
+            "age": "Total length: 3.3m",
+            "icon": "https://map.sustainableoceansociety.co.nz/public/images/animal_icons/shark_icon.webp",
+            "status": "active",
+            "pictures": [
+                {
+                    "path": "https://map.sustainableoceansociety.co.nz/public/images/animal_photos/nerina_daphne/nerina_daphne.webp"
+                }
+            ],
+            "fun_fact": "Tagged 20 January 2026. Tag sponsored by Sue Ward",
+            "detail_description": "Nerina Daphne is an immature male Great White with white marks in front of and on the front of his dorsal fin."
         }
     }
 }
