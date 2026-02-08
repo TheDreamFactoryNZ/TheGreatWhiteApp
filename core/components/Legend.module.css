@@ -190,11 +190,6 @@
     transition: filter var(--hover-transition-duration);
 }
 
-.return img {
-    width: 1rem;
-    height: auto;
-}
-
 .return:hover {
     filter: brightness(95%);
 }
@@ -209,8 +204,12 @@
     filter: brightness(95%);
 }
 
-.return p {
-    font-size: 14px;
+.backArrow {
+    width: 1rem;
+    height: auto;
+}
+
+:global(#gw-map) .return p:global(.map-body) {
     padding-left: 0.75rem
 }
 
