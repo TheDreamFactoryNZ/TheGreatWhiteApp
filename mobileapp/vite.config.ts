@@ -1,5 +1,3 @@
-/// <reference types="vitest" />
-
 import react from '@vitejs/plugin-react'
 import legacy from '@vitejs/plugin-legacy'
 import svgr from 'vite-plugin-svgr'
