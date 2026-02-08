@@ -105,8 +105,3 @@ details[open] .summaryArrow {
     margin-top: 0.5em;
     font-size: var(--map-small-body-font-size);
 }
-
-/*
-.fullDate {
-    font-size: var(map-small-body-font-size);
-}*/

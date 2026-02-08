@@ -176,11 +176,11 @@ export default function LastSeenInfo({
         <div className={styles.fullDateContainer}>
           <p className={`${'map-body'} ${styles.fullDate}`}>{fullDateStr}</p>
           {(showInactive || showDeactivated) && (
-            <div style={{ marginTop: 4 }}>
+            <p className={`${'map-body'}`}>
               {showInactive
                 ? 'This shark has not provided a location for an extended period of time and may be inactive.'
                 : 'This shark has lost its tag and is no longer providing locations.'}
-            </div>
+            </p>
           )}
           <button
             type="button"
