@@ -1,5 +1,6 @@
 import React from 'react';
 import { TrackButton, StoryButton } from './buttons';
+import LastSeenInfo from './LastSeenInfo.jsx';
 
 import styles from './SubjectPopupContent.module.css';
 
@@ -27,7 +28,15 @@ const SubjectPopup = (props) => {
     .replace(/\b\w/g, l => l.toUpperCase());
 
   let date = subject.last_position.properties.DateTime;
-  date = date.substring(0, 10) + ' ' + date.substring(11, 16);
+  // Replaced by LastSeenInfo; keep raw ISO for component input
+
+  function normalizeStatus(s) {
+    if (!s) return 'active';
+    const v = String(s).toLowerCase();
+    if (v.includes('deact')) return 'deactivated';
+    if (v.includes('inactive') || v.includes('lost')) return 'inactive';
+    return 'active';
+  }
 
   let display = { display: 'flex' };
   if (!subject.display_story) {
@@ -59,7 +68,16 @@ const SubjectPopup = (props) => {
               {/*<strong>Tag Sponsor: </strong>{tagSponsor}*/}</p>
             {data && data.fun_fact && <p><i>{data.fun_fact}</i><br />
             </p>}
-            <p className={`${'map-body'} ${styles.summaryText}`}><strong>Last seen:</strong><br />{date} UTC<br /><em>No recent location? This shark's probably deep underwater, yet to surface.</em></p>
+            <LastSeenInfo
+              isoDate={subject?.last_position?.properties?.DateTime}
+              timezoneLabel="UTC"
+              expandable={true}
+              status={normalizeStatus((data && data.status) ?? subject?.status)}
+              className={`${'map-body'} ${styles.summaryText}`}
+            />
+            <p className={`${'map-body'} ${styles.summaryText}`}>
+              <em>No recent location? This shark's probably deep underwater, yet to surface.</em>
+            </p>
           </div>
           <div className={styles.popUpButtonsContainer}>
               <TrackButton
