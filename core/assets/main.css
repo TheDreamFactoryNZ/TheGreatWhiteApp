@@ -95,6 +95,8 @@ html {
     --map-h3-color: #333333;
     --map-body-color: #333333;
 
+    --map-a-color: #102B5E;
+
     --heading-letter-spacing: 0.05em;
 
     --ocean-gradient: linear-gradient(135deg, #060A23 0%, #060A23 75%, #0A0E2C 90%, #0E1235 100%);
@@ -173,6 +175,13 @@ html {
     font-family: var(--map-body-font);
     font-size: var(--map-body-font-size);
     color: var(--map-body-color);
+}
+
+#gw-map p.map-body a,
+#gw-map p.map-body a:visited,
+#gw-map p.map-body a:active {
+    color: var(--map-a-color);
+    text-decoration: underline;
 }
 
 #gw-map p strong {
