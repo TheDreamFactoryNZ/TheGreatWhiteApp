@@ -86,7 +86,7 @@ const Legend = ({
             </div>
             <div onClick={() => onReturnClick(undefined)} className={styles.return}>
               <BackArrow draggable='false' width="7px" height="10px" className={styles.backArrow} />
-              <p>Back</p>
+              <p className="map-body">Back</p>
             </div>
             <div className={styles.animalStory}>
               <div className={styles.subjectDiv}>
