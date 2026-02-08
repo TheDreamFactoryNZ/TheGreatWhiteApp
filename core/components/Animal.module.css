@@ -69,11 +69,11 @@
   max-width: 16ch;
 }
 
-:global(#gw-map) h3:global(.map-heading).animalNameText {
-    font-size: calc(var(--map-h3-font-size) * 0.75);
+:global(#gw-map) h2:global(.map-heading).animalNameText {
+    font-size: calc(var(--map-h2-font-size) * 0.75);
 }
 
-:global(#gw-map) .tracksActive h3:global(.map-heading).animalNameText {
+:global(#gw-map) .tracksActive h2:global(.map-heading).animalNameText {
     font-weight: 700;
 }
 

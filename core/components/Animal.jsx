@@ -56,9 +56,9 @@ const Animal = ({ animal, configData, animalOnLocClicked, onNameClick, displaySt
             className={`${styles.animalNameStyle} ${trackState ? styles.tracksActive : ''}`}
             id={animal.name.replace(' ', '-')}
           >
-            <h3 className={`${'map-heading'} ${styles.animalNameText}`} title={animal.name}>
+            <h2 className={`${'map-heading'} ${styles.animalNameText}`} title={animal.name}>
               {animal.name}
-            </h3>
+            </h2>
             <LastSeenInfo
               isoDate={animal?.last_position?.properties?.DateTime}
               timezoneLabel="UTC"

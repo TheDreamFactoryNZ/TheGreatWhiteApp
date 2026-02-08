@@ -94,7 +94,7 @@
 }
 
 .subjectDiv {
-    border-bottom: solid 1pt rgba(0, 0, 0, .15);
+    border-bottom: var(--border-divider);
 }
 
 .subs {

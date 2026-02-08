@@ -78,6 +78,8 @@ html {
 }
 
 #gw-map {
+
+    /* Fonts */
     --map-heading-font: 'Rajdhani', system-ui, sans-serif;
     --map-body-font: 'Source Sans 3', system-ui, sans-serif;
 
@@ -101,10 +103,7 @@ html {
 
     --heading-letter-spacing: 0.05em;
 
-    --ocean-gradient: linear-gradient(135deg, #060A23 0%, #060A23 75%, #0A0E2C 90%, #0E1235 100%);
-
     /* Map floating buttons */
-
     --map-button-box-shadow: 0 0 0 2px rgba(0,0,0,.1);
 
     /* popups */
@@ -125,6 +124,11 @@ html {
     /* interactivity */
     --focus-outline: 2px solid #A8BEF0;
     --hover-transition-duration: 0.25s;
+
+    /* Decorative elements */
+    --border-divider: 2px solid rgba(0,0,0,0.15);
+    --ocean-gradient: linear-gradient(135deg, #060A23 0%, #060A23 75%, #0A0E2C 90%, #0E1235 100%);
+
 }
 
 #gw-map :where(h1, h2, h3, h4, h5, h6, p) {
