@@ -85,6 +85,7 @@ html {
     --map-h2-font-size: clamp(1.6rem, 1.1rem + 1.6vw, 2.6rem);
     --map-h3-font-size: clamp(1.4rem, 1.0rem + 1.1vw, 2.2rem);
     --map-body-font-size: clamp(1.25rem, 0.5rem + 0.2vw, 2.5rem);
+    --map-small-body-font-size: calc(var(--map-body-font-size) * 0.75);
 
     --map-h1-font-weight: 700;
     --map-h2-font-weight: 600;
@@ -94,6 +95,7 @@ html {
     --map-h2-color: #060A23;
     --map-h3-color: #333333;
     --map-body-color: #333333;
+    --map-accent-color: #00C49A;
 
     --map-a-color: #102B5E;
 
@@ -114,6 +116,11 @@ html {
     /* icons */
     --default-icon-color: #333333;
     --active-icon-color: #4CBE23;
+
+    /* Animal Status */
+    --status-active-color: #4CBE23;
+    --status-inactive-color: #ffc60a;
+    --status-deactivated-color: #b63e4e;
 
     /* interactivity */
     --focus-outline: 2px solid #A8BEF0;

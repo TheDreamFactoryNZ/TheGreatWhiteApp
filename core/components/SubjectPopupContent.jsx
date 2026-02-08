@@ -72,12 +72,10 @@ const SubjectPopup = (props) => {
               isoDate={subject?.last_position?.properties?.DateTime}
               timezoneLabel="UTC"
               expandable={true}
+              noLayoutShift={true} // NEW: overlay, avoids pushing buttons
               status={normalizeStatus((data && data.status) ?? subject?.status)}
               className={`${'map-body'} ${styles.summaryText}`}
             />
-            <p className={`${'map-body'} ${styles.summaryText}`}>
-              <em>No recent location? This shark's probably deep underwater, yet to surface.</em>
-            </p>
           </div>
           <div className={styles.popUpButtonsContainer}>
               <TrackButton

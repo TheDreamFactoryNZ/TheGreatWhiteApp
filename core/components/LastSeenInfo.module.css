@@ -1,0 +1,112 @@
+details {
+    --lastseen-border: 0.125rem solid #00C49A;
+    --lastseen-border-radius: 0.75rem;
+    --lastseen-padding: 0.25rem 0.75rem;
+}
+
+details {
+    background: var(--ocean-gradient);
+    color: #fff;
+    border: var(--lastseen-border);
+    border-radius: 0.75rem;
+    padding: 0.25rem 0.75rem 0.25rem 0.5rem;
+    margin: 0.75rem -0.25rem 0.25rem -0.125rem;
+    cursor: pointer;
+    width: 100%;
+    box-sizing: border-box;
+    contain: content;
+}
+
+details>summary {
+    list-style: none;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: 1.75rem;
+}
+
+summary::-webkit-details-marker {
+    display: none
+}
+
+.statusBullet {
+    height: 0.75rem;
+    width: 0.75rem;
+    border-radius: 100%;
+}
+
+.statusBullet.statusActive {
+    background-color: var(--status-active-color);
+}
+
+.statusBullet.statusInactive {
+    background-color: var(--status-inactive-color);
+}
+
+.statusBullet.statusDeactivated {
+    background-color: var(--status-deactivated-color);
+}
+
+.summaryArrow {
+    width: 1.25rem;
+    height: auto;
+    transform-origin: center center;
+    will-change: transform;
+    transition: transform var(--hover-transition-duration) ease-in-out;
+}
+
+.summaryArrow :where(path, rect, polyline, circle) {
+    stroke: currentColor !important;
+}
+
+details[open] .summaryArrow {
+    transform: rotate(90deg);
+}
+
+.dateSummaryText {
+    font-family: var(--map-body-font);
+    font-size: var(--map-body-font-size);
+    color: #fff;
+}
+
+.overlayDetails {
+    position: relative;
+    contain: none;
+}
+
+.overlayDetails .fullDateContainer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: calc(100% + 0.25rem);
+    z-index: 3;
+    background: var(--ocean-gradient);
+    border: 0.125rem solid #00C49A;
+    border-radius: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    box-shadow: var(--map-popup-box-shadow);
+}
+
+.fullDateContainer {
+    margin-top: 0.25rem;
+    cursor: default;
+}
+
+:global(#gw-map) .fullDateContainer p:global(.map-body) {
+    color: #fff;
+    font-size: var(--map-small-body-font-size);
+}
+
+.closeFullDate {
+    all: unset;
+    color: var(--map-accent-color);
+    cursor: pointer;
+    margin-top: 0.5em;
+    font-size: var(--map-small-body-font-size);
+}
+
+/*
+.fullDate {
+    font-size: var(map-small-body-font-size);
+}*/

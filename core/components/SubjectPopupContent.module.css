@@ -42,6 +42,8 @@
 
 .popUpBody {
     padding: 1rem;
+    display: flex;
+    flex-flow: column nowrap;
 }
 
 :global(#gw-map) h3:global(.map-heading).summaryHeading {

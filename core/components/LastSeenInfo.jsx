@@ -1,4 +1,6 @@
 import React from 'react';
+import Arrow from '@images/button_icons/arrow.svg?component';
+import styles from './LastSeenInfo.module.css';
 
 /* eslint-disable react/prop-types */
 // LastSeenInfo: shared component for rendering "Last seen" information.
@@ -79,6 +81,19 @@ function formatShortDateUtc(date) {
   return `${dd}/${mm}/${yyyy}`;
 }
 
+// Normalize status, supporting "auto" => inactive after N months (default 3)
+function normalizeStatusWithAuto(rawStatus, date, autoMonths = 3) {
+  const s = typeof rawStatus === 'string' ? rawStatus.trim().toLowerCase() : '';
+  if (s === 'auto') {
+    if (!date) return 'inactive'; // unknown date ⇒ treat as inactive
+    const now = new Date();
+    const months = diffMonthsUtc(date, now);
+    return months >= autoMonths ? 'inactive' : 'active';
+  }
+  if (s === 'active' || s === 'inactive' || s === 'deactivated') return s;
+  return 'active'; // default
+}
+
 export default function LastSeenInfo({
   isoDate,
   timezoneLabel = 'UTC',
@@ -87,37 +102,41 @@ export default function LastSeenInfo({
   className,
   thresholds = defaultThresholds,
   renderFullDate,
+  noLayoutShift = false,
+  withBullet = false,
+  statusClassName = '',
 }) {
+  const detailsRef = React.useRef(null);
   // Parse once; Step 2 will compute relative thresholds.
   const date = parseUtc(isoDate);
   const now = new Date();
 
   // Compute summary per Step 2 rules
-  let summaryText = 'Last seen: unknown';
+  let dateSummaryText = 'Last seen: unknown';
   if (date) {
     const timeStr = formatTimeUtc(date);
 
     // Treat future dates as same-day
     const sameDay = isSameUtcDay(date, now) || date.getTime() > now.getTime();
     if (sameDay) {
-      summaryText = timeStr ? `Last seen at ${timeStr} ${timezoneLabel}` : 'Last seen: unknown';
+      dateSummaryText = timeStr ? `Last seen at ${timeStr} ${timezoneLabel}` : 'Last seen: unknown';
     } else {
       const days = diffDaysUtc(date, now);
       if (days <= 13) {
         const unit = days === 1 ? 'day' : 'days';
-        summaryText = timeStr ? `Last seen ${days} ${unit} ago at ${timeStr} ${timezoneLabel}` : `Last seen ${days} ${unit} ago`;
+        dateSummaryText = timeStr ? `Last seen ${days} ${unit} ago` : `Last seen ${days} ${unit} ago`;
       } else if (days >= thresholds.daysToWeeks && days < thresholds.weeksToMonths) {
         const weeks = Math.floor(days / 7);
         const unit = weeks === 1 ? 'week' : 'weeks';
-        summaryText = `Last seen ${weeks} ${unit} ago`;
+        dateSummaryText = `Last seen ${weeks} ${unit} ago`;
       } else {
         const months = diffMonthsUtc(date, now);
         if (months < thresholds.monthsToShortDate) {
           const unit = months === 1 ? 'month' : 'months';
-          summaryText = `Last seen ${months} ${unit} ago`;
+          dateSummaryText = `Last seen ${months} ${unit} ago`;
         } else {
           // Short date only
-          summaryText = formatShortDateUtc(date);
+          dateSummaryText = `Last seen ${formatShortDateUtc(date)}`;
         }
       }
     }
@@ -128,33 +147,70 @@ export default function LastSeenInfo({
     ? (renderFullDate ? renderFullDate(date, { timezoneLabel }) : defaultRenderFullDate(date, { timezoneLabel }))
     : 'Unknown date';
 
-  // Status messaging (appears only in expanded details as per Step 3).
-  const inactiveNote = 'This shark has not provided a location for an extended period of time and may be inactive.';
-  const deactivatedNote = 'This shark has lost its tag and is no longer providing locations.';
-  const statusLower = typeof status === 'string' ? status.toLowerCase() : undefined;
-  const showInactive = statusLower === 'inactive';
-  const showDeactivated = statusLower === 'deactivated';
+  // Status handling (expanded only) with auto support
+  const normalizedStatus = normalizeStatusWithAuto(status, date, 3);
+  const showInactive = normalizedStatus === 'inactive';
+  const showDeactivated = normalizedStatus === 'deactivated';
+
+  // Optional: status bullet class
+  const statusClass =
+    normalizedStatus === 'active' ? styles.statusActive :
+      normalizedStatus === 'inactive' ? styles.statusInactive :
+        normalizedStatus === 'deactivated' ? styles.statusDeactivated :
+          styles.statusUnknown;
 
   if (expandable) {
     return (
-      <details className={className}>
-        <summary>{summaryText}</summary>
-        <div>
-          {fullDateStr}
+      <details
+        ref={detailsRef}
+        className={`${className || ''} ${noLayoutShift ? styles.overlayDetails : ''}`}
+      >
+        <summary>
+          <span
+            className={`${styles.statusBullet} ${statusClass} ${statusClassName}`}
+            aria-hidden="true"
+          />
+          <span className={styles.dateSummaryText}>{dateSummaryText}</span>
+          <Arrow className={styles.summaryArrow} />
+        </summary>
+        <div className={styles.fullDateContainer}>
+          <p className={`${'map-body'} ${styles.fullDate}`}>{fullDateStr}</p>
           {(showInactive || showDeactivated) && (
             <div style={{ marginTop: 4 }}>
-              {showInactive ? inactiveNote : deactivatedNote}
+              {showInactive
+                ? 'This shark has not provided a location for an extended period of time and may be inactive.'
+                : 'This shark has lost its tag and is no longer providing locations.'}
             </div>
           )}
+          <button
+            type="button"
+            className={styles.closeFullDate}
+            aria-label="Close last seen details"
+            onClick={() => {
+              if (detailsRef.current) {
+                detailsRef.current.open = false;
+                const summary = detailsRef.current.querySelector('summary');
+                if (summary && typeof summary.focus === 'function') summary.focus();
+              }
+            }}
+          >
+            Close
+          </button>
         </div>
       </details>
     );
   }
 
-  // Non-expandable: print summary only (no full date shown here).
+  // Non-expandable: print summary only (no full date shown here), show .
   return (
     <div className={className}>
-      {summaryText}
+      {withBullet && (
+        <span
+          className={`${styles.statusBullet} ${statusClass} ${statusClassName}`}
+          aria-hidden="true"
+        />
+      )}
+      {dateSummaryText}
     </div>
   );
 }
