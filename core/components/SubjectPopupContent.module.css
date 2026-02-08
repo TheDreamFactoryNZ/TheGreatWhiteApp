@@ -78,7 +78,6 @@
     margin-left: 0.5rem;
     font-size: 1.25rem;
     line-height: 1.2em;
-    white-space: nowrap;
     transition: opacity linear var(--hover-transition-duration);
 }
 
