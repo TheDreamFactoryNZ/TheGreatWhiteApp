@@ -84,7 +84,7 @@ h2.tipsHeader {
     gap: 1rem;
 }
 
-.tipItem p {
+:global(#gw-map) .tipItem .tipTextContainer p:global(.map-body) {
     font-size: calc(var(--map-body-font-size) * 0.875);
 }
 
