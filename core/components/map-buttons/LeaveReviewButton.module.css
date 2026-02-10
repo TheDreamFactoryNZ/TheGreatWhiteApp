@@ -19,19 +19,7 @@
 
 /* The content panel that appears when tips are shown */
 .supportContentContainer {
-    width: min(75vw, clamp(270px, 25vw, 340px));
-    margin-top: -34px;
-    margin-left: 44px;
-    padding: 0.25rem;
-    background-color: var(--map-popup-background-color);
-    border: var(--map-popup-border);
-    border-radius: var(--map-popup-border-radius);
-    box-shadow: var(--map-popup-box-shadow);
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    box-sizing:border-box;
+    composes: mapContentContainer from './MapButtons.module.css';
 }
 
 /* Header area inside the content panel */

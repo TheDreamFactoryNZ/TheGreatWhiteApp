@@ -6,8 +6,23 @@
     left: 10px;
 }
 
-/* The small button that toggles the tips */
+.mapContentContainer {
+    width: min(75vw, clamp(320px, 25vw, 390px));
+    margin-top: -34px;
+    margin-left: 54px;
+    padding: 0.25rem;
+    background-color: var(--map-popup-background-color);
+    border: var(--map-popup-border);
+    border-radius: var(--map-popup-border-radius);
+    box-shadow: var(--map-popup-box-shadow);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    box-sizing: border-box;
+}
 
+/* The small button that toggles the tips */
 
 .mapButtonIcon {
     all: unset;
