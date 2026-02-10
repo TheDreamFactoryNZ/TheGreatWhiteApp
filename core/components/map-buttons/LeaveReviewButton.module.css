@@ -69,6 +69,7 @@ h2.supportHeader {
     flex-direction: column;
     padding: 10px;
     overflow-y: auto;
+    overflow-x: hidden;
     max-height: 50vh;
 }
 
@@ -78,6 +79,8 @@ h2.supportHeader {
     align-items: center;
     padding: 1rem 0;
     gap: 1rem;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .supportItem p {
