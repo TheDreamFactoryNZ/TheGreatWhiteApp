@@ -5,6 +5,7 @@
     padding: 0.5rem 0;
     display: flex;
     justify-content: space-between;
+    gap: 1.25rem;
     background: #eeeffc;
     transition: filter 0.25s;
 }
@@ -63,7 +64,6 @@
 }
 
 .animalNameText:not(.animalStoryView .animalNameText) {
-  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 16ch;
