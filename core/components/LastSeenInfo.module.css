@@ -67,6 +67,7 @@ details[open] .summaryArrow {
 .dateSummaryText {
     font-family: var(--map-body-font);
     font-size: var(--map-body-font-size);
+    line-height: 1.2;
     color: #fff;
 }
 
@@ -104,4 +105,5 @@ details[open] .summaryArrow {
     cursor: pointer;
     margin-top: 0.5em;
     font-size: var(--map-small-body-font-size);
+    font-weight: 700;
 }
