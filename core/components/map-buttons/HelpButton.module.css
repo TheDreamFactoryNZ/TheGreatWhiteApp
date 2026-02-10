@@ -20,11 +20,7 @@
 
 /* Header area inside the content panel */
 .tipsHeaderContainer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 0.25rem;
-    padding-left: 10px;
+    composes: mapButtonHeaderContainer from './MapButtons.module.css';
 }
 
 h2.tipsHeader {
@@ -39,12 +35,7 @@ h2.tipsHeader {
 }
 
 .closeIcon {
-    width: 12px;
-    height: 12px;
-    padding: 10px;
-    opacity: 90%;
-    cursor: pointer;
-    box-sizing: content-box;
+    composes: closeIcon from './MapButtons.module.css';
 }
 
 .tips ul {
@@ -57,11 +48,7 @@ h2.tipsHeader {
 
 /* The list of tip items */
 .tipItemsContainer {
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
-    overflow-y: auto;
-    max-height: 50vh;
+    composes: mapButtonItemsContainer from './MapButtons.module.css';
 }
 
 .tipItem {
