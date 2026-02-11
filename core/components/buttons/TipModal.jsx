@@ -1,0 +1,210 @@
+import React from 'react';
+import { createPortal } from 'react-dom';
+import TipIcon from '@images/button_icons/tip-icon.svg?component';
+import CloseIcon from '@images/button_icons/close.svg?component';
+import sanitizeHtml from '../../utils/sanitizeHtml.js';
+import iconButtonStyles from './IconButton.module.css';
+import styles from './TipModal.module.css';
+
+/* eslint-disable react/prop-types */
+
+// LastSeenExplanation: generic tip modal component (renameable to TipModal).
+// Renders a tip button; clicking opens a full-screen modal with a header
+// (H2 title + close icon) and a body area for arbitrary content.
+// Props:
+// - modalTitle: string (required) – rendered inside <h2>
+// - modalBody: string | ReactNode – HTML string sanitized then injected, or ReactNode
+// - initialOpen?: boolean – start open
+// - onOpen?: () => void
+// - onClose?: () => void
+// - closeOnBackdropClick?: boolean (default true)
+// - className?: string – class for the trigger button wrapper
+// - tipButtonClassName?: string – class for the tip button
+// - modalClassName?: string – class for modal dialog container
+// - overlayClassName?: string – class for full-screen overlay
+// - headerClassName?: string – class for header container
+// - bodyClassName?: string – class for body container
+// - closeButtonClassName?: string – class for close button
+// - tipIconClassName?: string – class for tip icon
+// - portalAfterId?: string – if provided, the modal portal will be rendered as a child of the element with this ID instead of document.body
+
+export default function TipModal({
+	modalTitle,
+	modalBody,
+	initialOpen = false,
+	onOpen,
+	onClose,
+	closeOnBackdropClick = true,
+	className,
+	overlayClassName,
+	modalClassName,
+	headerClassName,
+	bodyClassName,
+	closeButtonClassName,
+	tipButtonClassName,
+	tipIconClassName,
+	portalIntoId,
+	portalAfterId,
+}) {
+	const overlayClasses = `${styles.modalOverlay} ${overlayClassName || ''}`;
+	const dialogClasses = `${styles.modalDialog} ${modalClassName || ''}`;
+	const headerClasses = `${styles.modalHeader} ${headerClassName || ''}`;
+	const bodyClasses = `${styles.modalBody} ${bodyClassName || ''}`;
+	const closeBtnClasses = `${styles.closeButton} ${closeButtonClassName || ''}`;
+	const tipBtnClasses = `${iconButtonStyles.iconButton} ${tipButtonClassName || ''}`;
+	const tipIconClasses = `${iconButtonStyles.iconSvg} ${tipIconClassName || ''}`;
+
+	
+	const [open, setOpen] = React.useState(!!initialOpen);
+	const [portalNode, setPortalNode] = React.useState(null);
+
+	const triggerRef = React.useRef(null);
+	const closeRef = React.useRef(null);
+	const overlayRef = React.useRef(null);
+	const titleId = React.useMemo(() => `tipmodal-title-${Math.random().toString(36).slice(2)}` , []);
+
+	React.useEffect(() => {
+        if (!open) {
+            setPortalNode(null);
+            return undefined;
+        }
+
+		// Portal into a stable, existing node
+        if (portalIntoId) {
+            const existing = document.getElementById(portalIntoId);
+            setPortalNode(existing || document.body);
+            return undefined;
+        }
+
+        // Failing this, portal to body
+        if (!portalAfterId) {
+            setPortalNode(document.body);
+            return undefined;
+        }
+
+		// Fallback: create a mount node immediately after an anchor
+        const anchor = document.getElementById(portalAfterId);
+        if (!anchor || !anchor.parentNode) {
+            // Fallback to body if specified anchor not found
+            setPortalNode(document.body);
+            return undefined;
+        }
+
+        const mount = document.createElement('div');
+        mount.setAttribute('data-tipmodal-root', 'true');
+        anchor.insertAdjacentElement('afterend', mount);
+
+        setPortalNode(mount);
+
+        return () => {
+            mount.remove();
+            setPortalNode(null);
+        };
+    }, [open, portalIntoId, portalAfterId]);
+
+    React.useEffect(() => {
+        if (open) {
+            if (typeof onOpen === 'function') onOpen();
+            const t = setTimeout(() => {
+                if (closeRef.current && typeof closeRef.current.focus === 'function') {
+                    closeRef.current.focus();
+                }
+            }, 0);
+
+            const onKey = (e) => {
+                if (e.key === 'Escape') {
+                    e.stopPropagation();
+                    setOpen(false);
+                }
+            };
+            document.addEventListener('keydown', onKey);
+
+            return () => {
+                document.removeEventListener('keydown', onKey);
+                clearTimeout(t);
+            };
+        }
+        return undefined;
+    }, [open, onOpen]);
+
+    React.useEffect(() => {
+        if (!open && typeof onClose === 'function') onClose();
+        if (!open && triggerRef.current && typeof triggerRef.current.focus === 'function') {
+            triggerRef.current.focus();
+        }
+    }, [open, onClose]);
+
+	const handleBackdropClick = (e) => {
+        if (!closeOnBackdropClick) return;
+        if (overlayRef.current && e.target === overlayRef.current) {
+            setOpen(false);
+        }
+    };
+
+    const renderBodyContent = () => {
+        if (modalBody == null) return null;
+        if (typeof modalBody === 'string') {
+            const safeHtml = sanitizeHtml(modalBody);
+            return <div className={bodyClasses} dangerouslySetInnerHTML={{ __html: safeHtml }} />;
+        }
+        return <div className={bodyClasses}>{modalBody}</div>;
+    };
+
+	return (
+		<div className={className}>
+			<button
+				type="button"
+				ref={triggerRef}
+				className={tipBtnClasses}
+				aria-haspopup="dialog"
+				aria-expanded={open ? 'true' : 'false'}
+				onClick={(e) => {
+					e.preventDefault();
+					e.stopPropagation();
+					setOpen(true);
+				}}
+			>
+				<TipIcon width="18px" height="18px" className={tipIconClasses} aria-hidden="true" />
+			</button>
+
+			{/* IMPORTANT: guard portalNode so we don't call createPortal with null */}
+            {open && portalNode && createPortal(
+                (
+                    <div
+                        ref={overlayRef}
+                        className={overlayClasses}
+                        role="presentation"
+                        onClick={handleBackdropClick}
+                    >
+                        <div
+                            role="dialog"
+                            aria-modal="true"
+                            aria-labelledby={titleId}
+                            className={dialogClasses}
+                        >
+                            <div className={headerClasses} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                                <h2 id={titleId}>{modalTitle}</h2>
+                                <button
+                                    type="button"
+                                    ref={closeRef}
+                                    className={closeBtnClasses}
+                                    aria-label="Close"
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        e.stopPropagation();
+                                        setOpen(false);
+                                    }}
+                                >
+                                    <CloseIcon />
+								</button>
+							</div>
+							{renderBodyContent()}
+						</div>
+					</div>
+				),
+				portalNode
+			)}
+		</div>
+	);
+}
+

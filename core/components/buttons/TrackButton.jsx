@@ -37,7 +37,7 @@ const TrackButton = ({ subject, trackButtonClass, iconText, iconTextClassName })
       onMouseDown={(e) => e.stopPropagation()}
       onTouchStart={(e) => e.stopPropagation()}
     >
-    <TracksIcon width="24px" height="24px" className={styles.iconSvg} aria-hidden="true" />
+    <TracksIcon width="24px" height="24px" className={`${styles.iconSvg} ${styles.trackIconSvg}`} aria-hidden="true" />
     {iconText ? <span className={`${styles.iconText} ${iconTextClassName || ''}`}>{iconText}</span> : null}
       </button>
     </>

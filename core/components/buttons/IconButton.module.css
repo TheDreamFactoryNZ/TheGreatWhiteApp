@@ -16,18 +16,18 @@ button.iconButton {
     opacity: 0.5;
 }
 
-.iconSvg {
+.trackIconSvg {
     color: var(--default-icon-color);
 }
 
-.iconSvg :where(path, rect) {
+.trackIconSvg :where(path, rect) {
     stroke: currentColor !important;
 }
 
-.iconSvg :where(circle) {
+.trackIconSvg :where(path, circle) {
     fill: currentColor !important;
 }
 
-.iconButton[data-active="true"] .iconSvg {
+.iconButton[data-active="true"] .trackIconSvg {
     color: var(--active-icon-color);
 }

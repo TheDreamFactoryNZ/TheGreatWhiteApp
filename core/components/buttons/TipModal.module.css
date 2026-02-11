@@ -1,0 +1,22 @@
+.modalOverlay {
+    position: absolute;
+    inset: 0px;
+    z-index: 1000;
+    backdrop-filter: blur(4px);
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.modalDialog {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--map-popup-background-color);
+    border: var(--map-popup-border);
+    border-radius: var(--map-popup-border-radius);
+    box-shadow: var(--map-popup-box-shadow);
+    padding: 1.5rem;
+    max-width: 90vw;
+    width: 400px;
+    z-index: 1001;
+}

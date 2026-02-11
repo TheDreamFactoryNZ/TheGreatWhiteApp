@@ -114,6 +114,7 @@ html {
 
     /* icons */
     --default-icon-color: #333333;
+    --default-inverted-icon-color: #CCCCCC;
     --active-icon-color: #4CBE23;
 
     /* Animal Status */

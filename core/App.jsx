@@ -48,7 +48,7 @@ function logLifecycleSummary(where) {
       mapEventAttach: __gwLifecycle.mapEventAttach,
       mapEventDetach: __gwLifecycle.mapEventDetach,
     });
-  } catch (_) {}
+  } catch (_) { }
 }
 
 const envToken =
@@ -99,7 +99,7 @@ function safeAddSource(map, id, sourceSpec) {
     if (existing) {
       // If source exists and it's geojson, update its data
       if (sourceSpec && sourceSpec.type === 'geojson' && sourceSpec.data) {
-        try { existing.setData(sourceSpec.data); } catch (_) {}
+        try { existing.setData(sourceSpec.data); } catch (_) { }
       }
       return;
     }
@@ -114,7 +114,7 @@ function safeAddLayer(map, layerSpec) {
     const exists = typeof map?.getLayer === 'function' ? map.getLayer(id) : null;
     if (exists) {
       // Layer already exists; optionally ensure ordering
-      try { map.moveLayer(id); } catch (_) {}
+      try { map.moveLayer(id); } catch (_) { }
       return;
     }
     map.addLayer(layerSpec);
@@ -140,19 +140,19 @@ function attachGlobalResizeHandlers() {
   try {
     if (window.__gw_global_resize_attached) return;
     const handler = debounce(() => {
-      try { window.GlobalMap && window.GlobalMap.resize(); } catch (e) {}
+      try { window.GlobalMap && window.GlobalMap.resize(); } catch (e) { }
     }, 150);
 
     window.addEventListener('resize', handler);
-    if (DEBUG) { try { __gwLifecycle.winAttach.resize++; console.info('[GW:LIFECYCLE] attach window.resize', __gwLifecycle.winAttach.resize); } catch (_) {} }
+    if (DEBUG) { try { __gwLifecycle.winAttach.resize++; console.info('[GW:LIFECYCLE] attach window.resize', __gwLifecycle.winAttach.resize); } catch (_) { } }
     window.addEventListener('orientationchange', handler);
-    if (DEBUG) { try { __gwLifecycle.winAttach.orientationchange++; console.info('[GW:LIFECYCLE] attach window.orientationchange', __gwLifecycle.winAttach.orientationchange); } catch (_) {} }
+    if (DEBUG) { try { __gwLifecycle.winAttach.orientationchange++; console.info('[GW:LIFECYCLE] attach window.orientationchange', __gwLifecycle.winAttach.orientationchange); } catch (_) { } }
 
     const onVisibility = () => {
       if (document.visibilityState === 'visible') handler();
     };
     document.addEventListener('visibilitychange', onVisibility);
-    if (DEBUG) { try { __gwLifecycle.winAttach.visibilitychange++; console.info('[GW:LIFECYCLE] attach document.visibilitychange', __gwLifecycle.winAttach.visibilitychange); } catch (_) {} }
+    if (DEBUG) { try { __gwLifecycle.winAttach.visibilitychange++; console.info('[GW:LIFECYCLE] attach document.visibilitychange', __gwLifecycle.winAttach.visibilitychange); } catch (_) { } }
 
     window.__gw_global_resize_attached = true;
     window.__gw_global_resize_handler = handler;
@@ -188,7 +188,7 @@ function attachContainerResizeObserver() {
     ro.observe(container);
     window.__gw_map_resize_observer = ro;
     window.__gw_map_container_resize_handler = handler;
-    if (DEBUG) { try { __gwLifecycle.roAttach++; console.info('[GW:LIFECYCLE] attach ResizeObserver', __gwLifecycle.roAttach); } catch (_) {} }
+    if (DEBUG) { try { __gwLifecycle.roAttach++; console.info('[GW:LIFECYCLE] attach ResizeObserver', __gwLifecycle.roAttach); } catch (_) { } }
     logLifecycleSummary('attachContainerResizeObserver');
   } catch (e) { /* ignore */ }
 }
@@ -202,19 +202,19 @@ function setupResize(map, containerEl) {
     // Global handlers: attach once
     if (!window.__gw_global_resize_attached) {
       const handler = debounce(() => {
-        try { window.GlobalMap && window.GlobalMap.resize(); } catch (e) {}
+        try { window.GlobalMap && window.GlobalMap.resize(); } catch (e) { }
       }, 150);
 
       window.addEventListener('resize', handler);
-      if (DEBUG) { try { __gwLifecycle.winAttach.resize++; console.info('[GW:LIFECYCLE] attach window.resize', __gwLifecycle.winAttach.resize); } catch (_) {} }
+      if (DEBUG) { try { __gwLifecycle.winAttach.resize++; console.info('[GW:LIFECYCLE] attach window.resize', __gwLifecycle.winAttach.resize); } catch (_) { } }
       window.addEventListener('orientationchange', handler);
-      if (DEBUG) { try { __gwLifecycle.winAttach.orientationchange++; console.info('[GW:LIFECYCLE] attach window.orientationchange', __gwLifecycle.winAttach.orientationchange); } catch (_) {} }
+      if (DEBUG) { try { __gwLifecycle.winAttach.orientationchange++; console.info('[GW:LIFECYCLE] attach window.orientationchange', __gwLifecycle.winAttach.orientationchange); } catch (_) { } }
 
       const onVisibility = () => {
         if (document.visibilityState === 'visible') handler();
       };
       document.addEventListener('visibilitychange', onVisibility);
-      if (DEBUG) { try { __gwLifecycle.winAttach.visibilitychange++; console.info('[GW:LIFECYCLE] attach document.visibilitychange', __gwLifecycle.winAttach.visibilitychange); } catch (_) {} }
+      if (DEBUG) { try { __gwLifecycle.winAttach.visibilitychange++; console.info('[GW:LIFECYCLE] attach document.visibilitychange', __gwLifecycle.winAttach.visibilitychange); } catch (_) { } }
 
       window.__gw_global_resize_attached = true;
       window.__gw_global_resize_handler = handler;
@@ -230,7 +230,7 @@ function setupResize(map, containerEl) {
       if (!prevObserver || prevEl !== container) {
         // Disconnect previous observer if present
         if (prevObserver) {
-          try { prevObserver.disconnect(); if (DEBUG) { __gwLifecycle.roDetach++; console.info('[GW:LIFECYCLE] detach ResizeObserver', __gwLifecycle.roDetach); } } catch (_) {}
+          try { prevObserver.disconnect(); if (DEBUG) { __gwLifecycle.roDetach++; console.info('[GW:LIFECYCLE] detach ResizeObserver', __gwLifecycle.roDetach); } } catch (_) { }
           window.__gw_map_resize_observer = null;
           window.__gw_map_container_resize_handler = null;
           window.__gw_map_resize_container_el = null;
@@ -256,7 +256,7 @@ function setupResize(map, containerEl) {
         window.__gw_map_resize_observer = ro;
         window.__gw_map_container_resize_handler = handler;
         window.__gw_map_resize_container_el = container;
-        if (DEBUG) { try { __gwLifecycle.roAttach++; console.info('[GW:LIFECYCLE] attach ResizeObserver', __gwLifecycle.roAttach); } catch (_) {} }
+        if (DEBUG) { try { __gwLifecycle.roAttach++; console.info('[GW:LIFECYCLE] attach ResizeObserver', __gwLifecycle.roAttach); } catch (_) { } }
         logLifecycleSummary('setupResize:container');
       }
     }
@@ -266,9 +266,9 @@ function setupResize(map, containerEl) {
         if (window.__gw_global_resize_attached) {
           const h = window.__gw_global_resize_handler;
           const v = window.__gw_global_visibility_handler;
-          try { window.removeEventListener('resize', h); if (DEBUG) { __gwLifecycle.winDetach.resize++; console.info('[GW:LIFECYCLE] detach window.resize', __gwLifecycle.winDetach.resize); } } catch (_) {}
-          try { window.removeEventListener('orientationchange', h); if (DEBUG) { __gwLifecycle.winDetach.orientationchange++; console.info('[GW:LIFECYCLE] detach window.orientationchange', __gwLifecycle.winDetach.orientationchange); } } catch (_) {}
-          try { document.removeEventListener('visibilitychange', v); if (DEBUG) { __gwLifecycle.winDetach.visibilitychange++; console.info('[GW:LIFECYCLE] detach document.visibilitychange', __gwLifecycle.winDetach.visibilitychange); } } catch (_) {}
+          try { window.removeEventListener('resize', h); if (DEBUG) { __gwLifecycle.winDetach.resize++; console.info('[GW:LIFECYCLE] detach window.resize', __gwLifecycle.winDetach.resize); } } catch (_) { }
+          try { window.removeEventListener('orientationchange', h); if (DEBUG) { __gwLifecycle.winDetach.orientationchange++; console.info('[GW:LIFECYCLE] detach window.orientationchange', __gwLifecycle.winDetach.orientationchange); } } catch (_) { }
+          try { document.removeEventListener('visibilitychange', v); if (DEBUG) { __gwLifecycle.winDetach.visibilitychange++; console.info('[GW:LIFECYCLE] detach document.visibilitychange', __gwLifecycle.winDetach.visibilitychange); } } catch (_) { }
           window.__gw_global_resize_attached = false;
           window.__gw_global_resize_handler = null;
           window.__gw_global_visibility_handler = null;
@@ -277,7 +277,7 @@ function setupResize(map, containerEl) {
 
         const ro = window.__gw_map_resize_observer;
         if (ro) {
-          try { ro.disconnect(); if (DEBUG) { __gwLifecycle.roDetach++; console.info('[GW:LIFECYCLE] detach ResizeObserver', __gwLifecycle.roDetach); } } catch (_) {}
+          try { ro.disconnect(); if (DEBUG) { __gwLifecycle.roDetach++; console.info('[GW:LIFECYCLE] detach ResizeObserver', __gwLifecycle.roDetach); } } catch (_) { }
           window.__gw_map_resize_observer = null;
           window.__gw_map_container_resize_handler = null;
           window.__gw_map_resize_container_el = null;
@@ -288,12 +288,12 @@ function setupResize(map, containerEl) {
     window.__gw_resize_cleanup = cleanup;
     return cleanup;
   } catch (e) { /* ignore */ }
-  return () => {};
+  return () => { };
 }
-          if (DEBUG) { try { __gwLifecycle.mapEventAttach['load'] = (__gwLifecycle.mapEventAttach['load'] || 0) + 1; console.info('[GW:LIFECYCLE] attach map.on(load)', __gwLifecycle.mapEventAttach['load']); } catch (_) {} }
-  if (DEBUG) { try { __gwLifecycle.mapEventAttach['load'] = (__gwLifecycle.mapEventAttach['load'] || 0) + 1; console.info('[GW:LIFECYCLE] attach map.on(load)', __gwLifecycle.mapEventAttach['load']); } catch (_) {} }
-  try { window.GlobalMap.off('load', onLoad); if (DEBUG) { __gwLifecycle.mapEventDetach['load'] = (__gwLifecycle.mapEventDetach['load'] || 0) + 1; console.info('[GW:LIFECYCLE] detach map.off(load)', __gwLifecycle.mapEventDetach['load']); } } catch (_) {}
-  try { window.GlobalMap.on('load', onLoad); if (DEBUG) { __gwLifecycle.mapEventAttach['load'] = (__gwLifecycle.mapEventAttach['load'] || 0) + 1; console.info('[GW:LIFECYCLE] attach map.on(load)', __gwLifecycle.mapEventAttach['load']); } } catch (_) {}
+if (DEBUG) { try { __gwLifecycle.mapEventAttach['load'] = (__gwLifecycle.mapEventAttach['load'] || 0) + 1; console.info('[GW:LIFECYCLE] attach map.on(load)', __gwLifecycle.mapEventAttach['load']); } catch (_) { } }
+if (DEBUG) { try { __gwLifecycle.mapEventAttach['load'] = (__gwLifecycle.mapEventAttach['load'] || 0) + 1; console.info('[GW:LIFECYCLE] attach map.on(load)', __gwLifecycle.mapEventAttach['load']); } catch (_) { } }
+try { window.GlobalMap.off('load', onLoad); if (DEBUG) { __gwLifecycle.mapEventDetach['load'] = (__gwLifecycle.mapEventDetach['load'] || 0) + 1; console.info('[GW:LIFECYCLE] detach map.off(load)', __gwLifecycle.mapEventDetach['load']); } } catch (_) { }
+try { window.GlobalMap.on('load', onLoad); if (DEBUG) { __gwLifecycle.mapEventAttach['load'] = (__gwLifecycle.mapEventAttach['load'] || 0) + 1; console.info('[GW:LIFECYCLE] attach map.on(load)', __gwLifecycle.mapEventAttach['load']); } } catch (_) { }
 
 const imgElFromSrc = (src, width = MAP_ICON_SIZE, height = null) => new Promise((resolve, reject) => {
   const img = new Image();
@@ -369,11 +369,11 @@ async function fetchWithRetry(url, options = {}, retryCfg = {}) {
       return resp;
     } catch (err) {
       clearTimeout(timeoutId);
-      if (onParentAbort) try { parentSignal.removeEventListener('abort', onParentAbort); } catch (_) {}
+      if (onParentAbort) try { parentSignal.removeEventListener('abort', onParentAbort); } catch (_) { }
       const isAbort = err && (err.name === 'AbortError');
       const isNetwork = err instanceof TypeError;
       if (isAbort) {
-        try { err.__gwAbortReason = abortReason || 'unknown'; } catch (_) {}
+        try { err.__gwAbortReason = abortReason || 'unknown'; } catch (_) { }
         throw err;
       };
       if (attempt < retries && isNetwork) {
@@ -493,56 +493,56 @@ const App = (props) => {
     if (!config) return;
     const url = `https://${config.server}/${config.public_name}/api/v1.0/subjects?subject_group=${config.subject_group}`;
     try {
-      if (subjectsFetchCtlRef.current) { try { subjectsFetchCtlRef.current.abort(); } catch (_) {} }
+      if (subjectsFetchCtlRef.current) { try { subjectsFetchCtlRef.current.abort(); } catch (_) { } }
       const ctl = new AbortController();
       subjectsFetchCtlRef.current = ctl;
       fetchWithRetry(url, { signal: ctl.signal }, { retries: 2, backoff: 700, factor: 2, timeout: 15000 })
         .then(resp => resp.json())
         .then(resp => {
-        let index = 0;
-        resp.data.data.map((subject) => {
-          if (subject.last_position !== undefined) {
-            // override subject name if provided in config
-            if (config.subjects && config.subjects[subject.id] && config.subjects[subject.id].name) {
-              subject.name = config.subjects[subject.id].name;
-            }
-            // Avoid duplicate icon/layers if they already exist
-            try {
-              const subjLayerId = 'points' + subject.id;
-              if (!window.GlobalMap || !window.GlobalMap.getLayer || !window.GlobalMap.getLayer(subjLayerId)) {
+          let index = 0;
+          resp.data.data.map((subject) => {
+            if (subject.last_position !== undefined) {
+              // override subject name if provided in config
+              if (config.subjects && config.subjects[subject.id] && config.subjects[subject.id].name) {
+                subject.name = config.subjects[subject.id].name;
+              }
+              // Avoid duplicate icon/layers if they already exist
+              try {
+                const subjLayerId = 'points' + subject.id;
+                if (!window.GlobalMap || !window.GlobalMap.getLayer || !window.GlobalMap.getLayer(subjLayerId)) {
+                  drawIcon(subject).then();
+                }
+              } catch (e) {
+                // fallback to drawing
                 drawIcon(subject).then();
               }
-            } catch (e) {
-              // fallback to drawing
-              drawIcon(subject).then();
             }
+
+            let colors = earthtones;
+            if (Array.isArray(config.color_scheme)) {
+              colors = config.color_scheme;
+            } else if (config.color_scheme === 'earthtones') {
+              colors = earthtones;
+            } else if (config.color_scheme === 'aquatic') {
+              colors = aquatic;
+            } else if (config.color_scheme === 'custom' && Array.isArray(config.custom_colors)) {
+              colors = config.custom_colors;
+            } else {
+              console.warn('Invalid color scheme, falling back to earthtones.');
+              colors = earthtones;
+            }
+            subject.color = colors[index % colors.length];
+            index++;
+
+            setSubjectColor(prev => ({ ...prev, [subject.id]: subject.color }));
+          });
+
+          for (let i = 0; i < resp.data.data.length; i++) {
+            const id = resp.data.data[i].id;
+            resp.data.data[i].display_story = config.subjects && config.subjects[id] && (config.subjects[id].pictures || config.subjects[id].detail_description);
           }
-
-          let colors = earthtones;
-          if (Array.isArray(config.color_scheme)) {
-            colors = config.color_scheme;
-          } else if (config.color_scheme === 'earthtones') {
-            colors = earthtones;
-          } else if (config.color_scheme === 'aquatic') {
-            colors = aquatic;
-          } else if (config.color_scheme === 'custom' && Array.isArray(config.custom_colors)) {
-            colors = config.custom_colors;
-          } else {
-            console.warn('Invalid color scheme, falling back to earthtones.');
-            colors = earthtones;
-          }
-          subject.color = colors[index % colors.length];
-          index++;
-
-          setSubjectColor(prev => ({ ...prev, [subject.id]: subject.color }));
-        });
-
-        for (let i = 0; i < resp.data.data.length; i++) {
-          const id = resp.data.data[i].id;
-          resp.data.data[i].display_story = config.subjects && config.subjects[id] && (config.subjects[id].pictures || config.subjects[id].detail_description);
-        }
-        setSubjects(resp.data.data);
-        try { if (window.GlobalMap) window.GlobalMap.__gw_subjects_loaded = true; } catch (e) {}
+          setSubjects(resp.data.data);
+          try { if (window.GlobalMap) window.GlobalMap.__gw_subjects_loaded = true; } catch (e) { }
         })
         .catch((e) => { console.error(e); })
         .finally(() => { if (subjectsFetchCtlRef.current === ctl) subjectsFetchCtlRef.current = null; });
@@ -552,8 +552,8 @@ const App = (props) => {
   function initMap() {
     // If a map already exists, preserve it and just ensure proper sizing and visibility hooks
     if (window.GlobalMap && typeof window.GlobalMap.resize === 'function') {
-      try { window.GlobalMap.resize(); } catch (err) {}
-      setTimeout(() => { try { window.GlobalMap.resize(); } catch (e) {} }, 200);
+      try { window.GlobalMap.resize(); } catch (err) { }
+      setTimeout(() => { try { window.GlobalMap.resize(); } catch (e) { } }, 200);
       // Centralized setup of resize wiring (global + container)
       setupResize(window.GlobalMap, document.getElementById('map-container'));
       // If the map's style is loaded, ensure subjects are loaded; otherwise, attach a one-time load hook
@@ -572,10 +572,10 @@ const App = (props) => {
               if (!window.GlobalMap.__gw_subjects_loaded) {
                 loadSubjectsAndIcons();
               }
-            } catch (e) {}
+            } catch (e) { }
           });
         }
-      } catch (e) {}
+      } catch (e) { }
       return;
     }
 
@@ -621,7 +621,7 @@ const App = (props) => {
     let isSubscribed = true;
     // load configuration data with retry, timeout and abort
     try {
-      if (configFetchCtlRef.current) { try { configFetchCtlRef.current.abort(); } catch (_) {} }
+      if (configFetchCtlRef.current) { try { configFetchCtlRef.current.abort(); } catch (_) { } }
       const ctl = new AbortController();
       configFetchCtlRef.current = ctl;
       fetchWithRetry(props.configFile, {
@@ -648,7 +648,7 @@ const App = (props) => {
             return;
           }
           console.error('Failed to load config:', e);
-          try { config = validateAndNormalizeConfig({}); } catch (_) {}
+          try { config = validateAndNormalizeConfig({}); } catch (_) { }
           if (isSubscribed) initMap();
         })
         .finally(() => { if (configFetchCtlRef.current === ctl) configFetchCtlRef.current = null; });
@@ -657,7 +657,7 @@ const App = (props) => {
     return function cleanup() {
       // Keep the map instance and global handlers alive across screen changes.
       isSubscribed = false;
-      try { if (configFetchCtlRef.current) configFetchCtlRef.current.abort(); } catch (_) {}
+      try { if (configFetchCtlRef.current) configFetchCtlRef.current.abort(); } catch (_) { }
     };
   }, []); /* eslint-disable-line react-hooks/exhaustive-deps */
 
@@ -680,7 +680,7 @@ const App = (props) => {
         if (window.GlobalMap.getLayer(pointsLayerId)) {
           window.GlobalMap.setLayoutProperty(pointsLayerId, 'visibility', 'visible');
         }
-        
+
       }
     } else {
       // hide both line and points when toggled off
@@ -690,7 +690,7 @@ const App = (props) => {
       if (window.GlobalMap.getLayer(pointsLayerId)) {
         window.GlobalMap.setLayoutProperty(pointsLayerId, 'visibility', 'none');
       }
-      
+
     }
   }
 
@@ -700,7 +700,7 @@ const App = (props) => {
     try {
       const mapRef = tracksFetchCtlMapRef.current;
       const prev = mapRef.get(subjectId);
-      if (prev) { try { prev.abort(); } catch (_) {} }
+      if (prev) { try { prev.abort(); } catch (_) { } }
       const ctl = new AbortController();
       mapRef.set(subjectId, ctl);
       fetchWithRetry(url, { signal: ctl.signal }, { retries: 2, backoff: 700, factor: 2, timeout: 20000 })
@@ -862,31 +862,33 @@ const App = (props) => {
           // prefer the subject icon (do not show the point popup). Query the
           // topmost rendered feature at the point and skip if it's a subject layer.
           try {
-          const iconLayers = getSubjectIconLayerIds();
-          const top = iconLayers && iconLayers.length
-            ? window.GlobalMap.queryRenderedFeatures(e.point, { layers: iconLayers })
-            : [];
-          if (top && top.length > 0) {
-            const topLayerId = top[0]?.layer?.id;
-            if (typeof topLayerId === 'string' && topLayerId.startsWith('points')) return;
-          }
-        } catch (_) {}
+            const iconLayers = getSubjectIconLayerIds();
+            const top = iconLayers && iconLayers.length
+              ? window.GlobalMap.queryRenderedFeatures(e.point, { layers: iconLayers })
+              : [];
+            if (top && top.length > 0) {
+              const topLayerId = top[0]?.layer?.id;
+              if (typeof topLayerId === 'string' && topLayerId.startsWith('points')) return;
+            }
+          } catch (_) { }
           // Prefer pre-split fields if available (time_date, time_time, time_timezone).
           const props = f.properties || {};
-        const coordinates = Array.isArray(f.geometry?.coordinates)
-          ? f.geometry.coordinates.slice()
-          : f.geometry?.coordinates;
+          const coordinates = Array.isArray(f.geometry?.coordinates)
+            ? f.geometry.coordinates.slice()
+            : f.geometry?.coordinates;
 
-        const key = `${subjectId}-${props.idx}-${Date.now()}`;
-        setPointPopups(prev => [
-          ...prev,
-          { key, coordinates, props: {
-            idx: props.idx,
-            date: props.time_date || null,
-            time: props.time_time || null,
-            timezone: props.time_timezone || null
-          } }
-        ]);
+          const key = `${subjectId}-${props.idx}-${Date.now()}`;
+          setPointPopups(prev => [
+            ...prev,
+            {
+              key, coordinates, props: {
+                idx: props.idx,
+                date: props.time_date || null,
+                time: props.time_time || null,
+                timezone: props.time_timezone || null
+              }
+            }
+          ]);
         });
 
         // Ensure the subject's icon and name layers render above the points layer
@@ -904,14 +906,14 @@ const App = (props) => {
           // ignore if moveLayer is not available or fails
         }
         mapHandlerRegistry.add(window.GlobalMap, pointsLayerId, 'mouseenter', () => {
-          try { window.GlobalMap.getCanvas().style.cursor = 'pointer'; } catch (e) {}
+          try { window.GlobalMap.getCanvas().style.cursor = 'pointer'; } catch (e) { }
         });
         mapHandlerRegistry.add(window.GlobalMap, pointsLayerId, 'mouseleave', () => {
-          try { window.GlobalMap.getCanvas().style.cursor = ''; } catch (e) {}
+          try { window.GlobalMap.getCanvas().style.cursor = ''; } catch (e) { }
         });
       } else {
         // Update the source data if it already exists
-        try { window.GlobalMap.getSource(pointsSourceId).setData(pointsGeojson); } catch (e) {}
+        try { window.GlobalMap.getSource(pointsSourceId).setData(pointsGeojson); } catch (e) { }
       }
     } catch (e) {
       console.warn('drawTrack: unable to add track points', e);
@@ -1064,10 +1066,10 @@ const App = (props) => {
         });
 
         mapHandlerRegistry.add(window.GlobalMap, subjLayerId, 'mouseenter', () => {
-          try { window.GlobalMap.getCanvas().style.cursor = 'pointer'; } catch (e) {}
+          try { window.GlobalMap.getCanvas().style.cursor = 'pointer'; } catch (e) { }
         });
         mapHandlerRegistry.add(window.GlobalMap, subjLayerId, 'mouseleave', () => {
-          try { window.GlobalMap.getCanvas().style.cursor = ''; } catch (e) {}
+          try { window.GlobalMap.getCanvas().style.cursor = ''; } catch (e) { }
         });
       })
       .catch((error) => {
@@ -1105,162 +1107,162 @@ const App = (props) => {
   };
 
   // Re-fetch config safely; returns true on success, false on failure
-async function refreshConfig() {
-  try {
-    if (configFetchCtlRef.current) { try { configFetchCtlRef.current.abort(); } catch (_) {} }
-    const ctl = new AbortController();
-    configFetchCtlRef.current = ctl;
-
-    const resp = await fetchWithRetry(props.configFile, {
-      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-      signal: ctl.signal
-    }, { retries: 2, backoff: 700, factor: 2, timeout: 15000 });
-
-    const json = await resp.json();
+  async function refreshConfig() {
     try {
-      config = validateAndNormalizeConfig(json);
-      return true;
+      if (configFetchCtlRef.current) { try { configFetchCtlRef.current.abort(); } catch (_) { } }
+      const ctl = new AbortController();
+      configFetchCtlRef.current = ctl;
+
+      const resp = await fetchWithRetry(props.configFile, {
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        signal: ctl.signal
+      }, { retries: 2, backoff: 700, factor: 2, timeout: 15000 });
+
+      const json = await resp.json();
+      try {
+        config = validateAndNormalizeConfig(json);
+        return true;
+      } catch (e) {
+        console.warn('Invalid refreshed config, keeping existing:', e);
+        return false;
+      } finally {
+        if (configFetchCtlRef.current === ctl) configFetchCtlRef.current = null;
+      }
     } catch (e) {
-      console.warn('Invalid refreshed config, keeping existing:', e);
+      // Ignore aborts triggered by cleanup; log real failures
+      if (!(e?.name === 'AbortError' && e.__gwAbortReason === 'parent')) {
+        console.error('Refresh: failed to fetch config:', e);
+      }
       return false;
-    } finally {
-      if (configFetchCtlRef.current === ctl) configFetchCtlRef.current = null;
     }
-  } catch (e) {
-    // Ignore aborts triggered by cleanup; log real failures
-    if (!(e?.name === 'AbortError' && e.__gwAbortReason === 'parent')) {
-      console.error('Refresh: failed to fetch config:', e);
-    }
-    return false;
   }
-}
 
-const hardRefreshMap = async () => {
-  // abort in-flight requests
-  try { subjectsFetchCtlRef.current?.abort(); } catch (_) {}
-  try {
-    for (const ctl of tracksFetchCtlMapRef.current.values()) { try { ctl.abort(); } catch (_) {} }
-    tracksFetchCtlMapRef.current.clear();
-  } catch (_) {}
-
-  // clear UI state
-  setSubjectPopups([]);
-  setPointPopups([]);
-  try { subjectIconLayerIdsRef.current.clear(); } catch (_) {}
-
-  // fetch config first
-  await refreshConfig();
-
-  // remove existing map and recreate
-  try { if (window.GlobalMap?.remove) window.GlobalMap.remove(); } catch (_) {}
-  window.GlobalMap = null;
-  initMap();
-
-  // re-fetch visible tracks after the new map loads
-  const visibleIds = Object.entries(tracks).filter(([_, v]) => v).map(([id]) => id);
-  if (visibleIds.length) {
-    const onLoad = () => {
-      try { visibleIds.forEach((id) => fetchTrack(id)); } catch (_) {}
-      try { window.GlobalMap.off('load', onLoad); } catch (_) {}
-    };
-    try { window.GlobalMap.on('load', onLoad); } catch (_) {}
-  }
-  resetMap();
-};
-
-// optional: auto-refresh when device goes online
-useEffect(() => {
-  const onOnline = () => { hardRefreshMap(); };
-  window.addEventListener('online', onOnline);
-  return () => window.removeEventListener('online', onOnline);
-}, []);
-
-const softStyleReload = async () => {
-  await refreshConfig();
-
-  // Clear “loaded” flag and icon registry so subjects/icons rehydrate
-  try { window.GlobalMap && (window.GlobalMap.__gw_subjects_loaded = false); } catch (_) {}
-  try { subjectIconLayerIdsRef.current.clear(); } catch (_) {}
-
-  try {
-    const styleUrl = (!config.map || !config.map.style)
-      ? 'mapbox://styles/vjoelm/cktdex96919t117p3rkq7c7yu'
-      : config.map.style;
-
-    let hydrated = false;
-    // Rehydrate after style change; expected to fire once(load)/once(idle) and auto-detach.
-    const rehydrate = () => {
-      if (hydrated) return;
-      hydrated = true;
-      setupResize(window.GlobalMap, document.getElementById('map-container'));
-      loadSubjectsAndIcons();
-      Object.entries(tracks).forEach(([id, vis]) => { if (vis) fetchTrack(id); });
-      resetMap();
-      if (DEBUG) { try { console.info('[GW:LIFECYCLE] rehydrate completed'); } catch (_) {} }
-    };
-
-    const onceWithLog = (eventName) => () => {
-      if (DEBUG) {
-        try {
-          const key = `once(${eventName})`;
-          __gwLifecycle.mapEventDetach[key] = (__gwLifecycle.mapEventDetach[key] || 0) + 1;
-          console.info(`[GW:LIFECYCLE] fired ${key} (auto-detach)`, __gwLifecycle.mapEventDetach[key]);
-        } catch (_) {}
-      }
-      rehydrate();
-    };
-
-    window.GlobalMap.setStyle(styleUrl);
-    // Expected: attach count increases per refresh; handlers auto-detach after firing.
-    window.GlobalMap.once('load', onceWithLog('load'));
-    if (DEBUG) { try { __gwLifecycle.mapEventAttach['once(load)'] = (__gwLifecycle.mapEventAttach['once(load)'] || 0) + 1; console.info('[GW:LIFECYCLE] attach map.once(load)', __gwLifecycle.mapEventAttach['once(load)']); } catch (_) {} }
-    // Fallback in rare cases ‘load’ is missed
-    // Fallback in rare cases ‘load’ is missed.
-    window.GlobalMap.once('idle', onceWithLog('idle'));
-    if (DEBUG) { try { __gwLifecycle.mapEventAttach['once(idle)'] = (__gwLifecycle.mapEventAttach['once(idle)'] || 0) + 1; console.info('[GW:LIFECYCLE] attach map.once(idle)', __gwLifecycle.mapEventAttach['once(idle)']); } catch (_) {} }
-  } catch {
-    hardRefreshMap();
-  }
-};
-
-// Teardown: free resources, abort work, and remove the global map
-// Full teardown: reserved for hard refresh flows.
-// Frees resources, aborts work, removes map, and resets globals.
-function teardownGlobalMap() {
-  try {
-    // Detach global listeners and container observer via centralized cleanup
-    if (typeof window.__gw_resize_cleanup === 'function') {
-      try { window.__gw_resize_cleanup(); } catch (_) {}
-    }
-
-    // Abort any in-flight work
-    try { configFetchCtlRef.current?.abort(); } catch (_) {}
-    try { subjectsFetchCtlRef.current?.abort(); } catch (_) {}
+  const hardRefreshMap = async () => {
+    // abort in-flight requests
+    try { subjectsFetchCtlRef.current?.abort(); } catch (_) { }
     try {
-      for (const ctl of tracksFetchCtlMapRef.current.values()) { try { ctl.abort(); } catch (_) {} }
+      for (const ctl of tracksFetchCtlMapRef.current.values()) { try { ctl.abort(); } catch (_) { } }
       tracksFetchCtlMapRef.current.clear();
-    } catch (_) {}
+    } catch (_) { }
 
-    // Remove registered map handlers
-    try { if (window.GlobalMap) mapHandlerRegistry.removeAll(window.GlobalMap); } catch (_) {}
+    // clear UI state
+    setSubjectPopups([]);
+    setPointPopups([]);
+    try { subjectIconLayerIdsRef.current.clear(); } catch (_) { }
 
-    // Reset subject/icon registries and flags
-    try { subjectIconLayerIdsRef.current?.clear(); } catch (_) {}
+    // fetch config first
+    await refreshConfig();
+
+    // remove existing map and recreate
+    try { if (window.GlobalMap?.remove) window.GlobalMap.remove(); } catch (_) { }
+    window.GlobalMap = null;
+    initMap();
+
+    // re-fetch visible tracks after the new map loads
+    const visibleIds = Object.entries(tracks).filter(([_, v]) => v).map(([id]) => id);
+    if (visibleIds.length) {
+      const onLoad = () => {
+        try { visibleIds.forEach((id) => fetchTrack(id)); } catch (_) { }
+        try { window.GlobalMap.off('load', onLoad); } catch (_) { }
+      };
+      try { window.GlobalMap.on('load', onLoad); } catch (_) { }
+    }
+    resetMap();
+  };
+
+  // optional: auto-refresh when device goes online
+  useEffect(() => {
+    const onOnline = () => { hardRefreshMap(); };
+    window.addEventListener('online', onOnline);
+    return () => window.removeEventListener('online', onOnline);
+  }, []);
+
+  const softStyleReload = async () => {
+    await refreshConfig();
+
+    // Clear “loaded” flag and icon registry so subjects/icons rehydrate
+    try { window.GlobalMap && (window.GlobalMap.__gw_subjects_loaded = false); } catch (_) { }
+    try { subjectIconLayerIdsRef.current.clear(); } catch (_) { }
+
     try {
-      if (window.GlobalMap) {
-        window.GlobalMap.__gw_subjects_loaded = false;
-        window.GlobalMap.__gw_subjects_load_hook_attached = false;
+      const styleUrl = (!config.map || !config.map.style)
+        ? 'mapbox://styles/vjoelm/cktdex96919t117p3rkq7c7yu'
+        : config.map.style;
+
+      let hydrated = false;
+      // Rehydrate after style change; expected to fire once(load)/once(idle) and auto-detach.
+      const rehydrate = () => {
+        if (hydrated) return;
+        hydrated = true;
+        setupResize(window.GlobalMap, document.getElementById('map-container'));
+        loadSubjectsAndIcons();
+        Object.entries(tracks).forEach(([id, vis]) => { if (vis) fetchTrack(id); });
+        resetMap();
+        if (DEBUG) { try { console.info('[GW:LIFECYCLE] rehydrate completed'); } catch (_) { } }
+      };
+
+      const onceWithLog = (eventName) => () => {
+        if (DEBUG) {
+          try {
+            const key = `once(${eventName})`;
+            __gwLifecycle.mapEventDetach[key] = (__gwLifecycle.mapEventDetach[key] || 0) + 1;
+            console.info(`[GW:LIFECYCLE] fired ${key} (auto-detach)`, __gwLifecycle.mapEventDetach[key]);
+          } catch (_) { }
+        }
+        rehydrate();
+      };
+
+      window.GlobalMap.setStyle(styleUrl);
+      // Expected: attach count increases per refresh; handlers auto-detach after firing.
+      window.GlobalMap.once('load', onceWithLog('load'));
+      if (DEBUG) { try { __gwLifecycle.mapEventAttach['once(load)'] = (__gwLifecycle.mapEventAttach['once(load)'] || 0) + 1; console.info('[GW:LIFECYCLE] attach map.once(load)', __gwLifecycle.mapEventAttach['once(load)']); } catch (_) { } }
+      // Fallback in rare cases ‘load’ is missed
+      // Fallback in rare cases ‘load’ is missed.
+      window.GlobalMap.once('idle', onceWithLog('idle'));
+      if (DEBUG) { try { __gwLifecycle.mapEventAttach['once(idle)'] = (__gwLifecycle.mapEventAttach['once(idle)'] || 0) + 1; console.info('[GW:LIFECYCLE] attach map.once(idle)', __gwLifecycle.mapEventAttach['once(idle)']); } catch (_) { } }
+    } catch {
+      hardRefreshMap();
+    }
+  };
+
+  // Teardown: free resources, abort work, and remove the global map
+  // Full teardown: reserved for hard refresh flows.
+  // Frees resources, aborts work, removes map, and resets globals.
+  function teardownGlobalMap() {
+    try {
+      // Detach global listeners and container observer via centralized cleanup
+      if (typeof window.__gw_resize_cleanup === 'function') {
+        try { window.__gw_resize_cleanup(); } catch (_) { }
       }
-    } catch (_) {}
 
-    // Remove map and null global
-    try { if (window.GlobalMap?.remove) window.GlobalMap.remove(); } catch (_) {}
-    try { window.GlobalMap = null; } catch (_) {}
-  } catch (e) { /* ignore */ }
-}
+      // Abort any in-flight work
+      try { configFetchCtlRef.current?.abort(); } catch (_) { }
+      try { subjectsFetchCtlRef.current?.abort(); } catch (_) { }
+      try {
+        for (const ctl of tracksFetchCtlMapRef.current.values()) { try { ctl.abort(); } catch (_) { } }
+        tracksFetchCtlMapRef.current.clear();
+      } catch (_) { }
 
-// Expose teardown for manual hard refreshes
-try { window.__gw_teardown_global_map = teardownGlobalMap; } catch (_) {}
+      // Remove registered map handlers
+      try { if (window.GlobalMap) mapHandlerRegistry.removeAll(window.GlobalMap); } catch (_) { }
+
+      // Reset subject/icon registries and flags
+      try { subjectIconLayerIdsRef.current?.clear(); } catch (_) { }
+      try {
+        if (window.GlobalMap) {
+          window.GlobalMap.__gw_subjects_loaded = false;
+          window.GlobalMap.__gw_subjects_load_hook_attached = false;
+        }
+      } catch (_) { }
+
+      // Remove map and null global
+      try { if (window.GlobalMap?.remove) window.GlobalMap.remove(); } catch (_) { }
+      try { window.GlobalMap = null; } catch (_) { }
+    } catch (e) { /* ignore */ }
+  }
+
+  // Expose teardown for manual hard refreshes
+  try { window.__gw_teardown_global_map = teardownGlobalMap; } catch (_) { }
 
   return (
     <>
@@ -1284,37 +1286,40 @@ try { window.__gw_teardown_global_map = teardownGlobalMap; } catch (_) {}
                 onStoryClick={(subject) => setLegSub(subject)}
               />
             </div>
+
+
+            <div id="gw-modal-root" data-modal-root />
             <Partners />
           </div>
           {subjectPopups.map(({ properties, geometry }) => (
-          <Popup
-            key={`${properties.id}-popup`}
-            coordinates={geometry.coordinates.slice()}
-            onClose={() => {
-              setSubjectPopups(prev => prev.filter(({ properties: { id } }) => id !== properties.id));
-            }}
-          >
-            <SubjectPopupContent
-              subject={properties}
-              subjectData={config.subjects[properties.id]}
-              onStoryClick={(subject) => setLegSub(subject)}
-              legendOpen={legendOpen}
-              onLegendStateToggle={toggleLegendState}
-              {...props}
-            />
-          </Popup>
-        ))}
+            <Popup
+              key={`${properties.id}-popup`}
+              coordinates={geometry.coordinates.slice()}
+              onClose={() => {
+                setSubjectPopups(prev => prev.filter(({ properties: { id } }) => id !== properties.id));
+              }}
+            >
+              <SubjectPopupContent
+                subject={properties}
+                subjectData={config.subjects[properties.id]}
+                onStoryClick={(subject) => setLegSub(subject)}
+                legendOpen={legendOpen}
+                onLegendStateToggle={toggleLegendState}
+                {...props}
+              />
+            </Popup>
+          ))}
 
-        {/* Track-point popups (siblings, not nested) */}
-        {pointPopups.map(({ key, coordinates, props: p }) => (
-          <Popup
-            key={key}
-            coordinates={coordinates}
-            onClose={() => setPointPopups(prev => prev.filter(pp => pp.key !== key))}
-          >
-            <PointPopupContent idx={p.idx} date={p.date} time={p.time} timezone={p.timezone} />
-          </Popup>
-        ))}
+          {/* Track-point popups (siblings, not nested) */}
+          {pointPopups.map(({ key, coordinates, props: p }) => (
+            <Popup
+              key={key}
+              coordinates={coordinates}
+              onClose={() => setPointPopups(prev => prev.filter(pp => pp.key !== key))}
+            >
+              <PointPopupContent idx={p.idx} date={p.date} time={p.time} timezone={p.timezone} />
+            </Popup>
+          ))}
         </div>
       </TrackContext.Provider> {/* eslint-disable-line react/jsx-closing-tag-location */}
     </>
@@ -1330,24 +1335,24 @@ export default App;
 function cleanupForHMR() {
   try {
     if (typeof window.__gw_resize_cleanup === 'function') {
-      try { window.__gw_resize_cleanup(); } catch (_) {}
+      try { window.__gw_resize_cleanup(); } catch (_) { }
     }
-    try { if (window.GlobalMap) mapHandlerRegistry.removeAll(window.GlobalMap); } catch (_) {}
-    if (DEBUG) { try { logLifecycleSummary('hmr:cleanup'); } catch (_) {} }
-  } catch (_) {}
+    try { if (window.GlobalMap) mapHandlerRegistry.removeAll(window.GlobalMap); } catch (_) { }
+    if (DEBUG) { try { logLifecycleSummary('hmr:cleanup'); } catch (_) { } }
+  } catch (_) { }
 }
 
 try {
   if (typeof import.meta !== 'undefined' && import.meta.hot) {
-    import.meta.hot.dispose(() => { try { cleanupForHMR(); } catch (_) {} });
+    import.meta.hot.dispose(() => { try { cleanupForHMR(); } catch (_) { } });
   }
-} catch (_) {}
+} catch (_) { }
 
 try {
   if (typeof module !== 'undefined' && module.hot) {
-    module.hot.dispose(() => { try { cleanupForHMR(); } catch (_) {} });
+    module.hot.dispose(() => { try { cleanupForHMR(); } catch (_) { } });
   }
-} catch (_) {}
+} catch (_) { }
 
 // Validate and normalize configuration, applying safe defaults
 function validateAndNormalizeConfig(raw) {

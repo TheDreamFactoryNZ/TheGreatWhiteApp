@@ -1,5 +1,6 @@
 import React from 'react';
 import Arrow from '@images/button_icons/arrow.svg?component';
+import TipModal from './buttons/TipModal.jsx';
 import styles from './LastSeenInfo.module.css';
 
 /* eslint-disable react/prop-types */
@@ -203,6 +204,7 @@ export default function LastSeenInfo({
 
   // Non-expandable: print summary only (no full date shown here), show .
   return (
+    <div>
     <p className={className}>
       {withBullet && (
         <span
@@ -212,5 +214,12 @@ export default function LastSeenInfo({
       )}
       {dateSummaryText}
     </p>
+    <TipModal 
+      portalIntoId="gw-modal-root"
+      modalTitle="No recent location update?"
+      modalBody="<p>Locations are obtained via a tag attached to the dorsal fin of the shark, which then transmits to orbiting satellites. For the satellites to receive a location, the shark must be near or at the surface of the water.</p><p>Being marine animals, sharks can spend <strong>months</strong> underwater, therefore it's not unusual to see long periods of inactivity.</p><p><strong>Rest assured, this is <em>not</em> an issue with the app - it is simply the harsh reality of tagging and tracking marine animals</strong></p>"
+      initialOpen={false}
+    />
+    </div>
   );
 }
