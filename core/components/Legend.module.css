@@ -12,7 +12,7 @@
     grid-template-columns: minmax(0, 3rem) minmax(0, auto);
     user-select: none;
     overscroll-behavior: none;
-    width: min(75vw, clamp(380px, 15vw, 33vw));
+    width: min(75vw, clamp(380px, 25vw, 33vw));
 }
 
 .legendOpen {
