@@ -12,7 +12,7 @@
 
 .popUpHeader {
     background: var(--ocean-gradient);
-    padding: 0.25rem 0 0.625rem 1rem;
+    padding: var(--map-popup-header-padding);
 }
 
 :global(#gw-map) h2:global(.map-heading).locationNumber {

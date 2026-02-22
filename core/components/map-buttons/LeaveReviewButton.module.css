@@ -27,15 +27,8 @@
     composes: mapButtonHeaderContainer from './MapButtons.module.css';
 }
 
-h2.supportHeader {
-    flex: 1 1 auto;
-    min-width: 0;
-    margin: 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    font-size: 1.625rem;
-    font-weight: var(--map-h2-font-weight);
-    color: var(--map-h2-color);
+.supportHeader {
+    composes: mapButtonHeader from './MapButtons.module.css';
 }
 
 .closeIcon {
@@ -58,7 +51,7 @@ h2.supportHeader {
 }
 
 .supportItem p {
-    font-size: calc(var(--map-body-font-size) * 0.875);
+    font-size: var(--map-small-body-font-size);
 }
 
 .supportItemsContainer .supportItem:first-of-type {

@@ -10,7 +10,6 @@
     width: min(75vw, clamp(320px, 25vw, 390px));
     margin-top: -34px;
     margin-left: 54px;
-    padding: 0.25rem;
     background-color: var(--map-popup-background-color);
     border: var(--map-popup-border);
     border-radius: var(--map-popup-border-radius);
@@ -55,10 +54,13 @@
     justify-content: space-between;
     align-items: center;
     gap: 0.25rem;
-    padding-left: 10px;
+    padding: 1rem;
+    background: var(--ocean-gradient);
+    border-bottom: var(--accent-border);
+    border-radius: var(--map-popup-border-radius) var(--map-popup-border-radius) 0 0;
 }
 
-h2.mapButtonHeader {
+.mapButtonHeader {
     flex: 1 1 auto;
     min-width: 0;
     margin: 0;
@@ -66,7 +68,7 @@ h2.mapButtonHeader {
     text-overflow: ellipsis;
     font-size: 1.625rem;
     font-weight: var(--map-h2-font-weight);
-    color: var(--map-h2-color);
+    color: #fff;
 }
 
 .closeIcon {
@@ -76,6 +78,7 @@ h2.mapButtonHeader {
     opacity: 90%;
     cursor: pointer;
     box-sizing: content-box;
+    filter: invert(1);
 }
 
 /* The list of tip items */

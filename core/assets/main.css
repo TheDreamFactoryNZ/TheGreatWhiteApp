@@ -112,6 +112,7 @@ html {
     --map-popup-border: 0.125rem solid #333;
     --map-popup-border-radius: 0.75rem;
     --map-popup-box-shadow: 0 4px 5px rgba(0,0,0,.25);
+    --map-popup-content-padding: 0.25rem 0 0.625rem 1rem;
 
     /* icons */
     --default-icon-color: #333333;
@@ -129,6 +130,7 @@ html {
 
     /* Decorative elements */
     --border-divider: 2px solid rgba(0,0,0,0.15);
+    --accent-border: 0.125rem solid var(--map-accent-color);
     --ocean-gradient: linear-gradient(135deg, #060A23 0%, #060A23 75%, #0A0E2C 90%, #0E1235 100%);
 
 }

@@ -23,15 +23,8 @@
     composes: mapButtonHeaderContainer from './MapButtons.module.css';
 }
 
-h2.tipsHeader {
-    flex: 1 1 auto;
-    min-width: 0;
-    margin: 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    font-size: 1.625rem;
-    font-weight: var(--map-h2-font-weight);
-    color: var(--map-h2-color);
+.tipsHeader {
+    composes: mapButtonHeader from './MapButtons.module.css';
 }
 
 .closeIcon {
