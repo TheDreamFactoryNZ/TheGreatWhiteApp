@@ -175,7 +175,7 @@ export default function LastSeenInfo({
           <Arrow className={styles.summaryArrow} />
         </summary>
         <div className={styles.fullDateContainer}>
-          <span className={`${'map-body'} ${styles.fullDate}`}>{fullDateStr}
+          <span className={`${'map-body'} ${styles.fullDateText}`}>{fullDateStr}
           {!showDeactivated && (
           <>&nbsp;&nbsp;
           <TipModal

@@ -142,7 +142,8 @@ html {
     letter-spacing: var(--heading-letter-spacing)
 }
 
-#gw-map p {
+#gw-map p,
+#gw-map span {
     font-family: var(--map-body-font);
 }
 
@@ -183,7 +184,8 @@ html {
     color: var(--map-h3-color);
 }
 
-#gw-map p.map-body {
+#gw-map p.map-body,
+#gw-map span.map-body {
     font-family: var(--map-body-font);
     font-size: var(--map-body-font-size);
     color: var(--map-body-color);
@@ -191,20 +193,27 @@ html {
 
 #gw-map p.map-body a,
 #gw-map p.map-body a:visited,
-#gw-map p.map-body a:active {
+#gw-map p.map-body a:active,
+#gw-map span.map-body a,
+#gw-map span.map-body a:visited,
+#gw-map span.map-body a:active {
     color: var(--map-a-color);
     text-decoration: underline;
 }
 
-#gw-map p strong {
+#gw-map p strong,
+#gw-map span strong {
     font-weight: 700;
 }
 
-#gw-map p em {
+#gw-map p em,
+#gw-map span em {
     font-style: italic;
 }
 
-#gw-map em { font-style: italic; }
+#gw-map em {
+    font-style: italic;
+}
 
 #gw-map {
     height: 100%;

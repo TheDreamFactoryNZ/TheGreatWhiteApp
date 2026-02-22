@@ -100,7 +100,7 @@ details[open] .summaryArrow {
     cursor: default;
 }
 
-:global(#gw-map) .fullDateContainer p:global(.map-body) {
+:global(#gw-map) .fullDateContainer span.fullDateText:global(.map-body) {
     color: #fff;
     font-size: var(--map-small-body-font-size);
 }
