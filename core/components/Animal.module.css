@@ -94,6 +94,10 @@
     flex: 0 1 75%;
 }
 
+.lastSeen {
+    margin-top: 0.25rem;
+}
+
 .fitContent {
     width: -webkit-fit-content;
     width: -moz-fit-content;

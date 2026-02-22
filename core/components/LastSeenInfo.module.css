@@ -64,13 +64,6 @@ details[open] .summaryArrow {
     transform: rotate(90deg);
 }
 
-.dateSummaryText {
-    font-family: var(--map-body-font);
-    font-size: var(--map-body-font-size);
-    line-height: 1.2;
-    color: #fff;
-}
-
 .overlayDetails {
     position: relative;
     contain: none;
@@ -87,6 +80,19 @@ details[open] .summaryArrow {
     border-radius: 0.5rem;
     padding: 0.5rem 0.75rem;
     box-shadow: var(--map-popup-box-shadow);
+}
+
+.dateSummaryText {
+    font-family: var(--map-body-font);
+    font-size: var(--map-body-font-size);
+    line-height: 1.2;
+}
+
+.overlayDetails .dateSummaryText {
+    font-family: var(--map-body-font);
+    font-size: var(--map-body-font-size);
+    line-height: 1.2;
+    color: #fff;
 }
 
 .fullDateContainer {
@@ -106,4 +112,13 @@ details[open] .summaryArrow {
     margin-top: 0.5em;
     font-size: var(--map-small-body-font-size);
     font-weight: 700;
+}
+
+.lastSeenTip {
+    display: inline;
+}
+
+.lastSeenTip button {
+    line-height: 1;
+    vertical-align: middle;
 }

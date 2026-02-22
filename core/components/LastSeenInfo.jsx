@@ -204,22 +204,25 @@ export default function LastSeenInfo({
 
   // Non-expandable: print summary only (no full date shown here), show .
   return (
-    <div>
-    <p className={className}>
-      {withBullet && (
-        <span
-          className={`${styles.statusBullet} ${statusClass} ${statusClassName}`}
-          aria-hidden="true"
-        />
-      )}
-      {dateSummaryText}
-    </p>
-    <TipModal 
-      portalIntoId="gw-modal-root"
-      modalTitle="No recent location update?"
-      modalBody="<p>Locations are obtained via a tag attached to the dorsal fin of the shark, which then transmits to orbiting satellites. For the satellites to receive a location, the shark must be near or at the surface of the water.</p><p>Being marine animals, sharks can spend <strong>months</strong> underwater, therefore it's not unusual to see long periods of inactivity.</p><p><strong>Rest assured, this is <em>not</em> an issue with the app - it is simply the harsh reality of tagging and tracking marine animals</strong></p>"
-      initialOpen={false}
-    />
+    <div className={className}>
+      <div className={styles.dateSummaryContainer}>
+        <span className={`${styles.dateSummaryText}`}>
+          {withBullet && (
+            <span
+              className={`${styles.statusBullet} ${statusClass} ${statusClassName}`}
+              aria-hidden="true"
+            />
+          )}
+          {dateSummaryText}&nbsp;&nbsp;
+          <TipModal
+            className={styles.lastSeenTip}
+            portalIntoId="gw-modal-root"
+            modalTitle="No recent location update?"
+            modalBody="<p>Locations are obtained via a tag attached to the dorsal fin of the shark, which then transmits to orbiting satellites. For the satellites to receive a location, the shark must be near or at the surface of the water.</p><p>Being marine animals, sharks can spend <strong>months</strong> underwater, therefore it's not unusual to see long periods of inactivity.</p><p><strong>Rest assured, this is <em>not</em> an issue with the app - it is simply the harsh reality of tagging and tracking marine animals</strong></p>"
+            initialOpen={false}
+          />
+        </span>
+      </div>
     </div>
   );
 }
