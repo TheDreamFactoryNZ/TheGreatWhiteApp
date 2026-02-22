@@ -87,7 +87,8 @@ html {
     --map-h2-font-size: clamp(1.6rem, 1.1rem + 1.6vw, 2.6rem);
     --map-h3-font-size: clamp(1.4rem, 1.0rem + 1.1vw, 2.2rem);
     --map-body-font-size: clamp(1.25rem, 0.5rem + 0.2vw, 2.5rem);
-    --map-small-body-font-size: calc(var(--map-body-font-size) * 0.75);
+    --map-small-body-font-size: calc(var(--map-body-font-size) * 0.875);
+    --map-sub-body-font-size: calc(var(--map-body-font-size) * 0.75);
 
     --map-h1-font-weight: 700;
     --map-h2-font-weight: 600;

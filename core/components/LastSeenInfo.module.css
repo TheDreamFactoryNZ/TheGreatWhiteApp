@@ -100,7 +100,8 @@ details[open] .summaryArrow {
     cursor: default;
 }
 
-:global(#gw-map) .fullDateContainer span.fullDateText:global(.map-body) {
+:global(#gw-map) .fullDateContainer span.fullDateText:global(.map-body),
+:global(#gw-map) .fullDateContainer p:global(.map-body) {
     color: #fff;
     font-size: var(--map-small-body-font-size);
 }
@@ -111,7 +112,7 @@ details[open] .summaryArrow {
     cursor: pointer;
     margin-top: 0.5em;
     font-family: var(--map-body-font);
-    font-size: var(--map-small-body-font-size);
+    font-size: var(--map-sub-body-font-size);
     font-weight: 700;
     display: block;
 }
