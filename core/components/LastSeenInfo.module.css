@@ -110,8 +110,10 @@ details[open] .summaryArrow {
     color: var(--map-accent-color);
     cursor: pointer;
     margin-top: 0.5em;
+    font-family: var(--map-body-font);
     font-size: var(--map-small-body-font-size);
     font-weight: 700;
+    display: block;
 }
 
 .lastSeenTip {

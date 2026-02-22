@@ -31,3 +31,11 @@ button.iconButton {
 .iconButton[data-active="true"] .trackIconSvg {
     color: var(--active-icon-color);
 }
+
+.tipIconSvg :where(path, rect, circle) {
+    stroke: currentColor !important;
+}
+
+.tipIconSvg :where(path) {
+    fill: currentColor !important;
+}

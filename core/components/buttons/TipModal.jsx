@@ -52,7 +52,7 @@ export default function TipModal({
     const bodyClasses = `${styles.modalBody} ${bodyClassName || ''}`;
     const closeBtnClasses = `${styles.closeButton} ${closeButtonClassName || ''}`;
     const tipBtnClasses = `${iconButtonStyles.iconButton} ${tipButtonClassName || ''}`;
-    const tipIconClasses = `${iconButtonStyles.iconSvg} ${tipIconClassName || ''}`;
+    const tipIconClasses = `${iconButtonStyles.iconSvg} ${iconButtonStyles.tipIconSvg} ${tipIconClassName || ''}`;
 
 
     const [open, setOpen] = React.useState(!!initialOpen);
