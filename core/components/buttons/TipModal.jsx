@@ -29,47 +29,47 @@ import styles from './TipModal.module.css';
 // - portalAfterId?: string – if provided, the modal portal will be rendered as a child of the element with this ID instead of document.body
 
 export default function TipModal({
-	modalTitle,
-	modalBody,
-	initialOpen = false,
-	onOpen,
-	onClose,
-	closeOnBackdropClick = true,
-	className,
-	overlayClassName,
-	modalClassName,
-	headerClassName,
-	bodyClassName,
-	closeButtonClassName,
-	tipButtonClassName,
-	tipIconClassName,
-	portalIntoId,
-	portalAfterId,
+    modalTitle,
+    modalBody,
+    initialOpen = false,
+    onOpen,
+    onClose,
+    closeOnBackdropClick = true,
+    className,
+    overlayClassName,
+    modalClassName,
+    headerClassName,
+    bodyClassName,
+    closeButtonClassName,
+    tipButtonClassName,
+    tipIconClassName,
+    portalIntoId,
+    portalAfterId,
 }) {
-	const overlayClasses = `${styles.modalOverlay} ${overlayClassName || ''}`;
-	const dialogClasses = `${styles.modalDialog} ${modalClassName || ''}`;
-	const headerClasses = `${styles.modalHeader} ${headerClassName || ''}`;
-	const bodyClasses = `${styles.modalBody} ${bodyClassName || ''}`;
-	const closeBtnClasses = `${styles.closeButton} ${closeButtonClassName || ''}`;
-	const tipBtnClasses = `${iconButtonStyles.iconButton} ${tipButtonClassName || ''}`;
-	const tipIconClasses = `${iconButtonStyles.iconSvg} ${tipIconClassName || ''}`;
+    const overlayClasses = `${styles.modalOverlay} ${overlayClassName || ''}`;
+    const dialogClasses = `${styles.modalDialog} ${modalClassName || ''}`;
+    const headerClasses = `${styles.modalHeader} ${headerClassName || ''}`;
+    const bodyClasses = `${styles.modalBody} ${bodyClassName || ''}`;
+    const closeBtnClasses = `${styles.closeButton} ${closeButtonClassName || ''}`;
+    const tipBtnClasses = `${iconButtonStyles.iconButton} ${tipButtonClassName || ''}`;
+    const tipIconClasses = `${iconButtonStyles.iconSvg} ${tipIconClassName || ''}`;
 
-	
-	const [open, setOpen] = React.useState(!!initialOpen);
-	const [portalNode, setPortalNode] = React.useState(null);
 
-	const triggerRef = React.useRef(null);
-	const closeRef = React.useRef(null);
-	const overlayRef = React.useRef(null);
-	const titleId = React.useMemo(() => `tipmodal-title-${Math.random().toString(36).slice(2)}` , []);
+    const [open, setOpen] = React.useState(!!initialOpen);
+    const [portalNode, setPortalNode] = React.useState(null);
 
-	React.useEffect(() => {
+    const triggerRef = React.useRef(null);
+    const closeRef = React.useRef(null);
+    const overlayRef = React.useRef(null);
+    const titleId = React.useMemo(() => `tipmodal-title-${Math.random().toString(36).slice(2)}`, []);
+
+    React.useEffect(() => {
         if (!open) {
             setPortalNode(null);
             return undefined;
         }
 
-		// Portal into a stable, existing node
+        // Portal into a stable, existing node
         if (portalIntoId) {
             const existing = document.getElementById(portalIntoId);
             setPortalNode(existing || document.body);
@@ -82,7 +82,7 @@ export default function TipModal({
             return undefined;
         }
 
-		// Fallback: create a mount node immediately after an anchor
+        // Fallback: create a mount node immediately after an anchor
         const anchor = document.getElementById(portalAfterId);
         if (!anchor || !anchor.parentNode) {
             // Fallback to body if specified anchor not found
@@ -134,9 +134,13 @@ export default function TipModal({
         }
     }, [open, onClose]);
 
-	const handleBackdropClick = (e) => {
+    const handleBackdropClick = (e) => {
         if (!closeOnBackdropClick) return;
         if (overlayRef.current && e.target === overlayRef.current) {
+
+            e.preventDefault();
+            e.stopPropagation();
+
             setOpen(false);
         }
     };
@@ -150,24 +154,24 @@ export default function TipModal({
         return <div className={bodyClasses}>{modalBody}</div>;
     };
 
-	return (
-		<div className={className}>
-			<button
-				type="button"
-				ref={triggerRef}
-				className={tipBtnClasses}
-				aria-haspopup="dialog"
-				aria-expanded={open ? 'true' : 'false'}
-				onClick={(e) => {
-					e.preventDefault();
-					e.stopPropagation();
-					setOpen(true);
-				}}
-			>
-				<TipIcon width="18px" height="18px" className={tipIconClasses} aria-hidden="true" />
-			</button>
+    return (
+        <div className={className}>
+            <button
+                type="button"
+                ref={triggerRef}
+                className={tipBtnClasses}
+                aria-haspopup="dialog"
+                aria-expanded={open ? 'true' : 'false'}
+                onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    setOpen(true);
+                }}
+            >
+                <TipIcon width="18px" height="18px" className={tipIconClasses} aria-hidden="true" />
+            </button>
 
-			{/* IMPORTANT: guard portalNode so we don't call createPortal with null */}
+            {/* IMPORTANT: guard portalNode so we don't call createPortal with null */}
             {open && portalNode && createPortal(
                 (
                     <div
@@ -175,6 +179,8 @@ export default function TipModal({
                         className={overlayClasses}
                         role="presentation"
                         onClick={handleBackdropClick}
+                        onMouseDown={(e) => e.stopPropagation()}
+                        onTouchStart={(e) => e.stopPropagation()}
                     >
                         <div
                             role="dialog"
@@ -194,17 +200,20 @@ export default function TipModal({
                                         e.stopPropagation();
                                         setOpen(false);
                                     }}
+
+                                    onMouseDown={(e) => e.stopPropagation()}
+                                    onTouchStart={(e) => e.stopPropagation()}
                                 >
                                     <CloseIcon />
-								</button>
-							</div>
-							{renderBodyContent()}
-						</div>
-					</div>
-				),
-				portalNode
-			)}
-		</div>
-	);
+                                </button>
+                            </div>
+                            {renderBodyContent()}
+                        </div>
+                    </div>
+                ),
+                portalNode
+            )}
+        </div>
+    );
 }
 
