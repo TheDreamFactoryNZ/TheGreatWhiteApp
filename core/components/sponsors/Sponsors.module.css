@@ -1,0 +1,124 @@
+/* POWERED BY */
+.poweredByContainer {
+  position: relative;
+  min-height: clamp(125px, 12.5vh, 250px);
+  width: 100%;
+  box-shadow: 0px -6px 0px 0px rgb(188, 16, 56);
+  -webkit-box-shadow: 0px -6px 0px 0px rgb(188, 16, 56);
+  -moz-box-shadow: 0px -6px 0px 0px rgba(188, 16, 56, 1);
+  touch-action: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background: #ffffff;
+  z-index: 2;
+  overflow-x: clip;
+}
+
+.poweredByHeading {
+  background: #bc1038;
+  border-radius: 0.5rem 0.5rem 0 0;
+  padding: 0 2rem;
+  width: fit-content;
+  position: absolute;
+  bottom: 100%;
+  transform: translateX(-50%);
+  left: 50%;
+}
+
+.poweredByHeadingText {
+  margin: 0;
+  font-family: zeitung-pro-variable, Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  color: #ffffff;
+  text-align: center;
+}
+
+.poweredByContainerInner {
+  margin: 0.5vw 2vw 0;
+}
+
+.poweredBySponsors {
+  background: #ffffff;
+  padding-top: 0;
+}
+
+.poweredBySponsorsContainer {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20vw, 1fr));
+  gap: clamp(8px, 1.25vw, 22px);
+  align-items: stretch;
+  justify-items: stretch;
+}
+
+.poweredByLogoContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-width: 0;
+  height: clamp(44px, 7vh, 110px);
+}
+
+.poweredByLogoContainerPublic {
+  grid-column: 1 / -1;
+  aspect-ratio: auto;
+  min-height: unset;
+  height: auto;
+}
+
+.poweredByLogo {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.sponsorLogo {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+:global(#gw-map) .poweredByContainer img {
+  max-width: 100%;
+}
+
+p.sponsorLogoPublic {
+  font-style: italic;
+  margin: 0 0 0.25rem 0;
+}
+
+.poweredByLogoContainerPublicText p {
+  font-family: zeitung-pro-variable, Arial, Helvetica, sans-serif;
+  font-size: 8px;
+  color: #111317;
+}
+
+@media screen and (max-width: 900px) {
+  p.sponsorLogoPublic {
+    margin: 0;
+    font-size: 0.75em;
+    text-align: center;
+    line-height: 1em;
+  }
+
+  .poweredBySponsorsContainer {
+    gap: clamp(8px, 1.5vw, 18px);
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .poweredBySponsorsContainer {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  }
+}

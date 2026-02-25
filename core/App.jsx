@@ -5,7 +5,7 @@ import PointPopupContent from './components/PointPopupContent';
 import Popup from './components/Popup';
 import Legend from './components/Legend';
 import { HelpButton, LeaveReviewButton, RefreshMapButton } from './components/map-buttons';
-import Partners from './components/Partners';
+import { Sponsors } from './components/sponsors';
 import mapHandlerRegistry from './utils/mapHandlerRegistry';
 import TrackContext from './context/TrackContext.js';
 
@@ -1286,10 +1286,8 @@ const App = (props) => {
                 onStoryClick={(subject) => setLegSub(subject)}
               />
             </div>
-
-
+            <Sponsors />
             <div id="gw-modal-root" data-modal-root />
-            <Partners />
           </div>
           {subjectPopups.map(({ properties, geometry }) => (
             <Popup
