@@ -21,8 +21,6 @@
     box-sizing: border-box;
 }
 
-/* The small button that toggles the tips */
-
 .mapButtonIcon {
     all: unset;
     height: 29px;
@@ -81,12 +79,11 @@
     filter: invert(1);
 }
 
-/* The list of tip items */
 .mapButtonItemsContainer {
     display: flex;
     flex-direction: column;
-    padding: 10px;
     overflow-y: auto;
     overflow-x: hidden;
     max-height: 50vh;
+    padding: var(--map-popup-content-padding);
 }
