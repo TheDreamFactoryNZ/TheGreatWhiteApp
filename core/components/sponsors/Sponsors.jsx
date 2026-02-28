@@ -19,7 +19,7 @@ const Sponsors = () => {
       <div className={styles.poweredByContainerInner}>
         <ul className={styles.poweredBySponsorsContainer}>
           {activeSponsors.map((sponsor, index) => (
-            <li className={styles.poweredByLogoContainer} key={sponsor.id}>
+            <li className={`${styles.poweredByLogoContainer} sponsorItem-${index + 1}`} key={sponsor.id}>
               <a
                 className={`${styles.poweredByLogo} sponsor-${index + 1}`}
                 href={sponsor.href}

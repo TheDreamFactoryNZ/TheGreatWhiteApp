@@ -1,7 +1,6 @@
 /* POWERED BY */
 .poweredByContainer {
   position: relative;
-  min-height: clamp(125px, 12.5vh, 250px);
   width: 100%;
   box-shadow: 0px -6px 0px 0px rgb(188, 16, 56);
   -webkit-box-shadow: 0px -6px 0px 0px rgb(188, 16, 56);
@@ -19,7 +18,7 @@
 .poweredByHeading {
   background: #bc1038;
   border-radius: 0.5rem 0.5rem 0 0;
-  padding: 0 2rem;
+  padding: 0.25rem 1rem 0 1rem;
   width: fit-content;
   position: absolute;
   bottom: 100%;
@@ -29,14 +28,15 @@
 
 .poweredByHeadingText {
   margin: 0;
-  font-family: zeitung-pro-variable, Arial, Helvetica, sans-serif;
-  font-size: 10px;
+  font-size: var(--map-sub-body-font-size);
   color: #ffffff;
   text-align: center;
+  text-wrap: nowrap;
+  transform: translateY(-0.25rem);
 }
 
 .poweredByContainerInner {
-  margin: 0.5vw 2vw 0;
+  margin: 0.5vw;
 }
 
 .poweredBySponsors {
@@ -50,10 +50,33 @@
   padding: 0;
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(20vw, 1fr));
-  gap: clamp(8px, 1.25vw, 22px);
-  align-items: stretch;
-  justify-items: stretch;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 12.825vw));
+  grid-column-gap: clamp(1.25rem, 1vw, 2.25rem);
+  grid-row-gap: 0.625rem;
+  place-content: space-between;
+  place-items: space-between;
+}
+
+@media screen and (min-width: 1440px) {
+  .poweredBySponsorsContainer {
+    grid-column-gap: clamp(1rem, 1.25vw, 3.5rem);
+  }
+}
+
+@media screen and (min-width: 550px) and (max-width: 1140px) {
+  .poweredBySponsorsContainer {
+    grid-template-columns: repeat(auto-fit, minmax(66px, 12vw));
+    grid-column-gap: 0.75rem;
+    grid-row-gap: 0.5rem;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .poweredBySponsorsContainer {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 0;
+    grid-row-gap: 0;
+  }
 }
 
 .poweredByLogoContainer {
@@ -62,7 +85,6 @@
   justify-content: center;
   width: 100%;
   min-width: 0;
-  height: clamp(44px, 7vh, 110px);
 }
 
 .poweredByLogoContainerPublic {
@@ -76,6 +98,7 @@
   display: flex;
   width: 100%;
   height: 100%;
+  padding: 0.5rem;
   align-items: center;
   justify-content: center;
 }
@@ -83,9 +106,8 @@
 .sponsorLogo {
   display: block;
   max-width: 100%;
-  max-height: 100%;
+  height: auto;
   width: 100%;
-  height: 100%;
   object-fit: contain;
 }
 
@@ -95,13 +117,8 @@
 
 p.sponsorLogoPublic {
   font-style: italic;
-  margin: 0 0 0.25rem 0;
-}
-
-.poweredByLogoContainerPublicText p {
-  font-family: zeitung-pro-variable, Arial, Helvetica, sans-serif;
-  font-size: 8px;
-  color: #111317;
+  font-size: var(--map-small-body-font-size);
+  color: var(--map-body-color);
 }
 
 @media screen and (max-width: 900px) {
@@ -111,14 +128,5 @@ p.sponsorLogoPublic {
     text-align: center;
     line-height: 1em;
   }
-
-  .poweredBySponsorsContainer {
-    gap: clamp(8px, 1.5vw, 18px);
-  }
 }
 
-@media screen and (min-width: 900px) {
-  .poweredBySponsorsContainer {
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  }
-}
