@@ -18,26 +18,63 @@
 .poweredByHeading {
   background: #bc1038;
   border-radius: 0.5rem 0.5rem 0 0;
-  padding: 0.25rem 1rem 0 1rem;
   width: fit-content;
   position: absolute;
   bottom: 100%;
   transform: translateX(-50%);
   left: 50%;
+  overflow: hidden;
+}
+
+.poweredByHeadingButton {
+  all: unset;
+  display: block;
+  width: 100%;
+  cursor: pointer;
+  transition: filter var(--hover-transition-duration) ease-in-out;
+  padding: 0.25rem 1rem 0 1rem;
+}
+
+.poweredByHeadingButton:hover {
+  filter: brightness(0.95);
+}
+
+.poweredByHeadingButton:focus-visible {
+  outline: var(--focus-outline);
+  outline-offset: 4px;
 }
 
 .poweredByHeadingText {
   margin: 0;
   font-size: var(--map-sub-body-font-size);
+  font-weight: 700;
   color: #ffffff;
-  text-align: center;
   text-wrap: nowrap;
   transform: translateY(-0.25rem);
 }
 
 .poweredByContainerInner {
-  margin: 0.5vw;
+  overflow: hidden;
+  margin: 0 0.5vw;
+  max-height: 1000px;
+  opacity: 1;
+  transform: translateY(0);
+  transition: max-height 320ms ease, transform 320ms ease, opacity 200ms ease;
+  will-change: max-height, transform, opacity;
 }
+
+.collapsed {
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(24px); /* “slides down” as it collapses */
+  pointer-events: none;
+}
+/*
+@media (prefers-reduced-motion: reduce) {
+  .poweredByContainerInner {
+    transition: none;
+  }
+}*/
 
 .poweredBySponsors {
   background: #ffffff;
