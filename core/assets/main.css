@@ -1,143 +1,151 @@
 /* Optional: keep global base font if desired app-wide */
 html {
-    font-size: 14px;
+  font-size: 14px;
 }
 
 /* Font face declarations */
 
 @font-face {
-  font-family: 'Rajdhani';
-  src: url('./fonts/rajdhani/rajdhani-latin-ext-300.woff2') format('woff2');
+  font-family: "Rajdhani";
+  src: url("./fonts/rajdhani/rajdhani-latin-ext-300.woff2") format("woff2");
   font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Rajdhani';
-  src: url('./fonts/rajdhani/rajdhani-latin-ext-regular.woff2') format('woff2');
+  font-family: "Rajdhani";
+  src: url("./fonts/rajdhani/rajdhani-latin-ext-regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Rajdhani';
-  src: url('./fonts/rajdhani/rajdhani-latin-ext-500.woff2') format('woff2');
+  font-family: "Rajdhani";
+  src: url("./fonts/rajdhani/rajdhani-latin-ext-500.woff2") format("woff2");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Rajdhani';
-  src: url('./fonts/rajdhani/rajdhani-latin-ext-600.woff2') format('woff2');
+  font-family: "Rajdhani";
+  src: url("./fonts/rajdhani/rajdhani-latin-ext-600.woff2") format("woff2");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Rajdhani';
-  src: url('./fonts/rajdhani/rajdhani-latin-ext-700.woff2') format('woff2');
+  font-family: "Rajdhani";
+  src: url("./fonts/rajdhani/rajdhani-latin-ext-700.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Source Sans 3';
-  src: url('./fonts/source-sans/source-sans-3-latin-ext-regular.woff2') format('woff2');
+  font-family: "Source Sans 3";
+  src: url("./fonts/source-sans/source-sans-3-latin-ext-regular.woff2")
+    format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Source Sans 3';
-  src: url('./fonts/source-sans/source-sans-3-latin-ext-italic.woff2') format('woff2');
+  font-family: "Source Sans 3";
+  src: url("./fonts/source-sans/source-sans-3-latin-ext-italic.woff2")
+    format("woff2");
   font-weight: 400;
   font-style: italic;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Source Sans 3';
-  src: url('./fonts/source-sans/source-sans-3-latin-ext-700.woff2') format('woff2');
+  font-family: "Source Sans 3";
+  src: url("./fonts/source-sans/source-sans-3-latin-ext-700.woff2")
+    format("woff2");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Source Sans 3';
-  src: url('./fonts/source-sans/source-sans-3-latin-ext-700-italic.woff2') format('woff2');
+  font-family: "Source Sans 3";
+  src: url("./fonts/source-sans/source-sans-3-latin-ext-700-italic.woff2")
+    format("woff2");
   font-weight: 700;
   font-style: italic;
   font-display: swap;
 }
 
 #gw-map {
+  /* Fonts */
+  --map-heading-font: "Rajdhani", system-ui, sans-serif;
+  --map-body-font: "Source Sans 3", system-ui, sans-serif;
 
-    /* Fonts */
-    --map-heading-font: 'Rajdhani', system-ui, sans-serif;
-    --map-body-font: 'Source Sans 3', system-ui, sans-serif;
+  --map-h1-font-size: clamp(1.8rem, 1.2rem + 2.2vw, 3.2rem);
+  --map-h2-font-size: clamp(1.6rem, 1.1rem + 1.6vw, 2.6rem);
+  --map-h3-font-size: clamp(1.4rem, 1rem + 1.1vw, 2.2rem);
+  --map-body-font-size: clamp(1.25rem, 0.5rem + 0.2vw, 2.5rem);
+  --map-small-body-font-size: calc(var(--map-body-font-size) * 0.875);
+  --map-sub-body-font-size: calc(var(--map-body-font-size) * 0.75);
 
-    --map-h1-font-size: clamp(1.8rem, 1.2rem + 2.2vw, 3.2rem);
-    --map-h2-font-size: clamp(1.6rem, 1.1rem + 1.6vw, 2.6rem);
-    --map-h3-font-size: clamp(1.4rem, 1.0rem + 1.1vw, 2.2rem);
-    --map-body-font-size: clamp(1.25rem, 0.5rem + 0.2vw, 2.5rem);
-    --map-small-body-font-size: calc(var(--map-body-font-size) * 0.875);
-    --map-sub-body-font-size: calc(var(--map-body-font-size) * 0.75);
+  --map-h1-font-weight: 700;
+  --map-h2-font-weight: 600;
+  --map-h3-font-weight: 400;
 
-    --map-h1-font-weight: 700;
-    --map-h2-font-weight: 600;
-    --map-h3-font-weight: 400;
+  --map-h1-color: #060a23;
+  --map-h2-color: #060a23;
+  --map-h3-color: #333333;
+  --map-body-color: #333333;
+  --map-accent-color: #00c49a;
 
-    --map-h1-color: #060A23;
-    --map-h2-color: #060A23;
-    --map-h3-color: #333333;
-    --map-body-color: #333333;
-    --map-accent-color: #00C49A;
+  --map-a-color: #102b5e;
 
-    --map-a-color: #102B5E;
+  --heading-letter-spacing: 0.05em;
 
-    --heading-letter-spacing: 0.05em;
+  /* Map floating buttons */
+  --map-button-box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
 
-    /* Map floating buttons */
-    --map-button-box-shadow: 0 0 0 2px rgba(0,0,0,.1);
+  /* popups */
+  --map-popup-background-color: #eeeffc;
+  --map-popup-border: 0.125rem solid #333;
+  --map-popup-border-radius: 0.75rem;
+  --map-popup-box-shadow: 0 4px 5px rgba(0, 0, 0, 0.25);
+  --map-popup-content-padding: 0.25rem 1rem 0.625rem 1rem;
 
-    /* popups */
-    --map-popup-background-color: #EEEFFC;
-    --map-popup-border: 0.125rem solid #333;
-    --map-popup-border-radius: 0.75rem;
-    --map-popup-box-shadow: 0 4px 5px rgba(0,0,0,.25);
-    --map-popup-content-padding: 0.25rem 1rem 0.625rem 1rem;
+  /* icons */
+  --default-icon-color: #333333;
+  --default-inverted-icon-color: #cccccc;
+  --active-icon-color: #4cbe23;
 
-    /* icons */
-    --default-icon-color: #333333;
-    --default-inverted-icon-color: #CCCCCC;
-    --active-icon-color: #4CBE23;
+  /* Animal Status */
+  --status-active-color: #4cbe23;
+  --status-inactive-color: #ffc60a;
+  --status-deactivated-color: #b63e4e;
 
-    /* Animal Status */
-    --status-active-color: #4CBE23;
-    --status-inactive-color: #ffc60a;
-    --status-deactivated-color: #b63e4e;
+  /* interactivity */
+  --focus-outline: 2px solid #a8bef0;
+  --hover-transition-duration: 0.25s;
 
-    /* interactivity */
-    --focus-outline: 2px solid #A8BEF0;
-    --hover-transition-duration: 0.25s;
-
-    /* Decorative elements */
-    --border-divider: 2px solid rgba(0,0,0,0.15);
-    --accent-border: 0.125rem solid var(--map-accent-color);
-    --ocean-gradient: linear-gradient(135deg, #060A23 0%, #060A23 75%, #0A0E2C 90%, #0E1235 100%);
-
+  /* Decorative elements */
+  --border-divider: 2px solid rgba(0, 0, 0, 0.15);
+  --accent-border: 0.125rem solid var(--map-accent-color);
+  --ocean-gradient: linear-gradient(
+    135deg,
+    #060a23 0%,
+    #060a23 75%,
+    #0a0e2c 90%,
+    #0e1235 100%
+  );
 }
 
 #gw-map {
-    background: #102b5e;
-    overflow-y: hidden;
+  background: #102b5e;
+  overflow-y: hidden;
 }
 
 #gw-map :where(h1, h2, h3, h4, h5, h6, p) {
@@ -145,58 +153,63 @@ html {
   line-height: 1.2;
 }
 
-#gw-map h1, h2, h3, h4, h5, h6 {
-    font-family: var(--map-heading-font);
-    letter-spacing: var(--heading-letter-spacing)
+#gw-map h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--map-heading-font);
+  letter-spacing: var(--heading-letter-spacing);
 }
 
 #gw-map p,
 #gw-map span {
-    font-family: var(--map-body-font);
+  font-family: var(--map-body-font);
 }
 
 #gw-map p + p {
-    margin-top: 1rem;
+  margin-top: 1rem;
 }
 
 #gw-map .map-heading {
-    font-family: var(--map-heading-font);
+  font-family: var(--map-heading-font);
 }
 
 #gw-map h1.mapTitle {
-    font-family: var(--map-heading-font);
-    font-size: var(--map-h1-font-size);
-    letter-spacing: var(--heading-letter-spacing);
-    font-weight: var(--map-h1-font-weight);
-    margin-bottom: 0.5rem;
+  font-family: var(--map-heading-font);
+  font-size: var(--map-h1-font-size);
+  letter-spacing: var(--heading-letter-spacing);
+  font-weight: var(--map-h1-font-weight);
+  margin-bottom: 0.5rem;
 }
 
 #gw-map h1.map-heading {
-    font-size: var(--map-h1-font-size);
-    font-weight: var(--map-h1-font-weight);
-    letter-spacing: var(--heading-letter-spacing);
-    color: var(--map-h1-color);
+  font-size: var(--map-h1-font-size);
+  font-weight: var(--map-h1-font-weight);
+  letter-spacing: var(--heading-letter-spacing);
+  color: var(--map-h1-color);
 }
 
 #gw-map h2.map-heading {
-    font-size: var(--map-h2-font-size);
-    font-weight: var(--map-h2-font-weight);
-    letter-spacing: var(--heading-letter-spacing);
-    color: var(--map-h2-color);
+  font-size: var(--map-h2-font-size);
+  font-weight: var(--map-h2-font-weight);
+  letter-spacing: var(--heading-letter-spacing);
+  color: var(--map-h2-color);
 }
 
 #gw-map h3.map-heading {
-    font-size: var(--map-h3-font-size);
-    font-weight: var(--map-h3-font-weight);
-    letter-spacing: var(--heading-letter-spacing);
-    color: var(--map-h3-color);
+  font-size: var(--map-h3-font-size);
+  font-weight: var(--map-h3-font-weight);
+  letter-spacing: var(--heading-letter-spacing);
+  color: var(--map-h3-color);
 }
 
 #gw-map p.map-body,
 #gw-map span.map-body {
-    font-family: var(--map-body-font);
-    font-size: var(--map-body-font-size);
-    color: var(--map-body-color);
+  font-family: var(--map-body-font);
+  font-size: var(--map-body-font-size);
+  color: var(--map-body-color);
 }
 
 #gw-map p.map-body a,
@@ -205,36 +218,36 @@ html {
 #gw-map span.map-body a,
 #gw-map span.map-body a:visited,
 #gw-map span.map-body a:active {
-    color: var(--map-a-color);
-    text-decoration: underline;
+  color: var(--map-a-color);
+  text-decoration: underline;
 }
 
 #gw-map p strong,
 #gw-map span strong {
-    font-weight: 700;
+  font-weight: 700;
 }
 
 #gw-map p em,
 #gw-map span em {
-    font-style: italic;
+  font-style: italic;
 }
 
 #gw-map em {
-    font-style: italic;
+  font-style: italic;
 }
 
 #gw-map {
-    height: 100%;
+  height: 100%;
 }
 
 #gw-map img {
-    max-width: unset;
+  max-width: unset;
 }
 
 /* Map popup container styling (map-only) */
 #gw-map .popup-container {
-    border-radius: var(--map-popup-radius);
-    background-color: var(--map-popup-bg);
-    box-shadow: var(--map-popup-shadow);
-    padding: 0.75rem;
+  border-radius: var(--map-popup-radius);
+  background-color: var(--map-popup-bg);
+  box-shadow: var(--map-popup-shadow);
+  padding: 0.75rem;
 }

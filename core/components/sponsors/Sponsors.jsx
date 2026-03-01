@@ -31,12 +31,12 @@ const Sponsors = () => {
           </button>
         </div>
 
-        <div 
-        id={contentId}
-        className={`${styles.poweredByContainerInner} ${
-          collapsed ? styles.collapsed : ""
-        }`}
-      >
+        <div
+          id={contentId}
+          className={`${styles.poweredByContainerInner} ${
+            collapsed ? styles.collapsed : ""
+          }`}
+        >
           <ul className={styles.poweredBySponsorsContainer}>
             {activeSponsors.map((sponsor, index) => (
               <li
