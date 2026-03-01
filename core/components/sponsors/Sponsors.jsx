@@ -12,7 +12,7 @@ const Sponsors = () => {
     >
       <div className={styles.poweredByHeading}>
         <h3 id="powered-by-heading-text" className={styles.poweredByHeadingText}>
-          POWERED BY:
+          POWERED BY...
         </h3>
       </div>
 
