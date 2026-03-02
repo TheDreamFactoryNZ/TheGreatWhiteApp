@@ -1,6 +1,7 @@
 import React from 'react';
 import { TrackButton, StoryButton } from './buttons';
 import LastSeenInfo from './LastSeenInfo.jsx';
+import { getSubjectStatusInfo } from '@utils/subjectStatus.js';
 
 import styles from './SubjectPopupContent.module.css';
 
@@ -27,16 +28,7 @@ const SubjectPopup = (props) => {
     .replace(/_/g, ' ')
     .replace(/\b\w/g, l => l.toUpperCase());
 
-  let date = subject.last_position.properties.DateTime;
-  // Replaced by LastSeenInfo; keep raw ISO for component input
-
-  function normalizeStatus(s) {
-    if (!s) return 'active';
-    const v = String(s).toLowerCase();
-    if (v.includes('deact')) return 'deactivated';
-    if (v.includes('inactive') || v.includes('lost')) return 'inactive';
-    return 'active';
-  }
+  const { status } = getSubjectStatusInfo(subject, data);
 
   let display = { display: 'flex' };
   if (!subject.display_story) {
@@ -70,10 +62,11 @@ const SubjectPopup = (props) => {
             </p>}
             <LastSeenInfo
               isoDate={subject?.last_position?.properties?.DateTime}
+              timezone="Etc/UTC"
               timezoneLabel="UTC"
               expandable={true}
-              noLayoutShift={true} // NEW: overlay, avoids pushing buttons
-              status={normalizeStatus((data && data.status) ?? subject?.status)}
+              noLayoutShift={true}
+              status={status}
               className={`${'map-body'} ${styles.summaryText}`}
             />
           </div>

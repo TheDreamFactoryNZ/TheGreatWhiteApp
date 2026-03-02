@@ -1,21 +1,23 @@
 import React, { useEffect, useState, useRef } from "react";
 import mapboxgl from "mapbox-gl";
-import SubjectPopupContent from "./components/SubjectPopupContent";
-import PointPopupContent from "./components/PointPopupContent";
-import Popup from "./components/Popup";
+import TrackContext from "@contexts/TrackContext.js";
+import { AppVariantContext } from "@contexts/AppVariantContext.js";
+import SubjectPopupContent from "@components/SubjectPopupContent";
+import PointPopupContent from "@components/PointPopupContent";
+import Popup from "@components/Popup";
 import Legend from "@components/legend";
-import MapButtons from "./components/map-buttons/MapButtons";
-import { Sponsors } from "./components/sponsors";
-import mapHandlerRegistry from "./utils/mapHandlerRegistry";
+import MapButtons from "@components/map-buttons/MapButtons";
+import { Sponsors } from "@components/sponsors";
 
-import TrackContext from "./contexts/TrackContext.js";
-import { AppVariantContext } from "./contexts/AppVariantContext.js";
+import mapHandlerRegistry from "@utils/mapHandlerRegistry";
+import { normalizeStatus, STATUS } from "@utils/subjectStatus.js";
 
 import "mapbox-gl/dist/mapbox-gl.css"; // Mapbox default styles
 import "./assets/mapstyle.css"; // Overrides for mapbox default styles
 import "./assets/main.css"; // Global styles for map + map UI
 
 import med from "./assets/images/med.png";
+import sharkIconDefault from "./assets/images/animal_icons/shark-icon-default.svg";
 import sharkIconActive from "./assets/images/animal_icons/shark-icon-active.svg";
 import sharkIconInactive from "./assets/images/animal_icons/shark-icon-inactive.svg";
 import sharkIconDeactivated from "./assets/images/animal_icons/shark-icon-deactivated.svg";
@@ -125,9 +127,10 @@ const MAP_ICON_SCALE = 2;
 
 // Map subject status to local icon assets
 const STATUS_ICON_MAP = {
-  active: sharkIconActive,
-  inactive: sharkIconInactive,
-  deactivated: sharkIconDeactivated,
+  [STATUS.ACTIVE]: sharkIconActive,
+  [STATUS.INACTIVE]: sharkIconInactive,
+  [STATUS.DEACTIVATED]: sharkIconDeactivated,
+  [STATUS.UNKNOWN]: sharkIconDefault,
 };
 
 window.GlobalMap = null;
@@ -1387,43 +1390,26 @@ const App = (props) => {
 
   async function drawIcon(json) {
     let imgURL = null;
-    const subjCfg =
-      config && config.subjects && config.subjects[json.id]
-        ? config.subjects[json.id]
-        : null;
-    const rawStatus =
-      subjCfg && typeof subjCfg.status === "string"
-        ? subjCfg.status.trim().toLowerCase()
-        : null;
+    const subjCfg = config?.subjects?.[json.id] ?? null;
 
-    // If a valid status is present, prefer the corresponding local icon
-    if (rawStatus) {
-      if (STATUS_ICON_MAP[rawStatus]) {
-        imgURL = STATUS_ICON_MAP[rawStatus];
-      } else {
-        // Invalid status: warn and fall back to the configured icon
-        console.warn(
-          `Unknown subject status "${rawStatus}" for subject ${json.id}; falling back to configured icon.`,
-        );
-        if (subjCfg && typeof subjCfg.icon === "string" && subjCfg.icon) {
-          imgURL = subjCfg.icon;
-        }
-      }
+    // Use centralized status normalization (handles "auto")
+    const lastSeenDate = json?.last_position?.properties?.DateTime ?? null;
+    const normalizedStatus = normalizeStatus(subjCfg?.status, lastSeenDate);
+
+    // Select icon based on normalized status
+    if (STATUS_ICON_MAP[normalizedStatus]) {
+      imgURL = STATUS_ICON_MAP[normalizedStatus];
+    } else if (subjCfg?.icon) {
+      imgURL = subjCfg.icon;
+    } else if (
+      json.common_name !== null &&
+      (await fileExists(`public/images/animal_icons/${json.common_name}.png`))
+    ) {
+      imgURL = `public/images/animal_icons/${json.common_name}.png`;
+    } else {
+      imgURL = json.last_position.properties.image;
     }
 
-    // If no status override applied, follow existing precedence
-    if (!imgURL) {
-      if (subjCfg && typeof subjCfg.icon === "string" && subjCfg.icon) {
-        imgURL = subjCfg.icon;
-      } else if (
-        json.common_name !== null &&
-        (await fileExists(`public/images/animal_icons/${json.common_name}.png`))
-      ) {
-        imgURL = `public/images/animal_icons/${json.common_name}.png`;
-      } else {
-        imgURL = json.last_position.properties.image;
-      }
-    }
     addImage(json, imgURL);
   }
 
