@@ -128,13 +128,14 @@ function normalizeStatusWithAuto(rawStatus, date, autoMonths = 3, timeZone = 'UT
 
 export default function LastSeenInfo({
   isoDate,
-  timezone = 'UTC',
   timezoneLabel,
   status,
-  expandable = false,
   className,
-  thresholds = defaultThresholds,
   renderFullDate,
+  showFullDate = false,
+  timezone = 'UTC',
+  expandable = false,
+  thresholds = defaultThresholds,
   noLayoutShift = false,
   withBullet = false,
   statusClassName = '',
@@ -256,8 +257,7 @@ export default function LastSeenInfo({
       </details>
     );
   }
-
-  // Non-expandable: print summary only (no full date shown here), show .
+  // Non-expandable
   return (
     <div className={className}>
       <div className={styles.dateSummaryContainer}>
@@ -268,7 +268,12 @@ export default function LastSeenInfo({
               aria-hidden="true"
             />
           )}
-          {dateSummaryText}&nbsp;&nbsp;
+          {showFullDate && (
+            <span className={styles.dateSummaryText}>{fullDateStr}&nbsp;&nbsp;</span>
+          )}
+          {showFullDate == false && (
+            <span className={styles.dateSummaryText}>{dateSummaryText}&nbsp;&nbsp;</span>
+          )}
           <TipModal
             className={styles.lastSeenTip}
             portalIntoId="gw-modal-root"

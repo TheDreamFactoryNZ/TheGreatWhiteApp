@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useRef } from "react";
 import styles from "./Legend.module.css";
 import Animal from "./Animal.jsx";
+import LastSeenInfo from "../LastSeenInfo.jsx";
 import sanitizeHtml from "../../utils/sanitizeHtml.js";
 
 import doubleCaret from "@images/button_icons/double-caret.svg";
@@ -186,12 +187,27 @@ const Legend = ({
               })}
               <div className={styles.subContentContainer}>
                 <h2 className="map-heading">About {legSub[0].name}</h2>
-                <div
-                  className={styles.subContentBody}
-                  dangerouslySetInnerHTML={{
-                    __html: sanitizeHtml(legSub[1].detail_description || ""),
-                  }}
-                />
+                <div className={styles.subContentBody}>
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: sanitizeHtml(legSub[1].detail_description || ""),
+                    }}
+                  />
+                  <div>
+                    <p>
+                      <em>
+                        Last seen{" "}
+                        <LastSeenInfo
+                          isoDate={
+                            legSub[0]?.last_position?.properties?.DateTime
+                          }
+                          className={`${styles.subContentLastSeenInfo}`}
+                          showFullDate={true}
+                        />
+                      </em>
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

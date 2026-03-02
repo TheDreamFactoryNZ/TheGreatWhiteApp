@@ -251,3 +251,9 @@
     color: var(--map-body-color);
     margin-top: 0.125rem;
 }
+
+.subContentLastSeenInfo {
+    font-style: italic;
+    margin-top: 0.5rem;
+    display: inline-block;
+}
