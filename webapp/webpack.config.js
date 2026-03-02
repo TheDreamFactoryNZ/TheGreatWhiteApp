@@ -15,6 +15,13 @@ module.exports = (env, argv) => {
   const norm = hasRaw ? String(rawDebug).toLowerCase().trim() : undefined;
   const debugFlag = hasRaw ? (norm === '1' || norm === 'true') : isDev;
 
+  const appVariant =
+    env.REACT_APP_VARIANT ||
+    env.APP_VARIANT ||
+    process.env.REACT_APP_VARIANT ||
+    process.env.APP_VARIANT ||
+    'webapp'
+
   return {
     entry: path.resolve(__dirname, "../core/index.jsx"),
     output: {
@@ -132,6 +139,7 @@ module.exports = (env, argv) => {
       new webpack.DefinePlugin({
         __MAPBOX_TOKEN__: JSON.stringify(process.env.MAPBOX_TOKEN ?? ""),
         __GW_DEBUG__: JSON.stringify(!!debugFlag),
+        __REACT_APP_VARIANT__: JSON.stringify(appVariant),
       }),
     ],
   };

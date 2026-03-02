@@ -16,6 +16,14 @@ export default defineConfig(({ mode }) => {
   const hasRaw = rawDebug !== undefined && rawDebug !== ''
   const norm = hasRaw ? String(rawDebug).toLowerCase().trim() : undefined
   const debugFlag = hasRaw ? (norm === '1' || norm === 'true') : (mode === 'development')
+
+  const appVariant =
+    env.REACT_APP_VARIANT ||
+    env.APP_VARIANT ||
+    process.env.REACT_APP_VARIANT ||
+    process.env.APP_VARIANT ||
+    'mobile'
+
   return {
   plugins: [
     react(),
@@ -31,6 +39,7 @@ export default defineConfig(({ mode }) => {
   define: {
     __MAPBOX_TOKEN__: JSON.stringify(token),
     __GW_DEBUG__: JSON.stringify(!!debugFlag),
+    __REACT_APP_VARIANT__: JSON.stringify(appVariant),
   },
   resolve: {
     alias: {
