@@ -3,7 +3,7 @@ import mapboxgl from "mapbox-gl";
 import SubjectPopupContent from "./components/SubjectPopupContent";
 import PointPopupContent from "./components/PointPopupContent";
 import Popup from "./components/Popup";
-import Legend from "./components/Legend";
+import Legend from "@components/legend";
 import MapButtons from "./components/map-buttons/MapButtons";
 import { Sponsors } from "./components/sponsors";
 import mapHandlerRegistry from "./utils/mapHandlerRegistry";

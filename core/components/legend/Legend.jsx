@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useRef } from "react";
 import styles from "./Legend.module.css";
 import Animal from "./Animal.jsx";
-import sanitizeHtml from "../utils/sanitizeHtml.js";
+import sanitizeHtml from "../../utils/sanitizeHtml.js";
 
 import doubleCaret from "@images/button_icons/double-caret.svg";
 import tdfLogo from "@images/the-dream-factory-n-slogan-white.svg";

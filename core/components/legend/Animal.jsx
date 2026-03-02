@@ -4,7 +4,7 @@ import styles from './Animal.module.css';
 
 import storyIcon from '@images/button_icons/view-story-arrow.svg';
 import TrackContext from '@contexts/TrackContext.js';
-import LastSeenInfo from './LastSeenInfo';
+import LastSeenInfo from '../LastSeenInfo';
 
 /* eslint-disable react/prop-types */
 const Animal = ({ animal, configData, animalOnLocClicked, onNameClick, displayStory, isStoryView: isStoryViewProp }) => {
