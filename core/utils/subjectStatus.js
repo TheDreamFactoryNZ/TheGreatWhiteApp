@@ -1,5 +1,5 @@
 // Set the threshold for when a subject is considered inactive
-const AUTO_INACTIVE_MONTHS = 3;
+export const AUTO_INACTIVE_MONTHS = 3;
 
 // Status constants
 export const STATUS = {
@@ -17,6 +17,14 @@ export const STATUS_COLORS = {
   [STATUS.UNKNOWN]: '#B0B0B0',
 };
 
+// Activity messages (used by LastSeenInfo and potentially other components)
+export const ACTIVITY_MESSAGES = {
+  [STATUS.ACTIVE]: 'This shark is currently providing location updates.',
+  [STATUS.INACTIVE]: 'This shark has not surfaced to provide a location for an extended period of time and is inactive.',
+  [STATUS.DEACTIVATED]: 'This shark has lost its tag and is no longer providing locations.',
+  [STATUS.UNKNOWN]: 'The status of this shark is unknown.',
+};
+
 // Icon mapping (import your SVGs in the consuming file, or use paths)
 export const STATUS_ICON_KEYS = {
   [STATUS.ACTIVE]: 'active',
@@ -24,24 +32,47 @@ export const STATUS_ICON_KEYS = {
   [STATUS.DEACTIVATED]: 'deactivated',
 };
 
-// Helper: calendar month diff
-function diffMonths(fromDate, toDate) {
-  const from = new Date(fromDate);
-  const to = new Date(toDate);
-  let months = (to.getFullYear() - from.getFullYear()) * 12 + (to.getMonth() - from.getMonth());
-  if (to.getDate() < from.getDate()) months -= 1;
+// Helper: extract date parts in a specific IANA timezone
+function getDatePartsInTimeZone(date, timeZone) {
+  const parts = new Intl.DateTimeFormat('en-CA', {
+    timeZone,
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).formatToParts(date);
+
+  const year = Number(parts.find((p) => p.type === 'year')?.value);
+  const month = Number(parts.find((p) => p.type === 'month')?.value);
+  const day = Number(parts.find((p) => p.type === 'day')?.value);
+
+  return { year, month, day };
+}
+
+// Helper: calendar month diff, timezone-aware
+function diffMonths(from, to, timeZone = 'UTC') {
+  const fromParts = getDatePartsInTimeZone(from, timeZone);
+  const toParts = getDatePartsInTimeZone(to, timeZone);
+  let months =
+    (toParts.year - fromParts.year) * 12 + (toParts.month - fromParts.month);
+  if (toParts.day < fromParts.day) months -= 1;
   return months < 0 ? 0 : months;
 }
 
 /**
  * Normalize a subject's status, handling "auto" based on last seen date.
  * 
- * @param {string} rawStatus - The status from config ("active", "inactive", "deactivated", "auto")
+ * @param {string} rawStatus - The status from config ("active", "inactive", "deactivated", "auto", "unknown")
  * @param {string|Date|null} lastSeenDate - ISO date string or Date object of last position
  * @param {number} autoThresholdMonths - Months after which "auto" becomes "inactive" (default: 3)
+ * @param {string} timeZone - IANA timezone for date calculations (default: 'UTC')
  * @returns {"active"|"inactive"|"deactivated"|"unknown"} Normalized status
  */
-export function normalizeStatus(rawStatus, lastSeenDate = null, autoThresholdMonths = AUTO_INACTIVE_MONTHS) {
+export function normalizeStatus(
+  rawStatus,
+  lastSeenDate = null,
+  autoThresholdMonths = AUTO_INACTIVE_MONTHS,
+  timeZone = 'UTC'
+) {
   const s = typeof rawStatus === 'string' ? rawStatus.trim().toLowerCase() : '';
 
   // Explicit statuses
@@ -57,7 +88,7 @@ export function normalizeStatus(rawStatus, lastSeenDate = null, autoThresholdMon
     const lastSeen = typeof lastSeenDate === 'string' ? new Date(lastSeenDate) : lastSeenDate;
     if (Number.isNaN(lastSeen.getTime())) return STATUS.INACTIVE;
 
-    const monthsAgo = diffMonths(lastSeen, new Date());
+    const monthsAgo = diffMonths(lastSeen, new Date(), timeZone);
     return monthsAgo >= autoThresholdMonths ? STATUS.INACTIVE : STATUS.ACTIVE;
   }
 
@@ -71,7 +102,16 @@ export function normalizeStatus(rawStatus, lastSeenDate = null, autoThresholdMon
  * @returns {string} Hex color
  */
 export function getStatusColor(status) {
-  return STATUS_COLORS[status] || STATUS_COLORS.unknown;
+  return STATUS_COLORS[status] || STATUS_COLORS[STATUS.UNKNOWN];
+}
+
+/**
+ * Get the activity message for a given status.
+ * @param {string} status - Normalized status
+ * @returns {string|null} Activity message or null
+ */
+export function getActivityMessage(status) {
+  return ACTIVITY_MESSAGES[status] || null;
 }
 
 /**
@@ -80,18 +120,21 @@ export function getStatusColor(status) {
  * 
  * @param {object} subject - Subject object with last_position
  * @param {object} subjectConfig - Config for this subject (from config.subjects[id])
- * @returns {{ status: string, color: string, isActive: boolean, isInactive: boolean, isDeactivated: boolean, isUnknown: boolean }}
+ * @param {string} timeZone - IANA timezone for date calculations (default: 'UTC')
+ * @returns {{ status: string, color: string, message: string|null, isActive: boolean, isInactive: boolean, isDeactivated: boolean, isUnknown: boolean }}
  */
-export function getSubjectStatusInfo(subject, subjectConfig) {
+export function getSubjectStatusInfo(subject, subjectConfig, timeZone = 'UTC') {
   const rawStatus = subjectConfig?.status ?? STATUS.UNKNOWN;
   const lastSeenDate = subject?.last_position?.properties?.DateTime ?? null;
   
-  const status = normalizeStatus(rawStatus, lastSeenDate);
+  const status = normalizeStatus(rawStatus, lastSeenDate, AUTO_INACTIVE_MONTHS, timeZone);
   const color = getStatusColor(status);
+  const message = getActivityMessage(status);
 
   return {
     status,
     color,
+    message,
     isActive: status === STATUS.ACTIVE,
     isInactive: status === STATUS.INACTIVE,
     isDeactivated: status === STATUS.DEACTIVATED,

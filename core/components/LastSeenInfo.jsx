@@ -2,6 +2,12 @@ import React from "react";
 import Arrow from "@images/button_icons/arrow.svg?component";
 import TipModal from "./buttons/TipModal.jsx";
 import styles from "./LastSeenInfo.module.css";
+import {
+  STATUS,
+  ACTIVITY_MESSAGES,
+  normalizeStatus,
+  AUTO_INACTIVE_MONTHS,
+} from "@core/utils/subjectStatus.js";
 
 /* eslint-disable react/prop-types */
 // LastSeenInfo: shared component for rendering "Last seen" information.
@@ -120,23 +126,13 @@ function formatShortDate(date, timeZone) {
   return `${dd}/${mm}/${yyyy}`;
 }
 
-// Normalize status, supporting "auto" => inactive after N months (default 3)
-function normalizeStatusWithAuto(
-  rawStatus,
-  date,
-  autoMonths = 3,
-  timeZone = "UTC",
-) {
-  const s = typeof rawStatus === "string" ? rawStatus.trim().toLowerCase() : "";
-  if (s === "auto") {
-    if (!date) return "inactive"; // unknown date ⇒ treat as inactive
-    const now = new Date();
-    const months = diffMonths(date, now, timeZone);
-    return months >= autoMonths ? "inactive" : "active";
-  }
-  if (s === "active" || s === "inactive" || s === "deactivated") return s;
-  return "active"; // default
-}
+// Status → CSS class mapping
+const STATUS_CLASS_MAP = {
+  [STATUS.ACTIVE]: styles.statusActive,
+  [STATUS.INACTIVE]: styles.statusInactive,
+  [STATUS.DEACTIVATED]: styles.statusDeactivated,
+  [STATUS.UNKNOWN]: styles.statusUnknown,
+};
 
 export default function LastSeenInfo({
   isoDate,
@@ -160,7 +156,25 @@ export default function LastSeenInfo({
   const date = parseUtc(isoDate);
   const now = new Date();
 
-  // Compute summary per Step 2 rules
+  // Use centralized status normalization (with timezone support)
+  const normalizedStatus = normalizeStatus(
+    status,
+    isoDate,
+    AUTO_INACTIVE_MONTHS,
+    resolvedTimezone
+  );
+
+  // Derive booleans from normalized status
+  const showActive = normalizedStatus === STATUS.ACTIVE;
+  const showInactive = normalizedStatus === STATUS.INACTIVE;
+  const showDeactivated = normalizedStatus === STATUS.DEACTIVATED;
+  const showUnknown = normalizedStatus === STATUS.UNKNOWN;
+
+  // Get activity message from centralized source
+  const activityMessage = ACTIVITY_MESSAGES[normalizedStatus] || null;
+
+  // Status CSS class
+  const statusClass = STATUS_CLASS_MAP[normalizedStatus] || styles.statusUnknown;
   let dateSummaryText = "Last seen: unknown";
   if (date) {
     const timeStr = formatTime(date, resolvedTimezone);
@@ -221,27 +235,6 @@ export default function LastSeenInfo({
         })
     : "Unknown date";
 
-  // Status handling (expanded only) with auto support
-  const normalizedStatus = normalizeStatusWithAuto(
-    status,
-    date,
-    3,
-    resolvedTimezone,
-  );
-  const showActive = normalizedStatus === "active";
-  const showInactive = normalizedStatus === "inactive";
-  const showDeactivated = normalizedStatus === "deactivated";
-
-  // Optional: status bullet class
-  const statusClass =
-    normalizedStatus === "active"
-      ? styles.statusActive
-      : normalizedStatus === "inactive"
-      ? styles.statusInactive
-      : normalizedStatus === "deactivated"
-      ? styles.statusDeactivated
-      : styles.statusUnknown;
-
   if (expandable) {
     return (
       <details
@@ -274,13 +267,9 @@ export default function LastSeenInfo({
               </>
             )}
           </span>
-          {(showInactive || showDeactivated) && (
+          {activityMessage && (showInactive || showDeactivated || showUnknown) && (
             <p className={`${"map-body"} ${styles.tagStatusText}`}>
-              <em>
-                {showInactive
-                  ? "This shark has not provided a location for an extended period of time and may be inactive."
-                  : "This shark has lost its tag and is no longer providing locations."}
-              </em>
+              <em>{activityMessage}</em>
             </p>
           )}
           <button
@@ -330,19 +319,11 @@ export default function LastSeenInfo({
             modalBody="<p>Locations are obtained via a tag attached to the dorsal fin of the shark, which then transmits to orbiting satellites. For the satellites to receive a location, the shark must be near or at the surface of the water.</p><p>Being marine animals, sharks can spend <strong>months</strong> underwater, therefore it's not unusual to see long periods of inactivity.</p><p><strong>Rest assured, this is <em>not</em> an issue with the app - it is simply the harsh reality of tagging and tracking marine animals</strong></p>"
             initialOpen={false}
           />
-          {showActivityText == true &&
-            (showActive || showInactive || showDeactivated) && (
-              <p className={`${"map-body"} ${styles.tagStatusText}`}>
-                <em>
-                  {showActive &&
-                    "This shark is currently providing location updates."}
-                  {showInactive &&
-                    "This shark has not provided a location for an extended period of time and may be inactive."}
-                  {showDeactivated &&
-                    "This shark has lost its tag and is no longer providing locations."}
-                </em>
-              </p>
-            )}
+          {showActivityText && activityMessage && (
+            <p className={`${"map-body"} ${styles.tagStatusText}`}>
+              <em>{activityMessage}</em>
+            </p>
+          )}
         </span>
       </div>
     </div>
