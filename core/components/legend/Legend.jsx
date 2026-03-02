@@ -193,19 +193,13 @@ const Legend = ({
                       __html: sanitizeHtml(legSub[1].detail_description || ""),
                     }}
                   />
-                  <div>
-                    <p>
-                      <em>
-                        Last seen{" "}
-                        <LastSeenInfo
-                          isoDate={
-                            legSub[0]?.last_position?.properties?.DateTime
-                          }
-                          className={`${styles.subContentLastSeenInfo}`}
-                          showFullDate={true}
-                        />
-                      </em>
-                    </p>
+                  <div className={`${styles.subContentLastSeenInfo}`}>
+                    <strong>Last seen:</strong>
+                    <LastSeenInfo
+                      isoDate={legSub[0]?.last_position?.properties?.DateTime}
+                      showFullDate={true}
+                      showActivityText={true}
+                    />
                   </div>
                 </div>
               </div>
