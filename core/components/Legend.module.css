@@ -79,6 +79,11 @@
     -webkit-transform: scaleX(-1);
 }
 
+.legendScrollContainer {
+    overflow-y: auto;
+    height: 100%;
+}
+
 .legendContent {
     background: linear-gradient(-135deg, #FFFFFF 0%, #EEEFFC 50%, #EEEFFC 75%, #E3E5FA 90%, #D9DBF7 100%);
     background-color: #eeeffc;
