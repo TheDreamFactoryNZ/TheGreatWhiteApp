@@ -50,6 +50,7 @@ export default defineConfig(({ mode }) => {
       '@images': path.resolve(__dirname, '../core/assets/images'),
       "@track-context": path.resolve(__dirname, "../core/contexts/TrackContext.js"),
       "@contexts": path.resolve(__dirname, "../core/contexts/"),
+      "@utils": path.resolve(__dirname, "../core/utils/"),
     },
     dedupe: ['react', 'react-dom'],
   },
