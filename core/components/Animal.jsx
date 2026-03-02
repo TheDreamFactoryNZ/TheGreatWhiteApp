@@ -3,7 +3,7 @@ import { TrackButton, LocateButton } from '@buttons';
 import styles from './Animal.module.css';
 
 import storyIcon from '@images/button_icons/view-story-arrow.svg';
-import TrackContext from '@track-context';
+import TrackContext from '@contexts/TrackContext.js';
 import LastSeenInfo from './LastSeenInfo';
 
 /* eslint-disable react/prop-types */

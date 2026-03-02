@@ -1,8 +1,7 @@
 /* Shared styles for buttons at top left of map (i.e. tips menu, refresh button etc) */
-.mapButtonContainer {
+.mapButtonsContainer {
     position: absolute;
-    z-index: 1;
-    top: var(--control-top, 0px);
+    top: 105px;
     left: 10px;
     z-index: 2;
 }
@@ -20,6 +19,7 @@
     -ms-user-select: none;
     user-select: none;
     box-sizing: border-box;
+    position: absolute;
 }
 
 .mapButtonIcon {

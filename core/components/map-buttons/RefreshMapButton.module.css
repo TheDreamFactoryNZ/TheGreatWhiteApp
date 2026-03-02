@@ -1,12 +1,3 @@
-/* Container for the whole refresh UI */
-.refreshMapContainer {
-    composes: mapButtonContainer from './MapButtons.module.css';
-    --control-top: 179px;
-}
-
-/* The small button that triggers the refresh */
-
-
 .refreshMapIcon {
     composes: mapButtonIcon from './MapButtons.module.css';
     --icon-background-image: url('@images/button_icons/refresh.svg');

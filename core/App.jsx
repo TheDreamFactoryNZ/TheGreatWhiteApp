@@ -4,14 +4,12 @@ import SubjectPopupContent from "./components/SubjectPopupContent";
 import PointPopupContent from "./components/PointPopupContent";
 import Popup from "./components/Popup";
 import Legend from "./components/Legend";
-import {
-  HelpButton,
-  LeaveReviewButton,
-  RefreshMapButton,
-} from "./components/map-buttons";
+import MapButtons from "./components/map-buttons/MapButtons";
 import { Sponsors } from "./components/sponsors";
 import mapHandlerRegistry from "./utils/mapHandlerRegistry";
-import TrackContext from "./context/TrackContext.js";
+
+import TrackContext from "./contexts/TrackContext.js";
+import { AppVariantContext } from "./contexts/AppVariantContext.js";
 
 import "mapbox-gl/dist/mapbox-gl.css"; // Mapbox default styles
 import "./assets/mapstyle.css"; // Overrides for mapbox default styles
@@ -81,7 +79,9 @@ if (!envToken) {
 }
 
 const appVariantRaw =
-  (typeof __REACT_APP_VARIANT__ !== "undefined" ? __REACT_APP_VARIANT__ : undefined) ??
+  (typeof __REACT_APP_VARIANT__ !== "undefined"
+    ? __REACT_APP_VARIANT__
+    : undefined) ??
   (typeof process !== "undefined" && process.env
     ? process.env.REACT_APP_VARIANT
     : undefined);
@@ -89,6 +89,12 @@ const appVariantRaw =
 const appVariant = (appVariantRaw || "").toLowerCase();
 const isWebappBuild = appVariant === "webapp";
 const isMobileBuild = appVariant === "mobile";
+
+const variantValue = {
+  variant: appVariant,
+  isDesktop: isWebappBuild,
+  isMobile: isMobileBuild,
+};
 
 let config;
 const keymap = {}; // alt, r
@@ -1862,78 +1868,80 @@ const App = (props) => {
 
   return (
     <>
-      <TrackContext.Provider value={{ displayTracks, setTracks, tracks }}>
-        <div
-          id="gw-map"
-          className={
-            isWebappBuild
-              ? "is-desktop"
-              : isMobileBuild
-              ? "is-mobile"
-              : undefined
-          }
-        >
-          <div id="app-container">
-            <div id="map-container" onKeyDown={logKey} onKeyUp={logKey}>
-              <LeaveReviewButton />
-              <HelpButton />
-              <RefreshMapButton onClick={softStyleReload} />
+      <AppVariantContext.Provider value={variantValue}>
+        <TrackContext.Provider value={{ displayTracks, setTracks, tracks }}>
+          <div
+            id="gw-map"
+            className={
+              isWebappBuild
+                ? "is-desktop"
+                : isMobileBuild
+                ? "is-mobile"
+                : undefined
+            }
+          >
+            <div id="app-container">
+              <div id="map-container" onKeyDown={logKey} onKeyUp={logKey}>
+                <MapButtons softStyleReload={softStyleReload} />
 
-              <Legend
-                title={config !== undefined ? config.map_title : null}
-                subs={subjects}
-                subjectData={config}
-                onLocClick={(coords) => goToLoc(coords)}
-                legendOpen={legendOpen}
-                onLegendStateToggle={toggleLegendState}
-                legSub={legSub}
-                onReturnClick={(subject) => setLegSub(subject)}
-                onStoryClick={(subject) => setLegSub(subject)}
-              />
+                <Legend
+                  title={config !== undefined ? config.map_title : null}
+                  subs={subjects}
+                  subjectData={config}
+                  onLocClick={(coords) => goToLoc(coords)}
+                  legendOpen={legendOpen}
+                  onLegendStateToggle={toggleLegendState}
+                  legSub={legSub}
+                  onReturnClick={(subject) => setLegSub(subject)}
+                  onStoryClick={(subject) => setLegSub(subject)}
+                />
+              </div>
+              <Sponsors />
+              <div id="gw-modal-root" data-modal-root />
             </div>
-            <Sponsors />
-            <div id="gw-modal-root" data-modal-root />
-          </div>
-          {subjectPopups.map(({ properties, geometry }) => (
-            <Popup
-              key={`${properties.id}-popup`}
-              coordinates={geometry.coordinates.slice()}
-              onClose={() => {
-                setSubjectPopups((prev) =>
-                  prev.filter(({ properties: { id } }) => id !== properties.id),
-                );
-              }}
-            >
-              <SubjectPopupContent
-                subject={properties}
-                subjectData={config.subjects[properties.id]}
-                onStoryClick={(subject) => setLegSub(subject)}
-                legendOpen={legendOpen}
-                onLegendStateToggle={toggleLegendState}
-                {...props}
-              />
-            </Popup>
-          ))}
+            {subjectPopups.map(({ properties, geometry }) => (
+              <Popup
+                key={`${properties.id}-popup`}
+                coordinates={geometry.coordinates.slice()}
+                onClose={() => {
+                  setSubjectPopups((prev) =>
+                    prev.filter(
+                      ({ properties: { id } }) => id !== properties.id,
+                    ),
+                  );
+                }}
+              >
+                <SubjectPopupContent
+                  subject={properties}
+                  subjectData={config.subjects[properties.id]}
+                  onStoryClick={(subject) => setLegSub(subject)}
+                  legendOpen={legendOpen}
+                  onLegendStateToggle={toggleLegendState}
+                  {...props}
+                />
+              </Popup>
+            ))}
 
-          {/* Track-point popups (siblings, not nested) */}
-          {pointPopups.map(({ key, coordinates, props: p }) => (
-            <Popup
-              key={key}
-              coordinates={coordinates}
-              onClose={() =>
-                setPointPopups((prev) => prev.filter((pp) => pp.key !== key))
-              }
-            >
-              <PointPopupContent
-                idx={p.idx}
-                date={p.date}
-                time={p.time}
-                timezone={p.timezone}
-              />
-            </Popup>
-          ))}
-        </div>
-      </TrackContext.Provider>{" "}
+            {/* Track-point popups (siblings, not nested) */}
+            {pointPopups.map(({ key, coordinates, props: p }) => (
+              <Popup
+                key={key}
+                coordinates={coordinates}
+                onClose={() =>
+                  setPointPopups((prev) => prev.filter((pp) => pp.key !== key))
+                }
+              >
+                <PointPopupContent
+                  idx={p.idx}
+                  date={p.date}
+                  time={p.time}
+                  timezone={p.timezone}
+                />
+              </Popup>
+            ))}
+          </div>
+        </TrackContext.Provider>{" "}
+      </AppVariantContext.Provider>
       {/* eslint-disable-line react/jsx-closing-tag-location */}
     </>
   );

@@ -53,7 +53,7 @@ module.exports = (env, argv) => {
         '@buttons': path.resolve(__dirname, '../core/components/buttons'),
         '@assets': path.resolve(__dirname, '../core/assets'),
         '@images': path.resolve(__dirname, '../core/assets/images'),
-        "@track-context": path.resolve(__dirname, "../core/context/TrackContext.js"),
+        "@contexts": path.resolve(__dirname, "../core/contexts/"),
       },
     },
     module: {

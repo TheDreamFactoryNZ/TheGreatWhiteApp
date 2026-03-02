@@ -1,24 +1,13 @@
-/* Container for the whole tips UI */
-.tipsContainer {
-    composes: mapButtonContainer from './MapButtons.module.css';
-    --control-top: 142px;
-}
-
-/* The small button that toggles the tips */
-
-
 .tipsToggleIcon {
     composes: mapButtonIcon from './MapButtons.module.css';
     --icon-background-image: url('@assets/images/button_icons/help.svg');
     --icon-background-size: 12px;
 }
 
-/* The content panel that appears when tips are shown */
 .tipsContentContainer {
     composes: mapContentContainer from './MapButtons.module.css';
 }
 
-/* Header area inside the content panel */
 .tipsHeaderContainer {
     composes: mapButtonHeaderContainer from './MapButtons.module.css';
 }
@@ -39,7 +28,6 @@
     display: none;
 }
 
-/* The list of tip items */
 .tipItemsContainer {
     composes: mapButtonItemsContainer from './MapButtons.module.css';
 }
@@ -70,7 +58,6 @@
     padding-bottom: 0;
 }
 
-/* Icon styling and container */
 .tipIconContainer {
     width: auto;
     height: auto;
