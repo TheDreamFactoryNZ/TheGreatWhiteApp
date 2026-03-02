@@ -28,10 +28,14 @@
 
 .poweredByHeadingButton {
   all: unset;
-  display: block;
-  width: 100%;
   cursor: pointer;
   transition: filter var(--hover-transition-duration) ease-in-out;
+}
+
+.poweredByHeadingButton,
+.poweredByHeadingStatic {
+  display: block;
+  width: 100%;
   padding: 0.25rem 1rem 0 1rem;
 }
 

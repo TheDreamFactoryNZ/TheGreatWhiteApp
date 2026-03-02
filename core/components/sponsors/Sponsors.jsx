@@ -1,12 +1,16 @@
 import React, { useId, useState } from "react";
 import styles from "./Sponsors.module.css";
 import { sponsorsList } from "./sponsorsList.js";
+import { useAppVariant } from "@contexts/AppVariantContext.js";
 
 const Sponsors = () => {
+  const { isDesktop } = useAppVariant();
   const activeSponsors = sponsorsList.filter((s) => s.active);
 
   const [collapsed, setCollapsed] = useState(false);
   const contentId = useId();
+
+  const isCollapsed = isDesktop ? false : collapsed;
 
   return (
     <div className={styles.sponsorsWrapper}>
@@ -15,26 +19,32 @@ const Sponsors = () => {
         aria-labelledby="powered-by-heading-text"
       >
         <div className={styles.poweredByHeading}>
-          <button
-            type="button"
-            className={styles.poweredByHeadingButton}
-            onClick={() => setCollapsed((v) => !v)}
-            aria-controls={contentId}
-            aria-expanded={!collapsed}
-          >
-            <h3
-              id="powered-by-heading-text"
-              className={styles.poweredByHeadingText}
+          {isDesktop ? (
+            <div className={styles.poweredByHeadingStatic}>
+              <h3 className={styles.poweredByHeadingText}>POWERED BY...</h3>
+            </div>
+          ) : (
+            <button
+              type="button"
+              className={styles.poweredByHeadingButton}
+              onClick={() => setCollapsed((v) => !v)}
+              aria-controls={contentId}
+              aria-expanded={!collapsed}
             >
-              POWERED BY...
-            </h3>
-          </button>
+              <h3
+                id="powered-by-heading-text"
+                className={styles.poweredByHeadingText}
+              >
+                POWERED BY...
+              </h3>
+            </button>
+          )}
         </div>
 
         <div
           id={contentId}
           className={`${styles.poweredByContainerInner} ${
-            collapsed ? styles.collapsed : ""
+            isCollapsed ? styles.collapsed : ""
           }`}
         >
           <ul className={styles.poweredBySponsorsContainer}>
