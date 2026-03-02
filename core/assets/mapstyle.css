@@ -60,7 +60,10 @@ a.mapboxgl-ctrl-logo.mapboxgl-compact {
 /* Popup Styling */
 
 .mapboxgl-popup-anchor-top .mapboxgl-popup-tip,
+.mapboxgl-popup-anchor-top-left .mapboxgl-popup-tip,
+.mapboxgl-popup-anchor-top-right .mapboxgl-popup-tip
 .mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip {
+    border-bottom-color: #333;
     display: none;
 }
 /* Map
