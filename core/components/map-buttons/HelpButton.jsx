@@ -90,8 +90,7 @@ const HelpButton = () => {
             <div className={styles.tipIconContainer}><img className={styles.tipIcon} width='24' height='24' src={activeAnimalIcon} /></div>
             <div className={styles.tipTextContainer}><p className="map-body">A green light means the tag on the shark is active and transmitting location data.</p><p className="map-body"><strong>No recent updates?</strong> This is because the shark hasn't surfaced high enough to transmit a location to satellites.</p></div>
           </div>
-          {/* vvv This tip will be restored when automatic status updates are implemented vvv */}
-          <div className={styles.tipItem} style={{ display: 'none' }}>
+          <div className={styles.tipItem}>
             <div className={styles.tipIconContainer}><img className={styles.tipIcon} width='24' height='24' src={inactiveAnimalIcon} /></div>
             <div className={styles.tipTextContainer}><p className="map-body">These sharks have not transmitted a location for an extended period of time and are inactive.</p></div>
           </div>
