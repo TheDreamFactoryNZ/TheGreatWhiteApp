@@ -2,7 +2,8 @@ import React, { useEffect, useMemo, useRef } from "react";
 import styles from "./Legend.module.css";
 import Animal from "./Animal.jsx";
 import LastSeenInfo from "../LastSeenInfo.jsx";
-import sanitizeHtml from "../../utils/sanitizeHtml.js";
+import sanitizeHtml from "@utils/sanitizeHtml.js";
+import { getSubjectStatusInfo } from "@utils/subjectStatus.js";
 
 import doubleCaret from "@images/button_icons/double-caret.svg";
 import tdfLogo from "@images/the-dream-factory-n-slogan-white.svg";
@@ -116,6 +117,9 @@ const Legend = ({
         </div>
       );
     } else {
+      const subject = legSub[0];
+      const subjectConfig = legSub[1];
+      const { status } = getSubjectStatusInfo(subject, subjectConfig);
       return (
         <>
           <div className={styles.legendContent}>
@@ -167,14 +171,14 @@ const Legend = ({
             <div ref={storyRef} className={styles.animalStory}>
               <div className={styles.subjectDiv}>
                 <Animal
-                  animal={legSub[0]}
-                  key={legSub[0].id}
+                  animal={subject}
+                  key={subject.id}
                   configData={subjectData}
                   isStoryView={true}
                   animalOnLocClicked={onLocClick}
                 />
               </div>
-              {legSub[1].pictures.map((pic) => {
+              {subjectConfig.pictures.map((pic) => {
                 return (
                   <img
                     draggable="false"
@@ -186,19 +190,20 @@ const Legend = ({
                 );
               })}
               <div className={styles.subContentContainer}>
-                <h2 className="map-heading">About {legSub[0].name}</h2>
+                <h2 className="map-heading">About {subject.name}</h2>
                 <div className={styles.subContentBody}>
                   <div
                     dangerouslySetInnerHTML={{
-                      __html: sanitizeHtml(legSub[1].detail_description || ""),
+                      __html: sanitizeHtml(subjectConfig.detail_description || ""),
                     }}
                   />
                   <div className={`${styles.subContentLastSeenInfo}`}>
                     <strong>Last seen:</strong>
                     <LastSeenInfo
-                      isoDate={legSub[0]?.last_position?.properties?.DateTime}
+                      isoDate={subject?.last_position?.properties?.DateTime}
                       showFullDate={true}
                       showActivityText={true}
+                      status={status}
                     />
                   </div>
                 </div>

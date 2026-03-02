@@ -254,7 +254,7 @@ export default function LastSeenInfo({
         <div className={styles.fullDateContainer}>
           <span className={`${"map-body"} ${styles.fullDateText}`}>
             {fullDateStr}
-            {!showDeactivated && (
+            {activityMessage && (showInactive) && (
               <>
                 &nbsp;&nbsp;
                 <TipModal
@@ -267,7 +267,7 @@ export default function LastSeenInfo({
               </>
             )}
           </span>
-          {activityMessage && (showInactive || showDeactivated || showUnknown) && (
+          {activityMessage && (showActive || showInactive || showDeactivated || showUnknown) && (
             <p className={`${"map-body"} ${styles.tagStatusText}`}>
               <em>{activityMessage}</em>
             </p>
@@ -312,18 +312,19 @@ export default function LastSeenInfo({
               {dateSummaryText}&nbsp;&nbsp;
             </span>
           )}
+          {showActivityText && activityMessage && !showInactive && (
+            <p className={`${"map-body"} ${styles.tagStatusText}`}>
+              <em>{activityMessage}</em>
+            </p>
+          )}
+          {showInactive && (
           <TipModal
             className={styles.lastSeenTip}
             portalIntoId="gw-modal-root"
             modalTitle="No recent location update?"
             modalBody="<p>Locations are obtained via a tag attached to the dorsal fin of the shark, which then transmits to orbiting satellites. For the satellites to receive a location, the shark must be near or at the surface of the water.</p><p>Being marine animals, sharks can spend <strong>months</strong> underwater, therefore it's not unusual to see long periods of inactivity.</p><p><strong>Rest assured, this is <em>not</em> an issue with the app - it is simply the harsh reality of tagging and tracking marine animals</strong></p>"
             initialOpen={false}
-          />
-          {showActivityText && activityMessage && (
-            <p className={`${"map-body"} ${styles.tagStatusText}`}>
-              <em>{activityMessage}</em>
-            </p>
-          )}
+          />)}
         </span>
       </div>
     </div>
