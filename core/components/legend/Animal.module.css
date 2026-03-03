@@ -2,7 +2,7 @@
 .animalLegendContent {
     width: 100%;
     height: auto;
-    padding: 0.5rem 0;
+    padding: 1.25rem 0 1.25rem 1rem;
     display: flex;
     justify-content: space-between;
     gap: 1.25rem;
@@ -31,11 +31,9 @@
 }
 
 .animalStatus {
-    font-size: 32px;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-left: 1.25rem;
 }
 
 .animalStatus div {
@@ -65,10 +63,6 @@
   max-width: 16ch;
 }
 
-:global(#gw-map) h2:global(.map-heading).animalNameText {
-    font-size: calc(var(--map-h2-font-size) * 0.75);
-}
-
 :global(#gw-map) .tracksActive h2:global(.map-heading).animalNameText {
     font-weight: 700;
 }
@@ -86,7 +80,6 @@
 .animalNameStatus {
     display: flex;
     justify-content: flex-start;
-    padding: 1.75rem 0;
     flex: 0 1 75%;
 }
 
