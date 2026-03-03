@@ -29,7 +29,11 @@
 }
 
 .tipItemsContainer {
-    composes: mapButtonItemsContainer from './MapButtons.module.css';
+    composes: mapButtonContentContainer from './MapButtons.module.css';
+}
+
+.tipItemsContent {
+    composes: mapButtonContent from './MapButtons.module.css';
 }
 
 .tipItem {

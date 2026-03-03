@@ -1,27 +1,26 @@
-import React, { useEffect, useState } from 'react';
-import styles from './HelpButton.module.css';
+import React, { useEffect, useState } from "react";
+import styles from "./HelpButton.module.css";
 
-import close from '@images/button_icons/close.svg';
-import zoom from '@images/button_icons/help-zoom.svg';
-import reset from '@images/button_icons/help-pitch-reset.svg';
-import control from '@images/button_icons/control-key.svg';
-import animalIcon from '@images/button_icons/shark-icon-default-tip.svg';
-import activeAnimalIcon from '@images/button_icons/shark-icon-active-tip.svg';
-import inactiveAnimalIcon from '@images/button_icons/shark-icon-inactive-tip.svg';
-import deactivatedAnimalIcon from '@images/button_icons/shark-icon-deactivated-tip.svg';
-import pin from '@images/button_icons/map-pin.svg';
-import tracks from '@images/button_icons/subject-tracks--inactive.svg';
-import story from '@images/button_icons/subject-story.svg';
-import refresh from '@images/button_icons/refresh.svg';
+import CloseIcon from "@images/button_icons/close.svg?component";
+import zoom from "@images/button_icons/help-zoom.svg";
+import reset from "@images/button_icons/help-pitch-reset.svg";
+import control from "@images/button_icons/control-key.svg";
+import animalIcon from "@images/button_icons/shark-icon-default-tip.svg";
+import activeAnimalIcon from "@images/button_icons/shark-icon-active-tip.svg";
+import inactiveAnimalIcon from "@images/button_icons/shark-icon-inactive-tip.svg";
+import deactivatedAnimalIcon from "@images/button_icons/shark-icon-deactivated-tip.svg";
+import pin from "@images/button_icons/map-pin.svg";
+import tracks from "@images/button_icons/subject-tracks--inactive.svg";
+import story from "@images/button_icons/subject-story.svg";
+import refresh from "@images/button_icons/refresh.svg";
 
 /* eslint-disable react/prop-types */
 const HelpButton = () => {
-
   const [tipsOpen, setTipsOpen] = useState(false);
 
   // Close when another popup announces it opened
   useEffect(() => {
-    const id = 'help';
+    const id = "help";
     const onPopupOpen = (e) => {
       try {
         const otherId = e?.detail?.id;
@@ -30,8 +29,14 @@ const HelpButton = () => {
         }
       } catch (_) {}
     };
-    try { window.addEventListener('gw:popup-open', onPopupOpen); } catch (_) {}
-    return () => { try { window.removeEventListener('gw:popup-open', onPopupOpen); } catch (_) {} };
+    try {
+      window.addEventListener("gw:popup-open", onPopupOpen);
+    } catch (_) {}
+    return () => {
+      try {
+        window.removeEventListener("gw:popup-open", onPopupOpen);
+      } catch (_) {}
+    };
   }, []);
 
   return (
@@ -43,7 +48,11 @@ const HelpButton = () => {
           setTipsOpen((prev) => {
             const next = !prev;
             if (next) {
-              try { window.dispatchEvent(new CustomEvent('gw:popup-open', { detail: { id: 'help' } })); } catch (_) {}
+              try {
+                window.dispatchEvent(
+                  new CustomEvent("gw:popup-open", { detail: { id: "help" } }),
+                );
+              } catch (_) {}
             }
             return next;
           });
@@ -52,70 +61,216 @@ const HelpButton = () => {
         aria-label="Toggle help tips"
       />
 
-
       <div
         className={[
           styles.tipsContentContainer,
           !tipsOpen && styles.hidden,
           styles.popupContainer,
-        ].filter(Boolean).join(' ')}
+        ]
+          .filter(Boolean)
+          .join(" ")}
       >
         <div className={styles.tipsHeaderContainer}>
           <h2 className={styles.tipsHeader}>Interacting With the Map</h2>
-          <img
-            src={close}
-            draggable={false}
+          <button
+            type="button"
             className={styles.closeIcon}
             onClick={() => setTipsOpen(false)}
-          />
+          >
+            <CloseIcon />
+          </button>
         </div>
         <div className={styles.tipItemsContainer}>
-          <div className={styles.tipItem}>
-            <div className={`${styles.tipIconContainer} ${styles['tipIconVertical']}`}><img className={styles.tipIcon} width='20' height='40' src={zoom} /></div>
-            <div className={styles.tipTextContainer}><p className="map-body">Zoom in and out with the + and - buttons.</p></div>
-          </div>
-          <div className={styles.tipItem}>
-            <div className={styles.tipIconContainer}><img className={styles.tipIcon} width='24' height='24' src={reset} /></div>
-            <div className={styles.tipTextContainer}><p className="map-body">Press to reset map orientation, hold and drag to adjust pitch.</p></div>
-          </div>
-          <div className={`${styles.tipItem} desktopItem`}>
-            <div className={styles.tipIconContainer}><img className={styles.tipIcon} width='24' height='24' src={control} /></div>
-            <div className={styles.tipTextContainer}><p className="map-body">Hold Ctrl / control key and drag left to right with mouse to rotate view, up and down to adjust pitch.</p></div>
-          </div>
-          <div className={styles.tipItem}>
-            <div className={styles.tipIconContainer}><img className={styles.tipIcon} width='24' height='24' src={animalIcon} /></div>
-            <div className={styles.tipTextContainer}><p className="map-body">Choose a shark icon on the map to view summary and date of last known location.</p></div>
-          </div>
-          <div className={styles.tipItem}>
-            <div className={styles.tipIconContainer}><img className={styles.tipIcon} width='24' height='24' src={activeAnimalIcon} /></div>
-            <div className={styles.tipTextContainer}><p className="map-body">A green light means the tag on the shark is active and transmitting location data.</p><p className="map-body"><strong>No recent updates?</strong> This is because the shark hasn't surfaced high enough to transmit a location to satellites.</p></div>
-          </div>
-          <div className={styles.tipItem}>
-            <div className={styles.tipIconContainer}><img className={styles.tipIcon} width='24' height='24' src={inactiveAnimalIcon} /></div>
-            <div className={styles.tipTextContainer}><p className="map-body">These sharks have not transmitted a location for an extended period of time and are inactive.</p></div>
-          </div>
-          <div className={styles.tipItem}>
-            <div className={styles.tipIconContainer}><img className={styles.tipIcon} width='24' height='24' src={deactivatedAnimalIcon} /></div>
-            <div className={styles.tipTextContainer}><p className="map-body">These sharks have lost their tags and are confirmed no longer transmitting.</p></div>
-          </div>
-          <div className={styles.tipItem}>
-            <div className={styles.tipIconContainer}><img className={styles.tipIcon} width='24' height='24' src={pin} /></div>
-            <div className={styles.tipTextContainer}><p className="map-body">Jump to a shark's location.</p></div>
-          </div>
-          <div className={styles.tipItem}>
-            <div className={styles.tipIconContainer}><img className={styles.tipIcon} width='24' height='24' src={tracks} /></div>
-            <div className={styles.tipTextContainer}><p className="map-body">Display a shark's track.</p></div>
-          </div>
-          <div className={styles.tipItem}>
-            <div className={styles.tipIconContainer}><img className={styles.tipIcon} width='7' height='10' src={story} /></div>
-            <div className={styles.tipTextContainer}><p className="map-body">Display a shark's story.</p></div>
-          </div>
-          <div className={styles.tipItem}>
-            <div className={styles.tipIconContainer}><img className={styles.tipIcon} width='24' height='24' src={refresh} /></div>
-            <div className={styles.tipTextContainer}><p className="map-body">Refresh the map and fetch new locations (internet connection required)</p></div>
-          </div>
-          <div className={styles.tipItem}>
-            <div className={styles.tipTextContainer}><p className="map-body"><strong>Why hasn't there been an update?</strong> A shark needs to breach the surface of the ocean to transmit its location to satellites.</p><p className="map-body">These majestic creatures can spend <em><strong>months</strong></em> underwater, so it is not unusual for there to be periods of inactivity.</p></div>
+          <div className={styles.tipItemsContent}>
+            <div className={styles.tipItem}>
+              <div
+                className={`${styles.tipIconContainer} ${styles["tipIconVertical"]}`}
+              >
+                <img
+                  className={styles.tipIcon}
+                  width="20"
+                  height="40"
+                  src={zoom}
+                />
+              </div>
+              <div className={styles.tipTextContainer}>
+                <p className="map-body">
+                  Zoom in and out with the + and - buttons.
+                </p>
+              </div>
+            </div>
+            <div className={styles.tipItem}>
+              <div className={styles.tipIconContainer}>
+                <img
+                  className={styles.tipIcon}
+                  width="24"
+                  height="24"
+                  src={reset}
+                />
+              </div>
+              <div className={styles.tipTextContainer}>
+                <p className="map-body">
+                  Press to reset map orientation, hold and drag to adjust pitch.
+                </p>
+              </div>
+            </div>
+            <div className={`${styles.tipItem} desktopItem`}>
+              <div className={styles.tipIconContainer}>
+                <img
+                  className={styles.tipIcon}
+                  width="24"
+                  height="24"
+                  src={control}
+                />
+              </div>
+              <div className={styles.tipTextContainer}>
+                <p className="map-body">
+                  Hold Ctrl / control key and drag left to right with mouse to
+                  rotate view, up and down to adjust pitch.
+                </p>
+              </div>
+            </div>
+            <div className={styles.tipItem}>
+              <div className={styles.tipIconContainer}>
+                <img
+                  className={styles.tipIcon}
+                  width="24"
+                  height="24"
+                  src={animalIcon}
+                />
+              </div>
+              <div className={styles.tipTextContainer}>
+                <p className="map-body">
+                  Choose a shark icon on the map to view summary and date of
+                  last known location.
+                </p>
+              </div>
+            </div>
+            <div className={styles.tipItem}>
+              <div className={styles.tipIconContainer}>
+                <img
+                  className={styles.tipIcon}
+                  width="24"
+                  height="24"
+                  src={activeAnimalIcon}
+                />
+              </div>
+              <div className={styles.tipTextContainer}>
+                <p className="map-body">
+                  A green light means the tag on the shark is active and
+                  transmitting location data.
+                </p>
+                <p className="map-body">
+                  <strong>No recent updates?</strong> This is because the shark
+                  hasn't surfaced high enough to transmit a location to
+                  satellites.
+                </p>
+              </div>
+            </div>
+            <div className={styles.tipItem}>
+              <div className={styles.tipIconContainer}>
+                <img
+                  className={styles.tipIcon}
+                  width="24"
+                  height="24"
+                  src={inactiveAnimalIcon}
+                />
+              </div>
+              <div className={styles.tipTextContainer}>
+                <p className="map-body">
+                  These sharks have not transmitted a location for an extended
+                  period of time and are inactive.
+                </p>
+              </div>
+            </div>
+            <div className={styles.tipItem}>
+              <div className={styles.tipIconContainer}>
+                <img
+                  className={styles.tipIcon}
+                  width="24"
+                  height="24"
+                  src={deactivatedAnimalIcon}
+                />
+              </div>
+              <div className={styles.tipTextContainer}>
+                <p className="map-body">
+                  These sharks have lost their tags and are confirmed no longer
+                  transmitting.
+                </p>
+              </div>
+            </div>
+            <div className={styles.tipItem}>
+              <div className={styles.tipIconContainer}>
+                <img
+                  className={styles.tipIcon}
+                  width="24"
+                  height="24"
+                  src={pin}
+                />
+              </div>
+              <div className={styles.tipTextContainer}>
+                <p className="map-body">Jump to a shark's location.</p>
+              </div>
+            </div>
+            <div className={styles.tipItem}>
+              <div className={styles.tipIconContainer}>
+                <img
+                  className={styles.tipIcon}
+                  width="24"
+                  height="24"
+                  src={tracks}
+                />
+              </div>
+              <div className={styles.tipTextContainer}>
+                <p className="map-body">Display a shark's track.</p>
+              </div>
+            </div>
+            <div className={styles.tipItem}>
+              <div className={styles.tipIconContainer}>
+                <img
+                  className={styles.tipIcon}
+                  width="7"
+                  height="10"
+                  src={story}
+                />
+              </div>
+              <div className={styles.tipTextContainer}>
+                <p className="map-body">Display a shark's story.</p>
+              </div>
+            </div>
+            <div className={styles.tipItem}>
+              <div className={styles.tipIconContainer}>
+                <img
+                  className={styles.tipIcon}
+                  width="24"
+                  height="24"
+                  src={refresh}
+                />
+              </div>
+              <div className={styles.tipTextContainer}>
+                <p className="map-body">
+                  Refresh the map and fetch new locations (internet connection
+                  required)
+                </p>
+              </div>
+            </div>
+            <div className={styles.tipItem}>
+              <div className={styles.tipTextContainer}>
+                <p className="map-body">
+                  <strong>Why hasn't there been an update?</strong> A shark
+                  needs to breach the surface of the ocean to transmit its
+                  location to satellites.
+                </p>
+                <p className="map-body">
+                  These majestic creatures can spend{" "}
+                  <em>
+                    <strong>months</strong>
+                  </em>{" "}
+                  underwater, so it is not unusual for there to be periods of
+                  inactivity.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

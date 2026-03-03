@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./LeaveReviewButton.module.css";
-import close from "@images/button_icons/close.svg";
+import CloseIcon from "@images/button_icons/close.svg?component";
 import { useAppVariant } from "@contexts/AppVariantContext.js";
 
 /* eslint-disable react/prop-types */
@@ -61,7 +61,7 @@ const LeaveReviewButton = () => {
 
       <div
         className={[
-          styles.supportContentContainer,
+          styles.supportInfoContainer,
           !reviewOpen && styles.hidden,
           styles.popupContainer,
         ]
@@ -70,51 +70,50 @@ const LeaveReviewButton = () => {
       >
         <div className={styles.supportHeaderContainer}>
           <h2 className={styles.supportHeader}>Showing Your Support</h2>
-          <img
-            src={close}
-            draggable={false}
+
+          <button
+            type="button"
             className={styles.closeIcon}
             onClick={() => setReviewOpen(false)}
-          />
+          >
+            <CloseIcon />
+          </button>
         </div>
-        <div className={styles.supportItemsContainer}>
-          <div className={styles.supportItem}>
-            <div className={styles.supportTextContainer}>
-              <p className="map-body">
-                <strong>
-                  By purchasing this mobile app, you're doing your part to
-                  support the conservation and study of Great White Sharks.
-                  Thank you.
-                </strong>
-              </p>
-              <p className="map-body">
-                For the first time in New Zealand, supporting a conservation
-                study of Great White Sharks is made easy and accessible for the
-                general public via this interactive app.
-              </p>
-              <p className="map-body">
-                Enjoying the app? Want to see more sharks and locations? The
-                support of the public is what makes this app possible.
-              </p>
-              <p className="map-body">
-                <strong>
-                  The more support the app gets, the better resourced we are to
-                  improve it and tag more sharks (meaning even more locations).
-                </strong>
-              </p>
-              <p className="map-body">
-                Now that you've purchased the app, leaving a review will help
-                make this a reality. <em>Already left a review?</em> Thank you
-                for your support!
-              </p>
-              <p className="map-body">
-                Interested in sponsoring a tag? E-mail{" "}
-                <a href="mailto:sustainableoceansociety@gmail.com">
-                  sustainableoceansociety@gmail.com
-                </a>{" "}
-                for further details.
-              </p>
-            </div>
+        <div className={styles.supportInfoContentContainer}>
+          <div className={styles.supportTextContainer}>
+            <p className="map-body">
+              <strong>
+                By purchasing this mobile app, you're doing your part to support
+                the conservation and study of Great White Sharks. Thank you.
+              </strong>
+            </p>
+            <p className="map-body">
+              For the first time in New Zealand, supporting a conservation study
+              of Great White Sharks is made easy and accessible for the general
+              public via this interactive app.
+            </p>
+            <p className="map-body">
+              Enjoying the app? Want to see more sharks and locations? The
+              support of the public is what makes this app possible.
+            </p>
+            <p className="map-body">
+              <strong>
+                The more support the app gets, the better resourced we are to
+                improve it and tag more sharks (meaning even more locations).
+              </strong>
+            </p>
+            <p className="map-body">
+              Now that you've purchased the app, leaving a review will help make
+              this a reality. <em>Already left a review?</em> Thank you for your
+              support!
+            </p>
+            <p className="map-body">
+              Interested in sponsoring a tag? E-mail{" "}
+              <a href="mailto:sustainableoceansociety@gmail.com">
+                sustainableoceansociety@gmail.com
+              </a>{" "}
+              for further details.
+            </p>
           </div>
         </div>
       </div>

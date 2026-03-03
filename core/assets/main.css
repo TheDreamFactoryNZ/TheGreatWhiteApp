@@ -116,6 +116,7 @@ html {
   --map-popup-border: 0.125rem solid #333;
   --map-popup-border-radius: 0.75rem;
   --map-popup-box-shadow: 0 4px 5px rgba(0, 0, 0, 0.25);
+  --map-popup-box-shadow-inner: inset 0 0px 5px rgba(0, 0, 0, 0.5);
   --map-popup-content-padding: 0.5rem 1rem 0.625rem 1rem;
 
   /* icons */
@@ -254,6 +255,7 @@ h6 {
   border-radius: var(--map-popup-radius);
   background-color: var(--map-popup-bg);
   box-shadow: var(--map-popup-shadow);
+  box-shadow: var(--map-popup-box-shadow-inner);
   padding: 0.75rem;
 }
 
