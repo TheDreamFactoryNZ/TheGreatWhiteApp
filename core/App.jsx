@@ -612,10 +612,9 @@ async function fetchWithRetry(url, options = {}, retryCfg = {}) {
       if (parentSignal) {
         if (parentSignal.aborted)
           throw new DOMException("Aborted", "AbortError");
-        onParentAbort = () => {
-          abortReason = "parent";
-          ctrl.abort();
-        };
+        const onParentAbort = () => {
+      try { localCtl.abort(); } catch (_) {}
+    };
         parentSignal.addEventListener("abort", onParentAbort, { once: true });
       }
       timeoutId = setTimeout(() => {
@@ -866,9 +865,12 @@ const App = (props) => {
           if (subjectsFetchCtlRef.current === ctl)
             subjectsFetchCtlRef.current = null;
         });
-    } catch (e) {
-      /* ignore */
-    }
+    }  catch (err) {
+          if (err?.name !== "AbortError") {
+            return;
+          }
+          console.error('loadSubjectsAndIcons failed:', err);
+        }
   }
 
   function initMap() {
@@ -1651,7 +1653,7 @@ const App = (props) => {
   }
 
   const hardRefreshMap = async () => {
-    // abort in-flight requests
+    // abort any in-flight subject/track requests
     try {
       subjectsFetchCtlRef.current?.abort();
     } catch (_) {}
@@ -1679,6 +1681,10 @@ const App = (props) => {
       if (window.GlobalMap?.remove) window.GlobalMap.remove();
     } catch (_) {}
     window.GlobalMap = null;
+
+    // Small delay to let pending callbacks flush before re-init
+    await new Promise((r) => setTimeout(r, 50));
+
     initMap();
 
     // re-fetch visible tracks after the new map loads
@@ -1868,7 +1874,10 @@ const App = (props) => {
           >
             <div id="app-container">
               <div id="map-container" onKeyDown={logKey} onKeyUp={logKey}>
-                <MapButtons softStyleReload={softStyleReload} />
+                <MapButtons
+                  softStyleReload={softStyleReload}
+                  hardRefreshMap={hardRefreshMap}
+                />
 
                 <Legend
                   title={config !== undefined ? config.map_title : null}

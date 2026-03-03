@@ -4,12 +4,12 @@ import LeaveReviewButton from "./LeaveReviewButton.jsx";
 import RefreshMapButton from "./RefreshMapButton.jsx";
 import styles from "./MapButtons.module.css";
 
-const MapButtons = ({ softStyleReload }) => {
+const MapButtons = ({ softStyleReload, hardRefreshMap }) => {
   return (
     <div className={styles.mapButtonsContainer}>
       <HelpButton />
       <LeaveReviewButton />
-      <RefreshMapButton onClick={softStyleReload} />
+      <RefreshMapButton onClick={softStyleReload} onLongPress={hardRefreshMap} />
     </div>
   );
 };

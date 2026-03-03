@@ -249,8 +249,10 @@ const HelpButton = () => {
               </div>
               <div className={styles.tipTextContainer}>
                 <p className="map-body">
-                  Refresh the map and fetch new locations (internet connection
-                  required)
+                  Refresh (internet connection required).
+                </p>
+                <p className="map-body">
+                  Press to refresh the map and fetch new locations. Long press to do a "hard refresh" and completely rebuild the map.
                 </p>
               </div>
             </div>
