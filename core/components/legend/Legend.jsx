@@ -217,6 +217,7 @@ const Legend = ({
 
   return (
     <>
+    <div className={styles.legendWrapper}>
       <div
         className={`${styles.legend} ${
           legendOpen ? styles.legendOpen : styles.legendClose
@@ -228,6 +229,7 @@ const Legend = ({
         <div ref={scrollContainerRef} className={styles.legendScrollContainer}>
           {display()}
         </div>
+      </div>
       </div>
     </>
   );
