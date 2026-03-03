@@ -1,0 +1,44 @@
+.container {
+  background: var(--ocean-gradient);
+  border: var(--map-popup-border);
+  border-radius: var(--map-popup-border-radius);
+  box-shadow: var(--map-popup-box-shadow);
+}
+
+.headerContainer {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  overflow: hidden;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 1rem;
+  border-bottom: var(--accent-border);
+  border-radius: var(--map-popup-border-radius) var(--map-popup-border-radius) 0 0;
+}
+
+.headerText {
+  text-overflow: ellipsis;
+  font-size: 1.625rem;
+  font-weight: var(--map-h2-font-weight);
+  color: #fff;
+}
+
+.closeButton {
+  all: unset;
+  width: 12px;
+  height: 12px;
+  cursor: pointer;
+  filter: invert(1);
+}
+
+.contentContainer {
+  background: var(--map-popup-background-color);
+  padding: var(--map-popup-content-padding);
+  border-radius: 0 0 var(--map-popup-border-radius) var(--map-popup-border-radius);
+  padding: var(--map-popup-content-padding);
+  overflow: hidden;
+}
+
+.content {
+    overflow-y: auto;
+}

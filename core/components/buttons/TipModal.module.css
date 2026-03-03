@@ -7,52 +7,37 @@
 }
 
 .modalDialog {
+  composes: container from '../shared/Dialog.module.css';
   position: relative;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: var(--ocean-gradient);
-  border: var(--map-popup-border);
-  border-radius: var(--map-popup-border-radius);
-  box-shadow: var(--map-popup-box-shadow);
   max-width: 90vw;
   width: min(75vw, clamp(320px, 90vw, 420px));
   z-index: 1001;
 }
 
 .modalHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 0.25rem;
-  padding: 1rem;
-  border-bottom: var(--accent-border);
-  border-radius: var(--map-popup-border-radius) var(--map-popup-border-radius) 0 0;
+    composes: headerContainer from '../shared/Dialog.module.css';
 }
 
-.modalHeader h2 {
-    color: #fff;
+.modalTitle {
+    composes: headerText from '../shared/Dialog.module.css';
 }
 
 .closeButton {
-  all: unset;
-  width: 12px;
-  height: 12px;
-  padding: 10px;
-  opacity: 90%;
-  cursor: pointer;
-  box-sizing: content-box;
-  filter: invert(1);
+    composes: closeButton from '../shared/Dialog.module.css';
 }
 
 .modalBody {
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
-  overflow-x: hidden;
   max-height: 50vh;
-  background: var(--map-popup-background-color);
-  padding: var(--map-popup-content-padding);
+  composes: contentContainer from '../shared/Dialog.module.css';
+}
+
+.modalBodyContent {
+    composes: content from '../shared/Dialog.module.css';
 }
 
 .modalCloseTextButton {
