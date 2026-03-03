@@ -102,6 +102,7 @@ html {
   --map-h3-color: #333333;
   --map-body-color: #333333;
   --map-accent-color: #00c49a;
+  --map-accent-color-dark: #00A380;
 
   --map-a-color: #102b5e;
 
@@ -115,7 +116,7 @@ html {
   --map-popup-border: 0.125rem solid #333;
   --map-popup-border-radius: 0.75rem;
   --map-popup-box-shadow: 0 4px 5px rgba(0, 0, 0, 0.25);
-  --map-popup-content-padding: 0.25rem 1rem 0.625rem 1rem;
+  --map-popup-content-padding: 0.5rem 1rem 0.625rem 1rem;
 
   /* icons */
   --default-icon-color: #333333;
@@ -166,6 +167,10 @@ h6 {
 #gw-map p,
 #gw-map span {
   font-family: var(--map-body-font);
+}
+
+#gw-map p {
+  margin-top: 0.5rem;
 }
 
 #gw-map p + p {
@@ -250,4 +255,15 @@ h6 {
   background-color: var(--map-popup-bg);
   box-shadow: var(--map-popup-shadow);
   padding: 0.75rem;
+}
+
+.closeTextButton {
+  all: unset;
+  color: var(--map-accent-color);
+  cursor: pointer;
+  margin-top: 0.5em;
+  font-family: var(--map-body-font);
+  font-size: var(--map-sub-body-font-size);
+  font-weight: 700;
+  display: block;
 }
