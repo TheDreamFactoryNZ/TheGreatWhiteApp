@@ -86,10 +86,10 @@ html {
   --map-heading-font: "Rajdhani", system-ui, sans-serif;
   --map-body-font: "Source Sans 3", system-ui, sans-serif;
 
-  --map-h1-font-size: clamp(1.8rem, 1.2rem + 2.2vw, 3.2rem);
-  --map-h2-font-size: clamp(1.6rem, 1.1rem + 1.6vw, 2.6rem);
-  --map-h3-font-size: clamp(1.4rem, 1rem + 1.1vw, 2.2rem);
-  --map-body-font-size: clamp(1.25rem, 0.5rem + 0.2vw, 2.5rem);
+  --map-h1-font-size: clamp(1.25rem, 1.0455rem + 1.0227vw, 3.5rem);
+  --map-h2-font-size: clamp(2rem, 1.9545rem + 0.2273vw, 2.5rem);
+  --map-h3-font-size: clamp(1.75rem, 1.7273rem + 0.1136vw, 2rem);
+  --map-body-font-size: clamp(1rem, 0.9545rem + 0.2273vw, 1.5rem);
   --map-small-body-font-size: calc(var(--map-body-font-size) * 0.875);
   --map-sub-body-font-size: calc(var(--map-body-font-size) * 0.75);
 
