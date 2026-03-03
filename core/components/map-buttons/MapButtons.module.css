@@ -6,22 +6,6 @@
     z-index: 2;
 }
 
-.mapContentContainer {
-    width: min(75vw, clamp(320px, 25vw, 390px));
-    margin-top: -34px;
-    margin-left: 54px;
-    background-color: var(--map-popup-background-color);
-    border: var(--map-popup-border);
-    border-radius: var(--map-popup-border-radius);
-    box-shadow: var(--map-popup-box-shadow);
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    box-sizing: border-box;
-    position: absolute;
-}
-
 .mapButtonIcon {
     all: unset;
     height: 29px;
@@ -47,44 +31,34 @@
 
 /* Popup containers from buttons */
 
+.mapContentContainer {
+    composes: container from '@components/shared/Dialog.module.css';
+    width: min(75vw, clamp(320px, 25vw, 390px));
+    margin-top: -34px;
+    margin-left: 54px;
+    position: absolute;
+}
+
 /* Header area inside the content panel */
 .mapButtonHeaderContainer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 0.25rem;
-    padding: 1rem;
-    background: var(--ocean-gradient);
-    border-bottom: var(--accent-border);
-    border-radius: var(--map-popup-border-radius) var(--map-popup-border-radius) 0 0;
+    composes: headerContainer from '@components/shared/Dialog.module.css';
 }
 
 .mapButtonHeader {
-    flex: 1 1 auto;
-    min-width: 0;
-    margin: 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    font-size: 1.625rem;
-    font-weight: var(--map-h2-font-weight);
-    color: #fff;
+    composes: headerText from '@components/shared/Dialog.module.css';
 }
 
 .closeIcon {
-    width: 12px;
-    height: 12px;
-    padding: 10px;
-    opacity: 90%;
-    cursor: pointer;
-    box-sizing: content-box;
-    filter: invert(1);
+    composes: closeButton from '@components/shared/Dialog.module.css';
 }
 
-.mapButtonItemsContainer {
+.mapButtonContentContainer {
+    composes: contentContainer from '@components/shared/Dialog.module.css';
     display: flex;
     flex-direction: column;
-    overflow-y: auto;
-    overflow-x: hidden;
     max-height: 50vh;
-    padding: var(--map-popup-content-padding);
+}
+
+.mapButtonContent {
+    composes: content from '@components/shared/Dialog.module.css';
 }

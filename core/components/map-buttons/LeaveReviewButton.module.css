@@ -8,7 +8,7 @@
     display: none;
 }
 
-.supportContentContainer {
+.supportInfoContainer {
     composes: mapContentContainer from './MapButtons.module.css';
 }
 
@@ -24,8 +24,12 @@
     composes: closeIcon from './MapButtons.module.css';
 }
 
-.supportItemsContainer {
-    composes: mapButtonItemsContainer from './MapButtons.module.css';
+.supportInfoContentContainer {
+    composes: mapButtonContentContainer from './MapButtons.module.css';
+}
+
+.supportInfoContent {
+    composes: mapButtonContent from './MapButtons.module.css';
 }
 
 .supportItem {

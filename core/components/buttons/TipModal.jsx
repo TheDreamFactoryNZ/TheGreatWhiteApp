@@ -18,12 +18,14 @@ import styles from "./TipModal.module.css";
 // - onClose?: () => void
 // - closeOnBackdropClick?: boolean (default true)
 // - className?: string – class for the trigger button wrapper
-// - tipButtonClassName?: string – class for the tip button
-// - modalClassName?: string – class for modal dialog container
 // - overlayClassName?: string – class for full-screen overlay
+// - modalDialogClassName?: string – class for modal dialog container
 // - headerClassName?: string – class for header container
+// - titleClassName?: string – class for the title <h2>
 // - bodyClassName?: string – class for body container
+// - bodyContentClassName?: string – class for body content
 // - closeButtonClassName?: string – class for close button
+// - tipButtonClassName?: string – class for the tip button
 // - tipIconClassName?: string – class for tip icon
 // - portalAfterId?: string – if provided, the modal portal will be rendered as a child of the element with this ID instead of document.body
 
@@ -36,8 +38,9 @@ export default function TipModal({
   closeOnBackdropClick = true,
   className,
   overlayClassName,
-  modalClassName,
+  modalDialogClassName,
   headerClassName,
+  titleClassName,
   bodyClassName,
   bodyContentClassName,
   closeButtonClassName,
@@ -47,19 +50,14 @@ export default function TipModal({
   portalAfterId,
 }) {
   const overlayClasses = `${styles.modalOverlay} ${overlayClassName || ""}`;
-  const dialogClasses = `${styles.modalDialog} ${modalClassName || ""}`;
+  const dialogClasses = `${styles.modalDialog} ${modalDialogClassName || ""}`;
   const headerClasses = `${styles.modalHeader} ${headerClassName || ""}`;
+  const titleClasses = `${styles.modalTitle} ${titleClassName || ""}`;
   const bodyClasses = `${styles.modalBody} ${bodyClassName || ""}`;
-  const contentClasses = `${styles.modalBodyContent} ${
-    bodyContentClassName || ""
-  }`;
+  const contentClasses = `${styles.modalBodyContent} ${bodyContentClassName || ""}`;
   const closeBtnClasses = `${styles.closeButton} ${closeButtonClassName || ""}`;
-  const tipBtnClasses = `${iconButtonStyles.iconButton} ${
-    tipButtonClassName || ""
-  }`;
-  const tipIconClasses = `${iconButtonStyles.iconSvg} ${
-    iconButtonStyles.tipIconSvg
-  } ${tipIconClassName || ""}`;
+  const tipBtnClasses = `${iconButtonStyles.iconButton} ${tipButtonClassName || ""}`;
+  const tipIconClasses = `${iconButtonStyles.iconSvg} ${iconButtonStyles.tipIconSvg} ${tipIconClassName || ""}`;
 
   const [open, setOpen] = React.useState(!!initialOpen);
   const [portalNode, setPortalNode] = React.useState(null);
@@ -212,7 +210,7 @@ export default function TipModal({
               className={dialogClasses}
             >
               <div className={headerClasses}>
-                <h2 id={titleId}>{modalTitle}</h2>
+                <h2 id={titleId} className={titleClasses}>{modalTitle}</h2>
                 <button
                   type="button"
                   ref={closeRef}
