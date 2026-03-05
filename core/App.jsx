@@ -805,9 +805,17 @@ const App = (props) => {
               if (
                 config.subjects &&
                 config.subjects[subject.id] &&
-                config.subjects[subject.id].name
+                config.subjects[subject.id].animal_name
               ) {
-                subject.name = config.subjects[subject.id].name;
+                subject.name = config.subjects[subject.id].animal_name;
+              }
+              // check for subject subtitle and use it
+              if (
+                config.subjects &&
+                config.subjects[subject.id] &&
+                config.subjects[subject.id].animal_subtitle
+              ) {
+                subject.subtitle = config.subjects[subject.id].animal_subtitle;
               }
               // Avoid duplicate icon/layers if they already exist
               try {

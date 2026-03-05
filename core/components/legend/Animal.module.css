@@ -60,8 +60,16 @@
   max-width: 16ch;
 }
 
+:global(#gw-map) h3:global(.map-heading).animalSubtitleText {
+  font-size: var(--map-body-font-size);
+}
+
 :global(#gw-map) .tracksActive h2:global(.map-heading).animalNameText {
   font-weight: 700;
+}
+
+:global(#gw-map) .tracksActive h3:global(.map-heading).animalSubtitleText {
+  font-weight: 500;
 }
 
 .animalStoryView .animalNameText {

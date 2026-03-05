@@ -43,8 +43,8 @@ const Animal = ({
     <>
       <div
         className={`${styles.animalLegendContent} ${
-            isStoryView ? styles.animalStoryView : ""
-          }`}
+          isStoryView ? styles.animalStoryView : ""
+        }`}
         onClick={(e) => {
           const fromButton = e.target.closest(
             "#subject-track-button, #subject-location-button",
@@ -64,9 +64,9 @@ const Animal = ({
           }
         }}
       >
-          <div className={styles.animalStatus}>
-            <div style={bulletBackgroundStyle} />
-          </div>
+        <div className={styles.animalStatus}>
+          <div style={bulletBackgroundStyle} />
+        </div>
         <div
           className={`${styles.animalNameStatus} ${animalName}`}
           id={animalId}
@@ -79,10 +79,13 @@ const Animal = ({
           >
             <h2
               className={`${"map-heading"} ${styles.animalNameText}`}
-              title={animal.name}
+              title={animal.name + " (" + animal.subtitle + ")"}
             >
               {animal.name}
             </h2>
+            <h3 className={`${"map-heading"} ${styles.animalSubtitleText}`}>
+              {animal.subtitle}
+            </h3>
             <LastSeenInfo
               isShorthand={true}
               isoDate={animal?.last_position?.properties?.DateTime}
@@ -95,45 +98,45 @@ const Animal = ({
         </div>
         <div className={styles.trackButtons}>
           <div className={styles.trackButtonContainer}>
-          <TrackButton 
-            subject={animal}
-            width="auto"
-            height="auto"
-          />
+            <TrackButton subject={animal} width="auto" height="auto" />
           </div>
           <div className={styles.trackButtonContainer}>
-          <LocateButton
-            subject={animal}
-            handleOnLocButtonClicked={animalOnLocClicked}
-            width="auto"
-            height="auto"
-          />
+            <LocateButton
+              subject={animal}
+              handleOnLocButtonClicked={animalOnLocClicked}
+              width="auto"
+              height="auto"
+            />
           </div>
         </div>
-          <button
-            className={styles.storyButton}
-            onClick={(e) => {
-          const fromButton = e.target.closest(
-            "#subject-track-button, #subject-location-button",
-          );
-          if (fromButton) return;
+        <button
+          className={styles.storyButton}
+          onClick={(e) => {
+            const fromButton = e.target.closest(
+              "#subject-track-button, #subject-location-button",
+            );
+            if (fromButton) return;
 
-          const name = document.getElementById(animalId);
-          const clicked = e.target;
+            const name = document.getElementById(animalId);
+            const clicked = e.target;
 
-          if (
-            name.classList.contains("animal-name") &&
-            clicked.id !== "subject-track-button" &&
-            clicked.id !== "subject-location-button"
-          ) {
-            onNameClick([animal, configData.subjects[animal.id]]);
-            name.classList.toggle("animal-name");
-          }
-        }}
-          >
-            <StoryIcon className={styles.storyButtonIcon} width="2.5rem" height="2.5rem" />
-          </button>
-        </div>
+            if (
+              name.classList.contains("animal-name") &&
+              clicked.id !== "subject-track-button" &&
+              clicked.id !== "subject-location-button"
+            ) {
+              onNameClick([animal, configData.subjects[animal.id]]);
+              name.classList.toggle("animal-name");
+            }
+          }}
+        >
+          <StoryIcon
+            className={styles.storyButtonIcon}
+            width="2.5rem"
+            height="2.5rem"
+          />
+        </button>
+      </div>
     </>
   );
 };
