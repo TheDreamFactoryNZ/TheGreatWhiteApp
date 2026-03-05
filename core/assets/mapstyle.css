@@ -91,6 +91,7 @@ a.mapboxgl-ctrl-logo.mapboxgl-compact {
     height: 1rem;
     position: absolute;
     margin: auto;
+    z-index: -1;
 }
 
 .mapboxgl-popup-anchor-bottom-left::before,
