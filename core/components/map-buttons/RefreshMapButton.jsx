@@ -67,7 +67,7 @@ const RefreshMapButton = ({ onClick = () => {}, onLongPress = () => {} }) => {
   const isDisabled = !isOnline || isCoolingDown;
 
   return (
-    <div className={styles.refreshMapContainer}>
+    <>
       <button
         type="button"
         className={`${styles.refreshMapIcon} ${
@@ -88,7 +88,7 @@ const RefreshMapButton = ({ onClick = () => {}, onLongPress = () => {} }) => {
         onTouchEnd={handlePressEnd}
         onTouchCancel={handlePressCancel}
       />
-    </div>
+    </>
   );
 };
 

@@ -36,7 +36,7 @@ const LeaveReviewButton = () => {
   }, []);
 
   return (
-    <div className={styles.leaveReviewContainer}>
+    <>
       <button
         type="button"
         className={styles.leaveReviewIcon}
@@ -117,7 +117,7 @@ const LeaveReviewButton = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

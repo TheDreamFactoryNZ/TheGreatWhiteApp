@@ -1,15 +1,18 @@
 /* Shared styles for buttons at top left of map (i.e. tips menu, refresh button etc) */
 .mapButtonsContainer {
     position: absolute;
-    top: 105px;
+    top: calc(105px + 1rem);
     left: 10px;
     z-index: 2;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 1rem;
 }
 
 .mapButtonIcon {
     all: unset;
-    height: 29px;
-    width: 29px;
+    height: 2.25rem;
+    width: 2.25rem;
     background-color: white;
     border-radius: 3px;
     background-image: var(--icon-background-image);

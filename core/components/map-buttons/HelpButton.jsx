@@ -40,7 +40,7 @@ const HelpButton = () => {
   }, []);
 
   return (
-    <div className={styles.tipsContainer}>
+    <>
       <button
         type="button"
         className={styles.tipsToggleIcon}
@@ -276,7 +276,7 @@ const HelpButton = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

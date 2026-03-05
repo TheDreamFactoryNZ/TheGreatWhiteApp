@@ -48,6 +48,11 @@ body {
     }
 }
 
+.mapboxgl-ctrl-group button {
+    width: 2.25rem;
+    height: 2.25rem;
+}
+
 .mapboxgl-ctrl-bottom-left,
 .mapboxgl-ctrl-bottom-right {
     margin-bottom: 6px;
