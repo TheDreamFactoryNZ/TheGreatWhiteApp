@@ -114,6 +114,7 @@ html {
   /* popups */
   --map-popup-background-color: #eeeffc;
   --map-popup-border: 0.125rem solid #333;
+  --map-popup-border-color: #333;
   --map-popup-border-radius: 0.75rem;
   --map-popup-box-shadow: 0 4px 5px rgba(0, 0, 0, 0.25);
   --map-popup-box-shadow-inner: inset 0 0px 5px rgba(0, 0, 0, 0.5);
@@ -248,15 +249,6 @@ h6 {
 
 #gw-map img {
   max-width: unset;
-}
-
-/* Map popup container styling (map-only) */
-#gw-map .popup-container {
-  border-radius: var(--map-popup-radius);
-  background-color: var(--map-popup-bg);
-  box-shadow: var(--map-popup-shadow);
-  box-shadow: var(--map-popup-box-shadow-inner);
-  padding: 0.75rem;
 }
 
 .closeTextButton {

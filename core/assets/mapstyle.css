@@ -63,14 +63,99 @@ a.mapboxgl-ctrl-logo.mapboxgl-compact {
 }
 
 /* Popup Styling */
+.mapboxgl-popup {
+    max-width: 100% !important;
+}
 
-.mapboxgl-popup-anchor-top .mapboxgl-popup-tip,
-.mapboxgl-popup-anchor-top-left .mapboxgl-popup-tip,
-.mapboxgl-popup-anchor-top-right .mapboxgl-popup-tip
-.mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip {
-    border-bottom-color: #333;
+/* Custom popup anchors */
+
+.mapboxgl-popup-tip {
     display: none;
 }
+
+.mapboxgl-popup-anchor-bottom-left::before,
+.mapboxgl-popup-anchor-bottom::before,
+.mapboxgl-popup-anchor-bottom-right::before,
+.mapboxgl-popup-anchor-bottom-left::after,
+.mapboxgl-popup-anchor-bottom::after,
+.mapboxgl-popup-anchor-bottom-right::after,
+.mapboxgl-popup-anchor-top-left::before,
+.mapboxgl-popup-anchor-top::before,
+.mapboxgl-popup-anchor-top-right::before,
+.mapboxgl-popup-anchor-top-left::after,
+.mapboxgl-popup-anchor-top::after,
+.mapboxgl-popup-anchor-top-right::after {
+    content: "";
+    display: block;
+    width: 2rem;
+    height: 1rem;
+    position: absolute;
+    margin: auto;
+}
+
+.mapboxgl-popup-anchor-bottom-left::before,
+.mapboxgl-popup-anchor-bottom::before,
+.mapboxgl-popup-anchor-bottom-right::before,
+.mapboxgl-popup-anchor-bottom-left::after,
+.mapboxgl-popup-anchor-bottom::after,
+.mapboxgl-popup-anchor-bottom-right::after {
+    bottom: 2px;
+}
+
+.mapboxgl-popup-anchor-top-left::before,
+.mapboxgl-popup-anchor-top::before,
+.mapboxgl-popup-anchor-top-right::before,
+.mapboxgl-popup-anchor-top-left::after,
+.mapboxgl-popup-anchor-top::after,
+.mapboxgl-popup-anchor-top-right::after {
+    bottom: 100%;
+    transform: rotate(180deg);
+}
+
+.mapboxgl-popup-anchor-bottom-left::before,
+.mapboxgl-popup-anchor-bottom::before,
+.mapboxgl-popup-anchor-bottom-right::before,
+.mapboxgl-popup-anchor-top-left::before,
+.mapboxgl-popup-anchor-top::before,
+.mapboxgl-popup-anchor-top-right::before {
+  background: var(--map-popup-border-color);
+  filter: brightness(1.25);
+  clip-path: polygon(100% 0, 100% 0, 50% 100%, 0 0);
+}
+
+.mapboxgl-popup-anchor-bottom-left::before,
+.mapboxgl-popup-anchor-bottom-left::after,
+.mapboxgl-popup-anchor-top-left::before,
+.mapboxgl-popup-anchor-top-left::after {
+  left: 0.75rem;
+}
+
+.mapboxgl-popup-anchor-bottom::before,
+.mapboxgl-popup-anchor-bottom::after,
+.mapboxgl-popup-anchor-top::before,
+.mapboxgl-popup-anchor-top::after {
+  left: 0;
+  right: 0;
+}
+
+.mapboxgl-popup-anchor-bottom-right::before,
+.mapboxgl-popup-anchor-bottom-right::after,
+.mapboxgl-popup-anchor-top-right::before,
+.mapboxgl-popup-anchor-top-right::after {
+  right: 0.75rem;
+}
+
+.mapboxgl-popup-anchor-bottom-left::after,
+.mapboxgl-popup-anchor-bottom::after,
+.mapboxgl-popup-anchor-bottom-right::after,
+.mapboxgl-popup-anchor-top-left::after,
+.mapboxgl-popup-anchor-top::after,
+.mapboxgl-popup-anchor-top-right::after {
+  background: var(--map-popup-background-color);
+  clip-path: polygon(calc(100% - 0px) 0, calc(100% - 2px) 0, calc(50% - 0px) calc(100% - 2px), 2px 0);
+}
+
+
 /* Map
 .mapboxgl-popup-content *//* Mirrors .popup-container in main.css */ /*{
     border-radius: 0.5rem;
