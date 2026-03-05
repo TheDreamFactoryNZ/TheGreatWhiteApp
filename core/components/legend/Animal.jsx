@@ -84,6 +84,7 @@ const Animal = ({
               {animal.name}
             </h2>
             <LastSeenInfo
+              isShorthand={true}
               isoDate={animal?.last_position?.properties?.DateTime}
               timezoneLabel="UTC"
               timezone="Etc/UTC"

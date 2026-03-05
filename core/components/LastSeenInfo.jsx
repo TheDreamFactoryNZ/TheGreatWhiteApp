@@ -142,6 +142,7 @@ export default function LastSeenInfo({
   renderFullDate,
   showFullDate = false,
   showActivityText = false,
+  isShorthand = false,
   timezone = "UTC",
   expandable = false,
   thresholds = defaultThresholds,
@@ -161,7 +162,7 @@ export default function LastSeenInfo({
     status,
     isoDate,
     AUTO_INACTIVE_MONTHS,
-    resolvedTimezone
+    resolvedTimezone,
   );
 
   // Derive booleans from normalized status
@@ -174,7 +175,8 @@ export default function LastSeenInfo({
   const activityMessage = ACTIVITY_MESSAGES[normalizedStatus] || null;
 
   // Status CSS class
-  const statusClass = STATUS_CLASS_MAP[normalizedStatus] || styles.statusUnknown;
+  const statusClass =
+    STATUS_CLASS_MAP[normalizedStatus] || styles.statusUnknown;
   let dateSummaryText = "Last seen: unknown";
   if (date) {
     const timeStr = formatTime(date, resolvedTimezone);
@@ -254,7 +256,7 @@ export default function LastSeenInfo({
         <div className={styles.fullDateContainer}>
           <span className={`${"map-body"} ${styles.fullDateText}`}>
             {fullDateStr}
-            {activityMessage && (showInactive) && (
+            {activityMessage && showInactive && (
               <>
                 &nbsp;&nbsp;
                 <TipModal
@@ -266,7 +268,7 @@ export default function LastSeenInfo({
                 />
               </>
             )}
-            {activityMessage && (showDeactivated) && (
+            {activityMessage && showDeactivated && (
               <>
                 &nbsp;&nbsp;
                 <TipModal
@@ -279,11 +281,12 @@ export default function LastSeenInfo({
               </>
             )}
           </span>
-          {activityMessage && (showActive || showInactive || showDeactivated || showUnknown) && (
-            <p className={`${"map-body"} ${styles.tagStatusText}`}>
-              <em>{activityMessage}</em>
-            </p>
-          )}
+          {activityMessage &&
+            (showActive || showInactive || showDeactivated || showUnknown) && (
+              <p className={`${"map-body"} ${styles.tagStatusText}`}>
+                <em>{activityMessage}</em>
+              </p>
+            )}
           <button
             type="button"
             className={styles.closeFullDate}
@@ -303,11 +306,38 @@ export default function LastSeenInfo({
       </details>
     );
   }
+
+  const tipModalInactive = (
+    <>
+      &nbsp;
+      <TipModal
+        className={styles.lastSeenTip}
+        portalIntoId="gw-modal-root"
+        modalTitle="No recent location update?"
+        modalBody="<p>Locations are obtained via a tag attached to the dorsal fin of the shark, which then transmits to orbiting satellites. For the satellites to receive a location, the shark must be near or at the surface of the water.</p><p>Being marine animals, sharks can spend <strong>months</strong> underwater, therefore it's not unusual to see long periods of inactivity.</p><p><strong>Rest assured, this is <em>not</em> an issue with the app - it is simply the harsh reality of tagging and tracking marine animals</strong></p>"
+        initialOpen={false}
+      />
+    </>
+  );
+
+  const tipModalDeactivated = (
+    <>
+      &nbsp;
+      <TipModal
+        className={styles.lastSeenTip}
+        portalIntoId="gw-modal-root"
+        modalTitle="This shark is no longer being tracked"
+        modalBody="<p>Unfortunately, this shark is no longer being tracked as the tag has been lost. Historical location data and previous tracks are still available for viewing, however.</p>"
+        initialOpen={false}
+      />
+    </>
+  );
+
   // Non-expandable
   return (
     <div className={className}>
       <div className={styles.dateSummaryContainer}>
-        <span className={`${styles.dateSummaryText}`}>
+        <div className={`${styles.dateSummaryText}`}>
           {withBullet && (
             <span
               className={`${styles.statusBullet} ${statusClass} ${statusClassName}`}
@@ -324,30 +354,42 @@ export default function LastSeenInfo({
               {dateSummaryText}&nbsp;&nbsp;
             </span>
           )}
-          {showActivityText && activityMessage && !showInactive && (
-            <p className={`${"map-body"} ${styles.tagStatusText}`}>
-              <em>{activityMessage}</em>
-            </p>
+          {showActivityText && activityMessage && showInactive && (
+            <div>
+              <p className={`${"map-body"} ${styles.tagStatusText}`}>
+                <em>{activityMessage}</em>
+              </p>
+              {tipModalInactive}
+            </div>
           )}
-          {showInactive && (
-          <TipModal
-            className={styles.lastSeenTip}
-            portalIntoId="gw-modal-root"
-            modalTitle="No recent location update?"
-            modalBody="<p>Locations are obtained via a tag attached to the dorsal fin of the shark, which then transmits to orbiting satellites. For the satellites to receive a location, the shark must be near or at the surface of the water.</p><p>Being marine animals, sharks can spend <strong>months</strong> underwater, therefore it's not unusual to see long periods of inactivity.</p><p><strong>Rest assured, this is <em>not</em> an issue with the app - it is simply the harsh reality of tagging and tracking marine animals</strong></p>"
-            initialOpen={false}
-          />)}
-          
-            {showDeactivated && (
-                <TipModal
-                  className={styles.lastSeenTip}
-                  portalIntoId="gw-modal-root"
-                  modalTitle="This shark is no longer being tracked"
-                  modalBody="<p>Unfortunately, this shark is no longer being tracked as the tag has been lost. Historical location data and previous tracks are still available for viewing.</p>"
-                  initialOpen={false}
-                />
-            )}
-        </span>
+          {showActivityText && activityMessage && showDeactivated && (
+            <div>
+              <p className={`${"map-body"} ${styles.tagStatusText}`}>
+                <em>{activityMessage}</em>
+              </p>
+              {tipModalDeactivated}
+            </div>
+          )}
+          {isShorthand === true && showInactive && (
+            <TipModal
+              className={styles.lastSeenTip}
+              portalIntoId="gw-modal-root"
+              modalTitle="No recent location update?"
+              modalBody="<p>Locations are obtained via a tag attached to the dorsal fin of the shark, which then transmits to orbiting satellites. For the satellites to receive a location, the shark must be near or at the surface of the water.</p><p>Being marine animals, sharks can spend <strong>months</strong> underwater, therefore it's not unusual to see long periods of inactivity.</p><p><strong>Rest assured, this is <em>not</em> an issue with the app - it is simply the harsh reality of tagging and tracking marine animals</strong></p>"
+              initialOpen={false}
+            />
+          )}
+
+          {isShorthand === true && showDeactivated && (
+            <TipModal
+              className={styles.lastSeenTip}
+              portalIntoId="gw-modal-root"
+              modalTitle="This shark is no longer being tracked"
+              modalBody="<p>Unfortunately, this shark is no longer being tracked as the tag has been lost. Historical location data and previous tracks are still available for viewing.</p>"
+              initialOpen={false}
+            />
+          )}
+        </div>
       </div>
     </div>
   );

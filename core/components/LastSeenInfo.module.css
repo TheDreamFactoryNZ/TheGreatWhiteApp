@@ -125,3 +125,7 @@ details[open] .summaryArrow {
     line-height: 1;
     vertical-align: middle;
 }
+
+.tagStatusText {
+    display: inline;
+}
