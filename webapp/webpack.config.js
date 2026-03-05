@@ -51,6 +51,8 @@ module.exports = (env, argv) => {
         "@core": path.resolve(__dirname, "../core"),
         '@components': path.resolve(__dirname, '../core/components'),
         '@buttons': path.resolve(__dirname, '../core/components/buttons'),
+        '@shared': path.resolve(__dirname, '../core/components/shared'),
+        '@popups': path.resolve(__dirname, '../core/components/popups'),
         '@assets': path.resolve(__dirname, '../core/assets'),
         '@images': path.resolve(__dirname, '../core/assets/images'),
         "@contexts": path.resolve(__dirname, "../core/contexts/"),
