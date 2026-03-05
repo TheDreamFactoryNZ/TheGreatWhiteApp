@@ -163,3 +163,24 @@ a.mapboxgl-ctrl-logo.mapboxgl-compact {
     pointer-events: auto;
     position: relative;
 }
+
+/* Attribution */
+
+.mapboxgl-ctrl.mapboxgl-ctrl-attrib {
+    box-sizing: content-box;
+}
+
+.mapboxgl-ctrl-attrib.mapboxgl-compact-show .mapboxgl-ctrl-attrib-button {
+    background-color: unset;
+}
+
+.mapboxgl-ctrl-attrib-button:focus,
+.mapboxgl-ctrl-group button:focus {
+    outline: var(--focus-outline);
+    box-shadow: none;
+}
+
+.mapboxgl-ctrl-attrib-inner {
+    font-family: var(--map-body-font);
+    font-size: var(--map-sub-body-font-size);
+}
