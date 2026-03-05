@@ -139,6 +139,7 @@ module.exports = (env, argv) => {
       }),
       new webpack.DefinePlugin({
         __MAPBOX_TOKEN__: JSON.stringify(process.env.MAPBOX_TOKEN ?? ""),
+        __ER_API_TOKEN__: JSON.stringify(process.env.ER_API_TOKEN ?? ""),
         __GW_DEBUG__: JSON.stringify(!!debugFlag),
         __REACT_APP_VARIANT__: JSON.stringify(appVariant),
       }),

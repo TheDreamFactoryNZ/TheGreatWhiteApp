@@ -7,10 +7,15 @@ import path from 'path'
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
-  const token = env.VITE_MAPBOX_TOKEN
+  const mapboxToken = env.VITE_MAPBOX_TOKEN
     || process.env.VITE_MAPBOX_TOKEN
     || env.MAPBOX_TOKEN
     || process.env.MAPBOX_TOKEN
+    || ''
+  const erApiToken = env.VITE_ER_API_TOKEN
+    || process.env.VITE_ER_API_TOKEN
+    || env.ER_API_TOKEN
+    || process.env.ER_API_TOKEN
     || ''
   const rawDebug = env.GW_DEBUG ?? process.env.GW_DEBUG ?? undefined
   const hasRaw = rawDebug !== undefined && rawDebug !== ''
@@ -37,7 +42,8 @@ export default defineConfig(({ mode }) => {
     })
   ],
   define: {
-    __MAPBOX_TOKEN__: JSON.stringify(token),
+    __MAPBOX_TOKEN__: JSON.stringify(mapboxToken),
+    __ER_API_TOKEN__: JSON.stringify(erApiToken),
     __GW_DEBUG__: JSON.stringify(!!debugFlag),
     __REACT_APP_VARIANT__: JSON.stringify(appVariant),
   },
