@@ -39,7 +39,7 @@ export default function PointPopupContent({
           </p>
           {statusMessage && (
             <p className={`map-body ${styles.statusMessage}`}>
-              {statusMessage}
+              <em>{statusMessage}</em>
             </p>
           )}
         </div>
