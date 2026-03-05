@@ -1,6 +1,6 @@
 import React from 'react';
-import { TrackButton, StoryButton } from './buttons';
-import LastSeenInfo from './LastSeenInfo.jsx';
+import { TrackButton, StoryButton } from '../buttons/index.js';
+import LastSeenInfo from '../LastSeenInfo.jsx';
 import { getSubjectStatusInfo } from '@utils/subjectStatus.js';
 
 import styles from './SubjectPopupContent.module.css';

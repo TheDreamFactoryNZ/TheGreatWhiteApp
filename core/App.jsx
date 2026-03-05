@@ -2,9 +2,11 @@ import React, { useEffect, useState, useRef } from "react";
 import mapboxgl from "mapbox-gl";
 import TrackContext from "@contexts/TrackContext.js";
 import { AppVariantContext } from "@contexts/AppVariantContext.js";
-import SubjectPopupContent from "@components/SubjectPopupContent";
-import PointPopupContent from "@components/PointPopupContent";
-import Popup from "@components/Popup";
+import {
+  PointPopupContent,
+  Popup,
+  SubjectPopupContent
+} from "@components/popups";
 import Legend from "@components/legend";
 import MapButtons from "@components/map-buttons/MapButtons";
 import { Sponsors } from "@components/sponsors";
