@@ -35,7 +35,8 @@
 /* Popup containers from buttons */
 
 .mapContentContainer {
-    composes: container from '@components/shared/Dialog.module.css';
+    composes: container from '@shared/Dialog.module.css';
+    max-width: unset;
     width: min(75vw, clamp(320px, 25vw, 390px));
     margin-top: -34px;
     margin-left: 54px;
@@ -44,24 +45,24 @@
 
 /* Header area inside the content panel */
 .mapButtonHeaderContainer {
-    composes: headerContainer from '@components/shared/Dialog.module.css';
+    composes: headerContainer from '@shared/Dialog.module.css';
 }
 
 .mapButtonHeader {
-    composes: headerText from '@components/shared/Dialog.module.css';
+    composes: headerText from '@shared/Dialog.module.css';
 }
 
 .closeIcon {
-    composes: closeButton from '@components/shared/Dialog.module.css';
+    composes: closeButton from '@shared/Dialog.module.css';
 }
 
 .mapButtonContentContainer {
-    composes: contentContainer from '@components/shared/Dialog.module.css';
+    composes: contentContainer from '@shared/Dialog.module.css';
     display: flex;
     flex-direction: column;
     max-height: 50vh;
 }
 
 .mapButtonContent {
-    composes: content from '@components/shared/Dialog.module.css';
+    composes: content from '@shared/Dialog.module.css';
 }
