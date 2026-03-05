@@ -54,6 +54,7 @@
     margin-top: 0;
 }
 
-.modalCloseTextButton {
+:global(#gw-map .closeTextButton).modalCloseTextButton {
     color: var(--map-accent-color-dark) !important;
+    margin-top: 0;
 }
