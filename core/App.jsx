@@ -12,7 +12,10 @@ import MapButtons from "@components/map-buttons/MapButtons";
 import { Sponsors } from "@components/sponsors";
 
 import mapHandlerRegistry from "@utils/mapHandlerRegistry";
-import { normalizeStatus, STATUS } from "@utils/subjectStatus.js";
+import {
+  STATUS,
+  normalizeStatus
+} from "@utils/subjectStatus.js";
 
 import "mapbox-gl/dist/mapbox-gl.css"; // Mapbox default styles
 import "./assets/mapstyle.css"; // Overrides for mapbox default styles
@@ -1329,6 +1332,10 @@ const App = (props) => {
                   date: props.time_date || null,
                   time: props.time_time || null,
                   timezone: props.time_timezone || null,
+                  status: normalizeStatus(
+                    config?.subjects?.[subjectId]?.status,
+                    subjects.find((s) => s.id === subjectId)?.last_position?.properties?.DateTime,
+                  ),
                 },
               },
             ]);
@@ -1933,6 +1940,7 @@ const App = (props) => {
                   date={p.date}
                   time={p.time}
                   timezone={p.timezone}
+                  status={p.status}
                 />
               </Popup>
             ))}

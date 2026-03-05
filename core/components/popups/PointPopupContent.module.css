@@ -1,28 +1,29 @@
 .popUp {
-    width: clamp(12.5rem, 33vw + 10vw, 20rem);
-    height: auto;
-    overflow: auto;
-    border-radius: var(--map-popup-border-radius);
-    background-color: var(--map-popup-background-color);
-    box-shadow: var(--map-popup-box-shadow);
-    border: var(--map-popup-border);
-    user-select: none;
-    -webkit-user-select: none;
+    composes: container from "@shared/Dialog.module.css";
 }
 
-.popUpHeader {
-    background: var(--ocean-gradient);
-    padding: var(--map-popup-header-padding);
+.popUpHeaderContainer {
+    composes: headerContainer from "@shared/Dialog.module.css";
 }
 
-:global(#gw-map) h2:global(.map-heading).locationNumber {
-    color: #fff;
+.popUpHeading {
+    composes: headerText from "@shared/Dialog.module.css";
 }
 
 .popUpBody {
-    padding: 1rem;
+    composes: contentContainer from "@shared/Dialog.module.css";
+}
+
+.popUpBodyContent {
+    composes: content from "@shared/Dialog.module.css";
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
 :global(#gw-map) h3:global(.map-heading) {
     margin-bottom: 0.25rem;
+}
+
+:global(#gw-map) :global(p.map-body).statusMessage {
+    font-size: var(--map-small-body-font-size);
 }
