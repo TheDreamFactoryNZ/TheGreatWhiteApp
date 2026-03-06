@@ -97,10 +97,15 @@ html {
   --map-h2-font-weight: 600;
   --map-h3-font-weight: 400;
 
+  /* Colours */
   --map-h1-color: #060a23;
   --map-h2-color: #060a23;
   --map-h3-color: #333333;
   --map-body-color: #333333;
+  --map-body-color-light: #ffffff;
+
+  --map-background-color-light: #eeeffc;
+  --map-background-color-dark: #111003;
   --map-accent-color: #00c49a;
   --map-accent-color-dark: #00A380;
 
@@ -122,7 +127,8 @@ html {
 
   /* icons */
   --default-icon-color: #333333;
-  --default-inverted-icon-color: #cccccc;
+  --map-icon-color-dark: #333333;
+  --map-icon-color-light: #cccccc;
   --active-icon-color: #4cbe23;
 
   /* Animal Status */
@@ -135,7 +141,7 @@ html {
   --hover-transition-duration: 0.25s;
 
   /* Decorative elements */
-  --border-divider: 2px solid rgba(0, 0, 0, 0.15);
+  --border-divider: 3px double rgba(0, 0, 0, 0.15);
   --accent-border: 0.125rem solid var(--map-accent-color);
   --ocean-gradient: linear-gradient(
     135deg,
@@ -164,19 +170,6 @@ h5,
 h6 {
   font-family: var(--map-heading-font);
   letter-spacing: var(--heading-letter-spacing);
-}
-
-#gw-map p,
-#gw-map span {
-  font-family: var(--map-body-font);
-}
-
-#gw-map p {
-  margin-top: 0.5rem;
-}
-
-#gw-map p + p {
-  margin-top: 1rem;
 }
 
 #gw-map .map-heading {
@@ -217,6 +210,20 @@ h6 {
   font-family: var(--map-body-font);
   font-size: var(--map-body-font-size);
   color: var(--map-body-color);
+}
+
+#gw-map p,
+#gw-map span {
+  font-family: var(--map-body-font);
+  color: var(--map-body-color);
+}
+
+#gw-map p {
+  margin-top: 0.5rem;
+}
+
+#gw-map p + p {
+  margin-top: 1rem;
 }
 
 #gw-map p.map-body a,

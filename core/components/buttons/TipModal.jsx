@@ -46,6 +46,7 @@ export default function TipModal({
   closeButtonClassName,
   tipButtonClassName,
   tipIconClassName,
+  tipIconColorScheme = "default",
   portalIntoId,
   portalAfterId,
 }) {
@@ -58,6 +59,15 @@ export default function TipModal({
   const closeBtnClasses = `${styles.closeButton} ${closeButtonClassName || ""}`;
   const tipBtnClasses = `${iconButtonStyles.iconButton} ${tipButtonClassName || ""}`;
   const tipIconClasses = `${iconButtonStyles.iconSvg} ${iconButtonStyles.tipIconSvg} ${tipIconClassName || ""}`;
+
+  const tipIconColor = () => {
+    if (tipIconColorScheme === "light") {
+      return iconButtonStyles.iconColorLight;
+    } else if (tipIconColorScheme === "dark") {
+      return iconButtonStyles.iconColorDark;
+    }
+    return iconButtonStyles.iconColorDefault;
+  };
 
   const [open, setOpen] = React.useState(!!initialOpen);
   const [portalNode, setPortalNode] = React.useState(null);
@@ -186,7 +196,7 @@ export default function TipModal({
         <TipIcon
           width="18px"
           height="18px"
-          className={tipIconClasses}
+          className={`${tipIconClasses} ${tipIconColor()}`}
           aria-hidden="true"
         />
       </button>

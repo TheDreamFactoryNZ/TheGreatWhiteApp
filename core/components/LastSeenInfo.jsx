@@ -262,6 +262,7 @@ export default function LastSeenInfo({
                 &nbsp;
                 <TipModal
                   className={styles.lastSeenTip}
+                  tipIconColorScheme="light"
                   portalIntoId="gw-modal-root"
                   modalTitle="No recent location update?"
                   modalBody="<p>Locations are obtained via a tag attached to the dorsal fin of the shark, which then transmits to orbiting satellites. For the satellites to receive a location, the shark must be near or at the surface of the water.</p><p>Being marine animals, sharks can spend <strong>months</strong> underwater, therefore it's not unusual to see long periods of inactivity.</p><p><strong>Rest assured, this is <em>not</em> an issue with the app - it is simply the harsh reality of tagging and tracking marine animals</strong></p>"
@@ -274,6 +275,7 @@ export default function LastSeenInfo({
                 &nbsp;
                 <TipModal
                   className={styles.lastSeenTip}
+                  tipIconColorScheme="light"
                   portalIntoId="gw-modal-root"
                   modalTitle="This shark is no longer being tracked"
                   modalBody="<p>Unfortunately, this shark is no longer being tracked as the tag has been lost. Historical location data and previous tracks are still available for viewing.</p>"

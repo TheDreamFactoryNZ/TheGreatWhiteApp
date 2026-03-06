@@ -16,6 +16,18 @@ button.iconButton {
     opacity: 0.5;
 }
 
+.iconColorDefault {
+    color: var(--default-icon-color);
+}
+
+.iconColorLight {
+    color: var(--light-icon-color);
+}
+
+.iconColorDark {
+    color: var(--dark-icon-color);
+}
+
 .trackIconSvg {
     color: var(--default-icon-color);
 }
