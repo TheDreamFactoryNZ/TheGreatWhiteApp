@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./IconButton.module.css";
 
-import pin from "@images/button_icons/map-pin.svg?url";
+import LocationPin from "@images/button_icons/map-pin.svg?component";
 
 /* eslint-disable react/prop-types */
 const LocateButton = ({
@@ -39,11 +39,11 @@ const LocateButton = ({
         onMouseDown={(e) => e.stopPropagation()}
         onTouchStart={(e) => e.stopPropagation()}
       >
-        <img
+        <LocationPin
           width={resolvedWidth}
           height={resolvedHeight}
-          className="hover"
-          src={pin}
+          className={`${styles.iconSvg} ${styles.locButtonSvg}`}
+          aria-hidden="true"
         />
         {iconText ? (
           <span className={`${styles.iconText} ${iconTextClassName || ""}`}>

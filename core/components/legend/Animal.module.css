@@ -1,15 +1,16 @@
 /* ANIMAL LEGEND CONTENT */
 .animalLegendContainer {
   display: grid;
-  grid-template-columns: 1fr 0.025fr;
+  grid-template-columns: 1fr 0;
 }
 .animalLegendContentContainer {
   display: grid;
   grid-template-columns: 0.125fr 1.5fr 1fr;
   place-content: center;
-  padding: 1.25rem 1rem 1.25rem 1rem;
+  padding: 1.25rem 3rem 1.25rem 1rem;
   background: var(--map-background-color-light);
   transition: filter var(--hover-transition-duration);
+  box-shadow: inset 1rem 0px 2rem rgba(0, 0, 0, 0.09375);
 }
 
 .animalLegendContainer.animalStoryView {
@@ -78,6 +79,10 @@
   max-width: 16ch;
 }
 
+.animalStory {
+  box-shadow: inset 1rem 0px 2rem rgba(0, 0, 0, 0.125);
+}
+
 :global(#gw-map) h3:global(.map-heading).animalSubtitleText {
   font-size: var(--map-body-font-size);
 }
@@ -88,6 +93,23 @@
 
 :global(#gw-map) .tracksActive h3:global(.map-heading).animalSubtitleText {
   font-weight: 500;
+}
+
+.animalStoryView.animalLegendContainer {
+  border-bottom: var(--border-divider);
+  box-shadow: none;
+}
+
+.animalStoryView .animalLegendContentContainer {
+  background: var(--ocean-gradient);
+  --h2-heading-color: #fff;
+  --body-text-color: #ccc;
+  --default-icon-color: #ccc;
+}
+
+.animalStoryView .trackButtonContainer {
+  --default-icon-color: #ccc;
+  --iconButton-hover-filter-custom: brightness(1.5);
 }
 
 .animalStoryView .animalNameText {
@@ -145,9 +167,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: var(--map-accent-color);
-  padding: 2rem 0rem;
   cursor: pointer;
+  position: relative;
+  right: 2rem;
+  width: 2rem;
+  height: 100%;
 }
 
 .storyButton svg {
@@ -161,10 +185,10 @@
 .animalStoryView .storyButton {
   display: none;
 }
-
+/*
 .storyButtonIcon {
   transition: opacity var(--hover-transition-duration);
-}
+}*/
 
 @media screen and (max-width: 420px) {
   .animalLegendContentContainer {

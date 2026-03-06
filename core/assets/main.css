@@ -103,6 +103,8 @@ html {
   --map-h3-color: #333333;
   --map-body-color: #333333;
   --map-body-color-light: #ffffff;
+  --map-subtitle-color-light: #cccccc;
+  --map-subtitle-color-dark: #666666;
 
   --map-background-color-light: #eeeffc;
   --map-background-color-dark: #111003;
@@ -256,6 +258,10 @@ h6 {
 
 #gw-map img {
   max-width: unset;
+}
+
+#gw-map svg {
+  overflow: visible;
 }
 
 .closeTextButton {

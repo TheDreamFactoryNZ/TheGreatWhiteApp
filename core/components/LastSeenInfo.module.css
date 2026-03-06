@@ -5,6 +5,7 @@ details {
 }
 
 details {
+    --default-icon-color: #fff;
     background: var(--ocean-gradient);
     color: #fff;
     border: var(--lastseen-border);

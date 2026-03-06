@@ -31,10 +31,10 @@
     padding: 0.25rem 0 0.625rem 1rem;
 }
 
-:global(#gw-map) h2:global(.map-heading).subjectName,
+.subjectName,
 .species {
-    --h2-heading-color: #fff;
-    --body-text-color: #fff;
+    --h2-heading-color: #ffffff;
+    --body-text-color: #cccccc;
 }
 
 .species {
