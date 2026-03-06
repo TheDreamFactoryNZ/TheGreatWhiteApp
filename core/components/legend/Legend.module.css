@@ -20,7 +20,7 @@
   overflow: hidden;
   align-self: center;
   display: grid;
-  grid-template-columns: minmax(0, 3rem) minmax(0, auto);
+  grid-template-columns: minmax(0, 2.25rem) minmax(0, auto);
   user-select: none;
   overscroll-behavior: none;
   width: min(75vw, clamp(380px, 25vw, 33vw));
@@ -38,8 +38,8 @@
 }
 
 .legendClose {
-  transform: translateX(calc(100% - 3rem));
-  -webkit-transform: translateX(calc(100% - 3rem));
+  transform: translateX(calc(100% - 2.25rem));
+  -webkit-transform: translateX(calc(100% - 2.25rem));
 }
 
 .legendOpenButton {
@@ -54,26 +54,13 @@
   height: 70px;
   background-color: var(--map-accent-color);
   align-self: center;
-  width: 3rem;
+  width: 2.25rem;
   border-top: 2px solid #ffffff;
   border-left: 2px solid #ffffff;
   border-bottom: 2px solid #ffffff;
   box-sizing: content-box;
   transition: filter var(--hover-transition-duration);
   overflow: hidden;
-}
-
-.legendOpenButton::after {
-  content: "";
-  height: 70px;
-  position: absolute;
-  width: 2px;
-  background: var(--map-accent-color);
-  display: block;
-  top: 0;
-  bottom: 0;
-  margin: auto 0;
-  left: 3rem;
 }
 
 @media (hover: hover) {
