@@ -80,13 +80,15 @@ const Animal = ({
           >
             <h2
               className={`${"map-heading"} ${styles.animalNameText}`}
-              title={animal.name + " (" + animal.subtitle + ")"}
+              title={animal.subtitle ? `${animal.name} (${animal.subtitle})` : animal.name}
             >
               {animal.name}
             </h2>
+            {animal.subtitle && (
             <h3 className={`${"map-heading"} ${styles.animalSubtitleText}`}>
               {animal.subtitle}
             </h3>
+            )}
             <LastSeenInfo
               isShorthand={true}
               tipOnNewLine={true}
