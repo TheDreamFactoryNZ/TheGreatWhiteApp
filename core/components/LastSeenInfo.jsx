@@ -259,7 +259,7 @@ export default function LastSeenInfo({
             {fullDateStr}
             {activityMessage && showInactive && (
               <>
-                &nbsp;&nbsp;
+                &nbsp;
                 <TipModal
                   className={styles.lastSeenTip}
                   portalIntoId="gw-modal-root"
@@ -271,7 +271,7 @@ export default function LastSeenInfo({
             )}
             {activityMessage && showDeactivated && (
               <>
-                &nbsp;&nbsp;
+                &nbsp;
                 <TipModal
                   className={styles.lastSeenTip}
                   portalIntoId="gw-modal-root"

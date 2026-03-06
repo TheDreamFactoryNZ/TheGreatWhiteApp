@@ -106,6 +106,10 @@ details[open] .summaryArrow {
     font-size: var(--map-small-body-font-size);
 }
 
+.fullDateContainer .fullDateText {
+    display: block;
+}
+
 .closeFullDate {
     all: unset;
     color: var(--map-accent-color);
