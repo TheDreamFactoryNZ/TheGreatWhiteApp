@@ -124,6 +124,7 @@
 
 .subjectDiv {
   overflow: hidden;
+  background: var(--map-background-color-light);
 }
 
 .subjectDiv:not(:last-child) {

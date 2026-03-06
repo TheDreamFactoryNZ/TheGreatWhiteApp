@@ -1,24 +1,42 @@
 /* ANIMAL LEGEND CONTENT */
-.animalLegendContent {
-  padding: 1.25rem 0.5rem 1.25rem 1rem;
+.animalLegendContainer {
   display: grid;
-  grid-template-columns: 0.125fr 1.5fr 0.75fr 0.25fr;
-  background: #eeeffc;
-  transition: filter 0.25s;
+  grid-template-columns: 1fr 0.025fr;
+}
+.animalLegendContentContainer {
+  display: grid;
+  grid-template-columns: 0.125fr 1.5fr 1fr;
+  place-content: center;
+  padding: 1.25rem 1rem 1.25rem 1rem;
+  background: var(--map-background-color-light);
+  transition: filter var(--hover-transition-duration);
 }
 
-.animalLegendContent:not(:has(.animalStoryView)) {
+.animalLegendContainer.animalStoryView {
+  grid-template-columns: 1fr;
+}
+
+.animalLegendContainer:not(.animalLegendContainer.animalStoryView) {
   cursor: pointer;
 }
 
-.animalLegendContent:hover:not(:has(.animalStoryView)),
-.animalLegendContent:focus:not(:has(.animalStoryView)) {
+.animalLegendContainer:hover:not(.animalLegendContainer.animalStoryView),
+.animalLegendContainer:focus:not(.animalLegendContainer.animalStoryView),
+.animalLegendContainer:hover:not(.animalLegendContainer.animalStoryView) .storyButton,
+.animalLegendContainer:focus:not(.animalLegendContainer.animalStoryView) .storyButton {
   filter: brightness(95%);
 }
 
-.animalLegendContent:hover:has(.animalStoryView),
-.animalLegendContent:focus:has(.animalStoryView) {
+.animalLegendContainer:hover:has(.animalStoryView),
+.animalLegendContainer:focus:has(.animalStoryView),
+.animalLegendContainer:hover:not(:has(.animalStoryView)) .storyButton,
+.animalLegendContainer:focus:not(:has(.animalStoryView)) .storyButton {
   filter: none;
+}
+
+.animalLegendContainer:hover:not(:has(.animalStoryView)) .storyButtonIcon,
+.animalLegendContainer:focus:not(:has(.animalStoryView)) .storyButtonIcon {
+  opacity: 0.5;
 }
 
 .animalImg {
@@ -87,8 +105,10 @@
   justify-content: flex-start;
 }
 
-.lastSeen {
-  margin-top: 0.25rem;
+.lastSeen > div {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 0.25rem;
 }
 
 .fitContent {
@@ -111,7 +131,7 @@
 }
 
 .trackButtons button {
-    flex: 0 1 55%;
+    flex: 0 1 56%;
 }
 
 .trackButtons img,
@@ -125,15 +145,21 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background: var(--map-accent-color);
+  padding: 2rem 0rem;
   cursor: pointer;
+}
+
+.storyButton svg {
+  flex: 1 1 100%;
+}
+
+.storyButton :where(path) {
+  stroke: #060a23 !important;
 }
 
 .animalStoryView .storyButton {
   display: none;
-}
-
-.storyButton:hover .storyButtonIcon {
-  opacity: 0.5;
 }
 
 .storyButtonIcon {
@@ -141,12 +167,13 @@
 }
 
 @media screen and (max-width: 420px) {
-  .animalLegendContent {
-    grid-template-rows: 1fr 1fr;
-    grid-template-columns: 0.25fr 1fr 1fr 1fr 0.5fr;
+  .animalLegendContentContainer {
+    grid-template-rows: 1fr 0.5fr;
+    grid-template-columns: 0.25fr 1fr 1fr;
+    grid-row-gap: 0.5rem;
     grid-template-areas:
-      "animalStatus animalName animalName animalName storyButton"
-      ". trackButtons trackButtons . storyButton";
+      "animalStatus animalName animalName "
+      ". trackButtons trackButtons ";
   }
   .animalStatus {
     grid-area: animalStatus;
@@ -155,10 +182,10 @@
     grid-area: animalName;
   }
   .trackButtons {
+    grid-template-rows: 1fr;
+    grid-template-columns: repeat(2, 0.33fr);
+    grid-gap: 0.25rem;
     grid-area: trackButtons;
-  }
-  .storyButton {
-    grid-area: storyButton;
   }
   .trackButtonContainer {
     justify-content: flex-start;

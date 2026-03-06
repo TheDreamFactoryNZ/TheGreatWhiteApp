@@ -42,7 +42,7 @@ const Animal = ({
   return (
     <>
       <div
-        className={`${styles.animalLegendContent} ${
+        className={`${styles.animalLegendContainer} ${
           isStoryView ? styles.animalStoryView : ""
         }`}
         onClick={(e) => {
@@ -64,6 +64,7 @@ const Animal = ({
           }
         }}
       >
+        <div className={styles.animalLegendContentContainer}>
         <div className={styles.animalStatus}>
           <div style={bulletBackgroundStyle} />
         </div>
@@ -88,6 +89,7 @@ const Animal = ({
             </h3>
             <LastSeenInfo
               isShorthand={true}
+              tipOnNewLine={true}
               isoDate={animal?.last_position?.properties?.DateTime}
               timezoneLabel="UTC"
               timezone="Etc/UTC"
@@ -108,6 +110,7 @@ const Animal = ({
               height="auto"
             />
           </div>
+        </div>
         </div>
         <button
           className={styles.storyButton}
@@ -132,8 +135,8 @@ const Animal = ({
         >
           <StoryIcon
             className={styles.storyButtonIcon}
-            width="2.5rem"
-            height="2.5rem"
+            width="2rem"
+            height="2rem"
           />
         </button>
       </div>

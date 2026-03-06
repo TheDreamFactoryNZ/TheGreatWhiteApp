@@ -11,7 +11,9 @@ const StoryButton = (props) => {
     onLegendStateToggle,
     storyButtonClass,
     iconText,
-    iconTextClassName
+    iconTextClassName,
+    width,
+    height,
   } = props;
 
   const label = subject?.name
@@ -30,6 +32,10 @@ const StoryButton = (props) => {
     }
   };
 
+  // Resolve dimensions: "auto" → undefined (no attribute), falsy → default "24px"
+  const resolvedWidth = width === "auto" ? undefined : width || "24px";
+  const resolvedHeight = height === "auto" ? undefined : height || "24px";
+
   return (
     <>
     <button
@@ -43,7 +49,7 @@ const StoryButton = (props) => {
       onMouseDown={(e) => e.stopPropagation()}
       onTouchStart={(e) => e.stopPropagation()}
     >
-      <StoryIcon width="24px" height="24px" className={styles.iconSvg} aria-hidden="true" />
+      <StoryIcon width={resolvedWidth} height={resolvedHeight} className={styles.iconSvg} aria-hidden="true" />
       {iconText ? <span className={`${styles.iconText} ${iconTextClassName || ''}`}>{iconText}</span> : null}
       </button>
     </>
