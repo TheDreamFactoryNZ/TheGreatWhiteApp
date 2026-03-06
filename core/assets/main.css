@@ -192,30 +192,30 @@ h6 {
 }
 
 #gw-map h2.map-heading {
-  font-size: var(--map-h2-font-size);
-  font-weight: var(--map-h2-font-weight);
+  font-size: var(--font-size, var(--map-h2-font-size));
+  font-weight: var(--font-weight, var(--map-h2-font-weight));
   letter-spacing: var(--heading-letter-spacing);
-  color: var(--map-h2-color);
+  color: var(--h2-heading-color, var(--map-h2-color));
 }
 
 #gw-map h3.map-heading {
-  font-size: var(--map-h3-font-size);
-  font-weight: var(--map-h3-font-weight);
+  font-size: var(--font-size, var(--map-h3-font-size));
+  font-weight: var(--font-weight, var(--map-h3-font-weight));
   letter-spacing: var(--heading-letter-spacing);
-  color: var(--map-h3-color);
+  color: var(--h3-heading-color, var(--map-h3-color));
 }
 
 #gw-map p.map-body,
 #gw-map span.map-body {
   font-family: var(--map-body-font);
-  font-size: var(--map-body-font-size);
-  color: var(--map-body-color);
+  font-size: var(--font-size, var(--map-body-font-size));
+  color: var(--body-text-color, var(--map-body-color));
 }
 
 #gw-map p,
 #gw-map span {
   font-family: var(--map-body-font);
-  color: var(--map-body-color);
+  color: var(--body-text-color, var(--map-body-color));
 }
 
 #gw-map p {
@@ -232,7 +232,7 @@ h6 {
 #gw-map span.map-body a,
 #gw-map span.map-body a:visited,
 #gw-map span.map-body a:active {
-  color: var(--map-a-color);
+  color: var(--a-color, var(--map-a-color));
   text-decoration: underline;
 }
 
@@ -260,7 +260,7 @@ h6 {
 
 .closeTextButton {
   all: unset;
-  color: var(--map-accent-color);
+  color: var(--accent-color, var(--map-accent-color));
   cursor: pointer;
   margin-top: 0.5em;
   font-family: var(--map-body-font);

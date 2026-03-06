@@ -188,11 +188,11 @@
 }
 
 .developerText {
+  --body-text-color: #fff;
   font-family: var(--map-body-font);
   font-size: var(--map-small-body-font-size);
   font-weight: var(--map-h2-font-weight);
   line-height: 1.2;
-  color: #fff;
 }
 
 .developerContainer {

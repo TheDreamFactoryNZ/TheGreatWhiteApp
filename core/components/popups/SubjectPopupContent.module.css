@@ -33,7 +33,8 @@
 
 :global(#gw-map) h2:global(.map-heading).subjectName,
 .species {
-    color: #fff;
+    --h2-heading-color: #fff;
+    --body-text-color: #fff;
 }
 
 .species {

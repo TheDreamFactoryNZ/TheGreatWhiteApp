@@ -89,10 +89,7 @@ details[open] .summaryArrow {
 }
 
 .overlayDetails .dateSummaryText {
-    font-family: var(--map-body-font);
-    font-size: var(--map-body-font-size);
-    line-height: 1.2;
-    color: #fff;
+    --body-text-color: #fff;
 }
 
 .fullDateContainer {
