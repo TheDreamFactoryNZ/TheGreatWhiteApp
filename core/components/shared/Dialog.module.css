@@ -3,7 +3,7 @@
   border: var(--map-popup-border);
   border-radius: var(--map-popup-border-radius);
   box-shadow: var(--map-popup-box-shadow);
-  max-width: clamp(12.5rem, 33vw + 10vw, 20rem);
+  max-width: clamp(20rem, 33vw + 15vw, 26rem);
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
