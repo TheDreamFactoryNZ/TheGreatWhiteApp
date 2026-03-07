@@ -96,7 +96,6 @@
 }
 
 .animalStoryView.animalLegendContainer {
-  border-bottom: var(--border-divider);
   box-shadow: none;
 }
 
