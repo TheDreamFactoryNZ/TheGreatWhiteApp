@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import styles from "./HelpButton.module.css";
 
 import CloseIcon from "@images/button_icons/close.svg?component";
@@ -17,6 +17,8 @@ import refresh from "@images/button_icons/refresh.svg";
 /* eslint-disable react/prop-types */
 const HelpButton = () => {
   const [tipsOpen, setTipsOpen] = useState(false);
+
+  const contentRef = useRef(null);
 
   // Close when another popup announces it opened
   useEffect(() => {
@@ -38,6 +40,18 @@ const HelpButton = () => {
       } catch (_) {}
     };
   }, []);
+
+  // Reset scroll when legend opens or content changes
+  useEffect(() => {
+    if (!tipsOpen) return;
+
+    // Use rAF so the DOM has laid out (images/content can change height)
+    const raf = window.requestAnimationFrame(() => {
+      if (contentRef.current) contentRef.current.scrollTop = 0;
+    });
+
+    return () => window.cancelAnimationFrame(raf);
+  }, [tipsOpen]);
 
   return (
     <>
@@ -81,7 +95,7 @@ const HelpButton = () => {
           </button>
         </div>
         <div className={styles.tipItemsContainer}>
-          <div className={styles.tipItemsContent}>
+          <div ref={contentRef} className={styles.tipItemsContent}>
             <div className={styles.tipItem}>
               <div
                 className={`${styles.tipIconContainer} ${styles["tipIconVertical"]}`}
@@ -252,7 +266,8 @@ const HelpButton = () => {
                   Refresh (internet connection required).
                 </p>
                 <p className="map-body">
-                  Press to refresh the map and fetch new locations. Long press to do a "hard refresh" and completely rebuild the map.
+                  Press to refresh the map and fetch new locations. Long press
+                  to do a "hard refresh" and completely rebuild the map.
                 </p>
               </div>
             </div>
