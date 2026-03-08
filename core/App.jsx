@@ -103,6 +103,8 @@ const variantValue = {
   isMobile: isMobileBuild,
 };
 
+const EXPECTED_SCHEMA_VERSION = 2;
+
 let config;
 const keymap = {}; // alt, r
 const aquatic = [
@@ -204,6 +206,15 @@ function debounce(fn, wait) {
       }
     }, wait);
   };
+}
+
+function warnIfUnexpectedSchemaVersion(rawConfig) {
+  const loadedVersion = rawConfig?.schemaVersion;
+  if (loadedVersion !== EXPECTED_SCHEMA_VERSION) {
+    console.warn(
+      `Expected config schema v${EXPECTED_SCHEMA_VERSION}, got v${loadedVersion ?? "undefined"}`,
+    );
+  }
 }
 
 // Attach global, debounced map resize handlers once
@@ -1004,6 +1015,7 @@ const App = (props) => {
         .then((response) => response.json())
         .then((json) => {
           if (!isSubscribed) return;
+          warnIfUnexpectedSchemaVersion(json);
           try {
             config = validateAndNormalizeConfig(json);
           } catch (e) {
@@ -1651,6 +1663,7 @@ const App = (props) => {
       );
 
       const json = await resp.json();
+      warnIfUnexpectedSchemaVersion(json);
       try {
         config = validateAndNormalizeConfig(json);
         return true;
