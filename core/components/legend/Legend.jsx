@@ -4,6 +4,7 @@ import Animal from "./Animal.jsx";
 import LastSeenInfo from "../LastSeenInfo.jsx";
 import sanitizeHtml from "@utils/sanitizeHtml.js";
 import { getSubjectStatusInfo } from "@utils/subjectStatus.js";
+import { getFormattedAttributes } from "@utils/attributeDefs.js";
 
 import doubleCaret from "@images/button_icons/double-caret.svg";
 import tdfLogo from "@images/the-dream-factory-n-slogan-white.svg";
@@ -120,6 +121,26 @@ const Legend = ({
       const subject = legSub[0];
       const subjectConfig = legSub[1];
       const { status } = getSubjectStatusInfo(subject, subjectConfig);
+
+      const apiSex = subject?.sex
+        ? subject.sex.charAt(0).toUpperCase() + subject.sex.slice(1)
+        : null;
+
+      const mergedSubjectConfig = {
+        ...subjectConfig,
+        attributes: {
+          ...(apiSex && { sex: apiSex }),
+          ...subjectConfig?.attributes,
+        },
+      };
+
+      let storyAttributes = [];
+      try {
+        storyAttributes = getFormattedAttributes(mergedSubjectConfig, false);
+      } catch (err) {
+        console.error("Failed to parse legend attributes:", err);
+      }
+
       return (
         <>
           <div className={styles.legendContent}>
@@ -197,6 +218,19 @@ const Legend = ({
                       __html: sanitizeHtml(subjectConfig.detail_description || ""),
                     }}
                   />
+                  {storyAttributes.length > 0 && (
+                    <>
+                      <h3 className="map-heading">Fast Facts</h3>
+                      <p className="map-body">
+                        {storyAttributes.map((attribute) => (
+                          <React.Fragment key={attribute.key}>
+                            <strong>{attribute.label}: </strong>{attribute.value}
+                            <br />
+                          </React.Fragment>
+                        ))}
+                      </p>
+                    </>
+                  )}
                   <div className={`${styles.subContentLastSeenInfo}`}>
                     <strong>Last seen:</strong>
                     <LastSeenInfo

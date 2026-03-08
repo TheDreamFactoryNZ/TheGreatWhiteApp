@@ -2,6 +2,7 @@ import React from 'react';
 import { TrackButton, StoryButton } from '../buttons/index.js';
 import LastSeenInfo from '../LastSeenInfo.jsx';
 import { getSubjectStatusInfo } from '@utils/subjectStatus.js';
+import { getFormattedAttributes } from '@utils/attributeDefs.js';
 
 import styles from './SubjectPopupContent.module.css';
 
@@ -12,14 +13,26 @@ const SubjectPopup = (props) => {
   const subject = props.subject;
   const { legendOpen, onLegendStateToggle } = props;
 
-  let sex = '';
-  if (subject.sex !== undefined) {
-    sex = subject.sex.charAt(0).toUpperCase() + subject.sex.slice(1);
-  }
+  // Merge API fields into config attributes (config takes precedence, API is fallback)
+  const apiSex = subject?.sex
+    ? subject.sex.charAt(0).toUpperCase() + subject.sex.slice(1)
+    : null;
 
-  let age = '';
-  if (data !== undefined && data.age !== undefined) {
-    age = data.age;
+  const mergedData = {
+    ...data,
+    attributes: {
+      // API fallbacks first (will be overwritten by config if present)
+      ...(apiSex && { sex: apiSex }),
+      // Config takes precedence (spread last = wins)
+      ...data?.attributes,
+    },
+  };
+
+  let featuredAttributes = [];
+  try {
+    featuredAttributes = getFormattedAttributes(mergedData, true);
+  } catch (err) {
+    console.error('Failed to parse subject attributes:', err);
   }
 
   let speciesSource = subject.common_name ?? subject.subject_subtype;
@@ -55,9 +68,12 @@ const SubjectPopup = (props) => {
           <div className={styles.subjectSummary}>
             <h3 className={`${'map-heading'} ${styles.summaryHeading}`}>Info:</h3>
             <p className={`${'map-body'} ${styles.summaryText}`}>
-              <strong>Sex: </strong>{sex}<br />
-              <strong>Total Length: </strong>{age}<br />
-              {/*<strong>Tag Sponsor: </strong>{tagSponsor}*/}</p>
+              {featuredAttributes.map((attribute) => (
+                <React.Fragment key={attribute.key}>
+                  <strong>{attribute.label}: </strong>{attribute.value}<br />
+                </React.Fragment>
+              ))}
+            </p>
             {data && data.fun_fact && <p><i>{data.fun_fact}</i><br />
             </p>}
             <LastSeenInfo
