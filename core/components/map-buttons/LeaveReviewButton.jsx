@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import styles from "./LeaveReviewButton.module.css";
 import CloseIcon from "@images/button_icons/close.svg?component";
 import { useAppVariant } from "@contexts/AppVariantContext.js";
@@ -13,6 +13,8 @@ const LeaveReviewButton = () => {
   }
 
   const [reviewOpen, setReviewOpen] = useState(false);
+
+  const contentRef = useRef(null);
 
   // Close when another popup announces it opened
   useEffect(() => {
@@ -34,6 +36,18 @@ const LeaveReviewButton = () => {
       } catch (_) {}
     };
   }, []);
+  
+  // Reset scroll when review opens or content changes
+  useEffect(() => {
+    if (!reviewOpen) return;
+
+    // Use rAF so the DOM has laid out (images/content can change height)
+    const raf = window.requestAnimationFrame(() => {
+      if (contentRef.current) contentRef.current.scrollTop = 0;
+    });
+
+    return () => window.cancelAnimationFrame(raf);
+  }, [reviewOpen]);
 
   return (
     <>
@@ -80,7 +94,7 @@ const LeaveReviewButton = () => {
           </button>
         </div>
         <div className={styles.supportInfoContentContainer}>
-          <div className={styles.supportInfoContent}>
+          <div ref={contentRef} className={styles.supportInfoContent}>
             <p className="map-body">
               <strong>
                 By purchasing this mobile app, you're doing your part to support
