@@ -41,13 +41,12 @@
 .contentContainer {
   background: var(--map-popup-background-color);
   border-radius: 0 0 var(--map-popup-border-radius) var(--map-popup-border-radius);
-  padding: var(--map-popup-content-padding);
-  padding-right: 0;
+  padding: var(--map-popup-content-padding--scrollable);
   box-shadow: var(--map-popup-box-shadow-inner);
   overflow: hidden;
 }
 
 .content {
   overflow-y: auto;
-  padding-right: 1rem;
+  padding: var(--map-popup-content-padding);
 }

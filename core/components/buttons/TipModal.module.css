@@ -47,7 +47,6 @@
     top: 0;
     bottom: 0;
     margin: auto 0;
-    padding: 0.5rem 0;
 }
 
 :global(#gw-map) .modalBodyContent p:first-child {

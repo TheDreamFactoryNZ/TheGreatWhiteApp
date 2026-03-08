@@ -55,10 +55,16 @@ export default function TipModal({
   const headerClasses = `${styles.modalHeader} ${headerClassName || ""}`;
   const titleClasses = `${styles.modalTitle} ${titleClassName || ""}`;
   const bodyClasses = `${styles.modalBody} ${bodyClassName || ""}`;
-  const contentClasses = `${styles.modalBodyContent} ${bodyContentClassName || ""}`;
+  const contentClasses = `${styles.modalBodyContent} ${
+    bodyContentClassName || ""
+  }`;
   const closeBtnClasses = `${styles.closeButton} ${closeButtonClassName || ""}`;
-  const tipBtnClasses = `${iconButtonStyles.iconButton} ${tipButtonClassName || ""}`;
-  const tipIconClasses = `${iconButtonStyles.iconSvg} ${iconButtonStyles.tipIconSvg} ${tipIconClassName || ""}`;
+  const tipBtnClasses = `${iconButtonStyles.iconButton} ${
+    tipButtonClassName || ""
+  }`;
+  const tipIconClasses = `${iconButtonStyles.iconSvg} ${
+    iconButtonStyles.tipIconSvg
+  } ${tipIconClassName || ""}`;
 
   const tipIconColor = () => {
     if (tipIconColorScheme === "light") {
@@ -170,10 +176,21 @@ export default function TipModal({
     if (typeof modalBody === "string") {
       const safeHtml = sanitizeHtml(modalBody);
       return (
-        <div
-          className={contentClasses}
-          dangerouslySetInnerHTML={{ __html: safeHtml }}
-        />
+        <div className={contentClasses}>
+          <div dangerouslySetInnerHTML={{ __html: safeHtml }} />
+
+          <button
+            ref={closeRef}
+            className={`${"closeTextButton"} ${styles.modalCloseTextButton}`}
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              setOpen(false);
+            }}
+          >
+            Close
+          </button>
+        </div>
       );
     }
     return <div className={contentClasses}>{modalBody}</div>;
@@ -220,7 +237,9 @@ export default function TipModal({
               className={dialogClasses}
             >
               <div className={headerClasses}>
-                <h2 id={titleId} className={titleClasses}>{modalTitle}</h2>
+                <h2 id={titleId} className={titleClasses}>
+                  {modalTitle}
+                </h2>
                 <button
                   type="button"
                   ref={closeRef}
@@ -237,20 +256,7 @@ export default function TipModal({
                   <CloseIcon />
                 </button>
               </div>
-              <div className={bodyClasses}>
-                {renderBodyContent()}
-                <button
-                  ref={closeRef}
-                  className={`${'closeTextButton'} ${styles.modalCloseTextButton}`}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    setOpen(false);
-                  }}
-                >
-                  Close
-                </button>
-              </div>
+              <div className={bodyClasses}>{renderBodyContent()}</div>
             </div>
           </div>,
           portalNode,
