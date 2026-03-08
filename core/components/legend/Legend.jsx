@@ -4,7 +4,7 @@ import Animal from "./Animal.jsx";
 import LastSeenInfo from "../LastSeenInfo.jsx";
 import sanitizeHtml from "@utils/sanitizeHtml.js";
 import { getSubjectStatusInfo } from "@utils/subjectStatus.js";
-import { getFormattedAttributes } from "@utils/attributeDefs.js";
+import { getOrderedAttributes } from "@utils/attributeDefs.js";
 
 import doubleCaret from "@images/button_icons/double-caret.svg";
 import tdfLogo from "@images/the-dream-factory-n-slogan-white.svg";
@@ -134,12 +134,12 @@ const Legend = ({
         },
       };
 
-      let storyAttributes = [];
-      try {
-        storyAttributes = getFormattedAttributes(mergedSubjectConfig, false);
-      } catch (err) {
-        console.error("Failed to parse legend attributes:", err);
-      }
+        let orderedAttributes = [];
+        try {
+          orderedAttributes = getOrderedAttributes(mergedSubjectConfig.attributes);
+        } catch (err) {
+          console.error("Failed to parse subject attributes:", err);
+        }
 
       return (
         <>
@@ -219,12 +219,12 @@ const Legend = ({
                       __html: sanitizeHtml(subjectConfig.detail_description || ""),
                     }}
                   />
-                  {storyAttributes.length > 0 && (
+                  {orderedAttributes.length > 0 && (
                     <div
                   className={styles.subContentItem}>
                       <h3 className="map-heading">Fast Facts</h3>
                       <p className="map-body">
-                        {storyAttributes.map((attribute) => (
+                        {orderedAttributes.map((attribute) => (
                           <React.Fragment key={attribute.key}>
                             <strong>{attribute.label}: </strong>{attribute.value}
                             <br />
