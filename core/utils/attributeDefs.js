@@ -1,3 +1,26 @@
+// Preferred order for main attributes (excluding sex, tag_sponsor, etc)
+export const ORDERED_ATTRIBUTE_KEYS = [
+  'total_length_m',
+  'date_tagged',
+  'location_tagged',
+  // Add more keys as needed
+];
+
+/**
+ * Returns attributes in the preferred order, omitting null/undefined.
+ * @param {object} attributes - The attributes object from config
+ * @returns {Array<{key, label, value}>}
+ */
+export function getOrderedAttributes(attributes) {
+  if (!attributes) return [];
+  return ORDERED_ATTRIBUTE_KEYS
+    .map((key) => ({
+      key,
+      label: getAttributeLabel(key),
+      value: formatAttributeValue(key, attributes[key]),
+    }))
+    .filter(attr => attr.value !== null && attr.value !== undefined);
+}
 import DOMPurify from 'dompurify';
 
 export const ATTRIBUTE_DEFS = {
