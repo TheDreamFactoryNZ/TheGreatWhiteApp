@@ -1,6 +1,6 @@
 /* POP-UP STYLING */
 .popUp {
-    width: clamp(12.5rem, 33vw + 10vw, 20rem);
+    width: clamp(25vw, 66vw, 280px);
     overflow: auto;
     border-radius: 0.75rem;
     background-color: #EEEFFC;
