@@ -102,6 +102,7 @@
 .animalStoryView .animalLegendContentContainer {
   background: var(--ocean-gradient);
   --h2-heading-color: #fff;
+  --h3-heading-color: #fff;
   --body-text-color: #ccc;
   --default-icon-color: #ccc;
 }
