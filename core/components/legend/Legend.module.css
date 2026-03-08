@@ -285,6 +285,6 @@
   margin-top: 0.125rem;
 }
 
-.subContentLastSeenInfo {
-  margin-top: 0.5rem;
+.subContentItem:not(:first-child) {
+  margin-top: 1rem;
 }

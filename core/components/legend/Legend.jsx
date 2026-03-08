@@ -214,12 +214,14 @@ const Legend = ({
                 <h2 className="map-heading">About {subject.name}</h2>
                 <div className={styles.subContentBody}>
                   <div
+                  className={styles.subContentItem}
                     dangerouslySetInnerHTML={{
                       __html: sanitizeHtml(subjectConfig.detail_description || ""),
                     }}
                   />
                   {storyAttributes.length > 0 && (
-                    <>
+                    <div
+                  className={styles.subContentItem}>
                       <h3 className="map-heading">Fast Facts</h3>
                       <p className="map-body">
                         {storyAttributes.map((attribute) => (
@@ -229,9 +231,9 @@ const Legend = ({
                           </React.Fragment>
                         ))}
                       </p>
-                    </>
+                    </div>
                   )}
-                  <div className={`${styles.subContentLastSeenInfo}`}>
+                  <div className={styles.subContentItem}>
                     <strong>Last seen:</strong>
                     <LastSeenInfo
                       isoDate={subject?.last_position?.properties?.DateTime}
