@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const BOOTSTRAP_URL = "https://map.sustainableoceansociety.co.nz/public/config/bootstrap.json";
+const BOOTSTRAP_URL = "https://map.sustainableoceansociety.co.nz/public/bootstrap.json";
 const FALLBACK_CONFIG_URL = "https://map.sustainableoceansociety.co.nz/public/configs/config.json";
 
 /**
