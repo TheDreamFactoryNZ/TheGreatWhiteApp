@@ -1,10 +1,10 @@
-import React from 'react';
-import { TrackButton, StoryButton } from '../buttons/index.js';
-import LastSeenInfo from '../LastSeenInfo.jsx';
-import { getSubjectStatusInfo } from '@utils/subjectStatus.js';
-import { getFormattedAttributes } from '@utils/attributeDefs.js';
+import React from "react";
+import { TrackButton, StoryButton } from "../buttons/index.js";
+import LastSeenInfo from "../LastSeenInfo.jsx";
+import { getSubjectStatusInfo } from "@utils/subjectStatus.js";
+import { getOrderedAttributes, formatAttributeValue } from "@utils/attributeDefs.js";
 
-import styles from './SubjectPopupContent.module.css';
+import styles from "./SubjectPopupContent.module.css";
 
 /* eslint-disable react/prop-types */
 const SubjectPopup = (props) => {
@@ -28,54 +28,88 @@ const SubjectPopup = (props) => {
     },
   };
 
-  let featuredAttributes = [];
+
+  // Extract and format sex and tag_sponsor for special placement
+  let sex = null;
+  let tagSponsor = null;
   try {
-    featuredAttributes = getFormattedAttributes(mergedData, true);
+    sex = formatAttributeValue('sex', mergedData.attributes?.sex);
+    tagSponsor = formatAttributeValue('tag_sponsor', mergedData.attributes?.tag_sponsor);
   } catch (err) {
-    console.error('Failed to parse subject attributes:', err);
+    console.error("Failed to parse sex or tag_sponsor:", err);
+  }
+
+  let orderedAttributes = [];
+  try {
+    orderedAttributes = getOrderedAttributes(mergedData.attributes);
+  } catch (err) {
+    console.error("Failed to parse subject attributes:", err);
   }
 
   let speciesSource = subject.common_name ?? subject.subject_subtype;
 
   let species = speciesSource
-    .replace(/_/g, ' ')
-    .replace(/\b\w/g, l => l.toUpperCase());
+    .replace(/_/g, " ")
+    .replace(/\b\w/g, (l) => l.toUpperCase());
 
   const { status } = getSubjectStatusInfo(subject, data);
 
-  let display = { display: 'flex' };
+  let display = { display: "flex" };
   if (!subject.display_story) {
-    display = { display: 'none' };
+    display = { display: "none" };
   }
 
   function returnImage() {
-    if (data !== undefined && data.pictures !== undefined && data.pictures.length > 0) {
-      return <img className={styles.popUpImage} src={data.pictures[0].path} alt='picture' />;
+    if (
+      data !== undefined &&
+      data.pictures !== undefined &&
+      data.pictures.length > 0
+    ) {
+      return (
+        <img
+          className={styles.popUpImage}
+          src={data.pictures[0].path}
+          alt="picture"
+        />
+      );
     }
   }
 
   return (
     <div className={styles.popUp}>
-      <div className={styles.imageContainer}>
-        {returnImage()}
-      </div>
+      <div className={styles.imageContainer}>{returnImage()}</div>
       <div className={styles.popUpContent}>
         <div className={styles.popUpHeader}>
-          <h2 className={`${'map-heading'} ${styles.subjectName}`}>{subject.name}</h2>
-          <p className={`${styles.species}`}>{species}</p>
+          <h2 className={`${"map-heading"} ${styles.subjectName}`}>
+            {subject.name}
+          </h2>
+          <p className={styles.species}>
+            {sex ? <>{sex} </> : null}
+            {species}
+            <br />
+            {tagSponsor && <strong>Tag sponsored by {tagSponsor}</strong>}
+          </p>
         </div>
         <div className={styles.popUpBody}>
           <div className={styles.subjectSummary}>
-            <h3 className={`${'map-heading'} ${styles.summaryHeading}`}>Info:</h3>
-            <p className={`${'map-body'} ${styles.summaryText}`}>
-              {featuredAttributes.map((attribute) => (
-                <React.Fragment key={attribute.key}>
-                  <strong>{attribute.label}: </strong>{attribute.value}<br />
+            <h3 className={`${"map-heading"} ${styles.summaryHeading}`}>
+              Info:
+            </h3>
+            <p className={`${"map-body"} ${styles.summaryText}`}>
+              {orderedAttributes.map((attr) => (
+                <React.Fragment key={attr.key}>
+                  <strong>{attr.label}: </strong>
+                  {attr.value}
+                  <br />
                 </React.Fragment>
               ))}
             </p>
-            {data && data.fun_fact && <p><i>{data.fun_fact}</i><br />
-            </p>}
+            {data && data.fun_fact && (
+              <p>
+                <i>{data.fun_fact}</i>
+                <br />
+              </p>
+            )}
             <LastSeenInfo
               isoDate={subject?.last_position?.properties?.DateTime}
               timezone="Etc/UTC"
@@ -83,17 +117,18 @@ const SubjectPopup = (props) => {
               expandable={true}
               noLayoutShift={true}
               status={status}
-              className={`${'map-body'} ${styles.summaryText}`}
+              className={`${"map-body"} ${styles.summaryText}`}
             />
           </div>
           <div className={styles.popUpButtonsContainer}>
-              <TrackButton
+            <TrackButton
               trackButtonClass={styles.popUpButton}
               iconTextClassName={styles.popUpButtonText}
               subject={subject}
-              iconText={`See ${subject.name}'s journey`}/>
-              
-              <StoryButton
+              iconText={`See ${subject.name}'s journey`}
+            />
+
+            <StoryButton
               storyButtonClass={styles.popUpButton}
               iconTextClassName={styles.popUpButtonText}
               subject={subject}
@@ -101,7 +136,8 @@ const SubjectPopup = (props) => {
               legendOpen={legendOpen}
               onLegendStateToggle={onLegendStateToggle}
               onStoryClick={props.onStoryClick}
-              iconText={`See ${subject.name}'s factsheet`}/>
+              iconText={`See ${subject.name}'s factsheet`}
+            />
           </div>
         </div>
       </div>
