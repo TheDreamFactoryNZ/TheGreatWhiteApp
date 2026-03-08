@@ -17,7 +17,16 @@
       "jsx": "react-jsx",
       "baseUrl": "src",
       "paths": {
-        "@core/*": ["../../core/*"]
+        "@core/*": ["../../core/*"],
+        "@components/*": ["../../core/components/*"],
+        "@buttons/*": ["../../core/components/buttons/*"],
+        "@shared/*": ["../../core/components/shared/*"],
+        "@popups/*": ["../../core/components/popups/*"],
+        "@assets/*": ["../../core/assets/*"],
+        "@images/*": ["../../core/assets/images/*"],
+        "@contexts/*": ["../../core/contexts/*"],
+        "@hooks/*": ["../../core/hooks/*"],
+        "@utils/*": ["../../core/utils/*"]
       }
     },
     "include": ["src"],

@@ -61,6 +61,7 @@ export default defineConfig(({ mode }) => {
         "@assets": path.resolve(__dirname, "../core/assets"),
         "@images": path.resolve(__dirname, "../core/assets/images"),
         "@contexts": path.resolve(__dirname, "../core/contexts/"),
+        "@hooks": path.resolve(__dirname, "../core/hooks/"),
         "@utils": path.resolve(__dirname, "../core/utils/"),
       },
       dedupe: ["react", "react-dom"],
