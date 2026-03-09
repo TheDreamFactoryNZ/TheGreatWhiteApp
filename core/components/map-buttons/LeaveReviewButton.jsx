@@ -37,6 +37,13 @@ const LeaveReviewButton = () => {
     };
   }, []);
   
+    // Close on map refresh
+    useEffect(() => {
+      const close = () => setReviewOpen(false);
+      window.addEventListener("gw:refresh-ui", close);
+      return () => window.removeEventListener("gw:refresh-ui", close);
+    }, []);
+  
   // Reset scroll when review opens or content changes
   useEffect(() => {
     if (!reviewOpen) return;
