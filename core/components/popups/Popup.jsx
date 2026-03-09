@@ -61,8 +61,8 @@ const Popup = ({ children, coordinates, onClose }) => {
     } catch (e) {}
   }, [container]);
 
-  // Close on map refresh
-  useGlobalCloseEvent("gw:refresh-ui", () => popup.current.remove());
+  // Close on map refresh - need to figure out why this is removing popups even when not refreshing
+  //  useGlobalCloseEvent("gw:refresh-ui", () => popup.current.remove());
 
   return createPortal(children, container);
 };
