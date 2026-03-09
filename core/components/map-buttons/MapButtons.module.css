@@ -3,7 +3,7 @@
     position: absolute;
     top: calc(105px + 2.5rem + 67pt);
     left: 10px;
-    z-index: 2;
+    z-index: 4;
     display: flex;
     flex-flow: column nowrap;
     gap: 1rem;
@@ -38,7 +38,7 @@
     composes: container from '@shared/Dialog.module.css';
     max-width: unset;
     width: min(75vw, clamp(320px, 25vw, 390px));
-    margin-top: -34px;
+    margin-top: calc(-2.5rem - 67pt);
     margin-left: 54px;
     position: absolute;
 }
