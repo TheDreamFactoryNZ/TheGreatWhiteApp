@@ -11,8 +11,7 @@
   -ms-user-select: none;
   user-select: none;
   background: #ffffff;
-  z-index: 2;
-  overflow-x: clip;
+  z-index: 10;
 }
 
 .poweredByHeading {
