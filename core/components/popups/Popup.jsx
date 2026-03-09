@@ -1,12 +1,12 @@
-import { useEffect, useRef, useState } from 'react';
-import { createPortal } from 'react-dom';
-import mapboxgl from 'mapbox-gl';
-import PropTypes from 'prop-types';
+import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
+import mapboxgl from "mapbox-gl";
+import PropTypes from "prop-types";
 
 const Popup = ({ children, coordinates, onClose }) => {
   const popup = useRef(new mapboxgl.Popup({ closeButton: false }));
   const disposedRef = useRef(false);
-  const [container] = useState(() => document.createElement('div'));
+  const [container] = useState(() => document.createElement("div"));
 
   // Mount: attach to map and set initial DOM/content
   useEffect(() => {
@@ -23,13 +23,13 @@ const Popup = ({ children, coordinates, onClose }) => {
       // Cleanup: detach events and remove popup from map safely
       try {
         disposedRef.current = true;
-        popup.current.off('close', onClose);
+        popup.current.off("close", onClose);
         popup.current.remove();
       } catch (err) {
         // ignore remove errors
       }
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Update coordinates
@@ -43,16 +43,29 @@ const Popup = ({ children, coordinates, onClose }) => {
 
   // Close handler lifecycle
   useEffect(() => {
-    try { popup.current.on('close', onClose); } catch (e) {}
+    try {
+      popup.current.on("close", onClose);
+    } catch (e) {}
     return () => {
-      try { popup.current.off('close', onClose); } catch (e) {}
+      try {
+        popup.current.off("close", onClose);
+      } catch (e) {}
     };
   }, [onClose]);
 
   // Container updates (rare, but guard anyway)
   useEffect(() => {
-    try { if (!disposedRef.current) popup.current.setDOMContent(container); } catch (e) {}
+    try {
+      if (!disposedRef.current) popup.current.setDOMContent(container);
+    } catch (e) {}
   }, [container]);
+
+  // Close on map refresh
+  useEffect(() => {
+    const close = () => popup.current.remove();
+    window.addEventListener("gw:refresh-ui", close);
+    return () => window.removeEventListener("gw:refresh-ui", close);
+  }, []);
 
   return createPortal(children, container);
 };
@@ -60,11 +73,11 @@ const Popup = ({ children, coordinates, onClose }) => {
 Popup.propTypes = {
   children: PropTypes.node.isRequired,
   coordinates: PropTypes.arrayOf(PropTypes.number).isRequired,
-  onClose: PropTypes.func
+  onClose: PropTypes.func,
 };
 
 Popup.defaultProps = {
-  onClose: () => {}
+  onClose: () => {},
 };
 
 export default Popup;
