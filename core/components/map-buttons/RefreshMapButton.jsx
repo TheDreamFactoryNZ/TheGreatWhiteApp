@@ -66,6 +66,8 @@ const RefreshMapButton = ({ onClick = () => {}, onLongPress = () => {} }) => {
 
   const isDisabled = !isOnline || isCoolingDown;
 
+  window.dispatchEvent(new CustomEvent("gw:refresh-ui"));
+
   return (
     <>
       <button
