@@ -12,6 +12,7 @@ const Animal = ({
   configData,
   animalOnLocClicked,
   onNameClick,
+  onCloseLegend,
   displayStory,
   isStoryView: isStoryViewProp,
 }) => {
@@ -108,6 +109,7 @@ const Animal = ({
             <LocateButton
               subject={animal}
               handleOnLocButtonClicked={animalOnLocClicked}
+              onCloseLegend={onCloseLegend}
               width="auto"
               height="auto"
             />

@@ -111,6 +111,7 @@ const Legend = ({
                   animalOnLocClicked={onLocClick}
                   onNameClick={onStoryClick}
                   displayStory={s.display_story}
+                  onCloseLegend={toggleLegend}
                 />
               </div>
             ))}

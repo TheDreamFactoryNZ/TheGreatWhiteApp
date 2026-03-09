@@ -8,6 +8,7 @@ const LocateButton = ({
   subject,
   locButtonClass,
   handleOnLocButtonClicked,
+  onCloseLegend,
   iconText,
   iconTextClassName,
   width,
@@ -19,6 +20,7 @@ const LocateButton = ({
 
   function flyTo() {
     handleOnLocButtonClicked(subject.last_position.geometry.coordinates);
+    if (onCloseLegend) onCloseLegend();
   }
 
   // Resolve dimensions: "auto" → undefined (no attribute), falsy → default "24px"
