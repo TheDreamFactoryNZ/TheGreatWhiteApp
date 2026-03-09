@@ -41,6 +41,13 @@ const HelpButton = () => {
     };
   }, []);
 
+  // Close on map refresh
+  useEffect(() => {
+    const close = () => setTipsOpen(false);
+    window.addEventListener("gw:refresh-ui", close);
+    return () => window.removeEventListener("gw:refresh-ui", close);
+  }, []);
+
   // Reset scroll when legend opens or content changes
   useEffect(() => {
     if (!tipsOpen) return;
