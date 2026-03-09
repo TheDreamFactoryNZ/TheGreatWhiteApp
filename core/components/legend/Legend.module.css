@@ -2,9 +2,8 @@
   position: absolute;
   top: 0;
   left: 0;
-  overflow: clip;
   width: 100%;
-  height: 100%;
+  height: calc(100% - 44px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,7 +14,7 @@
   z-index: 1;
   right: 0;
   position: absolute;
-  height: 75vh;
+  height: calc(100% - 67pt);
   transition: transform 0.5s;
   overflow: hidden;
   align-self: center;
@@ -25,6 +24,7 @@
   overscroll-behavior: none;
   width: min(75vw, clamp(380px, 25vw, 33vw));
   pointer-events: auto;
+  bottom: 0;
 }
 
 :global(#gw-map.is-mobile) .legendWrapper {
