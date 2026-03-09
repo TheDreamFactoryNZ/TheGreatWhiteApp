@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import { useGlobalCloseEvent } from "@hooks/useGlobalCloseEvent";
 import mapboxgl from "mapbox-gl";
 import PropTypes from "prop-types";
 
@@ -61,11 +62,7 @@ const Popup = ({ children, coordinates, onClose }) => {
   }, [container]);
 
   // Close on map refresh
-  useEffect(() => {
-    const close = () => popup.current.remove();
-    window.addEventListener("gw:refresh-ui", close);
-    return () => window.removeEventListener("gw:refresh-ui", close);
-  }, []);
+  useGlobalCloseEvent("gw:refresh-ui", () => popup.current.remove());
 
   return createPortal(children, container);
 };

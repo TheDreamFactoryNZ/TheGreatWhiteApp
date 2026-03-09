@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
+import { useGlobalCloseEvent } from "@hooks/useGlobalCloseEvent";
 import styles from "./HelpButton.module.css";
 
 import CloseIcon from "@images/button_icons/close.svg?component";
@@ -41,13 +42,6 @@ const HelpButton = () => {
     };
   }, []);
 
-  // Close on map refresh
-  useEffect(() => {
-    const close = () => setTipsOpen(false);
-    window.addEventListener("gw:refresh-ui", close);
-    return () => window.removeEventListener("gw:refresh-ui", close);
-  }, []);
-
   // Reset scroll when legend opens or content changes
   useEffect(() => {
     if (!tipsOpen) return;
@@ -59,6 +53,9 @@ const HelpButton = () => {
 
     return () => window.cancelAnimationFrame(raf);
   }, [tipsOpen]);
+
+  // Close on map refresh
+  useGlobalCloseEvent("gw:refresh-ui", () => setTipsOpen(false));
 
   return (
     <>

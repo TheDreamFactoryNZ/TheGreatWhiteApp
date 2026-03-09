@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
+import { useGlobalCloseEvent } from "@hooks/useGlobalCloseEvent";
 import styles from "./LeaveReviewButton.module.css";
 import CloseIcon from "@images/button_icons/close.svg?component";
 import { useAppVariant } from "@contexts/AppVariantContext.js";
@@ -37,13 +38,6 @@ const LeaveReviewButton = () => {
     };
   }, []);
   
-    // Close on map refresh
-    useEffect(() => {
-      const close = () => setReviewOpen(false);
-      window.addEventListener("gw:refresh-ui", close);
-      return () => window.removeEventListener("gw:refresh-ui", close);
-    }, []);
-  
   // Reset scroll when review opens or content changes
   useEffect(() => {
     if (!reviewOpen) return;
@@ -55,6 +49,9 @@ const LeaveReviewButton = () => {
 
     return () => window.cancelAnimationFrame(raf);
   }, [reviewOpen]);
+
+  // Close on map refresh
+  useGlobalCloseEvent("gw:refresh-ui", () => setReviewOpen(false));
 
   return (
     <>
