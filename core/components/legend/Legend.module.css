@@ -90,14 +90,6 @@
 }
 
 .legendContent {
-  background: linear-gradient(
-    -135deg,
-    #ffffff 0%,
-    #eeeffc 50%,
-    #eeeffc 75%,
-    #e3e5fa 90%,
-    #d9dbf7 100%
-  );
   background-color: #eeeffc;
   height: 100%;
   box-sizing: border-box;
@@ -276,6 +268,7 @@
 .subContentContainer {
   display: block;
   padding: 1rem;
+  background: linear-gradient(-135deg,#fff,#eeeffc 50%,#eeeffc 75%,#e3e5fa 90%,#d9dbf7);
 }
 
 .subContentBody {
