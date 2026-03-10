@@ -93,20 +93,15 @@
 
 @media screen and (min-width: 421px) and (max-width: 900px) {
   .poweredBySponsorsContainer {
-    grid-template-columns: repeat(auto, minmax(80px, 12.825vw));
+    grid-template-columns: repeat(auto-fit, minmax(80px, 12.825vw));
     place-content: space-between;
   }
 }
 
 @media screen and (max-width: 420px) {
   .poweredBySponsorsContainer {
-    grid-template-columns: repeat(4, minmax(60px, 1fr));
-    grid-template-rows: auto auto;
-  }
-
-  .poweredByLogoContainerPublic {
-    grid-column: 1 / -1;
-    grid-row: 3;
+    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+    grid-template-rows: 1fr;
   }
 }
 
@@ -116,13 +111,6 @@
   justify-content: center;
   width: 100%;
   min-width: 0;
-}
-
-.poweredByLogoContainerPublic {
-  grid-column: 1 / -1;
-  aspect-ratio: auto;
-  min-height: unset;
-  height: auto;
 }
 
 .poweredByLogo {
@@ -144,18 +132,4 @@
 
 :global(#gw-map) .poweredByContainer img {
   max-width: 100%;
-}
-
-:global(#gw-map) p.sponsorLogoPublic {
-  font-style: italic;
-  font-size: var(--map-small-body-font-size);
-  color: var(--map-body-color);
-  margin: 0.625em 0 1em 0;
-}
-
-@media screen and (max-width: 900px) {
-  p.sponsorLogoPublic {
-    font-size: 0.75em;
-    text-align: center;
-  }
 }

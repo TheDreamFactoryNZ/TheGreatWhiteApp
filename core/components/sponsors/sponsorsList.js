@@ -53,7 +53,7 @@ export const sponsorsList = [
     href: "https://www.seadek.com/",
     logo: seadek,
     alt: "Seadek logo",
-    active: true,
+    active: false,
   },
   {
     id: "dream-factory",

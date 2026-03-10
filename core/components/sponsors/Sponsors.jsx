@@ -71,14 +71,6 @@ const Sponsors = () => {
                 </a>
               </li>
             ))}
-
-            <li
-              className={`${styles.poweredByLogoContainer} ${styles.poweredByLogoContainerPublic}`}
-            >
-              <p className={styles.sponsorLogoPublic}>
-              the public, for sponsoring sharks or purchasing the app.
-              </p>
-            </li>
           </ul>
         </div>
       </section>
