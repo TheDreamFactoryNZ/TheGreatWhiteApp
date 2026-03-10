@@ -36,8 +36,7 @@ const StoryButton = (props) => {
   const resolvedWidth = width === "auto" ? undefined : width || "24px";
   const resolvedHeight = height === "auto" ? undefined : height || "24px";
 
-  return (
-    <>
+  const button = (
     <button
       id="subject-story-button"
       className={[styles.iconButton, storyButtonClass].filter(Boolean).join(' ')}
@@ -52,8 +51,11 @@ const StoryButton = (props) => {
       <StoryIcon width={resolvedWidth} height={resolvedHeight} className={styles.iconSvg} aria-hidden="true" />
       {iconText ? <span className={`${styles.iconText} ${iconTextClassName || ''}`}>{iconText}</span> : null}
       </button>
-    </>
   );
+
+  return iconText
+  ? <div className={styles.iconTextContainer}>{button}</div>
+  : button;
 };
 
 export default StoryButton;

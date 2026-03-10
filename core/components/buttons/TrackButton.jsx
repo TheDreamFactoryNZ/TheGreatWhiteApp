@@ -34,9 +34,8 @@ const TrackButton = ({
   const resolvedWidth = width === "auto" ? undefined : width || "24px";
   const resolvedHeight = height === "auto" ? undefined : height || "24px";
 
-  return (
-    <>
-      <button
+  const button = (
+    <button
         id="subject-track-button"
         className={[styles.iconButton, trackButtonClass]
           .filter(Boolean)
@@ -62,8 +61,11 @@ const TrackButton = ({
           </span>
         ) : null}
       </button>
-    </>
   );
+
+  return iconText
+    ? <div className={styles.iconTextContainer}>{button}</div>
+    : button;
 };
 
 export default TrackButton;
