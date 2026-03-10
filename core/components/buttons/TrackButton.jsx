@@ -56,9 +56,11 @@ const TrackButton = ({
           aria-hidden="true"
         />
         {iconText ? (
+          <div className={styles.iconTextContainer} aria-hidden="true">
           <span className={`${styles.iconText} ${iconTextClassName || ""}`}>
             {iconText}
           </span>
+          </div>
         ) : null}
       </button>
   );
