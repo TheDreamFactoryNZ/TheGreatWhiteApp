@@ -164,7 +164,7 @@ a.mapboxgl-ctrl-logo.mapboxgl-compact {
     all: unset;
     background: none;
     padding-bottom: 1rem;
-    pointer-events: auto;
+    pointer-events: none !important;
     position: relative;
 }
 

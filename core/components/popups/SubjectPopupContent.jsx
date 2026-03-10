@@ -77,8 +77,8 @@ const SubjectPopup = (props) => {
 
   return (
     <div className={styles.popUp}>
+      <div className={styles.popUpFeatureArea}>
       <div className={styles.imageContainer}>{returnImage()}</div>
-      <div className={styles.popUpContent}>
         <div className={styles.popUpHeader}>
           <h2 className={`${"map-heading"} ${styles.subjectName}`}>
             {subject.name}
@@ -90,6 +90,8 @@ const SubjectPopup = (props) => {
             {tagSponsor && <strong>Tag sponsored by {tagSponsor}</strong>}
           </p>
         </div>
+        </div>
+      <div className={styles.popUpContent}>
         <div className={styles.popUpBody}>
 
           <div className={styles.popUpButtonsContainer}>
