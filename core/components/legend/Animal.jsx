@@ -139,8 +139,8 @@ const Animal = ({
         >
           <StoryIcon
             className={styles.storyButtonIcon}
-            width="2rem"
-            height="2rem"
+            width="32px"
+            height="32px"
           />
         </button>
       </div>
