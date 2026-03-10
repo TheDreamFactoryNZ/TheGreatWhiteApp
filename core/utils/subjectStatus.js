@@ -20,7 +20,7 @@ export const STATUS_COLORS = {
 // Activity messages (used by LastSeenInfo and potentially other components)
 export const ACTIVITY_MESSAGES = {
   [STATUS.ACTIVE]: 'This shark is currently providing location updates.',
-  [STATUS.INACTIVE]: 'This shark has not surfaced to provide a location for an extended period of time and is inactive.',
+  [STATUS.INACTIVE]: 'This shark has not surfaced to provide a location for an extended period of time.',
   [STATUS.DEACTIVATED]: 'This shark has lost its tag and is no longer providing locations.',
   [STATUS.UNKNOWN]: 'The status of this shark is unknown.',
 };
