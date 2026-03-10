@@ -94,7 +94,7 @@
 @media screen and (min-width: 421px) and (max-width: 900px) {
   .poweredBySponsorsContainer {
     grid-template-columns: repeat(auto-fit, minmax(80px, 12.825vw));
-    place-content: space-between;
+    place-content: space-evenly;
   }
 }
 
