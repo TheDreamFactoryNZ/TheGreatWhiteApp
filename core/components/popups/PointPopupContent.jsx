@@ -1,4 +1,5 @@
 import React from "react";
+import PopupCloseButton from "./PopupCloseButton.jsx";
 import { STATUS } from "@utils/subjectStatus.js";
 import styles from "./PointPopupContent.module.css";
 
@@ -14,6 +15,7 @@ export default function PointPopupContent({
   time,
   timezone,
   status,
+  onClose
 }) {
   const dateLine = date || "";
   const timeLine = [time, timezone].filter(Boolean).join(" ");
@@ -21,6 +23,10 @@ export default function PointPopupContent({
 
   return (
     <div className={styles.popUp}>
+      <PopupCloseButton
+        closeClass={styles.closePopupContent}
+        onClose={onClose}
+      />
       <div className={styles.popUpHeaderContainer}>
         <h2 className={styles.popUpHeading}>
           {`Location #${idx ?? ""}`.trim()}

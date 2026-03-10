@@ -5,17 +5,14 @@ import { AppVariantContext } from "@contexts/AppVariantContext.js";
 import {
   PointPopupContent,
   Popup,
-  SubjectPopupContent
+  SubjectPopupContent,
 } from "@components/popups";
 import Legend from "@components/legend";
 import MapButtons from "@components/map-buttons/MapButtons";
 import { Sponsors } from "@components/sponsors";
 
 import mapHandlerRegistry from "@utils/mapHandlerRegistry";
-import {
-  STATUS,
-  normalizeStatus
-} from "@utils/subjectStatus.js";
+import { STATUS, normalizeStatus } from "@utils/subjectStatus.js";
 
 import "mapbox-gl/dist/mapbox-gl.css"; // Mapbox default styles
 import "./assets/mapstyle.css"; // Overrides for mapbox default styles
@@ -212,7 +209,9 @@ function warnIfUnexpectedSchemaVersion(rawConfig) {
   const loadedVersion = rawConfig?.schemaVersion;
   if (loadedVersion !== EXPECTED_SCHEMA_VERSION) {
     console.warn(
-      `Expected config schema v${EXPECTED_SCHEMA_VERSION}, got v${loadedVersion ?? "undefined"}`,
+      `Expected config schema v${EXPECTED_SCHEMA_VERSION}, got v${
+        loadedVersion ?? "undefined"
+      }`,
     );
   }
 }
@@ -629,8 +628,10 @@ async function fetchWithRetry(url, options = {}, retryCfg = {}) {
         if (parentSignal.aborted)
           throw new DOMException("Aborted", "AbortError");
         const onParentAbort = () => {
-      try { localCtl.abort(); } catch (_) {}
-    };
+          try {
+            localCtl.abort();
+          } catch (_) {}
+        };
         parentSignal.addEventListener("abort", onParentAbort, { once: true });
       }
       timeoutId = setTimeout(() => {
@@ -889,12 +890,12 @@ const App = (props) => {
           if (subjectsFetchCtlRef.current === ctl)
             subjectsFetchCtlRef.current = null;
         });
-    }  catch (err) {
-          if (err?.name !== "AbortError") {
-            return;
-          }
-          console.error('loadSubjectsAndIcons failed:', err);
-        }
+    } catch (err) {
+      if (err?.name !== "AbortError") {
+        return;
+      }
+      console.error("loadSubjectsAndIcons failed:", err);
+    }
   }
 
   function initMap() {
@@ -1354,7 +1355,8 @@ const App = (props) => {
                   timezone: props.time_timezone || null,
                   status: normalizeStatus(
                     config?.subjects?.[subjectId]?.status,
-                    subjects.find((s) => s.id === subjectId)?.last_position?.properties?.DateTime,
+                    subjects.find((s) => s.id === subjectId)?.last_position
+                      ?.properties?.DateTime,
                   ),
                 },
               },
@@ -1943,12 +1945,12 @@ const App = (props) => {
                   legendOpen={legendOpen}
                   onLegendStateToggle={toggleLegendState}
                   onClose={() => {
-                  setSubjectPopups((prev) =>
-                    prev.filter(
-                      ({ properties: { id } }) => id !== properties.id,
-                    ),
-                  );
-                }}
+                    setSubjectPopups((prev) =>
+                      prev.filter(
+                        ({ properties: { id } }) => id !== properties.id,
+                      ),
+                    );
+                  }}
                   {...props}
                 />
               </Popup>
@@ -1969,6 +1971,11 @@ const App = (props) => {
                   time={p.time}
                   timezone={p.timezone}
                   status={p.status}
+                  onClose={() =>
+                    setPointPopups((prev) =>
+                      prev.filter((pp) => pp.key !== key),
+                    )
+                  }
                 />
               </Popup>
             ))}
