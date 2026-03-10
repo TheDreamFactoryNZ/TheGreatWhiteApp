@@ -74,9 +74,9 @@
 }
 
 .animalNameText:not(.animalStoryView .animalNameText) {
+  --font-size: calc(var(--map-h2-font-size) * 0.75);
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 16ch;
 }
 
 .animalStory {
