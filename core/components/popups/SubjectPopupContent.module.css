@@ -35,7 +35,7 @@
 
 .popUpHeader {
   background: var(--ocean-gradient);
-  padding: 0.25rem 0 0.625rem 1rem;
+  padding: 0.25rem 0 0.625rem 0.5rem;
 }
 
 .popUpButtonsContainer {
@@ -63,8 +63,7 @@
 }
 
 :global(#gw-map) button.popUpButton svg {
-  width: 2.375rem;
-  height: auto;
+  flex: 0 1 25%;
 }
 
 .popUpButtonText {
@@ -89,7 +88,7 @@ button.popUpButton[data-active="true"] .popUpButtonText {
 }
 
 .popUpBody {
-  padding: 1rem;
+  padding: 1rem 0.5rem 0.25rem 0.5rem;
   display: flex;
   flex-flow: column nowrap;
 }

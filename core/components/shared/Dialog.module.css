@@ -25,7 +25,6 @@
 
 .headerText {
   text-overflow: ellipsis;
-  font-size: 1.625rem;
   font-weight: var(--map-h2-font-weight);
   color: #fff;
 }
