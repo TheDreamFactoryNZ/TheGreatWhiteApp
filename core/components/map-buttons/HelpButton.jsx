@@ -197,7 +197,7 @@ const HelpButton = () => {
               <div className={styles.tipTextContainer}>
                 <p className="map-body">
                   These sharks have not transmitted a location for an extended
-                  period of time and are inactive.
+                  period of time.
                 </p>
               </div>
             </div>
