@@ -1,0 +1,18 @@
+.popUpCloseButton {
+    all: unset;
+    background: #ffffff;
+    border-radius: 99999px;
+    background-image: url("@images/button_icons/close.svg");
+    background-size: 12px;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 20px;
+    height: 20px;
+    border: var(--map-popup-border);
+    cursor: pointer;
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    pointer-events: auto;
+    cursor: pointer;
+}
