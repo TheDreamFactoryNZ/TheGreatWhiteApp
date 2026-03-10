@@ -4,15 +4,9 @@ button.iconButton {
     cursor: pointer
 }
 
-.iconButton .iconSvg {
-    transition: filter linear var(--hover-transition-duration);
-    pointer-events: none;
-    user-select: none;
-}
-
-.iconButton:hover .iconSvg {
-    --iconButton-hover-filter: opacity(0.5);
-    filter: var(--iconButton-hover-filter-custom, var(--iconButton-hover-filter));
+.iconTextContainer:hover .iconButton .iconSvg,
+.iconButton:hover:not(.iconTextContainer .iconButton:hover) .iconSvg {
+    filter: drop-shadow(var(--map-popup-box-shadow));
 }
 
 .iconColorDefault {
