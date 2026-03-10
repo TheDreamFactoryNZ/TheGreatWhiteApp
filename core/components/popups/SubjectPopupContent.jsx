@@ -91,6 +91,27 @@ const SubjectPopup = (props) => {
           </p>
         </div>
         <div className={styles.popUpBody}>
+
+          <div className={styles.popUpButtonsContainer}>
+            <TrackButton
+              trackButtonClass={styles.popUpButton}
+              iconTextClassName={styles.popUpButtonText}
+              subject={subject}
+              iconText={`Tracks`}
+              aria-label={`See ${subject.name}'s journey`}
+            />
+            <StoryButton
+              storyButtonClass={styles.popUpButton}
+              iconTextClassName={styles.popUpButtonText}
+              subject={subject}
+              subjectData={data}
+              legendOpen={legendOpen}
+              onLegendStateToggle={onLegendStateToggle}
+              onStoryClick={props.onStoryClick}
+              iconText={`Info`}
+              aria-label={`See ${subject.name}'s factsheet`}
+            />
+          </div>
           <div className={styles.subjectSummary}>
             <h3 className={`${"map-heading"} ${styles.summaryHeading}`}>
               Info:
@@ -118,25 +139,6 @@ const SubjectPopup = (props) => {
               noLayoutShift={true}
               status={status}
               className={`${"map-body"} ${styles.summaryText}`}
-            />
-          </div>
-          <div className={styles.popUpButtonsContainer}>
-            <TrackButton
-              trackButtonClass={styles.popUpButton}
-              iconTextClassName={styles.popUpButtonText}
-              subject={subject}
-              iconText={`See ${subject.name}'s journey`}
-            />
-
-            <StoryButton
-              storyButtonClass={styles.popUpButton}
-              iconTextClassName={styles.popUpButtonText}
-              subject={subject}
-              subjectData={data}
-              legendOpen={legendOpen}
-              onLegendStateToggle={onLegendStateToggle}
-              onStoryClick={props.onStoryClick}
-              iconText={`See ${subject.name}'s factsheet`}
             />
           </div>
         </div>
