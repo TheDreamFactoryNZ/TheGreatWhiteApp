@@ -1,4 +1,5 @@
 import React from "react";
+import PopupCloseButton from "./PopupCloseButton.jsx";
 import { TrackButton, StoryButton } from "../buttons/index.js";
 import LastSeenInfo from "../LastSeenInfo.jsx";
 import { getSubjectStatusInfo } from "@utils/subjectStatus.js";
@@ -77,6 +78,10 @@ const SubjectPopup = (props) => {
 
   return (
     <div className={styles.popUp}>
+      <PopupCloseButton
+        closeClass={styles.closePopupContent}
+        onClose={props.onClose}
+      />
       <div className={styles.popUpFeatureArea}>
       <div className={styles.imageContainer}>{returnImage()}</div>
         <div className={styles.popUpHeader}>

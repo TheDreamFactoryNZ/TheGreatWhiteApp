@@ -1942,6 +1942,13 @@ const App = (props) => {
                   onStoryClick={(subject) => setLegSub(subject)}
                   legendOpen={legendOpen}
                   onLegendStateToggle={toggleLegendState}
+                  onClose={() => {
+                  setSubjectPopups((prev) =>
+                    prev.filter(
+                      ({ properties: { id } }) => id !== properties.id,
+                    ),
+                  );
+                }}
                   {...props}
                 />
               </Popup>
