@@ -1,7 +1,7 @@
 /* POP-UP STYLING */
 .popUp {
   width: clamp(235px, 10vw, 384px);
-  overflow: auto;
+  overflow-x: clip;
   border-radius: 0.75rem;
   background-color: #eeeffc;
   box-shadow: 0 4px 5px rgba(0, 0, 0, 0.25);
