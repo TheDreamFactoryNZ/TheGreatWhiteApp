@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+window.dispatchEvent(new CustomEvent("gw:refresh-ui"));import React, { useEffect, useRef, useState } from "react";
 import styles from "./RefreshMapButton.module.css";
 
 const LONG_PRESS_MS = 600; // Threshold for long press of refresh button
@@ -46,6 +46,7 @@ const RefreshMapButton = ({ onClick = () => {}, onLongPress = () => {} }) => {
     timerRef.current = setTimeout(() => {
       didLongPressRef.current = true;
       onLongPress();
+      window.dispatchEvent(new CustomEvent("gw:refresh-ui"));
       startCooldown();
     }, LONG_PRESS_MS);
   };
@@ -57,6 +58,7 @@ const RefreshMapButton = ({ onClick = () => {}, onLongPress = () => {} }) => {
     if (!didLongPressRef.current) {
       startCooldown();
       onClick();
+      window.dispatchEvent(new CustomEvent("gw:refresh-ui"));
     }
   };
 
@@ -65,8 +67,6 @@ const RefreshMapButton = ({ onClick = () => {}, onLongPress = () => {} }) => {
   };
 
   const isDisabled = !isOnline || isCoolingDown;
-
-  window.dispatchEvent(new CustomEvent("gw:refresh-ui"));
 
   return (
     <>
