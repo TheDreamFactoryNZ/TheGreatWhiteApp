@@ -40,8 +40,7 @@
 
 .popUpButtonsContainer {
   display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
+  flex-flow: row wrap;
   align-items: center;
   border-bottom: 1px solid rgba(0, 0, 0, 0.12);
   margin-bottom: 0.5rem;
