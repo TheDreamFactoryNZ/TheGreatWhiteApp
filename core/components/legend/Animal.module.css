@@ -169,8 +169,8 @@
   align-items: center;
   cursor: pointer;
   position: relative;
-  right: 2rem;
-  width: 2rem;
+  right: 24px;
+  width: 24px;
   height: 100%;
 }
 
