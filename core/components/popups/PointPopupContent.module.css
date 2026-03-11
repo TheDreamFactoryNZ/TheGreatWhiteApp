@@ -1,6 +1,11 @@
 .popUp {
     composes: container from "@shared/Dialog.module.css";
     width: max-content;
+    transition: opacity 150ms ease;
+}
+
+:global(#map-container.gw-map-dragging) .popUp {
+  opacity: 0.85;
 }
 
 .popUpHeaderContainer {

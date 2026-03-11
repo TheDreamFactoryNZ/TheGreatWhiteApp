@@ -776,10 +776,12 @@ const App = (props) => {
   const tracksFetchCtlMapRef = useRef(new Map());
 
   // Global flag indicating if any map popups are open
-useEffect(() => {
-  window.__gw_popup_open = (subjectPopups.length + pointPopups.length) > 0;
-  return () => { window.__gw_popup_open = false; };
-}, [subjectPopups, pointPopups]);
+  useEffect(() => {
+    window.__gw_popup_open = subjectPopups.length + pointPopups.length > 0;
+    return () => {
+      window.__gw_popup_open = false;
+    };
+  }, [subjectPopups, pointPopups]);
 
   // Track subject icon layers to scope feature queries and resolve overlaps
   const subjectIconLayerIdsRef = useRef(new Set());
@@ -996,6 +998,31 @@ useEffect(() => {
       // Centralized setup of resize wiring (global + container)
       setupResize(window.GlobalMap, document.getElementById("map-container"));
     });
+
+    // Watch for dragging of map
+    function setMapDragging(isDragging) {
+      const el = document.getElementById("map-container");
+      if (!el) return;
+      el.classList.toggle("gw-map-dragging", isDragging);
+    }
+
+    const onDragStart = () => setMapDragging(true);
+    const onDragEnd = () => setMapDragging(false);
+    const onMoveStart = () => setMapDragging(true);
+    const onMoveEnd = () => setMapDragging(false);
+
+    window.GlobalMap.on("dragstart", onDragStart);
+    window.GlobalMap.on("dragend", onDragEnd);
+    window.GlobalMap.on("movestart", onMoveStart);
+    window.GlobalMap.on("moveend", onMoveEnd);
+
+    // store handlers so you can remove them during teardown
+    window.__gw_popup_drag_handlers = {
+      onDragStart,
+      onDragEnd,
+      onMoveStart,
+      onMoveEnd,
+    };
   }
 
   useEffect(() => {
@@ -1540,7 +1567,7 @@ useEffect(() => {
           // defensive: ensure features exist (sometimes map events fire without features)
           const feat = e && e.features && e.features[0];
           if (!feat) return;
-          
+
           if (window.__gw_popup_open) return;
 
           // Overlap guard: only allow the topmost subject icon to handle the click
@@ -1849,6 +1876,17 @@ useEffect(() => {
         try {
           window.__gw_resize_cleanup();
         } catch (_) {}
+      }
+
+      if (window.GlobalMap && window.__gw_popup_drag_handlers) {
+        const h = window.__gw_popup_drag_handlers;
+        try {
+          window.GlobalMap.off("dragstart", h.onDragStart);
+          window.GlobalMap.off("dragend", h.onDragEnd);
+          window.GlobalMap.off("movestart", h.onMoveStart);
+          window.GlobalMap.off("moveend", h.onMoveEnd);
+        } catch (_) {}
+        window.__gw_popup_drag_handlers = null;
       }
 
       // Abort any in-flight work

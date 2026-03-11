@@ -15,4 +15,10 @@
     right: -8px;
     pointer-events: auto;
     cursor: pointer;
+    z-index: 1;
+    transition: opacity 150ms ease;
+}
+
+:global(#map-container.gw-map-dragging) .popUpCloseButton {
+  opacity: 0.85;
 }
