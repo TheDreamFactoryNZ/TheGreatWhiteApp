@@ -774,6 +774,13 @@ const App = (props) => {
   const configFetchCtlRef = useRef(null);
   const subjectsFetchCtlRef = useRef(null);
   const tracksFetchCtlMapRef = useRef(new Map());
+
+  // Global flag indicating if any map popups are open
+useEffect(() => {
+  window.__gw_popup_open = (subjectPopups.length + pointPopups.length) > 0;
+  return () => { window.__gw_popup_open = false; };
+}, [subjectPopups, pointPopups]);
+
   // Track subject icon layers to scope feature queries and resolve overlaps
   const subjectIconLayerIdsRef = useRef(new Set());
 
@@ -1314,6 +1321,7 @@ const App = (props) => {
           pointsLayerId,
           "click",
           (e) => {
+            if (window.__gw_popup_open) return;
             const f = e.features && e.features[0];
             if (!f) return;
             // If a subject icon is rendered above this point at the click location,
@@ -1532,6 +1540,8 @@ const App = (props) => {
           // defensive: ensure features exist (sometimes map events fire without features)
           const feat = e && e.features && e.features[0];
           if (!feat) return;
+          
+          if (window.__gw_popup_open) return;
 
           // Overlap guard: only allow the topmost subject icon to handle the click
           try {
