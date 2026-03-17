@@ -71,10 +71,10 @@ details[open] .summaryArrow {
 }
 
 .overlayDetails .fullDateContainer {
-    position: absolute;
+    position: fixed;
     left: 0;
     right: 0;
-    top: calc(100% + 0.25rem);
+    top: calc(100% - 0.5rem);
     z-index: 3;
     background: var(--ocean-gradient);
     border: 0.125rem solid #00C49A;
