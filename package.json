@@ -22,7 +22,7 @@
     "start:webapp": "yarn workspace webapp start",
     "build:webapp": "yarn workspace webapp build",
     "start:mobileapp": "yarn workspace mobileapp ionic:start",
-    "build:mobileapp": "yarn workspace mobileapp ionic:build",
+    "build:mobileapp": "yarn workspace mobileapp build",
     "start": "concurrently -n webapp,mobileapp \"yarn start:webapp\" \"yarn start:mobileapp\"",
     "cap:sync:android": "yarn workspace mobileapp run cap:sync:android",
     "cap:open:android": "yarn workspace mobileapp run cap:open:android"
