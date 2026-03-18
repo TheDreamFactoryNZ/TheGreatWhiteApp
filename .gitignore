@@ -359,3 +359,6 @@ MigrationBackup/
 
 # Context files for local AI development
 /context
+
+# Exclude webapp build output
+/webapp/build/
