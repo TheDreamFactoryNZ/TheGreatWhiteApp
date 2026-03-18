@@ -86,23 +86,9 @@
   padding: 0;
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(60px, 12.825vw));
+  grid-template-columns: repeat(auto-fit, minmax(12.5px, 12.825vw));
   place-content: space-evenly;
   place-items: center;
-}
-
-@media screen and (min-width: 421px) and (max-width: 900px) {
-  .poweredBySponsorsContainer {
-    grid-template-columns: repeat(auto-fit, minmax(80px, 12.825vw));
-    place-content: space-evenly;
-  }
-}
-
-@media screen and (max-width: 420px) {
-  .poweredBySponsorsContainer {
-    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
-    grid-template-rows: 1fr;
-  }
 }
 
 .poweredByLogoContainer {
