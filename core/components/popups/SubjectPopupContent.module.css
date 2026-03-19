@@ -97,7 +97,6 @@ button.popUpButton[data-active="true"] .popUpButtonText {
   padding: 1rem 0.5rem 0.25rem 0.5rem;
   display: flex;
   flex-flow: column nowrap;
-  overflow-y: auto;
 }
 
 :global(#gw-map) h3:global(.map-heading).summaryHeading {
