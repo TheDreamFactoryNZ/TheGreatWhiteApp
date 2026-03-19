@@ -254,7 +254,7 @@ export default function LastSeenInfo({
           <span className={styles.dateSummaryText}>{dateSummaryText}</span>
           <Arrow className={styles.summaryArrow} />
         </summary>
-        <div className={styles.fullDateContainer}>
+        <div className={`${styles.fullDateContainer} gw-fullDateContainer`}>
           <span className={`${"map-body"} ${styles.fullDateText}`}>
             {fullDateStr}
             {activityMessage && showInactive && (

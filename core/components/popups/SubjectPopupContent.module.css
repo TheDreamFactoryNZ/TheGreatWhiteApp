@@ -103,6 +103,19 @@ button.popUpButton[data-active="true"] .popUpButtonText {
   margin-bottom: 0.25rem;
 }
 
+.popUp :global(.gw-fullDateContainer) {
+  pointer-events: none;
+}
+
+.popUp :global(.gw-fullDateContainer) button {
+  pointer-events: auto;
+  transition: opacity 150ms ease;
+}
+
+:global(#map-container.gw-map-dragging) .popUp :global(.gw-fullDateContainer) {
+  opacity: 0.85;
+}
+
 .summaryText {
   --font-size: var(--map-small-body-font-size);
 }
