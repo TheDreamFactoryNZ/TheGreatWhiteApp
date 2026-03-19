@@ -178,11 +178,6 @@ const HelpButton = () => {
                   A green light means the tag on the shark is active and
                   transmitting location data.
                 </p>
-                <p className="map-body">
-                  <strong>No recent updates?</strong> This is because the shark
-                  hasn't surfaced high enough to transmit a location to
-                  satellites.
-                </p>
               </div>
             </div>
             <div className={styles.tipItem}>
@@ -198,6 +193,11 @@ const HelpButton = () => {
                 <p className="map-body">
                   These sharks have not transmitted a location for an extended
                   period of time.
+                </p>
+                <p className="map-body">
+                  <strong>No recent updates?</strong> This is because the shark
+                  hasn't surfaced high enough to transmit a location to
+                  satellites.
                 </p>
               </div>
             </div>
