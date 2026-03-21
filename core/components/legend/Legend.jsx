@@ -4,7 +4,7 @@ import Animal from "./Animal.jsx";
 import LastSeenInfo from "../LastSeenInfo.jsx";
 import sanitizeHtml from "@utils/sanitizeHtml.js";
 import { getSubjectStatusInfo } from "@utils/subjectStatus.js";
-import { getOrderedAttributes } from "@utils/attributeDefs.js";
+import { getOrderedAttributes, getFormattedAttributes } from "@utils/attributeDefs.js";
 
 import doubleCaret from "@images/button_icons/double-caret.svg";
 import tdfLogo from "@images/the-dream-factory-n-slogan-white.svg";
@@ -137,7 +137,7 @@ const Legend = ({
 
         let orderedAttributes = [];
         try {
-          orderedAttributes = getOrderedAttributes(mergedSubjectConfig.attributes);
+          orderedAttributes = getFormattedAttributes(mergedSubjectConfig, true);
         } catch (err) {
           console.error("Failed to parse subject attributes:", err);
         }
